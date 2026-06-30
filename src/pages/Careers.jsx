@@ -23,7 +23,7 @@ const Careers = ({ onNavigate }) => {
     <div className="page-enter">
       <section className="page-hero">
         <div className="page-hero-accent"></div>
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/trades/industrial.png'})` }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + ''})` }}></div>
         <div className="cxl">
           <div className="pg-badge">Careers</div>
           <div className="ph-title">Build the future of<br />construction estimating.</div>

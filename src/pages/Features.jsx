@@ -19,7 +19,7 @@ const Features = ({ onNavigate }) => {
     <div className="page-enter">
       <section className="page-hero">
         <div className="page-hero-accent"></div>
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/features/take_off.png'})` }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + ''})` }}></div>
         <div className="cxl">
           <div className="pg-badge">Platform Features</div>
           <div className="ph-title">Every tool your estimating<br />team needs.</div>

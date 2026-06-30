@@ -43,7 +43,7 @@ const FAQ = ({ onNavigate }) => {
     <div className="page-enter">
       <section className="page-hero">
         <div className="page-hero-accent"></div>
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/trades/commercial.png'})` }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + ''})` }}></div>
         <div className="cxl">
           <div className="pg-badge">FAQ</div>
           <div className="ph-title">Frequently asked questions</div>

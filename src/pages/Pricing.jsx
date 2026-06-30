@@ -1,159 +1,86 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/pages/pricing.css';
 
-const included = [
-  'Digital takeoff canvas (PDF upload)',
-  'Symbol auto-count',
-  'Full bid page & calculator',
-  'Canadian city-based pricing (L1/L2/L3)',
-  'Supplier RFQ management',
-  'One-click quote letter (PDF / Word)',
-  'Estimate graph & analytics',
-  'Team & role management',
-  'All 9+ trades supported',
-  'Email & phone support',
-];
-
 const APP_URL = 'https://d3jt1vpskh0hbe.cloudfront.net/';
 
-const PlanCard = ({ plan }) => {
-  const {
-    display_name,
-    description,
-    button_text,
-    price,
-    make_recommended,
-    duration_value,
-    duration_unit,
-    document_limit_type,
-    document_limit,
-    discount_enabled,
-    discount_price,
-    discount_text,
-    type,
-  } = plan;
+const FEATURE_CARDS = [
+  { icon: '📐', title: 'Unlimited Projects', desc: 'Create and manage as many estimation projects as you need.' },
+  { icon: '🎓', title: 'Free Training', desc: 'One-on-one demo with a qualified Trade Expert at any time.' },
+  { icon: '🔄', title: 'No Lock-in', desc: 'Pay-as-you-go with no contracts. Cancel anytime, no questions.' },
+  { icon: '👥', title: 'Concurrent Licensing', desc: 'Your whole team works from a single shared licence.' },
+];
 
-  const formatPrice = (p) => {
-    const n = parseFloat(p);
-    if (n === 0) return 'Free';
-    return Number.isInteger(n) ? `$${n}` : `$${n.toFixed(2)}`;
-  };
+const FAQ_ITEMS = [
+  {
+    q: 'Is there any commitment?',
+    a: "RealCost allows you to pay-as-you-go and you're free to end your subscription whenever you like. We don't subject you to any lock-in contracts or hidden fees.",
+  },
+  {
+    q: 'How does the 14-day free trial work?',
+    a: "After signing up, you'll start a 14-day free trial with unrestricted access to all of RealCost's features. A free demonstration with a RealCost Trade Expert is available at any stage during the trial. Enter your billing details to continue using RealCost beyond the trial period.",
+  },
+];
 
-  const durationLabel = type === 'free_trial'
-    ? `${duration_value}-day free trial`
-    : `per ${duration_unit}`;
+const PLAN_FEATURES_FREE = [
+  '10 documents included',
+  'All core features unlocked',
+  'Free Trade Expert demo',
+  'No credit card required',
+];
 
-  return (
-    <div
-      className={`feat-card${make_recommended ? ' pricing-featured' : ''}`}
-      style={{
-        textAlign: 'center',
-        padding: '40px',
-        ...(!make_recommended && { '--card-accent': 'linear-gradient(90deg,var(--bdl),var(--bdl))' }),
-      }}
-    >
-      {make_recommended && (
-        <div style={{ background: 'var(--blight)', color: 'var(--blue)', fontSize: '11px', fontWeight: '600', padding: '5px 14px', borderRadius: '16px', display: 'inline-block', marginBottom: '16px', letterSpacing: '.04em' }}>
-          RECOMMENDED
-        </div>
-      )}
+const PLAN_FEATURES_PRO = [
+  'Unlimited Projects and Plans',
+  'Free Training & Support',
+  'No Contracts · Pay-as-you-go',
+  'Concurrent Licensing',
+];
 
-      <div style={{ fontSize: '12px', fontWeight: '600', textTransform: 'uppercase', letterSpacing: '.1em', color: '#8A92A6', marginBottom: '20px' }}>
-        {display_name}
-      </div>
+function fmt(p) {
+  const n = parseFloat(p);
+  if (n === 0) return 'Free';
+  return `$${Math.round(n)}`;
+}
 
-      {discount_enabled && discount_price ? (
-        <>
-          <div style={{ fontSize: '20px', color: '#A0AABB', textDecoration: 'line-through', marginBottom: '2px' }}>
-            {formatPrice(price)}
-          </div>
-          <div style={{ fontSize: '52px', fontWeight: '800', color: 'var(--txt)', letterSpacing: '-2px', marginBottom: '6px' }}>
-            {formatPrice(discount_price)}
-          </div>
-          <div style={{ fontSize: '12px', background: 'rgba(26,107,69,.1)', color: '#1A6B45', padding: '3px 10px', borderRadius: '12px', display: 'inline-block', marginBottom: '6px' }}>
-            {discount_text}
-          </div>
-        </>
-      ) : (
-        <div style={{ fontSize: '52px', fontWeight: '800', color: 'var(--txt)', letterSpacing: '-2px', marginBottom: '6px' }}>
-          {formatPrice(price)}
-        </div>
-      )}
+const CACHE_KEY = 'rc_plans_v1';
+const CACHE_TTL = 60 * 60 * 1000;
 
-      <div style={{ fontSize: '15px', color: '#8A92A6', marginBottom: description ? '14px' : '24px' }}>
-        {durationLabel}
-      </div>
-
-      {description && (
-        <div style={{ fontSize: '13px', color: '#6B7280', marginBottom: '20px', minHeight: '36px' }}>
-          {description}
-        </div>
-      )}
-
-      <div style={{ fontSize: '13px', color: '#374151', marginBottom: '24px' }}>
-        {document_limit_type === 'unlimited'
-          ? 'Unlimited documents'
-          : `Up to ${document_limit} document${document_limit !== 1 ? 's' : ''}`}
-      </div>
-
-      <a
-        className={make_recommended ? 'btn-prim' : 'btn-ol-blue'}
-        href={APP_URL}
-        target="_blank"
-        rel="noopener noreferrer"
-        style={{ width: '100%', justifyContent: 'center' }}
-      >
-        {button_text}
-      </a>
-    </div>
-  );
-};
-
-const PLANS_CACHE_KEY = 'rc_plans_v1';
-const PLANS_CACHE_TTL = 60 * 60 * 1000; // 1 hour
-
-function readPlanCache() {
+function readCache() {
   try {
-    const raw = localStorage.getItem(PLANS_CACHE_KEY);
+    const raw = localStorage.getItem(CACHE_KEY);
     if (!raw) return null;
     const { plans, ts } = JSON.parse(raw);
-    if (Date.now() - ts > PLANS_CACHE_TTL) {
-      localStorage.removeItem(PLANS_CACHE_KEY);
-      return null;
-    }
+    if (Date.now() - ts > CACHE_TTL) { localStorage.removeItem(CACHE_KEY); return null; }
     return plans;
-  } catch {
-    return null;
-  }
+  } catch { return null; }
+}
+function writeCache(plans) {
+  try { localStorage.setItem(CACHE_KEY, JSON.stringify({ plans, ts: Date.now() })); } catch {}
 }
 
-function writePlanCache(plans) {
-  try {
-    localStorage.setItem(PLANS_CACHE_KEY, JSON.stringify({ plans, ts: Date.now() }));
-  } catch {}
-}
+const Check = ({ light }) => (
+  <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
+    <circle cx="9" cy="9" r="9" fill={light ? 'rgba(165,166,246,.2)' : '#EEEFFE'} />
+    <path d="M5 9l2.8 2.8 5-5" stroke={light ? '#A5A6F6' : '#5A5BE6'} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
 
 const Pricing = ({ onNavigate }) => {
   const [plans, setPlans] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [cycle, setCycle] = useState('monthly');
 
   useEffect(() => {
-    const cached = readPlanCache();
-    if (cached) {
-      setPlans(cached);
-      setLoading(false);
-      return;
-    }
-
+    const cached = readCache();
+    if (cached) { setPlans(cached); setLoading(false); return; }
     fetch('https://api.mybids.us/api/user/content/subscription-plans/')
-      .then((res) => res.json())
+      .then((r) => r.json())
       .then((data) => {
         if (data.success) {
           const active = data.subscription_plan_details.filter(
             (p) => p.is_enabled && p.is_available && !p.is_expired
           );
-          writePlanCache(active);
+          writeCache(active);
           setPlans(active);
         } else {
           setError('Failed to load plans.');
@@ -164,77 +91,216 @@ const Pricing = ({ onNavigate }) => {
   }, []);
 
   const trialPlan = plans.find((p) => p.type === 'free_trial');
+  const yearlyPlan = plans.find((p) => p.type === 'yearly');
+  const monthlyPlan =
+    plans.find((p) => p.type === 'monthly' && p.make_recommended) ||
+    plans.find((p) => p.type === 'monthly');
+
+  const trialDays = trialPlan?.duration_value ?? 14;
+
+  const hasYearly = !!yearlyPlan;
+  const hasMonthly = !!monthlyPlan;
+  const activePlan = cycle === 'yearly' ? yearlyPlan : monthlyPlan;
+
+  const activeDisplayPrice =
+    activePlan?.discount_enabled && activePlan.discount_price
+      ? activePlan.discount_price
+      : activePlan?.price;
+
+  const hasDiscount = activePlan?.discount_enabled && !!activePlan?.discount_price;
+
+  // Compute yearly saving % vs monthly
+  const mPrice = monthlyPlan
+    ? parseFloat(monthlyPlan.discount_enabled && monthlyPlan.discount_price ? monthlyPlan.discount_price : monthlyPlan.price)
+    : 0;
+  const yPrice = yearlyPlan
+    ? parseFloat(yearlyPlan.discount_enabled && yearlyPlan.discount_price ? yearlyPlan.discount_price : yearlyPlan.price)
+    : 0;
+  const savingPct = mPrice > 0 && yPrice > 0 ? Math.round((1 - yPrice / 12 / mPrice) * 100) : 0;
 
   return (
     <div className="page-enter">
-      <section className="page-hero">
-        <div className="page-hero-accent"></div>
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/features/quote_letter.png'})` }}></div>
+
+      {/* ── Hero ── */}
+      <section className="pr-hero">
         <div className="cxl">
-          <div className="pg-badge">Pricing</div>
-          <div className="ph-title">Simple, honest pricing.</div>
-          <p className="sec-sub" style={{ maxWidth: '480px', margin: '0 auto 44px' }}>
-            All features included in every plan. No add-ons, no lock-in, no surprises.
-            {trialPlan && ' Start with a free trial — no credit card required.'}
+          <div className="pr-hero-eyebrow">Simple Pricing</div>
+          <h1 className="pr-hero-title">
+            Start free for <span>{trialDays} days.</span><br />Subscribe when you're ready.
+          </h1>
+          <p className="pr-hero-sub">
+            Every feature unlocked from day one. No credit card, no commitment,
+            no surprises.
           </p>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a className="btn-prim" href={APP_URL} target="_blank" rel="noopener noreferrer">
-              🚀 {trialPlan ? `${trialPlan.button_text} →` : 'Get started →'}
-            </a>
-            <button className="btn-ghost" onClick={() => onNavigate('contact')}>Any questions? Talk to us</button>
+          <div className="pr-trust-row">
+            <span>No credit card required</span>
+            <span>Cancel anytime</span>
+            <span>Free trade expert demo</span>
           </div>
         </div>
       </section>
 
-      <section className="sec-grey">
+      {/* ── Plans ── */}
+      <section className="pr-plans-section">
         <div className="cxl">
-          <div style={{ textAlign: 'center', marginBottom: '52px' }}>
-            <div className="sec-eyebrow" style={{ justifyContent: 'center' }}>Choose your plan</div>
-            <div className="sec-h2">Pick the plan that works for you</div>
-          </div>
 
-          {loading && (
-            <div style={{ textAlign: 'center', padding: '80px 0', color: '#8A92A6', fontSize: '15px' }}>
-              Loading plans…
+          {/* Toggle */}
+          {hasYearly && hasMonthly && (
+            <div className="pr-toggle-wrap">
+              <div className="pr-toggle">
+                <button
+                  className={`pr-toggle-btn${cycle === 'monthly' ? ' active' : ''}`}
+                  onClick={() => setCycle('monthly')}
+                >
+                  Monthly
+                </button>
+                <button
+                  className={`pr-toggle-btn${cycle === 'yearly' ? ' active' : ''}`}
+                  onClick={() => setCycle('yearly')}
+                >
+                  Yearly
+                  {savingPct > 0 && (
+                    <span className="pr-toggle-save">Save {savingPct}%</span>
+                  )}
+                </button>
+              </div>
             </div>
           )}
 
-          {error && (
-            <div style={{ textAlign: 'center', padding: '80px 0', color: '#EF4444', fontSize: '15px' }}>
-              {error}
-            </div>
-          )}
+          {loading && <div className="pr-loading">Loading plans…</div>}
+          {error && <div className="pr-error">{error}</div>}
 
-          {!loading && !error && plans.length > 0 && (
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: plans.length <= 2 ? 'repeat(2,1fr)' : 'repeat(auto-fit,minmax(240px,1fr))',
-              gap: '24px',
-              maxWidth: plans.length <= 2 ? '760px' : '1100px',
-              margin: '0 auto 56px',
-            }}>
-              {plans.map((plan) => (
-                <PlanCard key={plan.id} plan={plan} />
-              ))}
-            </div>
-          )}
+          {!loading && !error && (
+            <div className="pr-cards">
 
-          <div style={{ background: 'rgba(255,255,255,.82)', border: '1px solid rgba(220,226,240,.9)', borderRadius: '18px', padding: '40px', maxWidth: '760px', margin: '0 auto', backdropFilter: 'blur(8px)' }}>
-            <div style={{ textAlign: 'center', marginBottom: '32px' }}>
-              <div className="sec-eyebrow" style={{ justifyContent: 'center' }}>What's included</div>
-              <div style={{ fontSize: '22px', fontWeight: '700', color: 'var(--txt)', letterSpacing: '-.5px' }}>Every feature. Every plan.</div>
-            </div>
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-              {included.map((item, i) => (
-                <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-                  <span style={{ color: '#1A6B45', fontSize: '16px', flexShrink: '0' }}>✓</span>
-                  <span style={{ fontSize: '14px', color: '#374151' }}>{item}</span>
+              {/* ── Free Trial card ── */}
+              {trialPlan && (
+                <div className="pr-card">
+                  <div className="pr-card-top">
+                    <div className="pr-plan-label">Free Trial</div>
+                    <div className="pr-plan-name">{trialPlan.display_name}</div>
+                    <div className="pr-plan-desc">{trialPlan.description}</div>
+                    <div className="pr-price-block">
+                      <span className="pr-price">Free</span>
+                      <span className="pr-price-period">/{trialPlan.duration_value} days</span>
+                    </div>
+                    <div className="pr-price-seat">No credit card needed</div>
+                  </div>
+                  <div className="pr-card-bottom">
+                    <ul className="pr-features">
+                      {PLAN_FEATURES_FREE.map((f, i) => (
+                        <li key={i} className="pr-feature-item"><Check />{f}</li>
+                      ))}
+                    </ul>
+                    <a className="pr-cta-outline" href={APP_URL} target="_blank" rel="noopener noreferrer">
+                      {trialPlan.button_text}
+                    </a>
+                  </div>
                 </div>
-              ))}
+              )}
+
+              {/* ── Pro / featured card ── */}
+              {activePlan && (
+                <div className="pr-card pr-card-featured">
+                  <div className="pr-card-top">
+                    {activePlan.make_recommended && (
+                      <div className="pr-most-popular">Most Popular</div>
+                    )}
+                    <div className="pr-plan-label">
+                      {cycle === 'yearly' ? 'Yearly Plan' : 'Monthly Plan'}
+                    </div>
+                    <div className="pr-plan-name">{activePlan.title}</div>
+                    <div className="pr-plan-desc">{activePlan.description}</div>
+                    <div className="pr-price-block">
+                      {hasDiscount && (
+                        <span className="pr-price-original">{fmt(activePlan.price)}</span>
+                      )}
+                      <span className="pr-price">{fmt(activeDisplayPrice)}</span>
+                      <span className="pr-price-period">/{activePlan.duration_unit}</span>
+                    </div>
+                    <div className="pr-price-seat">per seat · billed {cycle}</div>
+                    {hasDiscount && activePlan.discount_text && (
+                      <div className="pr-discount-tag">{activePlan.discount_text}</div>
+                    )}
+                  </div>
+                  <div className="pr-card-bottom">
+                    <ul className="pr-features">
+                      {PLAN_FEATURES_PRO.map((f, i) => (
+                        <li key={i} className="pr-feature-item"><Check />{f}</li>
+                      ))}
+                    </ul>
+                    <a className="pr-cta-primary" href={APP_URL} target="_blank" rel="noopener noreferrer">
+                      {activePlan.button_text}
+                    </a>
+                    <p className="pr-cta-note">{trialDays}-day free trial included · no card needed</p>
+                  </div>
+                </div>
+              )}
+
             </div>
+          )}
+
+        </div>
+      </section>
+
+      {/* ── What's included ── */}
+      <section className="pr-features-section">
+        <div className="cxl">
+          <div style={{ textAlign: 'center' }}>
+            <div className="sec-eyebrow" style={{ justifyContent: 'center' }}>What's included</div>
+            <div className="sec-h2">Everything you need to win more bids</div>
+            <p className="sec-sub" style={{ maxWidth: '480px', margin: '0 auto' }}>
+              Every plan — free or paid — gets the full feature set from day one.
+            </p>
+          </div>
+          <div className="pr-features-grid">
+            {FEATURE_CARDS.map((fc, i) => (
+              <div key={i} className="pr-feature-card">
+                <div className="pr-feature-icon">{fc.icon}</div>
+                <div className="pr-feature-title">{fc.title}</div>
+                <div className="pr-feature-desc">{fc.desc}</div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
+
+      {/* ── FAQ ── */}
+      <section className="pr-faq-section">
+        <div className="cxl">
+          <div style={{ textAlign: 'center' }}>
+            <div className="sec-eyebrow" style={{ justifyContent: 'center' }}>FAQ</div>
+            <div className="sec-h2">Common questions</div>
+          </div>
+          <div className="pr-faq-grid">
+            {FAQ_ITEMS.map((item, i) => (
+              <div key={i} className="pr-faq-item">
+                <div className="pr-faq-q">{item.q}</div>
+                <div className="pr-faq-a">{item.a}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Bottom CTA ── */}
+      <section className="pr-bottom-cta">
+        <div className="cxl">
+          <div className="pr-bottom-cta-title">Ready to estimate smarter?</div>
+          <p className="pr-bottom-cta-sub">
+            Join estimators across Canada already using RealCost to win more bids.
+          </p>
+          <div className="pr-bottom-cta-btns">
+            <a className="btn-prim" href={APP_URL} target="_blank" rel="noopener noreferrer">
+              🚀 Start your free trial
+            </a>
+            <button className="btn-ghost" style={{ color: 'rgba(255,255,255,.7)', borderColor: 'rgba(255,255,255,.2)' }} onClick={() => onNavigate('contact')}>
+              Talk to us first
+            </button>
+          </div>
+        </div>
+      </section>
+
     </div>
   );
 };
