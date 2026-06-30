@@ -1,0 +1,44 @@
+/* ===== CSS Variables ===== */
+:root {
+  /* ===== Premium palette: deep navy base + royal-indigo accent + champagne gold ===== */
+  --sap: #112646;        /* deep navy (primary brand) */
+  --sap2: #1D3A6B;
+  --sap3: #2B5089;
+  --gold: #C5A047;       /* champagne gold (refined accent) */
+  --gold2: #E4C778;
+  --gold3: #F4E2A8;
+  --n: #0A1428;
+  --surf: #0E1E3C;
+  --card: #142142;
+  --card2: #1B2B50;
+  --blue: var(--sap);
+  --blight: #ECF1FF;
+  --bdim: rgba(17,38,70,.14);
+  --red: #B03030;
+  --red2: #D04040;
+  --rlight: #FDEAEA;
+  --green: #1A5C3A;
+  --gn2: #22754A;
+  --gnlight: #E4F5EC;
+  --white: #FAFBFE;
+  --muted: #6E7790;
+  --bd: rgba(255,255,255,.07);
+  --bdl: #E2E7F2;
+  --dark: var(--n);
+  --txt: #0D1A33;        /* rich near-navy text */
+  --grd-sap: linear-gradient(135deg,#112646 0%,#1E3C72 100%);
+  --grd-gold: linear-gradient(135deg,#C5A047 0%,#E6C878 100%);
+  --grd-hero: linear-gradient(135deg,#0E1F3D 0%,#1C3A6E 60%,#2B5089 100%);
+  --glass-bg: rgba(255,255,255,.72);
+  --glass-border: rgba(255,255,255,.55);
+  --glass-shadow: 0 8px 32px rgba(17,38,70,.12);
+  --grd-blue: var(--grd-sap);
+
+  /* Royal indigo/violet accent — primary actions */
+  --ind: #5A5BE6;
+  --ind2: #6E57E4;
+  --pur: #8A63E8;
+  --ind-light: #ECEBFD;
+  --grd-prim: linear-gradient(135deg,#4F46E5 0%,#7C5CE6 100%);
+  --grd-prim-soft: linear-gradient(135deg,#5B6BF0 0%,#9A6BF0 100%);
+}

@@ -1,0 +1,18 @@
+{
+  "short_name": "RealCost",
+  "name": "Real Cost Estimating",
+  "description": "Digital estimation platform for electrical, mechanical, and plumbing trades.",
+  "icons": [
+    {
+      "src": "images/brand/logo.png",
+      "type": "image/png",
+      "sizes": "any",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#112646",
+  "background_color": "#ffffff"
+}

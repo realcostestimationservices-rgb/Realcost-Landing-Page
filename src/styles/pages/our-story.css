@@ -1,0 +1,222 @@
+/* ===== OurStory layout classes ===== */
+.os-stats-grid  { display: grid; grid-template-columns: repeat(5,1fr); }
+.os-2col        { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+
+/* Timeline */
+.os-milestone {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 40px;
+  position: relative;
+}
+.os-milestone-left  { flex-direction: row; justify-content: flex-end; padding-right: calc(50% + 28px); text-align: right; }
+.os-milestone-right { flex-direction: row-reverse; justify-content: flex-end; padding-left: calc(50% + 28px); text-align: left; }
+.os-milestone-card  { background: #fff; border: 1px solid #E8EEF8; border-radius: 14px; padding: 20px 22px; box-shadow: 0 4px 18px rgba(15,37,87,.07); max-width: 320px; }
+.os-milestone-dot   {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--grd-gold);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 2px rgba(197,160,71,.4);
+  flex-shrink: 0;
+}
+
+@media (max-width:768px) {
+  .os-stats-grid { grid-template-columns: repeat(3,1fr); }
+  .os-2col       { grid-template-columns: 1fr; gap: 32px; }
+  .os-milestone-left,
+  .os-milestone-right {
+    flex-direction: column;
+    padding: 0 0 0 36px;
+    text-align: left;
+    justify-content: flex-start;
+  }
+  .os-milestone-dot {
+    left: 0;
+    transform: none;
+  }
+  .os-milestone::before {
+    content: '';
+    position: absolute;
+    left: 6px;
+    top: 18px;
+    bottom: -40px;
+    width: 2px;
+    background: rgba(197,160,71,.3);
+  }
+  .os-milestone:last-child::before { display: none; }
+}
+@media (max-width:480px) {
+  .os-stats-grid { grid-template-columns: repeat(2,1fr); }
+  .os-stats-grid > div { border-right: none !important; border-bottom: 1px solid rgba(220,226,240,.7); }
+  .os-stats-grid > div:last-child { border-bottom: none; }
+  .os-milestone-card { padding: 16px 18px; }
+}
+
+/* ===== OurStory 3D Coverflow Slider ===== */
+.os-coverflow-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 13%, black 87%, transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0%, black 13%, black 87%, transparent 100%);
+}
+.os-scroll-track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 0;
+  scrollbar-width: none;
+  cursor: grab;
+}
+.os-scroll-track::-webkit-scrollbar { display: none; }
+.os-scroll-track:active { cursor: grabbing; }
+.os-scroll-spacer {
+  flex: 0 0 calc(20% - 8px);
+  pointer-events: none;
+  flex-shrink: 0;
+}
+.os-cf-card {
+  flex: 0 0 42%;
+  aspect-ratio: 3 / 4;
+  scroll-snap-align: center;
+  border-radius: 16px;
+  background-size: cover;
+  background-position: center top;
+  transition: transform .45s cubic-bezier(.25,.46,.45,.94),
+              filter .45s ease,
+              box-shadow .45s ease;
+  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  will-change: transform, filter;
+}
+.os-cf-card.active {
+  transform: scale(1.04);
+  box-shadow: 0 20px 56px rgba(15,37,87,.28), 0 0 0 2.5px rgba(255,255,255,.88);
+  filter: brightness(1) saturate(1.08);
+  cursor: default;
+}
+.os-cf-card:not(.active) {
+  transform: scale(0.91);
+  filter: brightness(0.6) saturate(0.7);
+  cursor: pointer;
+}
+.os-cf-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-end;
+  background: linear-gradient(to top,
+    rgba(4,12,36,.92) 0%,
+    rgba(4,12,36,.40) 45%,
+    transparent 100%);
+  padding: 18px 20px 18px 22px;
+}
+.os-cf-text::before {
+  content: '';
+  position: absolute;
+  left: 20px;
+  bottom: 54px;
+  width: 3px;
+  height: 32px;
+  background: linear-gradient(to bottom, #E4C778, var(--sap));
+  border-radius: 2px;
+}
+.os-cf-ico   { font-size: 24px; margin-bottom: 6px; }
+.os-cf-label {
+  font-size: 17px;
+  font-weight: 800;
+  color: #fff;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  line-height: 1.2;
+  margin-bottom: 4px;
+  text-shadow: 0 2px 8px rgba(0,0,0,.4);
+}
+.os-cf-sub {
+  font-size: 12px;
+  color: rgba(200,218,255,.72);
+  font-weight: 300;
+  line-height: 1.55;
+  max-width: 280px;
+}
+.os-cf-footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.os-cf-dots {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.os-cf-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #D1DAF0;
+  border: 1.5px solid #C0CCE4;
+  cursor: pointer;
+  transition: width .32s cubic-bezier(.4,0,.2,1),
+              border-radius .32s cubic-bezier(.4,0,.2,1),
+              background .22s,
+              border-color .22s,
+              box-shadow .22s;
+  flex-shrink: 0;
+}
+.os-cf-dot:hover { background: #A8B8D8; border-color: #90A4C8; }
+.os-cf-dot.active {
+  width: 32px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #0F2557, #1E4080);
+  border-color: transparent;
+  box-shadow: 0 2px 10px rgba(15,37,87,.30);
+}
+.os-cf-bar {
+  width: 180px;
+  height: 2px;
+  background: rgba(15,37,87,.09);
+  border-radius: 2px;
+  overflow: hidden;
+}
+.os-cf-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #B8900A, #E4C778);
+  border-radius: 2px;
+  transform-origin: left center;
+  animation: cf-bar var(--slide-dur, 4s) linear forwards;
+}
+.os-cf-bar-fill.paused { animation-play-state: paused; }
+@keyframes cf-bar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+@media (max-width: 1024px) {
+  .os-cf-card      { flex: 0 0 50%; }
+}
+@media (max-width: 768px) {
+  .os-cf-card      { flex: 0 0 60%; }
+  .os-scroll-spacer{ flex: 0 0 calc(14% - 8px); }
+}
+@media (max-width: 480px) {
+  .os-cf-card      { flex: 0 0 76%; border-radius: 12px; }
+  .os-scroll-spacer{ flex: 0 0 calc(9% - 8px); }
+  .os-cf-label     { font-size: 13px; }
+  .os-cf-sub       { display: none; }
+}

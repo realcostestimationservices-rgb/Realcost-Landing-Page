@@ -1,0 +1,21 @@
+/* ===== CTA Band ===== */
+.cta-band {
+  background: linear-gradient(135deg,#0A1428 0%,#0F2557 45%,#162E6A 100%);
+  padding: 88px 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.cta-band::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(255,255,255,.022) 1px,transparent 1px);
+  background-size: 36px 36px;
+}
+.cta-band::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,168,76,.10) 0%,transparent 65%);
+}

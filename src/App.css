@@ -1,0 +1,13 @@
+/* ===== App Styles — barrel file ===== */
+/* Global styles are imported here; component/page CSS is imported by each file */
+
+@import './styles/variables.css';
+@import './styles/globals.css';
+@import './styles/animations.css';
+@import './styles/components/buttons.css';
+@import './styles/components/cards.css';
+@import './styles/components/faq.css';
+@import './styles/components/page-hero.css';
+@import './styles/components/cta-band.css';
+@import './styles/components/splash.css';
+@import './styles/responsive.css';

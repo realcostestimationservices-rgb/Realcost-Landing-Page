@@ -1,0 +1,6 @@
+/* ===== Pricing ===== */
+.pricing-featured {
+  border: 2px solid var(--blue)!important;
+  box-shadow: 0 16px 48px rgba(45,107,228,.15)!important;
+}
+.pricing-featured::before { background: var(--grd-blue)!important; }

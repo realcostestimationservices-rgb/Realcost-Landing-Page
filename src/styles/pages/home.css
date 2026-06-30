@@ -1,0 +1,256 @@
+/* ===== Home Hero ===== */
+.hero {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: stretch;
+}
+.hero-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: linear-gradient(105deg,rgba(10,20,40,.86) 0%,rgba(15,37,87,.70) 42%,rgba(15,37,87,.28) 75%,rgba(10,20,40,.12) 100%),linear-gradient(to bottom,rgba(10,20,40,.20) 0%,transparent 50%,rgba(10,20,40,.40) 100%);
+}
+.hero-tint {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: radial-gradient(ellipse 55% 80% at 0% 55%,rgba(201,168,76,.12) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 85% 15%,rgba(15,37,87,.08) 0%,transparent 55%);
+}
+.hero-grid {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background-image: linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+  background-size: 54px 54px;
+}
+.hero-inner {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  padding: 60px 80px;
+  display: flex;
+  align-items: center;
+  gap: 72px;
+}
+.hero-left {
+  flex: 1;
+  max-width: 560px;
+  margin-top: 18vh;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: rgba(201,168,76,.18);
+  border: 1px solid rgba(201,168,76,.38);
+  color: #F0D98A;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 7px 16px;
+  border-radius: 24px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 30px;
+}
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--gold2);
+  animation: blink 2.4s ease-in-out infinite;
+}
+.hero-h1 {
+  font-size: 60px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.03;
+  letter-spacing: -2.5px;
+  margin-bottom: 22px;
+}
+.hero-h1 em {
+  font-style: normal;
+  background: linear-gradient(125deg,#C9A84C 0%,#F0D98A 55%,#DFC06A 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-sub {
+  font-size: 15.5px;
+  color: rgba(220,228,248,.72);
+  line-height: 1.85;
+  max-width: 480px;
+  margin-bottom: 40px;
+  font-weight: 300;
+}
+.hero-sub strong { color: rgba(240,217,138,.9); font-weight:500; }
+.hero-btns {
+  display: flex;
+  gap: 14px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+}
+.hero-stats {
+  display: flex;
+  gap: 0;
+  background: rgba(255,255,255,.14);
+  border: 1px solid rgba(255,255,255,.28);
+  border-radius: 14px;
+  overflow: hidden;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  box-shadow: 0 8px 32px rgba(10,20,40,.22);
+}
+.hs {
+  flex: 1;
+  padding: 18px 22px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,.14);
+  position: relative;
+  transition: background .2s;
+}
+.hs:last-child { border-right: none; }
+.hs:hover { background: rgba(255,255,255,.1); }
+.hs-n { font-size:24px; font-weight:800; color:#fff; letter-spacing:-1px; }
+.hs-l { font-size:10.5px; color:rgba(220,228,248,.55); margin-top:4px; font-weight:400; letter-spacing:.05em; text-transform:uppercase; }
+.hs-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+}
+.hero-right {
+  flex: 1;
+  max-width: 580px;
+  position: relative;
+}
+
+/* ===== Monitor (App Preview) ===== */
+.mon-halo {
+  position: absolute;
+  inset: -40px;
+  background: radial-gradient(ellipse 70% 60% at 50% 45%,rgba(45,107,228,.16) 0%,transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 30px;
+}
+.monitor {
+  background: #0A0E1A;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px 16px 4px 4px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 40px 80px rgba(0,0,0,.55),0 0 0 1px rgba(255,255,255,.04);
+}
+.mon-bar {
+  background: linear-gradient(180deg,#1A2039,#0D1225);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.wdot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.mon-url {
+  flex: 1;
+  background: rgba(255,255,255,.04);
+  border-radius: 5px;
+  padding: 3px 12px;
+  font-size: 10px;
+  color: rgba(255,255,255,.2);
+  text-align: center;
+  margin: 0 12px;
+}
+.mon-tabs {
+  display: flex;
+  background: #080C18;
+  border-bottom: 1px solid rgba(255,255,255,.05);
+}
+.mt {
+  flex: 1;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 10px 5px;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+  color: rgba(255,255,255,.3);
+  border-bottom: 2px solid transparent;
+  transition: all .18s;
+}
+.mt.on {
+  color: #C9A84C;
+  border-bottom-color: var(--gold);
+  background: rgba(201,168,76,.08);
+}
+
+/* ===== Monitor 3D scroll reveal ===== */
+.monitor-3d-wrap {
+  perspective: 1100px;
+  perspective-origin: 50% 0%;
+}
+.monitor-3d {
+  transform: rotateX(26deg) translateY(48px) scale(0.93);
+  opacity: 0;
+  transform-origin: 50% 0%;
+  transition: transform 0.95s cubic-bezier(.22,.68,0,1.05), opacity 0.70s ease;
+  will-change: transform, opacity;
+}
+.monitor-3d.revealed {
+  transform: rotateX(0deg) translateY(0px) scale(1);
+  opacity: 1;
+}
+
+/* ===== Map Card ===== */
+.map-card {
+  background: linear-gradient(135deg,#0A1428 0%,#0F2557 60%,#1E3A7B 100%);
+  border-radius: 18px;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+  color: #fff;
+  border: 1px solid rgba(201,168,76,.2);
+}
+.map-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(rgba(45,107,228,.06) 1px,transparent 1px);
+  background-size: 26px 26px;
+}
+
+/* ===== Years Badge ===== */
+.years-badge {
+  position: absolute;
+  bottom: 180px;
+  right: 88px;
+  z-index: 10;
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.58)) drop-shadow(0 0 20px rgba(201,168,50,.24));
+}
+@media (max-width: 1024px) {
+  .years-badge { right: 24px; bottom: 130px; }
+  .years-badge svg { width: 130px; height: 130px; }
+}
+@media (max-width: 600px) {
+  .years-badge { right: 10px; bottom: 80px; }
+  .years-badge svg { width: 100px; height: 100px; }
+}

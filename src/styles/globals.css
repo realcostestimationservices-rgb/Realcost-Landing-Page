@@ -1,0 +1,172 @@
+/* ===== Scrollbar — hidden site-wide (scrolling stays functional) ===== */
+html { scrollbar-width: none; -ms-overflow-style: none; }
+* { scrollbar-width: none; -ms-overflow-style: none; }
+::-webkit-scrollbar { width: 0; height: 0; display: none; }
+
+/* ===== Layout Utilities ===== */
+.cxl { max-width:1280px; margin:0 auto; padding:0 80px; }
+.sec-light { padding:96px 0; background:#FAFBFE; }
+.sec-grey { padding:96px 0; background:#EEF2F9; }
+.sec-dark { padding:96px 0; background:var(--surf); }
+.sec-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: var(--sap);
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  margin-bottom: 14px;
+}
+.sec-eyebrow::before {
+  content: '';
+  width: 18px;
+  height: 1.5px;
+  background: var(--ind);
+  border-radius: 2px;
+  display: inline-block;
+}
+.sec-eyebrow.gold { color: var(--gold); }
+.sec-eyebrow.gold::before { background: var(--gold); }
+.sec-h2 {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--txt);
+  letter-spacing: -1.5px;
+  line-height: 1.1;
+  margin-bottom: 14px;
+}
+.sec-h2.inv { color: #fff; }
+.sec-sub {
+  font-size: 15px;
+  color: #6B7489;
+  line-height: 1.82;
+  font-weight: 300;
+}
+.gold-divider {
+  width: 48px;
+  height: 2.5px;
+  background: var(--grd-gold);
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+.pg-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(201,168,76,.1);
+  color: var(--sap);
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 6px 18px;
+  border-radius: 20px;
+  border: 1px solid rgba(201,168,76,.3);
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.ph-title {
+  font-size: 46px;
+  font-weight: 800;
+  color: var(--txt);
+  letter-spacing: -2px;
+  line-height: 1.08;
+  margin-bottom: 14px;
+}
+.ph-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255,255,255,.88);
+  border: 1px solid rgba(15,37,87,.10);
+  color: #374151;
+  padding: 10px 20px;
+  border-radius: 11px;
+  font-size: 13px;
+  font-weight: 400;
+  transition: all .18s;
+  box-shadow: 0 1px 4px rgba(15,37,87,.06);
+}
+.ph-chip:hover {
+  background: #fff;
+  border-color: rgba(15,37,87,.18);
+  box-shadow: 0 3px 12px rgba(15,37,87,.1);
+}
+.ph-chip-gold {
+  background: rgba(201,168,76,.10);
+  border-color: rgba(201,168,76,.32);
+  color: var(--sap);
+  box-shadow: none;
+}
+.ph-chip-gold:hover {
+  background: rgba(201,168,76,.16);
+  border-color: rgba(201,168,76,.45);
+}
+.ph-stat-row {
+  display: flex;
+  gap: 0;
+  max-width: 680px;
+  margin: 0 auto;
+  background: rgba(255,255,255,.82);
+  border: 1px solid rgba(15,37,87,.09);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 24px rgba(15,37,87,.08);
+}
+.ph-stat {
+  flex: 1;
+  padding: 20px 14px;
+  border-right: 1px solid rgba(15,37,87,.07);
+  text-align: center;
+}
+.ph-stat:last-child { border-right: none; }
+.ph-stat-n {
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--sap);
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.ph-stat-l {
+  font-size: 10px;
+  color: #8A92A6;
+  margin-top: 5px;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+}
+
+/* ===== Forms ===== */
+.rc-form {
+  background: rgba(255,255,255,.90);
+  border: 1px solid rgba(220,226,240,.85);
+  border-radius: 20px;
+  padding: 38px;
+  box-shadow: 0 4px 32px rgba(15,37,87,.08);
+  backdrop-filter: blur(12px);
+}
+.flabel {
+  font-size: 12px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+  display: block;
+  letter-spacing: .01em;
+}
+.finput {
+  border: 1.5px solid var(--bdl) !important;
+  border-radius: 9px !important;
+  padding: 12px 16px !important;
+  font-size: 14px !important;
+  color: var(--txt) !important;
+  transition: all .15s !important;
+  width: 100% !important;
+  background: #FAFBFE !important;
+  font-weight: 300 !important;
+}
+.finput:focus {
+  border-color: var(--sap) !important;
+  box-shadow: 0 0 0 4px rgba(15,37,87,.08) !important;
+  outline: none !important;
+  background: #fff !important;
+}

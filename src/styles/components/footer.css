@@ -1,0 +1,33 @@
+/* ===== Footer ===== */
+.rc-footer {
+  background: linear-gradient(160deg,#0A1428 0%,#0F2050 100%);
+  border-top: 1px solid rgba(201,168,76,.18);
+}
+.f-lbl {
+  font-size: 10px;
+  font-weight: 700;
+  color: rgba(201,168,76,.65);
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  margin-bottom: 16px;
+}
+.f-lnk {
+  font-size: 13px;
+  color: rgba(200,210,240,.42);
+  display: block;
+  margin-bottom: 9px;
+  cursor: pointer;
+  transition: color .15s;
+  text-decoration: none;
+  font-weight: 300;
+}
+.f-lnk:hover { color: var(--gold2); }
+.f-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: rgba(255,255,255,.06);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 8px;
+}

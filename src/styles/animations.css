@@ -1,0 +1,13 @@
+/* ===== Global Keyframe Animations ===== */
+
+/* Used by .badge-dot (home hero) and .page-hero .pg-badge::before */
+@keyframes blink {
+  0%,100% { opacity:1; box-shadow:0 0 8px var(--gold); }
+  50% { opacity:.3; box-shadow:none; }
+}
+
+/* Used by WhyRealCost ticker strip */
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
