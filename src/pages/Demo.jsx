@@ -65,16 +65,24 @@ const Demo = () => {
 
   return (
     <div className="page-enter">
-      <section className="page-hero">
-        <div className="page-hero-accent"></div>
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/features/bid_page.png'})` }}></div>
-        <div className="cxl">
-          <div className="pg-badge">Schedule a demo</div>
-          <div className="ph-title">See Bid Winner live.<br />No pressure.</div>
-          <p className="sec-sub" style={{ maxWidth: '500px', margin: '0 auto 44px' }}>A 30-minute walkthrough tailored to your trade — live takeoff, Canadian pricing, and quote generation on real drawings.</p>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button className="btn-prim" onClick={scrollToBooking}>Book your demo now →</button>
-            <a href="tel:6476778399" className="btn-ghost" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>📞 Prefer to call?</a>
+      <section className="page-hero" style={{ minHeight: '640px' }}>
+        <div className="page-hero-accent" />
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/misc/request_demo.png'})` }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.96) 0%,rgba(15,37,87,.92) 40%,rgba(15,37,87,.45) 65%,transparent 100%)' }} />
+        <div className="cxl" style={{ textAlign: 'left' }}>
+          <div style={{ maxWidth: '560px' }}>
+            <div className="pg-badge">Schedule a demo</div>
+            <div className="ph-title">See Real Cost live.<br />No pressure.</div>
+            <p className="sec-sub" style={{ margin: '0 0 32px' }}>A 30-minute walkthrough tailored to your trade — live takeoff, Canadian pricing, and quote generation on real drawings.</p>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '32px' }}>
+              <span className="ph-chip">📅 30-minute session</span>
+              <span className="ph-chip">🎯 Tailored to your trade</span>
+              <span className="ph-chip">✓ No commitment</span>
+            </div>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <button className="btn-prim" onClick={scrollToBooking}>Book your demo now →</button>
+              <a href="tel:6476778399" className="btn-ghost" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>📞 Prefer to call?</a>
+            </div>
           </div>
         </div>
       </section>

@@ -28,8 +28,7 @@ const Nav = ({ currentPage, onNavigate, lightHero }) => {
     { id: 'features',       label: 'Our Features' },
     { id: 'pricing',        label: 'Pricing' },
     { id: 'faq',            label: 'FAQ' },
-    { id: 'careers',        label: 'Careers' },
-    { id: 'contact',        label: 'Contact Us' },
+{ id: 'contact',        label: 'Contact Us' },
   ];
 
   const navigate = useNavigate();

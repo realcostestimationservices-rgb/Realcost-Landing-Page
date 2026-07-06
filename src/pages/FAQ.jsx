@@ -3,94 +3,204 @@ import FAQItem from '../components/ui/FAQItem';
 
 const faqGroups = [
   {
-    cat: 'Getting started',
+    cat: 'Getting Started',
+    icon: '🚀',
     items: [
-      { q: 'What is Real Cost and who is it for?', a: "Real Cost is a digital estimation platform for trade contractors. It lets your team upload PDF drawings, count symbols, build a full bid, and generate a professional quote letter — all without spreadsheets or outsourcing. It's designed for electrical, mechanical, plumbing, fire alarm, and other trade contractors across Canada." },
-      { q: 'How do I start using Real Cost?', a: 'Open the app at the link on this page. Start your 14-day free trial — no credit card required. Upload a PDF drawing set, create a project, and your team can begin estimating immediately.' },
-      { q: 'What file types can I upload?', a: 'You can upload multi-page PDF drawing sets. The platform renders each page on a navigable digital takeoff canvas. Most standard architectural and engineering drawing exports work directly.' },
-      { q: 'Which trades are supported?', a: 'Real Cost supports electrical, mechanical/HVAC, plumbing, fire alarm, voice & data, security systems, audio/visual, heat tracing, and mechanical control. More trades are added regularly.' },
+      { q: 'Is Real Cost 100% cloud-based?', a: 'Yes. Real Cost is fully cloud-based — there is nothing to install or maintain. Unlike on-premises software, you can access your estimates from any location with an internet connection, allowing your team to collaborate in real time from the office, the field, or anywhere else.' },
+      { q: 'Who is Real Cost designed for?', a: 'Real Cost is built exclusively for electrical contractors. Every feature — from the digital takeoff canvas to Canadian city-based pricing to the quote letter generator — is purpose-built for the way electrical estimators actually work.' },
+      { q: 'Can I arrange a demo?', a: 'Yes, of course! Book a demo call with our product team and we will walk you through the full platform live. We can also help you determine which plan is right for your business. Click "Request Demo" in the navigation to get started.' },
+      { q: 'How do I start using Real Cost?', a: 'Open the app and start your 14-day free trial — no credit card required. Upload a PDF drawing set, create a project, and your team can begin estimating right away. Most users are quoting their first job within minutes.' },
     ],
   },
   {
-    cat: 'Features & platform',
+    cat: 'Why Real Cost',
+    icon: '⭐',
     items: [
-      { q: 'How does symbol auto-count work?', a: 'Draw a rectangle around any reference symbol on a drawing — a light fixture, outlet, smoke detector, etc. The platform uses pattern matching to find and count all identical symbols across every page of the project drawings, instantly.' },
-      { q: 'What is the Bid Page?', a: 'The Bid Page is where your estimate comes together. Once takeoff is done, it auto-calculates material costs, labour hours, overhead percentage, markup, and project duration for different crew sizes. All figures update live as you make changes.' },
-      { q: 'What is Canadian city-based pricing?', a: "Material rates in Real Cost automatically adjust based on your city's regional pricing tier. L1, L2, and L3 tiers cover cities including Quebec, Ottawa, Toronto, Montreal, Calgary, and Vancouver. This ensures your estimates reflect local market costs without manual adjustments." },
-      { q: 'How does the quote letter generator work?', a: 'Once your bid is complete, one click generates a professional branded PDF or Word quote letter ready to send to your client. It includes all project details, scope summary, and your total bid price in a clean, professional format.' },
-      { q: 'Can my whole team use it?', a: 'Yes. Real Cost supports team accounts with owner and estimator roles. As the owner you can assign projects to sub-estimators, track their progress, and manage the team subscription from one dashboard. Each user is billed at $10/month or $80/year.' },
+      { q: 'Why should I choose Real Cost?', a: 'Real Cost brings over 15 years of electrical estimation expertise directly into the platform. Our job-winning formulas and pre-built assemblies are the same ones used by the number one electrical estimation company in Canada. You get proven, field-tested tools — not generic software adapted from other industries.' },
+      { q: 'How does Real Cost differ from other estimating software?', a: 'Real Cost was built by electrical estimators who experienced the frustrations of other software first-hand — the unnecessary complexity, hidden fees, and pricing models that punish growing teams. We designed Real Cost specifically to fix those problems: a clean workflow, transparent per-user pricing, and features that match how Canadian electrical contractors actually bid jobs.' },
+      { q: 'How do I know Real Cost is the right choice for me?', a: 'Our pricing page shows exactly which features are included in each plan so you can match it to your business needs. Our product experts can also help you choose the right plan based on your team size and growth stage. Book a demo call to get the conversation started — no pressure, just answers.' },
+      { q: "I'm already using another estimating software. Can I switch?", a: "Absolutely — and we have a plan specifically for contractors switching from other software. We'll help you get set up and running quickly so there's no disruption to your estimating workflow. Call us today at (647) 677-8399 and we'll walk you through it." },
     ],
   },
   {
-    cat: 'Billing & support',
+    cat: 'Security & Data',
+    icon: '🔒',
     items: [
-      { q: 'How long is the free trial?', a: 'The free trial is 14 days with full access to all platform features — no credit card required. At the end of the trial you can subscribe monthly ($10/user/month) or annually ($80/user/year, save 33%). Your data is always safe.' },
-      { q: 'What payment methods are accepted?', a: 'Visa, Mastercard, and major debit cards via Stripe. All transactions are encrypted and secure.' },
-      { q: 'How do I get support?', a: 'Phone support at (647) 677-8399, email at info@realcostestimating.ca, and live chat on this site. Subscribers get access to video tutorials and priority support with same-day response for urgent issues.' },
+      { q: 'Is my data safe?', a: 'Yes. Real Cost uses industry-standard encryption for all data in transit and at rest. Your estimates, drawings, and pricing data are stored securely in the cloud, backed up automatically, and never shared with third parties. You own your data at all times.' },
+      { q: 'Who can see my pricing and estimate details?', a: 'Only you and the team members you explicitly invite. Your job details, material pricing, labour rates, and profit margins are completely private. We never share, sell, or access your data. Everything is encrypted and backed up daily.' },
+    ],
+  },
+  {
+    cat: 'Billing & Trial',
+    icon: '💳',
+    items: [
+      { q: 'How does the free trial work?', a: "Sign up and you're in. You get full access to every feature for 14 days — completely free. No payment details required, no catches. If Real Cost is not the right fit, just don't continue. Your data remains accessible for 30 days after the trial ends." },
+      { q: 'How long is the free trial?', a: '14 days with full access to all platform features. After the trial, subscribe monthly at $10/user/month or annually at $80/user/year (save 33%). Your project data is always kept safe regardless of plan status.' },
+      { q: 'What payment methods are accepted?', a: 'Visa, Mastercard, and major debit cards via Stripe. All transactions are encrypted and processed securely.' },
+      { q: 'How do I get support?', a: 'Call us at (647) 677-8399, email care@realcost.ca, or use the live chat on this site. Subscribers receive priority support with same-day response for urgent issues, plus access to video tutorials and onboarding guides.' },
     ],
   },
 ];
 
-// flatten for stable open-index keys
-const flatItems = faqGroups.flatMap((g) => g.items);
+const stats = [
+  { val: '14 Days', label: 'Free trial, full access' },
+  { val: 'No Card', label: 'Required to start' },
+  { val: '15+ Yrs', label: 'Estimation expertise' },
+  { val: 'Same Day', label: 'Support response' },
+];
 
 const FAQ = ({ onNavigate }) => {
   const [openIndex, setOpenIndex] = useState(null);
+  const [activeCat, setActiveCat] = useState(faqGroups[0].cat);
 
-  const toggle = (idx) => setOpenIndex((prev) => (prev === idx ? null : idx));
+  const activeGroup = faqGroups.find(g => g.cat === activeCat);
+
+  const handleCat = (cat) => {
+    setActiveCat(cat);
+    setOpenIndex(null);
+  };
 
   return (
     <div className="page-enter">
-      <section className="page-hero">
-        <div className="page-hero-accent"></div>
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + ''})` }}></div>
+
+      {/* ── Hero ── */}
+      <section className="page-hero" style={{ minHeight: '480px' }}>
+        <div className="page-hero-accent" />
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/our_bg.png'})` }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, background: 'linear-gradient(105deg,rgba(10,20,40,.97) 0%,rgba(15,37,87,.93) 45%,rgba(15,37,87,.55) 70%,transparent 100%)' }} />
+        <div className="cxl" style={{ textAlign: 'left' }}>
+          <div style={{ maxWidth: '600px' }}>
+            <div className="pg-badge">FAQ</div>
+            <div className="ph-title">Frequently Asked<br />Questions</div>
+            <p className="sec-sub" style={{ margin: '0 0 32px' }}>
+              Everything you need to know about Real Cost — from getting started to billing, security, and why we're different.
+            </p>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <a className="btn-prim" href="https://d3jt1vpskh0hbe.cloudfront.net/" target="_blank" rel="noopener noreferrer">🚀 Start Free Trial →</a>
+              <button className="btn-ghost" onClick={() => onNavigate('contact')}>Contact us</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Stats strip ── */}
+      <div style={{ background: '#fff', borderBottom: '1px solid #E8EEF8' }}>
         <div className="cxl">
-          <div className="pg-badge">FAQ</div>
-          <div className="ph-title">Frequently asked questions</div>
-          <p className="sec-sub" style={{ maxWidth: '480px', margin: '0 auto 44px' }}>Everything you need to know about the Real Cost estimation platform.</p>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '36px' }}>
-            <span className="ph-chip">🚀 Getting started</span>
-            <span className="ph-chip">🔍 Features &amp; platform</span>
-            <span className="ph-chip">💳 Billing &amp; support</span>
-          </div>
-          <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <a className="btn-prim" href="https://d3jt1vpskh0hbe.cloudfront.net/" target="_blank" rel="noopener noreferrer">🚀 Open the App →</a>
-            <button className="btn-ghost" onClick={() => onNavigate('contact')}>Still have questions?</button>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+            {stats.map(({ val, label }, i) => (
+              <div key={i} style={{ padding: '26px 0', textAlign: 'center', borderRight: i < 3 ? '1px solid #E8EEF8' : 'none' }}>
+                <div style={{ fontSize: '20px', fontWeight: '800', color: '#112646', letterSpacing: '-.4px', marginBottom: '3px' }}>{val}</div>
+                <div style={{ fontSize: '12px', color: '#999', fontWeight: '400' }}>{label}</div>
+              </div>
+            ))}
           </div>
         </div>
-      </section>
-      <section className="sec-grey">
+      </div>
+
+      {/* ── FAQ Body ── */}
+      <section style={{ background: '#F8F9FC', padding: '80px 0 100px' }}>
         <div className="cxl" style={{ maxWidth: '860px' }}>
-          {faqGroups.map((group) => (
-            <React.Fragment key={group.cat}>
-              <div className="faq-cat">{group.cat}</div>
-              {group.items.map((item) => {
-                const idx = flatItems.indexOf(item);
-                return (
-                  <FAQItem
-                    key={item.q}
-                    question={item.q}
-                    answer={item.a}
-                    isOpen={openIndex === idx}
-                    onToggle={() => toggle(idx)}
-                  />
-                );
-              })}
-            </React.Fragment>
-          ))}
+
+          {/* Section heading */}
+          <div style={{ textAlign: 'center', marginBottom: '48px' }}>
+            <div style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '.18em', color: '#C5A047', marginBottom: '12px' }}>
+              Common Questions
+            </div>
+            <h2 style={{ fontSize: '36px', fontWeight: '800', color: '#112646', letterSpacing: '-1px', margin: '0 0 14px' }}>
+              Got questions? We've got answers.
+            </h2>
+            <p style={{ fontSize: '15px', color: '#888', lineHeight: '1.7', margin: 0, fontWeight: '300' }}>
+              Browse by category or scroll through all questions below.
+            </p>
+          </div>
+
+          {/* Category tabs */}
+          <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '40px' }}>
+            {faqGroups.map(g => (
+              <button
+                key={g.cat}
+                onClick={() => handleCat(g.cat)}
+                style={{
+                  padding: '10px 20px', borderRadius: '50px', border: '1.5px solid',
+                  borderColor: activeCat === g.cat ? '#112646' : '#E0E6F0',
+                  background: activeCat === g.cat ? '#112646' : '#fff',
+                  color: activeCat === g.cat ? '#fff' : '#555',
+                  fontSize: '13px', fontWeight: '600', cursor: 'pointer',
+                  transition: 'all .18s', display: 'flex', alignItems: 'center', gap: '6px',
+                  boxShadow: activeCat === g.cat ? '0 4px 14px rgba(17,38,70,.22)' : 'none',
+                }}
+              >
+                <span>{g.icon}</span>
+                <span>{g.cat}</span>
+                <span style={{
+                  fontSize: '11px', fontWeight: '700', padding: '1px 7px', borderRadius: '20px',
+                  background: activeCat === g.cat ? 'rgba(255,255,255,.2)' : '#F0F3FA',
+                  color: activeCat === g.cat ? '#fff' : '#888',
+                }}>
+                  {g.items.length}
+                </span>
+              </button>
+            ))}
+          </div>
+
+          {/* Active category label */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '20px', paddingBottom: '16px', borderBottom: '1px solid #E4E9F2' }}>
+            <span style={{ fontSize: '18px' }}>{activeGroup.icon}</span>
+            <span style={{ fontSize: '13px', fontWeight: '700', color: '#112646', textTransform: 'uppercase', letterSpacing: '.1em' }}>{activeGroup.cat}</span>
+            <span style={{ fontSize: '12px', color: '#aaa', marginLeft: 'auto' }}>{activeGroup.items.length} questions</span>
+          </div>
+
+          {/* Accordion */}
+          <div>
+            {activeGroup.items.map((item, i) => (
+              <FAQItem
+                key={item.q}
+                question={item.q}
+                answer={item.a}
+                isOpen={openIndex === i}
+                onToggle={() => setOpenIndex(prev => prev === i ? null : i)}
+              />
+            ))}
+          </div>
+
+          {/* Still have questions inline card */}
+          <div style={{ marginTop: '48px', background: '#fff', border: '1px solid #E4E9F2', borderRadius: '16px', padding: '32px 36px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '20px', boxShadow: '0 2px 12px rgba(15,37,87,.06)' }}>
+            <div>
+              <div style={{ fontSize: '16px', fontWeight: '700', color: '#112646', marginBottom: '6px' }}>Still have questions?</div>
+              <div style={{ fontSize: '13px', color: '#888', fontWeight: '300' }}>Our team responds the same day on business days — no bots, no queues.</div>
+            </div>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              <button onClick={() => onNavigate('contact')} style={{ padding: '11px 24px', borderRadius: '10px', border: 'none', background: '#112646', color: '#fff', fontSize: '13px', fontWeight: '600', cursor: 'pointer' }}>
+                Contact us →
+              </button>
+              <a href="tel:6476778399" style={{ padding: '11px 20px', borderRadius: '10px', border: '1.5px solid #E0E6F0', background: '#fff', color: '#112646', fontSize: '13px', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+                📞 (647) 677-8399
+              </a>
+            </div>
+          </div>
+
         </div>
       </section>
-      <section className="sec-light">
+
+      {/* ── Bottom CTA ── */}
+      <section style={{ background: '#0B1629', padding: '80px 0' }}>
         <div className="cxl" style={{ textAlign: 'center' }}>
-          <div className="sec-eyebrow" style={{ justifyContent: 'center' }}>Still have questions?</div>
-          <div className="sec-h2">We're happy to walk you through it.</div>
-          <p className="sec-sub" style={{ maxWidth: '420px', margin: '0 auto 32px' }}>Our team responds within hours on business days.</p>
+          <div style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '.18em', color: '#C5A047', marginBottom: '16px' }}>
+            Premium support included
+          </div>
+          <h2 style={{ fontSize: '36px', fontWeight: '800', color: '#fff', letterSpacing: '-1px', marginBottom: '14px' }}>
+            Ready to start estimating smarter?
+          </h2>
+          <p style={{ fontSize: '15px', color: 'rgba(255,255,255,.50)', maxWidth: '400px', margin: '0 auto 36px', lineHeight: '1.78', fontWeight: '300' }}>
+            14-day free trial. Every feature included. No credit card required.
+          </p>
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <button className="btn-prim" onClick={() => onNavigate('contact')}>Contact us →</button>
-            <a href="tel:6476778399" className="btn-ol-blue">📞 (647) 677-8399</a>
+            <a className="btn-prim" href="https://d3jt1vpskh0hbe.cloudfront.net/" target="_blank" rel="noopener noreferrer">🚀 Start Free Trial →</a>
+            <button className="btn-ghost" onClick={() => onNavigate('contact')}>Talk to us</button>
           </div>
         </div>
       </section>
+
     </div>
   );
 };

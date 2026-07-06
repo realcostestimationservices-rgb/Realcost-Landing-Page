@@ -122,20 +122,26 @@ const Pricing = ({ onNavigate }) => {
     <div className="page-enter">
 
       {/* ── Hero ── */}
-      <section className="pr-hero">
-        <div className="cxl">
-          <div className="pr-hero-eyebrow">Simple Pricing</div>
-          <h1 className="pr-hero-title">
-            Start free for <span>{trialDays} days.</span><br />Subscribe when you're ready.
-          </h1>
-          <p className="pr-hero-sub">
-            Every feature unlocked from day one. No credit card, no commitment,
-            no surprises.
-          </p>
-          <div className="pr-trust-row">
-            <span>No credit card required</span>
-            <span>Cancel anytime</span>
-            <span>Free trade expert demo</span>
+      <section className="page-hero" style={{ minHeight: '100vh' }}>
+        <div className="page-hero-accent" />
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/pricing/pricing.png'})` }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.96) 0%,rgba(15,37,87,.92) 40%,rgba(15,37,87,.45) 65%,transparent 100%)' }} />
+        <div className="cxl" style={{ textAlign: 'left' }}>
+          <div style={{ maxWidth: '560px' }}>
+            <div className="pg-badge">Simple Pricing</div>
+            <div className="ph-title">Start free for {trialDays} days.<br />Subscribe when ready.</div>
+            <p className="sec-sub" style={{ margin: '0 0 32px' }}>
+              Every feature unlocked from day one. No credit card, no commitment, no surprises.
+            </p>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '32px' }}>
+              <span className="ph-chip">✓ No credit card required</span>
+              <span className="ph-chip">✓ Cancel anytime</span>
+              <span className="ph-chip">✓ Free trade expert demo</span>
+            </div>
+            <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }}>
+              <a className="btn-prim" href="https://d3jt1vpskh0hbe.cloudfront.net/" target="_blank" rel="noopener noreferrer">🚀 Start Free Trial →</a>
+              <button className="btn-ghost" onClick={() => onNavigate('contact')}>Talk to sales</button>
+            </div>
           </div>
         </div>
       </section>

@@ -9,7 +9,6 @@ const Demo = React.lazy(() => import('./pages/Demo'));
 const Features = React.lazy(() => import('./pages/Features'));
 const Pricing = React.lazy(() => import('./pages/Pricing'));
 const FAQ = React.lazy(() => import('./pages/FAQ'));
-const Careers = React.lazy(() => import('./pages/Careers'));
 const Contact = React.lazy(() => import('./pages/Contact'));
 const WhyRealCost = React.lazy(() => import('./pages/WhyRealCost'));
 const OurStory = React.lazy(() => import('./pages/OurStory'));
@@ -67,7 +66,7 @@ function App() {
             <Route path="/features" element={<Features onNavigate={handleNavigate} />} />
             <Route path="/pricing" element={<Pricing onNavigate={handleNavigate} />} />
             <Route path="/faq" element={<FAQ onNavigate={handleNavigate} />} />
-            <Route path="/careers" element={<Careers onNavigate={handleNavigate} />} />
+            <Route path="/careers" element={<Navigate to="/our-story" />} />
             <Route path="/contact" element={<Contact onNavigate={handleNavigate} />} />
             <Route path="/why-real-cost" element={<WhyRealCost onNavigate={handleNavigate} />} />
             <Route path="/our-story" element={<OurStory onNavigate={handleNavigate} />} />

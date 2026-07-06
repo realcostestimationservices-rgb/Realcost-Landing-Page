@@ -1,8 +1,24 @@
 /* ─── Hero ─────────────────────────────────────────────── */
 .pr-hero {
+  position: relative;
+  overflow: hidden;
   background: linear-gradient(160deg, #0D1A33 0%, #1B3266 55%, #0F2557 100%);
   padding: 100px 0 80px;
   text-align: center;
+}
+.pr-hero-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 0;
+}
+.pr-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(160deg, rgba(13,26,51,.95) 0%, rgba(27,50,102,.88) 55%, rgba(15,37,87,.82) 100%);
+  z-index: 0;
 }
 .pr-hero-eyebrow {
   display: inline-block;

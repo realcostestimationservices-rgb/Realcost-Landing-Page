@@ -272,6 +272,70 @@ const OurStory = ({ onNavigate }) => {
         </div>
       </section>
 
+      {/* ── Careers ── */}
+      <section className="sec-grey" id="careers">
+        <div className="cxl">
+          <div style={{ textAlign: 'center', marginBottom: '52px' }}>
+            <div className="sec-eyebrow" style={{ justifyContent: 'center' }}>Join Our Team</div>
+            <div className="sec-h2">Work With People Who Built the Industry</div>
+            <p className="sec-sub" style={{ maxWidth: '480px', margin: '0 auto' }}>We're a small, remote-first team helping trade contractors across Canada win more work. Ship software that estimators use every day.</p>
+          </div>
+
+          {/* Perks */}
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '18px', marginBottom: '64px' }}>
+            {[
+              { accent: 'var(--grd-prim)',                              bg: 'var(--ind-light)', ico: '🌎', title: 'Remote-first',      body: 'Work from anywhere in Canada. We care about output, not hours at a desk — flexible schedules around the work that matters.' },
+              { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)',       bg: '#E6F7EE',         ico: '📈', title: 'Real ownership',    body: 'Small team, big impact. Ship features used by trade contractors across the country and see your work in production every week.' },
+              { accent: 'linear-gradient(90deg,#0891B2,#06B6D4)',       bg: '#E0F7FA',         ico: '🏥', title: 'Health & benefits', body: 'Comprehensive health, dental, and vision coverage for you and your family, plus a wellness stipend.' },
+              { accent: 'var(--grd-gold)',                              bg: '#FDF6E3',         ico: '🌴', title: 'Generous time off', body: 'Paid vacation, statutory holidays, and the flexibility to take the time you need to recharge.' },
+              { accent: 'linear-gradient(90deg,#5B21B6,#7C3AED)',       bg: '#F5F3FF',         ico: '🎓', title: 'Learning budget',   body: 'Annual budget for courses, conferences, and books. We invest in your growth as much as the product.' },
+              { accent: 'var(--grd-prim)',                              bg: 'var(--ind-light)', ico: '💜', title: 'Equity for everyone', body: 'Every full-time team member shares in our success with meaningful equity in the company.' },
+            ].map((p, i) => (
+              <div key={i} className="feat-card" style={{ '--card-accent': p.accent }}>
+                <div className="card-ico" style={{ background: p.bg }}>{p.ico}</div>
+                <div className="card-ttl">{p.title}</div>
+                <div className="card-body">{p.body}</div>
+              </div>
+            ))}
+          </div>
+
+          {/* Open roles */}
+          <div style={{ textAlign: 'center', marginBottom: '32px' }}>
+            <div className="sec-eyebrow" style={{ justifyContent: 'center' }}>Open positions</div>
+            <div className="sec-h2">Find your role</div>
+          </div>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', maxWidth: '900px', margin: '0 auto 36px' }}>
+            {[
+              { title: 'Senior Full-Stack Engineer',    dept: 'Engineering',      type: 'Full-time · Remote (Canada)',   desc: 'Build core estimating features end-to-end — takeoff canvas, auto-count, and the bid page — across React and Node.' },
+              { title: 'Product Designer',              dept: 'Design',           type: 'Full-time · Remote (Canada)',   desc: 'Own the product experience for trade estimators, from research and flows to polished, shippable UI.' },
+              { title: 'Customer Success Manager',      dept: 'Customer Success', type: 'Full-time · Toronto, ON',       desc: 'Onboard contractors, run demos, and make sure every customer gets value from Real Cost in their first week.' },
+              { title: 'Estimating Specialist (Trades)', dept: 'Product',         type: 'Full-time · Remote (Canada)',   desc: 'Bring real electrical/mechanical estimating expertise to shape pricing data, workflows, and templates.' },
+            ].map((job, i) => (
+              <div key={i} style={{ background: 'rgba(255,255,255,.85)', border: '1px solid rgba(220,226,240,.9)', borderRadius: '16px', padding: '24px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '18px' }}>
+                <div style={{ flex: 1, minWidth: '240px' }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '17px', fontWeight: '700', color: 'var(--txt)', letterSpacing: '-.3px' }}>{job.title}</span>
+                    <span style={{ background: 'var(--ind-light)', color: 'var(--ind)', fontSize: '11px', fontWeight: '600', padding: '3px 10px', borderRadius: '14px' }}>{job.dept}</span>
+                  </div>
+                  <div style={{ fontSize: '12.5px', color: '#8A92A6', fontWeight: '500', marginBottom: '8px' }}>{job.type}</div>
+                  <div style={{ fontSize: '13.5px', color: '#6B7489', lineHeight: '1.7', fontWeight: '300', maxWidth: '560px' }}>{job.desc}</div>
+                </div>
+                <a className="btn-prim" href={`mailto:careers@realcostestimating.ca?subject=${encodeURIComponent('Application: ' + job.title)}`} style={{ flexShrink: 0 }}>
+                  Apply →
+                </a>
+              </div>
+            ))}
+          </div>
+
+          <p style={{ textAlign: 'center', fontSize: '13px', color: '#8A92A6', fontWeight: '400' }}>
+            Don't see your role?{' '}
+            <a href="mailto:careers@realcostestimating.ca" style={{ color: 'var(--sap)', fontWeight: '600', textDecoration: 'none' }}>
+              Email us anyway →
+            </a>
+          </p>
+        </div>
+      </section>
+
       {/* ── CTA Band ── */}
       <div className="cta-band">
         <div className="wrc-cta-pad" style={{ textAlign: 'center' }}>
