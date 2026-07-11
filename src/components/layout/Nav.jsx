@@ -41,7 +41,7 @@ const Nav = ({ currentPage, onNavigate, lightHero }) => {
 
   return (
     <>
-      <nav className={`rc-nav ${scrolled ? 'scrolled' : ''} ${lightHero && !scrolled ? 'light-hero' : ''}`}>
+      <nav className={`rc-nav ${scrolled ? 'scrolled' : ''} ${lightHero && !scrolled ? 'light-hero' : ''} ${menuOpen ? 'menu-open' : ''}`}>
         <div className="nav-brand" onClick={() => handleNav('home')}>
           <img
             src={process.env.PUBLIC_URL + '/images/brand/logo.png'}

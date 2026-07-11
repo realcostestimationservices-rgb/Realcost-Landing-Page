@@ -4,8 +4,18 @@
    Use overflow-x: clip (not hidden): hidden turns html/body into a scroll
    container and shifts position:fixed right:0 elements (e.g. the chatbot
    icon bar) inward off the edge. clip prevents horizontal scroll without
-   that side effect. */
+   that side effect.
+
+   But `clip` is only understood by iOS Safari 16+, Chrome 90+ and Firefox 81+.
+   Older browsers drop the declaration as invalid and get NO guard — which is
+   why the page scrolls sideways and shows a strip at the right edge on some
+   devices and not others. Fall back to `hidden` there: it costs the fixed-
+   element shift described above, but only on those legacy browsers, and a
+   nudged chatbot icon beats a page that slides. */
 html, body { overflow-x: clip; }
+@supports not (overflow-x: clip) {
+  html, body { overflow-x: hidden; }
+}
 /* Media should never force the page wider than the screen */
 img, svg, video, canvas, iframe { max-width: 100%; }
 
