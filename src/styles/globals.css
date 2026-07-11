@@ -95,6 +95,11 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
   object-fit: contain;
   object-position: center center;
 }
+/* Once .bp-bid-grid collapses to one column the illustration would otherwise
+   stretch to the full content width (a ~728px square on tablets). */
+@media (max-width: 768px) {
+  .bp-bid-image { max-width: 420px; margin: 0 auto; }
+}
 .cf-rows {
   display: flex;
   flex-direction: column;
@@ -282,8 +287,12 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
     gap: 0;
   }
   /* Keep the image narrower than the text card below it (card spans the full
-     row minus its 20px side margins), so the card reads as the wider element. */
-  .cf-frame { height: 210px; max-width: 76%; margin: 0 auto; }
+     row minus its 20px side margins), so the card reads as the wider element.
+     flex must be reset to `0 0 auto`: the row is now a column, so the 40%
+     flex-basis from .cf-frame would resolve against the *height* axis and
+     override the fixed height, letting the frame grow to the image's natural
+     aspect (a 587px-tall square on tablets). */
+  .cf-frame { flex: 0 0 auto; height: 210px; max-width: 76%; margin: 0 auto; }
   .cf-card {
     margin: -40px 20px 0;
     flex: 1 1 auto;

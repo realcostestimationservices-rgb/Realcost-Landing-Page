@@ -113,6 +113,29 @@
   display: block;
   border-radius: 0 22px 22px 0;
 }
+/* Stack the History/Idea card across the whole tablet band. Side by side, the
+   card (align-items:stretch) pulls the image column to the height of the text
+   panel while the column itself keeps narrowing, so object-fit:cover zooms hard
+   into the photo — 432x829 at an 820px viewport.
+   These rules must live *after* the base .os-history-* rules above: a media
+   query adds no specificity, so from higher up in the file they would lose the
+   source-order tie to `flex:1; min-height:420px`.
+   The wrap needs a definite height (not min-height) so the img's height:100%
+   resolves and cover can crop it to a banner; with an indefinite height the
+   photo falls back to its natural 3:2 and renders 651px tall. */
+@media (max-width:1024px) {
+  .os-history-card   { flex-direction: column; }
+  .os-history-panel  { border-radius: 22px 22px 0 0; padding: 44px 38px; }
+  .os-history-imgwrap{ flex: 0 0 auto; height: 340px; min-height: 0; }
+  .os-history-frame  { border-radius: 0 0 18px 18px; }
+  .os-history-img    { border-radius: 0 0 22px 22px; }
+}
+@media (max-width:768px) {
+  .os-history-imgwrap{ height: 290px; }
+}
+@media (max-width:480px) {
+  .os-history-imgwrap{ height: 230px; }
+}
 
 /* Timeline */
 .os-timeline { position: relative; max-width: 780px; margin: 0 auto; }
@@ -154,11 +177,8 @@
 @media (max-width:768px) {
   .os-stats-grid { gap: 12px; }
   .os-2col       { grid-template-columns: 1fr; gap: 32px; }
-  .os-history-card   { flex-direction: column; }
-  .os-history-panel  { border-radius: 22px 22px 0 0; padding: 40px 30px; }
-  .os-history-imgwrap{ min-height: 280px; }
-  .os-history-frame  { border-radius: 0 0 18px 18px; }
-  .os-history-img    { border-radius: 0 0 22px 22px; }
+  /* the History card's stacking + image height are handled from 1024px down */
+  .os-history-panel  { padding: 40px 30px; }
   /* Single left rail: the spine moves off centre and every card stacks beside it */
   .os-timeline { max-width: 520px; }
   .os-timeline-line {
