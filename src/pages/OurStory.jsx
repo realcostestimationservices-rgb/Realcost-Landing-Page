@@ -159,7 +159,7 @@ const OurStory = ({ onNavigate }) => {
     <div className="page-enter">
 
       {/* ── Hero ── */}
-      <section className="page-hero" style={{ minHeight: '640px' }}>
+      <section className="page-hero os-hero">
         <div className="page-hero-accent" />
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/our_bg.png'})` }}></div>
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.88) 0%,rgba(15,37,87,.72) 42%,rgba(15,37,87,.28) 75%,transparent 100%)' }} />
@@ -188,9 +188,9 @@ const OurStory = ({ onNavigate }) => {
       </section>
 
       {/* ── Stats strip ── */}
-      <Reveal as="section" style={{ background: '#fff', padding: '48px 0' }}>
+      <Reveal as="section" className="os-stats-sec">
         <div className="cxl">
-          <RevealGroup className="os-stats-grid" style={{ background: 'var(--blight)', borderRadius: '20px', padding: '36px 24px' }}>
+          <RevealGroup className="os-stats-grid">
             {[
               { v: 1000, s: '+', l: 'Projects Won',       ico: <IconTrophy />,   color: 'var(--gold)' },
               { v: 8000, s: '+', l: 'Projects Estimated', ico: <IconCrane />,    color: 'var(--sap)' },
@@ -198,13 +198,13 @@ const OurStory = ({ onNavigate }) => {
               { v: 10,   s: 'x', l: 'Client ROI',         ico: <IconTrending />, color: 'var(--sap)' },
               { v: 15,   s: '+', l: 'Years Experience',   ico: <IconHardHat />,  color: 'var(--gold)' },
             ].map(({ v, s, l, ico, color }) => (
-              <div key={l} style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px' }}>
-                <div style={{ color, flexShrink: 0 }}>{ico}</div>
-                <div>
-                  <div style={{ fontSize: '26px', fontWeight: '800', color: 'var(--sap)', letterSpacing: '-1px', lineHeight: 1.1 }}>
+              <div key={l} className="os-stat">
+                <div className="os-stat-ico" style={{ color }}>{ico}</div>
+                <div className="os-stat-txt">
+                  <div className="os-stat-num">
                     <CountUp value={v} suffix={s} />
                   </div>
-                  <div style={{ fontSize: '12.5px', fontWeight: '600', color: 'var(--gold)' }}>{l}</div>
+                  <div className="os-stat-label">{l}</div>
                 </div>
               </div>
             ))}
@@ -323,13 +323,13 @@ const OurStory = ({ onNavigate }) => {
 
           {/* Timeline */}
           <motion.div
-            style={{ position: 'relative', maxWidth: '780px', margin: '0 auto' }}
+            className="os-timeline"
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, amount: 0.15 }}
             variants={{ hidden: {}, show: { transition: { staggerChildren: 0.18 } } }}
           >
-            <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '2px', background: 'linear-gradient(to bottom, rgba(17,38,70,.08), rgba(197,160,71,.5), rgba(17,38,70,.08))', transform: 'translateX(-50%)' }} />
+            <div className="os-timeline-line" />
             {milestones.map(({ year, label, desc }, i) => {
               const isLeft = i % 2 === 0;
               return (
@@ -339,9 +339,9 @@ const OurStory = ({ onNavigate }) => {
                   variants={{ hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.85, ease: [0.22, 1, 0.36, 1] } } }}
                 >
                   <div className="os-milestone-card">
-                    <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--gold)', textTransform: 'uppercase', letterSpacing: '.1em', marginBottom: '4px' }}>{year}</div>
-                    <div style={{ fontSize: '15px', fontWeight: '700', color: 'var(--txt)', marginBottom: '7px' }}>{label}</div>
-                    <div style={{ fontSize: '13px', color: '#6B7489', lineHeight: '1.75', fontWeight: '300' }}>{desc}</div>
+                    <div className="os-ms-year">{year}</div>
+                    <div className="os-ms-label">{label}</div>
+                    <div className="os-ms-desc">{desc}</div>
                   </div>
                   <div className="os-milestone-dot" />
                 </motion.div>

@@ -1,7 +1,13 @@
 /* ===== WhyRealCost layout classes ===== */
 .wrc-hero-section   { padding: 100px 0; min-height: 640px; display: flex; align-items: center; }
+/* The hero is a flex row, so .cxl is a flex item. The ticker inside it is
+   width:max-content (~3000px), which makes the item's automatic minimum size
+   huge and stops it shrinking to the viewport — it stayed at its 1280px
+   max-width on phones and everything inside overflowed off-screen. width:100%
+   + min-width:0 makes it track the viewport instead. */
+.wrc-hero-section > .cxl { width: 100%; min-width: 0; }
 .wrc-hero-h1        { font-size: 44px; letter-spacing: -2px; }
-.wrc-hero-ctas      { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 44px; }
+.wrc-hero-ctas      { display: flex; gap: 12px; justify-content: flex-start; flex-wrap: wrap; margin-bottom: 44px; }
 .wrc-ticker-wrap    { overflow: hidden; position: relative; margin: 0 -80px; }
 .wrc-ticker-fade-l  { position: absolute; left: 0; top: 0; bottom: 0; width: 100px; pointer-events: none; z-index: 2; }
 .wrc-ticker-fade-r  { position: absolute; right: 0; top: 0; bottom: 0; width: 100px; pointer-events: none; z-index: 2; }
@@ -14,8 +20,12 @@
 .wrc-collage-wrap   { position: relative; height: 500px; }
 .wrc-cta-pad        { position: relative; z-index: 1; padding: 0 80px; }
 
+/* Below 1024px the nav collapses to a fixed floating bar (top 16px + 64px tall,
+   top 12px + 56px tall under 600px). Let the hero grow with its content and give
+   it enough top padding that the badge/heading clear that bar instead of sitting
+   under it. */
 @media (max-width:1024px) {
-  .wrc-hero-section    { padding: 80px 0; min-height: 580px; }
+  .wrc-hero-section    { padding: 124px 0 70px; min-height: 0; align-items: flex-start; }
   .wrc-hero-h1         { font-size: 36px; letter-spacing: -1.5px; }
   .wrc-2col            { gap: 40px; }
   .wrc-2col-wide       { gap: 40px; }
@@ -27,10 +37,13 @@
   .wrc-ticker-fade-l,.wrc-ticker-fade-r { width: 60px; }
 }
 @media (max-width:768px) {
-  .wrc-hero-section    { padding: 70px 0; min-height: 520px; }
+  .wrc-hero-section    { padding: 116px 0 60px; min-height: 0; }
   .wrc-hero-h1         { font-size: 28px; letter-spacing: -1px; }
   .wrc-stats-grid      { grid-template-columns: repeat(3,1fr); }
   .wrc-2col            { grid-template-columns: 1fr; gap: 32px; }
+  /* Vision: image sits left of the text on desktop, but once the grid collapses
+     to one column the text should lead and the image follow. */
+  .wrc-vision-media    { order: 2; }
   .wrc-2col-wide       { grid-template-columns: 1fr; gap: 32px; }
   .wrc-perks-inner     { padding: 28px 24px; }
   .wrc-perks-grid      { grid-template-columns: repeat(2,1fr); gap: 20px; }
@@ -41,16 +54,22 @@
   .wrc-ticker-fade-l,.wrc-ticker-fade-r { width: 48px; }
 }
 @media (max-width:600px) {
-  .wrc-hero-section    { padding: 60px 0; min-height: 460px; }
+  .wrc-hero-section    { padding: 104px 0 52px; min-height: 0; }
   .wrc-hero-h1         { font-size: 24px; letter-spacing: -0.6px; }
+  .wrc-hero-ctas       { flex-direction: column; align-items: stretch; gap: 10px; margin-bottom: 32px; }
   .wrc-hero-ctas .btn-prim,
-  .wrc-hero-ctas .btn-ghost { width: 100%; justify-content: center; }
-  .wrc-hero-ctas       { flex-direction: column; align-items: stretch; padding: 0 8px; }
+  .wrc-hero-ctas .btn-ghost {
+    width: 100%;
+    justify-content: center;
+    padding: 13px 18px;
+    font-size: 13.5px;
+    white-space: nowrap;
+  }
   .wrc-ticker-wrap     { margin: 0 -16px; }
   .wrc-ticker-fade-l,.wrc-ticker-fade-r { width: 32px; }
 }
 @media (max-width:480px) {
-  .wrc-hero-section    { padding: 56px 0; min-height: 420px; }
+  .wrc-hero-section    { padding: 96px 0 44px; min-height: 0; }
   .wrc-hero-h1         { font-size: 22px; letter-spacing: -0.4px; }
   .wrc-stats-grid      { grid-template-columns: repeat(2,1fr); }
   .wrc-stats-grid > div{ border-right: none !important; border-bottom: 1px solid rgba(220,226,240,.7); }
@@ -64,6 +83,6 @@
   .wrc-ticker-fade-l,.wrc-ticker-fade-r { width: 24px; }
 }
 @media (max-width:380px) {
+  .wrc-hero-section    { padding: 92px 0 40px; }
   .wrc-hero-h1         { font-size: 20px; letter-spacing: -0.2px; }
-  .wrc-hero-ctas       { padding: 0 4px; }
 }

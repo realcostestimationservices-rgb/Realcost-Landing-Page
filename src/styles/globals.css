@@ -165,6 +165,8 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 .cf-card {
   flex: 0 0 600px;
   max-width: 600px;
+  /* Height of the first (longest) feature card, so every card matches it. */
+  min-height: 290px;
   background: rgba(255,255,255,.92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -279,11 +281,14 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
     align-items: stretch;
     gap: 0;
   }
-  .cf-frame { height: 210px; max-width: none; margin: 0 20px; }
+  /* Keep the image narrower than the text card below it (card spans the full
+     row minus its 20px side margins), so the card reads as the wider element. */
+  .cf-frame { height: 210px; max-width: 76%; margin: 0 auto; }
   .cf-card {
     margin: -40px 20px 0;
     flex: 1 1 auto;
     max-width: none;
+    min-height: 0;
   }
   .cf-row-rev .cf-card { margin: -40px 20px 0; }
 }

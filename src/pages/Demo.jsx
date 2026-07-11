@@ -73,7 +73,7 @@ const Demo = () => {
 
   return (
     <div className="page-enter">
-      <section className="page-hero" style={{ minHeight: '640px' }}>
+      <section className="page-hero">
         <div className="page-hero-accent" />
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/misc/request_demo.png'})` }} />
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.96) 0%,rgba(15,37,87,.92) 40%,rgba(15,37,87,.45) 65%,transparent 100%)' }} />

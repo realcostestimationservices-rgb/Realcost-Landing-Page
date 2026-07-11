@@ -313,9 +313,68 @@
   .years-badge { right: 24px; bottom: 130px; }
   .years-badge svg { width: 130px; height: 130px; }
 }
+/* Mobile: the badge leaves the corner and drops into the hero copy flow,
+   between the paragraph and the buttons (it is a child of .hero-left in the
+   markup, so clearing position is all it takes). */
 @media (max-width: 600px) {
-  .years-badge { right: 10px; bottom: 80px; }
-  .years-badge svg { width: 100px; height: 100px; }
+  .years-badge {
+    position: static;
+    margin: 2px 0 24px;
+    right: auto;
+    bottom: auto;
+    /* sits at the right edge of the copy column, opposite the left-aligned text */
+    display: flex;
+    justify-content: flex-end;
+  }
+  .years-badge svg { width: 96px; height: 96px; }
+}
+
+/* ===== Platform features preview (heading + "View all features" + card grid) =====
+   Named areas rather than a wrapping flex row: on desktop the CTA sits on the
+   heading's baseline at the right, on mobile it drops below the cards instead of
+   wedging itself between the heading and the grid. */
+.home-featp {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  grid-template-areas:
+    "head cta"
+    "cards cards";
+  align-items: end;
+  column-gap: 20px;
+  row-gap: 56px;
+}
+.home-featp-head  { grid-area: head; }
+.home-featp-cta   { grid-area: cta; justify-self: end; }
+.home-featp .home-feat-grid { grid-area: cards; }
+@media (max-width: 768px) {
+  .home-featp {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "head"
+      "cards"
+      "cta";
+    row-gap: 32px;
+  }
+  /* Below the cards it reads as a plain "more" link, not a second CTA button:
+     drop the outline, padding and hover shimmer, keep it right-aligned.
+     .btn-ol-blue sets everything with !important, so these have to as well. */
+  .home-featp .home-featp-cta {
+    justify-self: end;
+    width: auto;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+    color: var(--sap) !important;
+    font-weight: 600 !important;
+  }
+  .home-featp .home-featp-cta::before { content: none; }
+  .home-featp .home-featp-cta:hover {
+    background: transparent !important;
+    color: var(--sap) !important;
+    box-shadow: none !important;
+    opacity: .7;
+  }
 }
 
 .home-benefit-grid {
@@ -392,12 +451,20 @@
   .hero-left { margin-top: 14vh; }
 }
 @media (max-width: 600px) {
-  .hero { min-height: auto; }
-  .hero-inner { padding: 22px 16px; gap: 18px; }
-  .hero-left { margin-top: 9vh; }
+  /* Full-screen hero on phones. svh = the *small* viewport height, so the
+     section still fits when the mobile browser's address bar is expanded;
+     100vh alone would overflow by the toolbar's height. */
+  .hero { min-height: 100vh; min-height: 100svh; }
+  /* Copy sits in the lower half — the top of the frame stays open so the
+     background photo reads, and the text lands within thumb reach. */
+  .hero-inner { padding: 22px 16px 56px; gap: 18px; justify-content: flex-end; }
+  /* .hero-left is flex:1 — inside the column layout that makes it grow to the
+     full height and cancel justify-content, so pin it to its content height. */
+  .hero-left { margin-top: 0; flex: 0 0 auto; }
+  .hero-badge { margin-bottom: 18px; }
   .hero-h1 { font-size: 28px; letter-spacing: -1px; }
-  .hero-sub { font-size: 14px; }
-  .hero-btns { gap: 10px; }
+  .hero-sub { font-size: 14px; margin-bottom: 26px; }
+  .hero-btns { gap: 10px; margin-bottom: 0; }
   .hero-stats { display: none; }
   .mon-url { font-size: 11px; padding: 6px; }
 }
@@ -409,4 +476,12 @@
 }
 @media (max-width: 380px) {
   .hero-h1 { font-size: 22px; }
+}
+/* Short phones (landscape, or small screens with a lot of hero copy): let the
+   hero grow past the viewport instead of squashing the text. */
+@media (max-width: 600px) and (max-height: 560px) {
+  .hero { min-height: auto; }
+  .hero-inner { padding: 88px 16px 40px; justify-content: flex-start; }
+  .years-badge { margin: 0 0 18px; }
+  .years-badge svg { width: 76px; height: 76px; }
 }

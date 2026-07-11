@@ -69,7 +69,7 @@ const WhyRealCost = ({ onNavigate }) => {
           </p>
 
           {/* CTAs */}
-          <motion.div className="wrc-hero-ctas" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.4 }} style={{ display:'flex', gap:'12px', flexWrap:'wrap', marginBottom:'44px' }}>
+          <motion.div className="wrc-hero-ctas" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.4 }}>
             <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-prim" href="https://d3jt1vpskh0hbe.cloudfront.net/" target="_blank" rel="noopener noreferrer">🚀 Start Free Trial</motion.a>
             <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-ghost" onClick={() => onNavigate('demo')}>📅 Request Demo</motion.button>
           </motion.div>
@@ -268,7 +268,7 @@ const WhyRealCost = ({ onNavigate }) => {
             {/* Right: image */}
             <Reveal initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(15,37,87,.13)', width: '100%', aspectRatio: '4/3' }}>
               <img
-                src={process.env.PUBLIC_URL + '/images/about/3rd_colash.png'}
+                src={process.env.PUBLIC_URL + '/images/misc/mission.png'}
                 alt="Our Mission"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
@@ -281,10 +281,10 @@ const WhyRealCost = ({ onNavigate }) => {
       <section className="sec-grey">
         <div className="cxl">
           <div className="wrc-2col" style={{ alignItems: 'center', gap: '64px' }}>
-            {/* Left: image */}
-            <Reveal initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(15,37,87,.13)', width: '100%', aspectRatio: '4/3', order: -1 }}>
+            {/* Left on desktop, below the text on mobile (see .wrc-vision-media) */}
+            <Reveal className="wrc-vision-media" initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(15,37,87,.13)', width: '100%', aspectRatio: '4/3' }}>
               <img
-                src={process.env.PUBLIC_URL + '/images/trades/electrical.jpg'}
+                src={process.env.PUBLIC_URL + '/images/misc/vision.png'}
                 alt="Our Vision"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />

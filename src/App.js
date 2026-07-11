@@ -3,6 +3,7 @@ import { Routes, Route, useNavigate, useLocation, Navigate } from 'react-router-
 import Nav from './components/layout/Nav';
 import Footer from './components/layout/Footer';
 import Chatbot from './components/ui/Chatbot';
+import ScrollTop from './components/ui/ScrollTop';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Demo = React.lazy(() => import('./pages/Demo'));
@@ -74,6 +75,7 @@ function App() {
         </Suspense>
         <Footer onNavigate={handleNavigate} />
         <Chatbot />
+        <ScrollTop />
       </div>
     </>
   );

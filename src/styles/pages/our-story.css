@@ -1,6 +1,62 @@
 /* ===== OurStory layout classes ===== */
-.os-stats-grid  { display: grid; grid-template-columns: repeat(5,1fr); gap: 20px; }
 .os-2col        { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+
+/* ===== Hero =====
+   responsive.css collapses .page-hero to content height below 1024px. Give the
+   Our Story hero a floor so the background image still reads on phones/tablets;
+   keep the top pad that clears the fixed floating nav. */
+@media (max-width:1024px) {
+  .os-hero { min-height: 620px; align-items: center; padding: 124px 0 70px; }
+}
+@media (max-width:768px) {
+  .os-hero { min-height: 580px; padding: 116px 0 60px; }
+}
+@media (max-width:600px) {
+  .os-hero { min-height: 560px; padding: 104px 0 52px; }
+}
+@media (max-width:480px) {
+  .os-hero { min-height: 540px; padding: 96px 0 44px; }
+}
+
+/* ===== Stats strip ===== */
+.os-stats-sec { background: #fff; padding: 22px 0; }
+.os-stats-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  gap: 16px;
+}
+/* RevealGroup wraps each stat in its own motion div — size those */
+.os-stats-grid > * { flex: 1 1 170px; min-width: 0; max-width: 260px; }
+
+.os-stat {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  height: 100%;
+  min-width: 0;
+}
+.os-stat-ico { display: flex; flex-shrink: 0; }
+.os-stat-ico svg { width: 30px; height: 30px; }
+.os-stat-txt { min-width: 0; }
+.os-stat-num {
+  font-size: clamp(21px, 2.1vw, 27px);
+  font-weight: 800;
+  color: var(--sap);
+  letter-spacing: -.6px;
+  line-height: 1.1;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.os-stat-label {
+  font-size: clamp(11.5px, 1.05vw, 12.5px);
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1.35;
+  margin-top: 2px;
+}
 
 /* History / Idea card */
 .os-history-card {
@@ -59,6 +115,16 @@
 }
 
 /* Timeline */
+.os-timeline { position: relative; max-width: 780px; margin: 0 auto; }
+.os-timeline-line {
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(to bottom, rgba(17,38,70,.08), rgba(197,160,71,.5), rgba(17,38,70,.08));
+}
 .os-milestone {
   display: flex;
   align-items: flex-start;
@@ -68,6 +134,9 @@
 .os-milestone-left  { flex-direction: row; justify-content: flex-end; padding-right: calc(50% + 28px); text-align: right; }
 .os-milestone-right { flex-direction: row-reverse; justify-content: flex-end; padding-left: calc(50% + 28px); text-align: left; }
 .os-milestone-card  { background: #fff; border: 1px solid #E8EEF8; border-radius: 14px; padding: 20px 22px; box-shadow: 0 4px 18px rgba(15,37,87,.07); max-width: 320px; }
+.os-ms-year  { font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
+.os-ms-label { font-size: 15px; font-weight: 700; color: var(--txt); margin-bottom: 7px; }
+.os-ms-desc  { font-size: 13px; color: #6B7489; line-height: 1.75; font-weight: 300; }
 .os-milestone-dot   {
   position: absolute;
   left: 50%;
@@ -83,37 +152,73 @@
 }
 
 @media (max-width:768px) {
-  .os-stats-grid { grid-template-columns: repeat(3,1fr); }
+  .os-stats-grid { gap: 12px; }
   .os-2col       { grid-template-columns: 1fr; gap: 32px; }
   .os-history-card   { flex-direction: column; }
   .os-history-panel  { border-radius: 22px 22px 0 0; padding: 40px 30px; }
   .os-history-imgwrap{ min-height: 280px; }
   .os-history-frame  { border-radius: 0 0 18px 18px; }
   .os-history-img    { border-radius: 0 0 22px 22px; }
+  /* Single left rail: the spine moves off centre and every card stacks beside it */
+  .os-timeline { max-width: 520px; }
+  .os-timeline-line {
+    left: 8px;
+    top: 12px;
+    bottom: 12px;
+    transform: none;
+    background: linear-gradient(to bottom, rgba(197,160,71,.55), rgba(197,160,71,.32) 88%, transparent);
+  }
+  .os-milestone { margin-bottom: 18px; }
   .os-milestone-left,
   .os-milestone-right {
     flex-direction: column;
-    padding: 0 0 0 36px;
+    padding: 0 0 0 34px;
     text-align: left;
     justify-content: flex-start;
   }
+  .os-milestone-card {
+    max-width: none;
+    width: 100%;
+    padding: 18px 20px 18px 18px;
+    border-left: 3px solid var(--gold);
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(15,37,87,.06);
+  }
   .os-milestone-dot {
-    left: 0;
+    left: 1px;
+    top: 22px;
+    width: 16px;
+    height: 16px;
     transform: none;
   }
-  .os-milestone::before {
-    content: '';
-    position: absolute;
-    left: 6px;
-    top: 18px;
-    bottom: -40px;
-    width: 2px;
-    background: rgba(197,160,71,.3);
+  /* Year reads as the marker on the rail, not a caption above the title */
+  .os-ms-year {
+    display: inline-block;
+    background: rgba(197,160,71,.12);
+    padding: 3px 9px;
+    border-radius: 20px;
+    font-size: 10.5px;
+    letter-spacing: .12em;
+    margin-bottom: 8px;
   }
-  .os-milestone:last-child::before { display: none; }
+  .os-ms-label { font-size: 15.5px; margin-bottom: 6px; }
+  .os-ms-desc  { font-size: 13px; line-height: 1.7; }
+}
+/* Two per row on phones, icon stacked above the number so long labels don't squeeze */
+@media (max-width:600px) {
+  .os-stats-sec  { padding: 16px 0; }
+  .os-stats-grid > * { flex: 0 1 calc(50% - 6px); max-width: none; }
+  .os-stat {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+    padding: 14px 8px;
+  }
+  .os-stat-ico svg { width: 26px; height: 26px; }
+  .os-stat-num   { font-size: 24px; }
+  .os-stat-label { font-size: 12px; }
 }
 @media (max-width:480px) {
-  .os-stats-grid { grid-template-columns: 1fr; gap: 20px; }
   .os-milestone-card { padding: 16px 18px; }
 }
 

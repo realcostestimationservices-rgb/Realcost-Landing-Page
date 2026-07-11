@@ -66,7 +66,7 @@ const FAQ = ({ onNavigate }) => {
     <div className="page-enter">
 
       {/* ── Hero ── */}
-      <section className="page-hero" style={{ minHeight: '480px' }}>
+      <section className="page-hero">
         <div className="page-hero-accent" />
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/our_bg.png'})` }} />
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, background: 'linear-gradient(105deg,rgba(10,20,40,.97) 0%,rgba(15,37,87,.93) 45%,rgba(15,37,87,.55) 70%,transparent 100%)' }} />

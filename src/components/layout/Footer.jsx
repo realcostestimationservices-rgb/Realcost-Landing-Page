@@ -10,7 +10,7 @@ const Footer = ({ onNavigate }) => {
       <RevealGroup className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '32px', padding: '52px 80px', maxWidth: '1440px', margin: '0 auto' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <img src={process.env.PUBLIC_URL + '/images/brand/titleIcon.png'} width="32" height="32" alt="Real Cost" style={{ borderRadius: '7px', objectFit: 'cover', flexShrink: '0' }} />
+            <img src={process.env.PUBLIC_URL + '/images/brand/logo.png'} width="36" height="36" alt="Real Cost" style={{ borderRadius: '8px', objectFit: 'contain', flexShrink: '0', background: '#fff', padding: '5px', boxShadow: '0 2px 10px rgba(0,0,0,.22)' }} />
             <div><div style={{ fontSize: '11px', fontWeight: '800', color: '#DFC06A', letterSpacing: '.12em', textTransform: 'uppercase' }}>Real Cost</div><div style={{ fontSize: '9px', fontWeight: '300', color: '#9AA0B0', letterSpacing: '.1em', textTransform: 'uppercase' }}>Estimation Platform</div></div>
           </div>
           <p style={{ fontSize: '13px', color: 'rgba(200,210,240,.38)', lineHeight: '1.82', maxWidth: '240px', fontWeight: '300' }}>Digital estimation platform for trade contractors across Canada. Upload drawings, count symbols, build your bid, send your quote.</p>

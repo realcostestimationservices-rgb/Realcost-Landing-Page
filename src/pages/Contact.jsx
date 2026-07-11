@@ -60,7 +60,6 @@ const Contact = ({ onNavigate }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div className="contact-hero-eyebrow" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.15 }}>1200 Bloor Street West, Toronto · Mon–Fri 9AM–6PM ET</motion.div>
             <h1 className="contact-hero-title">Let's Build Something<br />Great Together</h1>
             <p className="contact-hero-desc">
               Whether you have questions, need a demo, or want to start your free trial — our team is here for you. Reach out anytime.
@@ -93,13 +92,6 @@ const Contact = ({ onNavigate }) => {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 1.05, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
           >
-            <motion.div className="contact-float-card" whileHover={{ y: -4, boxShadow: '0 16px 32px rgba(15,37,87,.16)' }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-              <div className="contact-float-icon">📞</div>
-              <div>
-                <div className="contact-float-label">Call us</div>
-                <div className="contact-float-val">(647) 677-8399</div>
-              </div>
-            </motion.div>
             <motion.div className="contact-float-card" whileHover={{ y: -4, boxShadow: '0 16px 32px rgba(15,37,87,.16)' }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
               <div className="contact-float-icon">✉️</div>
               <div>

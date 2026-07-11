@@ -9,6 +9,9 @@
   flex-direction: column;
   align-items: flex-end;
   gap: 12px;
+  max-width: 100vw;
+  /* Landscape notch on iOS: keep the stack clear of the rounded corner */
+  padding-right: env(safe-area-inset-right, 0px);
 }
 .cicon-stack {
   display: flex;
@@ -45,6 +48,10 @@
   position: relative;
   transition: background .15s ease, color .15s ease, transform .15s ease;
 }
+.cistack-btn svg {
+  width: 23px;
+  height: 23px;
+}
 .cistack-btn:not(:last-child)::after {
   content: '';
   position: absolute;
@@ -71,10 +78,30 @@
   box-shadow: 0 24px 80px rgba(8,14,32,.22), 0 4px 20px rgba(8,14,32,.12);
 }
 .cwin.open { display: flex; flex-direction: column; }
-@media (max-width:420px) {
-  .cfab { right: 8px; }
-  .cwin { width: calc(100vw - 16px); }
+
+/* ── Responsive: the icon stack stays flush to the right edge at every size
+   (its left-rounded pill is designed to bleed off it); only the buttons and
+   the chat window scale down. The window keeps a small gutter of its own so
+   it never touches the edge. ── */
+@media (max-width:768px) {
+  .cfab { gap: 10px; }
+  .cistack-btn { width: 42px; height: 42px; }
+  .cistack-btn svg { width: 21px; height: 21px; }
+  .cwin { width: min(360px, calc(100vw - 24px)); margin-right: 12px; }
   .cbody { max-height: 46vh; }
+}
+@media (max-width:480px) {
+  .cfab { gap: 8px; }
+  .cicon-stack { border-radius: 14px 0 0 14px; padding: 5px 2px 5px 5px; }
+  .cistack-btn { width: 38px; height: 38px; }
+  .cistack-btn svg { width: 19px; height: 19px; }
+  .cwin { width: calc(100vw - 20px); margin-right: 10px; border-radius: 18px; }
+  .cbody { max-height: 42vh; min-height: 150px; }
+}
+@media (max-width:380px) {
+  .cistack-btn { width: 34px; height: 34px; }
+  .cistack-btn svg { width: 17px; height: 17px; }
+  .cwin { width: calc(100vw - 16px); margin-right: 8px; }
 }
 .chdr {
   background: linear-gradient(135deg, #081830 0%, #0F2557 55%, #1A3468 100%);

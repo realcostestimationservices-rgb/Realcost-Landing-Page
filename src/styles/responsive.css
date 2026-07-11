@@ -16,8 +16,11 @@ img, svg, video, canvas, iframe { max-width: 100%; }
   .cxl { padding:0 24px; }
   .sec-light,.sec-grey,.sec-dark { padding:56px 0; }
   .sec-h2 { font-size:32px; }
-  /* Page hero */
-  .page-hero { padding:80px 0; min-height:420px; }
+  /* Page hero — below 1024px the nav is a fixed floating bar (top 16px + 64px
+     tall, top 12px + 56px under 600px). Let the hero grow with its content and
+     pad the top enough that the badge/title clear that bar instead of sitting
+     under it. Mirrors .wrc-hero-section in why-real-cost.css. */
+  .page-hero { padding:124px 0 70px; min-height:0; align-items:flex-start; }
   .ph-title { font-size:38px; }
   /* Home hero responsive rules live in home.css (bundled after this file so they win the source-order tie) */
   /* Cards */
@@ -38,7 +41,7 @@ img, svg, video, canvas, iframe { max-width: 100%; }
   .sec-sub { font-size:14.5px; }
   .sec-eyebrow { font-size:10px; }
   /* Page hero */
-  .page-hero { padding:70px 0; min-height:380px; }
+  .page-hero { padding:116px 0 60px; min-height:0; }
   .ph-title { font-size:30px; letter-spacing:-1.2px; }
   .ph-stat-row { flex-wrap:wrap; }
   .ph-stat { flex:1; min-width:130px; }
@@ -70,7 +73,7 @@ img, svg, video, canvas, iframe { max-width: 100%; }
 @media (max-width:600px) {
   /* Nav responsive rules live in nav.css */
   /* Page hero */
-  .page-hero { padding:60px 0; min-height:340px; }
+  .page-hero { padding:104px 0 52px; min-height:0; }
   /* Home hero responsive rules live in home.css */
 }
 
@@ -83,7 +86,7 @@ img, svg, video, canvas, iframe { max-width: 100%; }
   .sec-sub { font-size:13.5px; }
   .sec-eyebrow { font-size:9.5px; }
   /* Page hero */
-  .page-hero { padding:56px 0; min-height:320px; }
+  .page-hero { padding:96px 0 44px; min-height:0; }
   .ph-title { font-size:24px; letter-spacing:-.8px; }
   .pg-badge { font-size:9.5px; padding:5px 14px; }
   /* Home hero responsive rules live in home.css */
@@ -124,6 +127,7 @@ img, svg, video, canvas, iframe { max-width: 100%; }
 /* ── Small mobile ≤380px ── */
 @media (max-width:380px) {
   .sec-h2 { font-size:20px; }
+  .page-hero { padding:92px 0 40px; }
   .ph-title { font-size:20px; letter-spacing:-.5px; }
   .cxl { padding:0 14px; }
   .btn-prim,.btn-ghost { padding:11px 18px !important; font-size:13px !important; }

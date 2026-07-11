@@ -19,13 +19,13 @@ const chips = ['🗺 Digital Takeoff Canvas', '🔍 Auto-Count', '💰 Bid Page'
 const Features = ({ onNavigate }) => {
   return (
     <div className="page-enter">
-      <section className="page-hero" style={{ minHeight: '640px' }}>
+      <section className="page-hero">
         <div className="page-hero-accent"></div>
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/features/our_features_white.png'})`, backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat' }}></div>
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.95) 0%,rgba(15,37,87,.90) 38%,rgba(15,37,87,.40) 60%,transparent 75%)' }} />
         <div className="cxl" style={{ textAlign:'left' }}>
           <motion.div
-            style={{ maxWidth:'520px' }}
+            style={{ maxWidth:'580px' }}
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
@@ -33,7 +33,7 @@ const Features = ({ onNavigate }) => {
             <motion.div className="pg-badge" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.15 }}>Platform Features</motion.div>
             <div className="ph-title">Every tool your estimating<br />team needs.</div>
             <p className="sec-sub" style={{ margin:'0 0 36px' }}>From PDF upload to branded quote letter — Real Cost handles your full estimation workflow in one digital platform.</p>
-            <motion.div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '32px' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.3 }}>
+            <motion.div className="fh-chip-row" style={{ display: 'flex', gap: '7px', flexWrap: 'wrap', marginBottom: '20px' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.3 }}>
               {chips.map((c, i) => (
                 <span key={i} className={`ph-chip ${c.includes('Quote Letter Generator') ? 'ph-chip-gold' : ''}`}>{c}</span>
               ))}

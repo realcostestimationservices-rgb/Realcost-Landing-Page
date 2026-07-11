@@ -37,89 +37,91 @@ const Home = ({ onNavigate }) => {
             <motion.div className="hero-badge" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.15 }}><div className="badge-dot"></div>⚡ Professional Electrical Estimating Software</motion.div>
             <h1 className="hero-h1">Tired of overpriced,<br />over-complicated software?<br /><em>Your wait is over.</em></h1>
             <p className="hero-sub">Switch to <strong>Real Cost</strong> for a premium estimating experience — upload your drawings, count symbols, build your bid, and generate a quote letter, all in one place.</p>
+            {/* 15-year badge — sits in the flow between the copy and the buttons
+                on mobile; absolutely positioned bottom-right on desktop (see
+                .years-badge in home.css) */}
+            <motion.div
+              className="years-badge"
+              initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
+              animate={{ opacity: 1, scale: 1, rotate: 0, y: [0, -8, 0] }}
+              transition={{ scale: { duration: 0.95, delay: 0.55, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.95, delay: 0.55 }, rotate: { duration: 0.95, delay: 0.55 }, y: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.1 } }}
+            >
+              <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                  <linearGradient id="gR" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%"   stopColor="#F8E860"/>
+                    <stop offset="50%"  stopColor="#D09C18"/>
+                    <stop offset="100%" stopColor="#8A6000"/>
+                  </linearGradient>
+                  <radialGradient id="gF" cx="38%" cy="30%" r="68%">
+                    <stop offset="0%"   stopColor="#1E1400"/>
+                    <stop offset="100%" stopColor="#050300"/>
+                  </radialGradient>
+                  <linearGradient id="gN" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%"   stopColor="#FFFBE0"/>
+                    <stop offset="45%"  stopColor="#F2CA28"/>
+                    <stop offset="100%" stopColor="#A87010"/>
+                  </linearGradient>
+                  <path id="tp" d="M 24,80 A 56,56 0 0,1 136,80"/>
+                  <path id="bp" d="M 24,80 A 56,56 0 0,0 136,80"/>
+                </defs>
+
+                {/* ── Ring 1: outer glow ── */}
+                <circle cx="80" cy="80" r="78" fill="none" stroke="rgba(218,178,40,0.13)" strokeWidth="1.5"/>
+                {/* ── Ring 2: dashed accent ── */}
+                <circle cx="80" cy="80" r="74" fill="none" stroke="rgba(218,178,40,0.55)" strokeWidth="1.1" strokeDasharray="2.5 4"/>
+                {/* ── Ring 3: solid gold border ── */}
+                <circle cx="80" cy="80" r="70" fill="none" stroke="url(#gR)" strokeWidth="2.8"/>
+                {/* ── Fill ── */}
+                <circle cx="80" cy="80" r="67" fill="url(#gF)"/>
+                {/* ── Ring 4: inner hairline ── */}
+                <circle cx="80" cy="80" r="61" fill="none" stroke="rgba(218,178,40,0.28)" strokeWidth="0.7"/>
+
+                {/* ── Clock markers ── */}
+                <line x1="80" y1="5"   x2="80" y2="14"  stroke="rgba(218,178,40,0.75)" strokeWidth="2"   strokeLinecap="round"/>
+                <line x1="80" y1="146" x2="80" y2="155" stroke="rgba(218,178,40,0.75)" strokeWidth="2"   strokeLinecap="round"/>
+                <line x1="5"  y1="80"  x2="14" y2="80"  stroke="rgba(218,178,40,0.42)" strokeWidth="1.4" strokeLinecap="round"/>
+                <line x1="146" y1="80" x2="155" y2="80" stroke="rgba(218,178,40,0.42)" strokeWidth="1.4" strokeLinecap="round"/>
+
+                {/* ── Corner dots at 45° ── */}
+                <circle cx="80" cy="80" r="70" fill="none"
+                  stroke="rgba(218,178,40,0.0)" strokeWidth="0"/>
+                <circle cx="130" cy="30" r="2"  fill="rgba(218,178,40,0.45)"/>
+                <circle cx="30"  cy="30" r="2"  fill="rgba(218,178,40,0.45)"/>
+                <circle cx="130" cy="130" r="2" fill="rgba(218,178,40,0.45)"/>
+                <circle cx="30"  cy="130" r="2" fill="rgba(218,178,40,0.45)"/>
+
+                {/* ── Top arc: REAL COST ── */}
+                <text fontSize="8" fontWeight="700" letterSpacing="5" fill="rgba(238,198,48,0.92)" fontFamily="Plus Jakarta Sans,sans-serif">
+                  <textPath href="#tp" startOffset="50%" textAnchor="middle" dy="13">REAL COST</textPath>
+                </text>
+
+                {/* ── Bottom arc: SINCE 2010 ── */}
+                <text fontSize="8" fontWeight="700" letterSpacing="4" fill="rgba(218,178,40,0.85)" fontFamily="Plus Jakarta Sans,sans-serif">
+                  <textPath href="#bp" startOffset="50%" textAnchor="middle" dy="-5">SINCE  2010</textPath>
+                </text>
+
+                {/* ── Divider rules ── */}
+                <line x1="42" y1="50" x2="118" y2="50" stroke="rgba(218,178,40,0.38)" strokeWidth="0.8"/>
+                <line x1="42" y1="108" x2="118" y2="108" stroke="rgba(218,178,40,0.38)" strokeWidth="0.8"/>
+
+                {/* ── "15" ── */}
+                <text x="80" y="93" textAnchor="middle" fontSize="52" fontWeight="900" fill="url(#gN)" letterSpacing="-2" fontFamily="Plus Jakarta Sans,sans-serif">15</text>
+
+                {/* ── "YEARS" ── */}
+                <text x="80" y="106" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="rgba(238,198,48,0.80)" letterSpacing="5.5" fontFamily="Plus Jakarta Sans,sans-serif">YEARS</text>
+
+                {/* ── Three stars ── */}
+                <text x="80" y="121" textAnchor="middle" fontSize="9" fill="rgba(218,178,40,0.55)" letterSpacing="7" fontFamily="Plus Jakarta Sans,sans-serif">★ ★ ★</text>
+              </svg>
+            </motion.div>
+
             <motion.div className="hero-btns" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.4 }}>
               <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-prim" href="https://d3jt1vpskh0hbe.cloudfront.net/" target="_blank" rel="noopener noreferrer">🚀 Switch to Real Cost now</motion.a>
               <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-ghost" onClick={() => onNavigate('demo')}>📅 Request Demo</motion.button>
             </motion.div>
           </motion.div>
         </div>
-
-        {/* 15-year badge */}
-        <motion.div
-          className="years-badge"
-          initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
-          animate={{ opacity: 1, scale: 1, rotate: 0, y: [0, -8, 0] }}
-          transition={{ scale: { duration: 0.95, delay: 0.55, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.95, delay: 0.55 }, rotate: { duration: 0.95, delay: 0.55 }, y: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.1 } }}
-        >
-          <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="gR" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%"   stopColor="#F8E860"/>
-                <stop offset="50%"  stopColor="#D09C18"/>
-                <stop offset="100%" stopColor="#8A6000"/>
-              </linearGradient>
-              <radialGradient id="gF" cx="38%" cy="30%" r="68%">
-                <stop offset="0%"   stopColor="#1E1400"/>
-                <stop offset="100%" stopColor="#050300"/>
-              </radialGradient>
-              <linearGradient id="gN" x1="0%" y1="0%" x2="0%" y2="100%">
-                <stop offset="0%"   stopColor="#FFFBE0"/>
-                <stop offset="45%"  stopColor="#F2CA28"/>
-                <stop offset="100%" stopColor="#A87010"/>
-              </linearGradient>
-              <path id="tp" d="M 24,80 A 56,56 0 0,1 136,80"/>
-              <path id="bp" d="M 24,80 A 56,56 0 0,0 136,80"/>
-            </defs>
-
-            {/* ── Ring 1: outer glow ── */}
-            <circle cx="80" cy="80" r="78" fill="none" stroke="rgba(218,178,40,0.13)" strokeWidth="1.5"/>
-            {/* ── Ring 2: dashed accent ── */}
-            <circle cx="80" cy="80" r="74" fill="none" stroke="rgba(218,178,40,0.55)" strokeWidth="1.1" strokeDasharray="2.5 4"/>
-            {/* ── Ring 3: solid gold border ── */}
-            <circle cx="80" cy="80" r="70" fill="none" stroke="url(#gR)" strokeWidth="2.8"/>
-            {/* ── Fill ── */}
-            <circle cx="80" cy="80" r="67" fill="url(#gF)"/>
-            {/* ── Ring 4: inner hairline ── */}
-            <circle cx="80" cy="80" r="61" fill="none" stroke="rgba(218,178,40,0.28)" strokeWidth="0.7"/>
-
-            {/* ── Clock markers ── */}
-            <line x1="80" y1="5"   x2="80" y2="14"  stroke="rgba(218,178,40,0.75)" strokeWidth="2"   strokeLinecap="round"/>
-            <line x1="80" y1="146" x2="80" y2="155" stroke="rgba(218,178,40,0.75)" strokeWidth="2"   strokeLinecap="round"/>
-            <line x1="5"  y1="80"  x2="14" y2="80"  stroke="rgba(218,178,40,0.42)" strokeWidth="1.4" strokeLinecap="round"/>
-            <line x1="146" y1="80" x2="155" y2="80" stroke="rgba(218,178,40,0.42)" strokeWidth="1.4" strokeLinecap="round"/>
-
-            {/* ── Corner dots at 45° ── */}
-            <circle cx="80" cy="80" r="70" fill="none"
-              stroke="rgba(218,178,40,0.0)" strokeWidth="0"/>
-            <circle cx="130" cy="30" r="2"  fill="rgba(218,178,40,0.45)"/>
-            <circle cx="30"  cy="30" r="2"  fill="rgba(218,178,40,0.45)"/>
-            <circle cx="130" cy="130" r="2" fill="rgba(218,178,40,0.45)"/>
-            <circle cx="30"  cy="130" r="2" fill="rgba(218,178,40,0.45)"/>
-
-            {/* ── Top arc: REAL COST ── */}
-            <text fontSize="8" fontWeight="700" letterSpacing="5" fill="rgba(238,198,48,0.92)" fontFamily="Plus Jakarta Sans,sans-serif">
-              <textPath href="#tp" startOffset="50%" textAnchor="middle" dy="13">REAL COST</textPath>
-            </text>
-
-            {/* ── Bottom arc: SINCE 2010 ── */}
-            <text fontSize="8" fontWeight="700" letterSpacing="4" fill="rgba(218,178,40,0.85)" fontFamily="Plus Jakarta Sans,sans-serif">
-              <textPath href="#bp" startOffset="50%" textAnchor="middle" dy="-5">SINCE  2010</textPath>
-            </text>
-
-            {/* ── Divider rules ── */}
-            <line x1="42" y1="50" x2="118" y2="50" stroke="rgba(218,178,40,0.38)" strokeWidth="0.8"/>
-            <line x1="42" y1="108" x2="118" y2="108" stroke="rgba(218,178,40,0.38)" strokeWidth="0.8"/>
-
-            {/* ── "15" ── */}
-            <text x="80" y="93" textAnchor="middle" fontSize="52" fontWeight="900" fill="url(#gN)" letterSpacing="-2" fontFamily="Plus Jakarta Sans,sans-serif">15</text>
-
-            {/* ── "YEARS" ── */}
-            <text x="80" y="106" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="rgba(238,198,48,0.80)" letterSpacing="5.5" fontFamily="Plus Jakarta Sans,sans-serif">YEARS</text>
-
-            {/* ── Three stars ── */}
-            <text x="80" y="121" textAnchor="middle" fontSize="9" fill="rgba(218,178,40,0.55)" letterSpacing="7" fontFamily="Plus Jakarta Sans,sans-serif">★ ★ ★</text>
-          </svg>
-        </motion.div>
       </section>
 
       {/* Smart Software / Download Brochure */}
@@ -285,15 +287,13 @@ const Home = ({ onNavigate }) => {
 
       {/* Features preview */}
       <section className="sec-light" style={{ position: 'relative', overflow: 'hidden' }}>
-        <div className="cxl">
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '56px', flexWrap: 'wrap', gap: '20px' }}>
-            <div>
-              <div className="sec-eyebrow">Platform features</div>
-              <div className="sec-h2">Everything you need to win bids.</div>
-              <p className="sec-sub" style={{ maxWidth: '420px', margin: 0 }}>Built specifically for trade estimators in Canada.</p>
-            </div>
-            <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-ol-blue" onClick={() => onNavigate('features')}>View all features →</motion.button>
+        <div className="cxl home-featp">
+          <div className="home-featp-head">
+            <div className="sec-eyebrow">Platform features</div>
+            <div className="sec-h2">Everything you need to win bids.</div>
+            <p className="sec-sub" style={{ maxWidth: '420px', margin: 0 }}>Built specifically for trade estimators in Canada.</p>
           </div>
+          <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-ol-blue home-featp-cta" onClick={() => onNavigate('features')}>View all features →</motion.button>
           <RevealGroup className="home-feat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '18px' }}>
             {[
               {
