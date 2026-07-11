@@ -346,6 +346,22 @@
 .home-featp-head  { grid-area: head; }
 .home-featp-cta   { grid-area: cta; justify-self: end; }
 .home-featp .home-feat-grid { grid-area: cards; }
+
+/* Card banner reuses the screenshots from the Features page's core-feature rows. */
+.home-featp-card { display: flex; flex-direction: column; }
+.home-featp-card-img {
+  aspect-ratio: 16 / 10;
+  overflow: hidden;
+  border-bottom: 1px solid #E8EEF8;
+}
+.home-featp-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform .5s cubic-bezier(.22,1,.36,1);
+}
+.home-featp-card:hover .home-featp-card-img img { transform: scale(1.05); }
 @media (max-width: 768px) {
   .home-featp {
     grid-template-columns: 1fr;

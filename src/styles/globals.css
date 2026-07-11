@@ -8,6 +8,9 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 .sec-light { padding:96px 0; background:#FAFBFE; }
 .sec-grey { padding:96px 0; background:#EEF2F9; }
 .sec-dark { padding:96px 0; background:var(--surf); }
+/* Alternates with .sec-light. Same navy hue, one shade down — enough separation to
+   read as a new section, close enough that the seam never reads as a hard band. */
+.sec-tint { padding:96px 0; background:#F1F5FC; }
 .sec-eyebrow {
   display: inline-flex;
   align-items: center;
