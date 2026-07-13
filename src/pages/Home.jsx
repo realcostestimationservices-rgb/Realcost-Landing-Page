@@ -171,13 +171,15 @@ const Home = ({ onNavigate }) => {
             </Reveal>
             <RevealGroup style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }} delay={0.1}>
               {[
-                { icon: '📁', title: 'Upload PDF Drawings', desc: 'Multi-page blueprint sets. Navigate every page on a digital canvas inside the app.' },
-                { icon: '🔍', title: 'Symbol Auto-Count', desc: 'Draw a box around a symbol — the platform finds all matches across every page instantly.' },
-                { icon: '💰', title: 'Build Your Bid', desc: 'Material, labour, overhead, markup, duration — all calculated on your bid page.' },
-                { icon: '📋', title: 'One-Click Quote Letter', desc: 'Generate a professional branded PDF quote letter ready to send to your client.' },
-              ].map(({ icon, title, desc }) => (
+                { image: '/images/home/upload_pdf.png', title: 'Upload PDF Drawings', desc: 'Multi-page blueprint sets. Navigate every page on a digital canvas inside the app.' },
+                { image: '/images/home/auto_count.png', title: 'Symbol Auto-Count', desc: 'Draw a box around a symbol — the platform finds all matches across every page instantly.' },
+                { image: '/images/home/bid.png', title: 'Build Your Bid', desc: 'Material, labour, overhead, markup, duration — all calculated on your bid page.' },
+                { image: '/images/home/quote.png', title: 'One-Click Quote Letter', desc: 'Generate a professional branded PDF quote letter ready to send to your client.' },
+              ].map(({ image, title, desc }) => (
                 <div className="why-card" key={title}>
-                  <div className="why-ico">{icon}</div>
+                  <div className="why-ico">
+                    <img src={process.env.PUBLIC_URL + image} alt="" aria-hidden="true" />
+                  </div>
                   <div style={{ fontSize: '14px', fontWeight: '600', color: 'var(--txt)', marginBottom: '7px' }}>{title}</div>
                   <div style={{ fontSize: '13px', color: '#6B7489', lineHeight: '1.7', fontWeight: '300' }}>{desc}</div>
                 </div>

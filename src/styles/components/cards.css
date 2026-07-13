@@ -96,7 +96,8 @@
   box-shadow: 0 22px 44px rgba(15,37,87,.12);
   border-color: rgba(201,168,76,.4);
 }
-.why-ico { font-size:36px; margin-bottom:14px; transition: transform .32s cubic-bezier(.22,1,.36,1); }
+.why-ico { display:flex; align-items:center; justify-content:center; margin-bottom:14px; transition: transform .32s cubic-bezier(.22,1,.36,1); }
+.why-ico img { width:46px; height:46px; object-fit:contain; display:block; }
 .why-card:hover .why-ico { transform: scale(1.14) rotate(-4deg); }
 .sv-ico, .cm-ico { transition: transform .32s cubic-bezier(.22,1,.36,1); }
 .sv-card:hover .sv-ico, .cm-card:hover .cm-ico { transform: scale(1.14) rotate(-4deg); }
