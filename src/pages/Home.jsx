@@ -26,7 +26,6 @@ const Home = ({ onNavigate }) => {
         <img className="hero-video" src={process.env.PUBLIC_URL + '/images/features/Home.png'} alt="" aria-hidden="true" style={{ objectFit: 'cover' }} />
         <div className="hero-overlay"></div>
         <div className="hero-tint"></div>
-        <div className="hero-grid"></div>
         <div className="hero-inner">
           <motion.div
             className="hero-left"
