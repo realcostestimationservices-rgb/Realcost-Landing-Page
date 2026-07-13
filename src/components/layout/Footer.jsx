@@ -60,7 +60,9 @@ const Footer = ({ onNavigate }) => {
       </RevealGroup>
       <Reveal as="div" className="footer-bottom" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '18px 80px', borderTop: '1px solid rgba(201,168,76,.12)', maxWidth: '1440px', margin: '0 auto', flexWrap: 'wrap', gap: '16px' }}>
         <div style={{ fontSize: '12px', color: 'rgba(200,210,240,.28)', fontWeight: '300' }}>© 2026 Real Cost Estimating Inc. All rights reserved. 1200 Bloor Street West, Toronto, Canada.</div>
-        <div style={{ display: 'flex', gap: '28px' }}><span style={{ fontSize: '12px', color: 'rgba(200,210,240,.28)', cursor: 'pointer' }}>Privacy policy</span><span style={{ fontSize: '12px', color: 'rgba(200,210,240,.28)', cursor: 'pointer' }}>Terms of use</span></div>
+        <div style={{ display: 'flex', gap: '28px' }}>
+          <a href="https://d3jt1vpskh0hbe.cloudfront.net/termsandconditions" target="_blank" rel="noopener noreferrer" style={{ fontSize: '12px', color: 'rgba(200,210,240,.28)', textDecoration: 'none' }}>Privacy policy & Terms of use</a>
+        </div>
       </Reveal>
     </footer>
   );
