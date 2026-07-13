@@ -10,6 +10,11 @@ const faqGroups = [
       { q: 'Who is Real Cost designed for?', a: 'Real Cost is built exclusively for electrical contractors. Every feature — from the digital takeoff canvas to Canadian city-based pricing to the quote letter generator — is purpose-built for the way electrical estimators actually work.' },
       { q: 'Can I arrange a demo?', a: 'Yes, of course! Book a demo call with our product team and we will walk you through the full platform live. We can also help you determine which plan is right for your business. Click "Request Demo" in the navigation to get started.' },
       { q: 'How do I start using Real Cost?', a: 'Open the app and start your 14-day free trial — no credit card required. Upload a PDF drawing set, create a project, and your team can begin estimating right away. Most users are quoting their first job within minutes.' },
+      { q: 'Can I upload PDF drawings and take off quantities directly?', a: 'Yes. Real Cost lets you upload PDF drawing sets and work directly on them in the app, so you can measure, price, and build your estimate in one place without switching between tools.' },
+      { q: 'How long does it take to implement RealCost?', a: 'RealCost is designed for a fast and straightforward setup. Most customers can be up and running within a few days, depending on project requirements and data migration needs. Our team guides you through onboarding, account setup, and training to ensure a smooth transition with minimal disruption to your estimating workflow.' },
+      { q: "I'm not great with technology. Can I still use this?", a: "Yes. If you can use WhatsApp, you can use this. It's designed for contractors, not tech experts. Most users can create their first estimate within minutes." },
+      { q: 'Do I have to enter all my materials manually?', a: 'No. You can import your material lists, labor rates, and supplier pricing, or our team can help set everything up for you to get started quickly.' },
+      { q: "What's the first step?", a: "Start with a free, no-obligation demo. We'll walk you through RealCost's estimating, takeoff, and project management features, answer your questions, and help determine the best setup for your business. You can explore the platform and see how it fits your workflow before making any commitment." },
       { q: 'Do I need training to use Real Cost?', a: 'No. Real Cost is designed to be intuitive for electrical estimators, but we also provide onboarding support and product guidance to help your team get comfortable quickly.' },
     ],
   },
@@ -30,12 +35,13 @@ const faqGroups = [
     items: [
       { q: 'Is my data safe?', a: 'Yes. Real Cost uses industry-standard encryption for all data in transit and at rest. Your estimates, drawings, and pricing data are stored securely in the cloud, backed up automatically, and never shared with third parties. You own your data at all times.' },
       { q: 'Who can see my pricing and estimate details?', a: 'Only you and the team members you explicitly invite. Your job details, material pricing, labour rates, and profit margins are completely private. We never share, sell, or access your data. Everything is encrypted and backed up daily.' },
+      { q: 'Who can see my pricing and project details?', a: 'Only authorized users within your account can access your data. All project information, pricing, and estimates are securely stored, encrypted, and protected. We never share your data with third parties.' },
     ],
   },
   {
     cat: 'Billing & Trial',
     items: [
-      { q: 'How does the free trial work?', a: "Sign up and you're in. You get full access to every feature for 14 days — completely free. No payment details required, no catches. If Real Cost is not the right fit, just don't continue. Your data remains accessible for 30 days after the trial ends." },
+      { q: 'How does the free trial work?', a: "You can try the platform free of charge and explore its core features. No long-term commitment is required, and you can decide if it fits your workflow before subscribing." },
       { q: 'How long is the free trial?', a: '14 days with full access to all platform features. Your project data is always kept safe regardless of plan status.' },
       { q: 'What payment methods are accepted?', a: 'Visa, Mastercard, and major debit cards via Stripe. All transactions are encrypted and processed securely.' },
       { q: 'Can I cancel anytime?', a: 'Yes. You can cancel your subscription at any time, and we will make sure you understand what happens to your account and project data before your plan changes.' },
