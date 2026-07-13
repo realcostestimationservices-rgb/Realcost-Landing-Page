@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Reveal, RevealGroup } from '../components/ui/Reveal';
+import '../styles/pages/demo.css';
 
 const TIME_SLOTS = ['9:00 am', '9:30 am', '10:00 am', '10:30 am', '11:00 am', '11:30 am', '1:00 pm', '1:30 pm', '2:00 pm', '2:30 pm', '3:00 pm', '3:30 pm', '4:00 pm'];
 const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -121,7 +122,7 @@ const Demo = () => {
 
       <section className="sec-grey" id="demo-booking">
         <div className="cxl">
-          <div style={{ display: 'grid', gridTemplateColumns: '1.4fr 1fr', gap: '48px' }}>
+          <div className="demo-book-grid">
             <Reveal initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }}>
               <div className="rc-shell">
                 {/* step 1 — pick date & time */}
@@ -248,15 +249,15 @@ const Demo = () => {
                   ))}
                 </RevealGroup>
               </div>
-              <RevealGroup style={{ background: 'var(--blight)', border: '1px solid rgba(45,107,228,.16)', borderRadius: '16px', padding: '22px', display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '10px', marginBottom: '14px' }}>
+              <RevealGroup className="demo-stat-grid">
                 {[
                   { n: '500+', l: 'Contractors', c: 'var(--blue)' },
                   { n: '30 min', l: 'Walkthrough', c: 'var(--gold)' },
                   { n: 'Free', l: 'No card required', c: 'var(--gold)' },
                 ].map((it, i) => (
-                  <div key={i} style={{ background: '#fff', border: '1px solid var(--bdl)', borderRadius: '10px', padding: '16px', textAlign: 'center' }}>
-                    <div style={{ fontFamily: "'Plus Jakarta Sans',sans-serif", fontSize: '24px', fontWeight: '700', color: it.c }}>{it.n}</div>
-                    <div style={{ fontSize: '10px', color: '#8A92A6', marginTop: '4px', textTransform: 'uppercase', letterSpacing: '.06em' }}>{it.l}</div>
+                  <div key={i} className="demo-stat-card">
+                    <div className="demo-stat-n" style={{ color: it.c }}>{it.n}</div>
+                    <div className="demo-stat-l">{it.l}</div>
                   </div>
                 ))}
               </RevealGroup>

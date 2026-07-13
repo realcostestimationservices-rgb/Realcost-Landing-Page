@@ -145,14 +145,12 @@ img, svg, video, canvas, iframe { max-width: 100%; }
 }
 
 /* ── Demo page specific ── */
+/* The booking grid and the mini stat grid are classed and live in pages/demo.css */
 @media (max-width:768px) {
-  div[style*="grid-template-columns: 1.4fr 1fr"] { grid-template-columns:1fr !important; gap:28px !important; }
   .demo-perks-bar { padding:16px 20px !important; }
   .demo-perks-bar > div > div[style*="width: 1px"] { display:none !important; }
 }
 @media (max-width:480px) {
   .demo-perks-bar { padding:14px 16px !important; }
   .demo-perks-bar > div { flex-direction:column !important; align-items:flex-start !important; gap:14px !important; }
-  /* Demo "500+/30 min/Free" mini stat grid — 3-up is too cramped on phones */
-  div[style*="grid-template-columns: 1fr 1fr 1fr"] { grid-template-columns:repeat(3,1fr) !important; gap:8px !important; }
 }

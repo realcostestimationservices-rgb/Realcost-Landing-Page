@@ -1,0 +1,65 @@
+/* ===== Demo page ===== */
+
+/* Booking grid: the scheduler on the left, the "what we'll cover" panel on the right.
+   minmax(0,…) rather than a bare `1.4fr 1fr`: an `fr` track carries an implicit
+   min-width of auto, so the scheduler's min-content (~390px — the calendar row
+   plus its padding) holds the track open instead of letting it shrink, and the
+   grid ends up wider than the screen. */
+.demo-book-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 48px;
+}
+.demo-book-grid > * { min-width: 0; }
+
+/* Two columns need roughly 900px before the scheduler starts to crush. Stack
+   below that — which covers tablets in portrait (iPad Air is 820px wide), not
+   just phones. */
+@media (max-width: 1024px) {
+  .demo-book-grid { grid-template-columns: minmax(0, 1fr); gap: 28px; }
+}
+
+/* ===== "500+ / 30 min / Free" mini stats ===== */
+.demo-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+  background: var(--blight);
+  border: 1px solid rgba(45,107,228,.16);
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 14px;
+}
+/* RevealGroup wraps each child in its own motion div, so the grid items are
+   those wrappers — they need the min-width reset, not just the cards. */
+.demo-stat-grid > * { min-width: 0; }
+.demo-stat-card {
+  background: #fff;
+  border: 1px solid var(--bdl);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.demo-stat-n {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+}
+.demo-stat-l {
+  font-size: 10px;
+  color: #8A92A6;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* The three cards stay 3-up on phones, so their padding and label have to come
+   down: otherwise the longest label ("Contractors") plus 16px of padding either
+   side sets a min-content floor of ~90px per card, and three of those overrun a
+   320–375px screen. */
+@media (max-width: 480px) {
+  .demo-stat-grid { padding: 14px; gap: 8px; }
+  .demo-stat-card { padding: 12px 6px; }
+  .demo-stat-n { font-size: 19px; }
+  .demo-stat-l { font-size: 8.5px; letter-spacing: .03em; }
+}
