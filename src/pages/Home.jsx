@@ -139,7 +139,7 @@ const Home = ({ onNavigate }) => {
                 <div className="ph-stat"><div className="ph-stat-n">9</div><div className="ph-stat-l">Trades Supported</div></div>
               </div>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '32px' }}>
-                <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-prim" href={process.env.PUBLIC_URL + '/downloads/real-cost-brochure.pdf'} download>
+                <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-prim" href={process.env.PUBLIC_URL + '/downloads/RealCost_brochure.pdf'} download>
                   Download Brochure
                 </motion.a>
                 <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-ol-blue" onClick={() => onNavigate('demo')}>

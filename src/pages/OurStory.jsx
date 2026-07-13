@@ -89,6 +89,7 @@ const SLIDE_DURATION = 4000;
 const OurStory = ({ onNavigate }) => {
   const [activeSlide, setActiveSlide] = useState(0);
   const [paused, setPaused]           = useState(false);
+  const [openJob, setOpenJob]         = useState(null);
   const timerRef    = useRef(null);
   const trackRef    = useRef(null);
   const dragRef     = useRef({ active: false, startX: 0, scrollLeft: 0 });
@@ -442,30 +443,49 @@ const OurStory = ({ onNavigate }) => {
           </Reveal>
           <RevealGroup style={{ display: 'flex', flexDirection: 'column', gap: '14px', maxWidth: '900px', margin: '0 auto 36px' }}>
             {[
-              { title: 'Senior Full-Stack Engineer',    dept: 'Engineering',      type: 'Full-time · Hybrid (Toronto)',   desc: 'Build core estimating features end-to-end — takeoff canvas, auto-count, and the bid page — across React and Node.' },
-              { title: 'Product Designer',              dept: 'Design',           type: 'Full-time · Hybrid (Toronto)',   desc: 'Own the product experience for trade estimators, from research and flows to polished, shippable UI.' },
-              { title: 'Customer Success Manager',      dept: 'Customer Success', type: 'Full-time · 1200 Bloor Street West, Toronto',       desc: 'Onboard contractors, run demos, and make sure every customer gets value from Real Cost in their first week.' },
-              { title: 'Estimating Specialist (Trades)', dept: 'Product',         type: 'Full-time · Hybrid (Toronto)',   desc: 'Bring real electrical/mechanical estimating expertise to shape pricing data, workflows, and templates.' },
-            ].map((job, i) => (
-              <div key={i} style={{ background: 'rgba(255,255,255,.85)', border: '1px solid rgba(220,226,240,.9)', borderRadius: '16px', padding: '24px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '18px' }}>
-                <div style={{ flex: 1, minWidth: '240px' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '17px', fontWeight: '700', color: 'var(--txt)', letterSpacing: '-.3px' }}>{job.title}</span>
-                    <span style={{ background: 'var(--ind-light)', color: 'var(--ind)', fontSize: '11px', fontWeight: '600', padding: '3px 10px', borderRadius: '14px' }}>{job.dept}</span>
+              { title: 'Senior Full-Stack Engineer',    dept: 'Engineering',      type: 'Full-time · Hybrid (Toronto)',   summary: 'Build core estimating features end-to-end — takeoff canvas, auto-count, and the bid page — across React and Node.', details: ['Design and ship new features for the estimating workflow.', 'Work across React and Node to improve the full product experience.', 'Help maintain reliability, testing, and performance across core features.'] },
+              { title: 'Product Designer',              dept: 'Design',           type: 'Full-time · Hybrid (Toronto)',   summary: 'Own the product experience for trade estimators, from research and flows to polished, shippable UI.', details: ['Shape the user experience for estimating workflows from end to end.', 'Collaborate closely with product and engineering to turn ideas into refined UI.', 'Help craft design systems and clear, intuitive product patterns.'] },
+              { title: 'Customer Success Manager',      dept: 'Customer Success', type: 'Full-time · 1200 Bloor Street West, Toronto', summary: 'Onboard contractors, run demos, and make sure every customer gets value from Real Cost in their first week.', details: ['Guide new customers through onboarding and setup.', 'Run product demos and support adoption across their estimating team.', 'Act as a trusted partner for customer growth and retention.'] },
+              { title: 'Estimating Specialist (Trades)', dept: 'Product',         type: 'Full-time · Hybrid (Toronto)',   summary: 'Bring real electrical/mechanical estimating expertise to shape pricing data, workflows, and templates.', details: ['Use your estimating experience to improve workflows and templates.', 'Help shape pricing logic and feature requirements for the platform.', 'Work closely with product and engineering to solve real-world estimating challenges.'] },
+            ].map((job, i) => {
+              const isOpen = openJob === i;
+              return (
+                <motion.div
+                  key={i}
+                  whileHover={{ y: -2, boxShadow: '0 10px 24px rgba(15,37,87,.08)' }}
+                  style={{ background: 'rgba(255,255,255,.85)', border: '1px solid rgba(220,226,240,.9)', borderRadius: '16px', padding: '24px 28px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '18px', cursor: 'pointer' }}
+                  onClick={() => setOpenJob(isOpen ? null : i)}
+                >
+                  <div style={{ flex: 1, minWidth: '240px' }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px', flexWrap: 'wrap' }}>
+                      <span style={{ fontSize: '17px', fontWeight: '700', color: 'var(--txt)', letterSpacing: '-.3px' }}>{job.title}</span>
+                      <span style={{ background: 'var(--ind-light)', color: 'var(--ind)', fontSize: '11px', fontWeight: '600', padding: '3px 10px', borderRadius: '14px' }}>{job.dept}</span>
+                    </div>
+                    <div style={{ fontSize: '12.5px', color: '#8A92A6', fontWeight: '500', marginBottom: '8px' }}>{job.type}</div>
+                    <div style={{ fontSize: '13.5px', color: '#6B7489', lineHeight: '1.7', fontWeight: '300', maxWidth: '560px' }}>{job.summary}</div>
+                    {isOpen && (
+                      <div style={{ marginTop: '12px', paddingTop: '10px', borderTop: '1px solid rgba(220,226,240,.8)' }}>
+                        <div style={{ fontSize: '13px',  fontWeight: '600', color: 'var(--txt)', marginBottom: '8px' }}>Job Description</div>
+                        <ul style={{ margin: 0, paddingLeft: '18px', color: '#6B7489', fontSize: '13px', lineHeight: '1.7' }}>
+                          {job.details.map(detail => <li key={detail}>{detail}</li>)}
+                        </ul>
+                      </div>
+                    )}
                   </div>
-                  <div style={{ fontSize: '12.5px', color: '#8A92A6', fontWeight: '500', marginBottom: '8px' }}>{job.type}</div>
-                  <div style={{ fontSize: '13.5px', color: '#6B7489', lineHeight: '1.7', fontWeight: '300', maxWidth: '560px' }}>{job.desc}</div>
-                </div>
-                <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-prim" href={`mailto:careers@realcostestimating.ca?subject=${encodeURIComponent('Application: ' + job.title)}`} style={{ flexShrink: 0 }}>
-                  Apply →
-                </motion.a>
-              </div>
-            ))}
+                  <div style={{ display: 'flex', gap: '10px', alignItems: 'center', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '12px', fontWeight: '600', color: 'var(--sap)' }}>{isOpen ? 'Hide details' : 'View details'}</span>
+                    <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-prim" href={`mailto:hr@realcost.com?subject=${encodeURIComponent('Application: ' + job.title)}`} onClick={(e) => e.stopPropagation()} style={{ flexShrink: 0 }}>
+                      Apply →
+                    </motion.a>
+                  </div>
+                </motion.div>
+              );
+            })}
           </RevealGroup>
 
           <p style={{ textAlign: 'center', fontSize: '13px', color: '#8A92A6', fontWeight: '400' }}>
             Don't see your role?{' '}
-            <a href="mailto:careers@realcostestimating.ca" style={{ color: 'var(--sap)', fontWeight: '600', textDecoration: 'none' }}>
+            <a href="mailto:hr@realcost.com" style={{ color: 'var(--sap)', fontWeight: '600', textDecoration: 'none' }}>
               Email us anyway →
             </a>
           </p>
