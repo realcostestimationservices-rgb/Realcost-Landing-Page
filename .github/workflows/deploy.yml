@@ -1,0 +1,56 @@
+name: Deploy Landing Page to S3 and CloudFront
+
+on:
+  push:
+    branches: [ uat ]
+
+env:
+  AWS_REGION: ca-central-1
+  S3_BUCKET: ${{ secrets.S3_BUCKET_UAT }}
+  CLOUDFRONT_DISTRIBUTION_ID: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID_UAT }}
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: uat
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        env:
+          REACT_APP_APP_URL: ${{ secrets.REACT_APP_APP_URL_UAT }}
+          REACT_APP_API_BASE_URL: ${{ secrets.REACT_APP_API_BASE_URL_UAT }}
+        run: npm run build
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Deploy to S3
+        run: |
+          aws s3 sync ./build/ s3://$S3_BUCKET/ --delete \
+            --cache-control "public, max-age=31536000, immutable" \
+            --exclude "index.html" \
+            --exclude "asset-manifest.json" \
+            --exclude "service-worker.js" \
+            --exclude "*.webmanifest"
+          aws s3 cp ./build/index.html s3://$S3_BUCKET/ --cache-control "no-cache, no-store, must-revalidate"
+          aws s3 cp ./build/asset-manifest.json s3://$S3_BUCKET/ --cache-control "no-cache, no-store, must-revalidate" 2>/dev/null || true
+          aws s3 cp ./build/service-worker.js s3://$S3_BUCKET/ --cache-control "no-cache, no-store, must-revalidate" 2>/dev/null || true
+
+      - name: Invalidate CloudFront cache
+        run: aws cloudfront create-invalidation --distribution-id $CLOUDFRONT_DISTRIBUTION_ID --paths "/*"
