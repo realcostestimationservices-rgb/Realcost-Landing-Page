@@ -8,8 +8,8 @@ const testimonials = [
     name: 'James M.',
     company: 'JM Electrical — Toronto, ON',
     badge: '10× faster',
-    badgeColor: '#E6F7EE',
-    badgeTextColor: '#1A6B45'
+    badgeColor: 'var(--blue-50)',
+    badgeTextColor: 'var(--blue-700)'
   },
   {
     stars: '★★★★★',
@@ -29,8 +29,8 @@ const testimonials = [
     name: 'David K.',
     company: 'Volt Pro — Montreal, QC',
     badge: 'Days → Hours',
-    badgeColor: '#EBF1FD',
-    badgeTextColor: '#2D6BE4'
+    badgeColor: 'var(--blue-50)',
+    badgeTextColor: 'var(--blue-600)'
   },
   {
     stars: '★★★★★',
@@ -39,8 +39,8 @@ const testimonials = [
     name: 'Michael T.',
     company: 'Bright Spark — Vancouver, BC',
     badge: '40h saved/mo',
-    badgeColor: '#FDF6E3',
-    badgeTextColor: '#A07020'
+    badgeColor: 'var(--blue-50)',
+    badgeTextColor: '#1D4ED8'
   },
   {
     stars: '★★★★★',
@@ -60,8 +60,8 @@ const testimonials = [
     name: 'Robert H.',
     company: 'Elite Wiring — Edmonton, AB',
     badge: 'More trades',
-    badgeColor: '#E6F7EE',
-    badgeTextColor: '#1A6B45'
+    badgeColor: 'var(--blue-50)',
+    badgeTextColor: 'var(--blue-700)'
   },
   {
     stars: '★★★★★',
@@ -70,8 +70,8 @@ const testimonials = [
     name: 'Priya S.',
     company: 'Horizon Electrical — Mississauga, ON',
     badge: 'Pro quotes',
-    badgeColor: '#EBF1FD',
-    badgeTextColor: '#2D6BE4',
+    badgeColor: 'var(--blue-50)',
+    badgeTextColor: 'var(--blue-600)',
     dark: true
   }
 ];
@@ -225,7 +225,7 @@ const Testimonials = () => {
                   <div style={{ fontSize: '11px', color: '#8A92A6' }}>{t.company}</div>
                 </div>
                 {t.badge && (
-                  <span style={{ background: t.badgeColor || '#E6F7EE', color: t.badgeTextColor || '#1A6B45', borderRadius: '20px', padding: '4px 10px', fontSize: '10px', fontWeight: '500', marginLeft: 'auto', whiteSpace: 'nowrap' }}>
+                  <span style={{ background: t.badgeColor || 'var(--blue-50)', color: t.badgeTextColor || 'var(--blue-700)', borderRadius: '20px', padding: '4px 10px', fontSize: '10px', fontWeight: '500', marginLeft: 'auto', whiteSpace: 'nowrap' }}>
                     {t.badge}
                   </span>
                 )}

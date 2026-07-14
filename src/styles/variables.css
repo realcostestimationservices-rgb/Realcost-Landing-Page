@@ -1,12 +1,16 @@
 /* ===== CSS Variables ===== */
 :root {
-  /* ===== Premium palette: deep navy base + royal-indigo accent + champagne gold ===== */
+  /* ===== Palette: deep navy base + white surfaces + blue accent ===== */
   --sap: #112646;        /* deep navy (primary brand) */
   --sap2: #1D3A6B;
   --sap3: #2B5089;
-  --gold: #C5A047;       /* champagne gold (refined accent) */
+  --acc: #2563EB;        /* royal blue — accent on white surfaces */
+  --acc2: #93C5FD;       /* light blue — accent on navy surfaces */
+  --acc3: #DBEAFE;       /* palest blue — tints and fills */
+  /* Gold is reserved for star ratings and the 15-year badge — not a general accent. */
+  --gold: #C9A84C;
   --gold2: #E4C778;
-  --gold3: #F4E2A8;
+  --gold3: #9A7B26;      /* deep gold — readable on white surfaces */
   --n: #0A1428;
   --surf: #0E1E3C;
   --card: #142142;
@@ -27,7 +31,7 @@
   --dark: var(--n);
   --txt: #0D1A33;        /* rich near-navy text */
   --grd-sap: linear-gradient(135deg,#112646 0%,#1E3C72 100%);
-  --grd-gold: linear-gradient(135deg,#C5A047 0%,#E6C878 100%);
+  --grd-acc: linear-gradient(135deg,#1D4ED8 0%,#3B82F6 100%);
   --grd-hero: linear-gradient(135deg,#0E1F3D 0%,#1C3A6E 60%,#2B5089 100%);
   --glass-bg: rgba(255,255,255,.72);
   --glass-border: rgba(255,255,255,.55);

@@ -37,11 +37,12 @@ const WhyRealCost = ({ onNavigate }) => {
         {/* hero bg image */}
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/hero_whyrealcost.png'})` }}></div>
         {/* directional overlay */}
-        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.88) 0%,rgba(15,37,87,.72) 42%,rgba(15,37,87,.28) 75%,transparent 100%)' }} />
+        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
+        <div className="hero-glow" />
         {/* dot grid */}
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', backgroundImage:'radial-gradient(rgba(255,255,255,.026) 1px,transparent 1px)', backgroundSize:'32px 32px' }} />
-        {/* gold top accent line */}
-        <div style={{ position:'absolute', top:0, left:0, right:0, height:'2.5px', background:'linear-gradient(90deg,transparent 0%,rgba(201,168,76,.5) 25%,rgba(228,199,120,.92) 50%,rgba(201,168,76,.5) 75%,transparent 100%)', zIndex:2, pointerEvents:'none' }} />
+        {/* blue top accent line */}
+        <div style={{ position:'absolute', top:0, left:0, right:0, height:'2.5px', background:'linear-gradient(90deg,transparent 0%,rgba(96,165,250,.5) 25%,rgba(147,197,253,.92) 50%,rgba(96,165,250,.5) 75%,transparent 100%)', zIndex:2, pointerEvents:'none' }} />
 
         <div className="cxl" style={{ position:'relative', zIndex:1 }}>
           <div style={{ maxWidth:'620px' }}>
@@ -51,21 +52,21 @@ const WhyRealCost = ({ onNavigate }) => {
             transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
           >
           {/* badge */}
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.15 }} style={{ display:'inline-flex', alignItems:'center', gap:'8px', background:'rgba(201,168,76,.13)', border:'1px solid rgba(201,168,76,.30)', color:'#E4C778', fontSize:'10px', fontWeight:'700', padding:'5px 15px', borderRadius:'24px', letterSpacing:'.10em', textTransform:'uppercase', marginBottom:'16px' }}>
-            <span style={{ width:'6px', height:'6px', borderRadius:'50%', background:'#E4C778', boxShadow:'0 0 8px rgba(228,199,120,.7)', display:'inline-block', animation:'blink 2.4s ease-in-out infinite' }} />
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.15 }} style={{ display:'inline-flex', alignItems:'center', gap:'8px', background:'rgba(10,20,40,.68)', border:'1px solid rgba(147,197,253,.50)', color:'#E6F0FF', fontSize:'10px', fontWeight:'700', padding:'5px 15px', borderRadius:'24px', letterSpacing:'.10em', textTransform:'uppercase', marginBottom:'16px', backdropFilter:'blur(10px)', WebkitBackdropFilter:'blur(10px)' }}>
+            <span style={{ width:'6px', height:'6px', borderRadius:'50%', background:'#93C5FD', boxShadow:'0 0 8px rgba(147,197,253,.7)', display:'inline-block', animation:'blink 2.4s ease-in-out infinite' }} />
             Why Real Cost?
           </motion.div>
 
           {/* heading */}
-          <h1 className="wrc-hero-h1" style={{ fontWeight:'800', color:'#fff', lineHeight:'1.08', margin:'0 0 16px' }}>
+          <h1 className="wrc-hero-h1" style={{ fontWeight:'800', color:'#fff', lineHeight:'1.08', margin:'0 0 16px', textShadow:'0 1px 3px rgba(5,10,22,.75), 0 4px 28px rgba(5,10,22,.65)' }}>
             Take Your Electrical Contracting<br />Business to the{' '}
-            <em style={{ fontStyle:'normal', background:'linear-gradient(125deg,#C9A84C 0%,#F0D98A 55%,#DFC06A 100%)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>Next Level</em>
+            <em style={{ fontStyle:'normal', background:'linear-gradient(125deg,#60A5FA 0%,#BFDBFE 55%,#93C5FD 100%)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>Next Level</em>
           </h1>
 
           {/* subtitle */}
-          <p style={{ fontSize:'15px', color:'rgba(210,220,248,.72)', lineHeight:'1.80', margin:'0 0 26px', fontWeight:'300' }}>
+          <p style={{ fontSize:'15px', color:'rgba(240,244,255,.95)', lineHeight:'1.80', margin:'0 0 26px', fontWeight:'400', textShadow:'0 1px 3px rgba(5,10,22,.80), 0 2px 20px rgba(5,10,22,.65)' }}>
             Canada's{' '}
-            <strong style={{ color:'rgba(240,217,138,.85)', fontWeight:'500' }}>leading electrical estimation company</strong>
+            <strong style={{ color:'#fff', fontWeight:'500' }}>leading electrical estimation company</strong>
             {' '}— trusted by 500+ contractors, built on 15+ years of job-winning formulas.
           </p>
 
@@ -84,7 +85,7 @@ const WhyRealCost = ({ onNavigate }) => {
             <div style={{ display:'flex', gap:'10px', animation:'ticker 32s linear infinite', width:'max-content' }}>
               {[...perks, ...perks].map(({ title }, i) => (
                 <div key={i} style={{ display:'inline-flex', alignItems:'center', gap:'9px', background:'rgba(255,255,255,.14)', border:'1px solid rgba(255,255,255,.25)', borderRadius:'8px', padding:'9px 18px', flexShrink:0 }}>
-                  <span style={{ fontSize:'10px', color:'#E4C778', lineHeight:1 }}>✦</span>
+                  <span style={{ fontSize:'10px', color:'#93C5FD', lineHeight:1 }}>✦</span>
                   <span style={{ fontSize:'12.5px', fontWeight:'600', color:'rgba(255,255,255,.92)', letterSpacing:'.01em', whiteSpace:'nowrap' }}>{title}</span>
                 </div>
               ))}
@@ -150,14 +151,14 @@ const WhyRealCost = ({ onNavigate }) => {
       {/* ── Collage ── */}
       <section className="wrc-section-collage" style={{ background: '#fff', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', top: '-80px', left: '-80px', width: '380px', height: '380px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(17,38,70,.06) 0%,transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ position: 'absolute', bottom: '-60px', right: '-60px', width: '320px', height: '320px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(197,160,71,.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', bottom: '-60px', right: '-60px', width: '320px', height: '320px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(96,165,250,.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div className="cxl">
           <div className="wrc-2col-wide">
 
             {/* Left: photo collage */}
             <Reveal as="div" className="wrc-collage-wrap" initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }}>
-              <div style={{ position: 'absolute', left: '-14px', top: '32px', width: '56%', height: '56%', borderRadius: '20px', background: 'linear-gradient(135deg,rgba(79,70,229,.13),rgba(197,160,71,.10))', zIndex: 0 }} />
-              <div style={{ position: 'absolute', right: '-14px', bottom: '28px', width: '44%', height: '38%', borderRadius: '16px', background: 'linear-gradient(135deg,rgba(197,160,71,.10),rgba(79,70,229,.07))', zIndex: 0 }} />
+              <div style={{ position: 'absolute', left: '-14px', top: '32px', width: '56%', height: '56%', borderRadius: '20px', background: 'linear-gradient(135deg,rgba(79,70,229,.13),rgba(96,165,250,.10))', zIndex: 0 }} />
+              <div style={{ position: 'absolute', right: '-14px', bottom: '28px', width: '44%', height: '38%', borderRadius: '16px', background: 'linear-gradient(135deg,rgba(96,165,250,.10),rgba(79,70,229,.07))', zIndex: 0 }} />
               <div style={{ position: 'absolute', right: 0, top: 0, width: '68%', height: '62%', borderRadius: '16px', overflow: 'hidden', zIndex: 1, boxShadow: '0 20px 56px rgba(17,38,70,.18), 0 0 0 1px rgba(17,38,70,.06)' }}>
                 <img src={process.env.PUBLIC_URL + '/images/about/2nd.png'} alt="Team working" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
@@ -208,9 +209,9 @@ const WhyRealCost = ({ onNavigate }) => {
         <div className="cxl">
           <div className="wrc-2col">
 
-            <Reveal initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }} style={{ background: 'linear-gradient(135deg,rgba(17,38,70,.05),rgba(197,160,71,.09))', borderRadius: '22px', padding: '48px 40px', border: '1px solid rgba(17,38,70,.09)', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'var(--grd-gold)' }} />
-              <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--gold2)', textTransform: 'uppercase', letterSpacing: '.12em', marginBottom: '14px' }}>Built By Estimators, For Estimators</div>
+            <Reveal initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }} style={{ background: 'linear-gradient(135deg,rgba(17,38,70,.05),rgba(96,165,250,.09))', borderRadius: '22px', padding: '48px 40px', border: '1px solid rgba(17,38,70,.09)', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'var(--grd-acc)' }} />
+              <div style={{ fontSize: '11px', fontWeight: '700', color: 'var(--acc)', textTransform: 'uppercase', letterSpacing: '.12em', marginBottom: '14px' }}>Built By Estimators, For Estimators</div>
               <div style={{ fontSize: '28px', fontWeight: '800', color: 'var(--txt)', letterSpacing: '-.8px', lineHeight: '1.2', marginBottom: '16px' }}>
                 Made by Canada's most successful electrical estimators
               </div>
@@ -310,7 +311,7 @@ const WhyRealCost = ({ onNavigate }) => {
                   { label: 'Industry Benchmark',      desc: 'Setting the standard for excellence in Canada.' },
                 ].map(({ label, desc }) => (
                   <div key={label} style={{ background: '#fff', border: '1px solid rgba(220,226,240,.9)', borderRadius: '14px', padding: '18px 16px' }}>
-                    <div style={{ width: '28px', height: '3px', background: 'var(--grd-gold)', borderRadius: '2px', marginBottom: '12px' }} />
+                    <div style={{ width: '28px', height: '3px', background: 'var(--grd-acc)', borderRadius: '2px', marginBottom: '12px' }} />
                     <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--txt)', marginBottom: '5px' }}>{label}</div>
                     <div style={{ fontSize: '12px', color: '#8A92A6', lineHeight: '1.6', fontWeight: '300' }}>{desc}</div>
                   </div>
@@ -340,7 +341,7 @@ const WhyRealCost = ({ onNavigate }) => {
               { label: 'Canadian Standard',       desc: 'Designed specifically for the Canadian electrical market with city-wise pricing and local compliance in mind.' },
             ].map(({ label, desc }) => (
               <div key={label} style={{ background: '#fff', border: '1px solid rgba(220,226,240,.85)', borderRadius: '18px', padding: '32px 28px', boxShadow: '0 4px 24px rgba(15,37,87,.06)', height: '100%' }}>
-                <div style={{ width: '36px', height: '4px', background: 'var(--grd-gold)', borderRadius: '2px', marginBottom: '20px' }} />
+                <div style={{ width: '36px', height: '4px', background: 'var(--grd-acc)', borderRadius: '2px', marginBottom: '20px' }} />
                 <div style={{ fontSize: '16px', fontWeight: '700', color: 'var(--txt)', marginBottom: '10px', letterSpacing: '-.3px' }}>{label}</div>
                 <div style={{ fontSize: '13.5px', color: '#6B7489', lineHeight: '1.78', fontWeight: '300' }}>{desc}</div>
               </div>
@@ -373,8 +374,8 @@ const WhyRealCost = ({ onNavigate }) => {
               },
             ].map(({ label, body }) => (
               <div key={label} style={{ background: 'linear-gradient(135deg,#0E1E3A 0%,#1A3A72 100%)', borderRadius: '22px', padding: '44px 40px', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'var(--grd-gold)' }} />
-                <div style={{ position: 'absolute', bottom: '-40px', right: '-40px', width: '180px', height: '180px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(197,160,71,.10) 0%,transparent 70%)', pointerEvents: 'none' }} />
+                <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'var(--grd-acc)' }} />
+                <div style={{ position: 'absolute', bottom: '-40px', right: '-40px', width: '180px', height: '180px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(96,165,250,.10) 0%,transparent 70%)', pointerEvents: 'none' }} />
                 <div style={{ fontSize: '26px', fontWeight: '800', color: '#fff', letterSpacing: '-.6px', marginBottom: '16px' }}>{label}</div>
                 <p style={{ fontSize: '14px', color: 'rgba(210,220,248,.72)', lineHeight: '1.82', fontWeight: '300', margin: 0 }}>{body}</p>
               </div>
@@ -386,7 +387,7 @@ const WhyRealCost = ({ onNavigate }) => {
       {/* ── CTA band ── */}
       <div className="cta-band">
         <Reveal as="div" className="wrc-cta-pad">
-          <div style={{ fontSize: '11px', fontWeight: '700', color: 'rgba(228,199,120,.75)', textTransform: 'uppercase', letterSpacing: '.14em', marginBottom: '14px' }}>
+          <div style={{ fontSize: '11px', fontWeight: '700', color: 'rgba(147,197,253,.75)', textTransform: 'uppercase', letterSpacing: '.14em', marginBottom: '14px' }}>
             Bringing You Nothing But The Best
           </div>
           <h2 style={{ fontSize: '42px', fontWeight: '800', color: '#fff', letterSpacing: '-1.5px', marginBottom: '14px', lineHeight: '1.15' }}>

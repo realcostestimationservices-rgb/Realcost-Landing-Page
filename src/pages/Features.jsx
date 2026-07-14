@@ -6,12 +6,12 @@ const features = [
   { accent: 'var(--grd-blue)', title: 'Digital Takeoff Canvas', body: 'Upload PDF drawing sets and navigate every page on a digital canvas. Place symbols manually or let the platform detect matching symbols. Multi-page projects supported with full page navigation.', img: '/images/features/take_off.png' },
   { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Symbol Auto-Count', body: 'Draw a rectangle around any reference symbol — a light fixture, outlet, or device. The platform instantly finds and counts all matching assemblies across every drawing page.', img: '/images/features/blueprint.png' },
   { accent: 'linear-gradient(90deg,var(--red),var(--red2))', title: 'Bid Page', body: 'Your bid auto-calculates from takeoff counts. Material cost, labour hours, overhead percentage, markup, and a project duration calculator — all in one view.', img: '/images/features/bid_page.png' },
-  { accent: 'var(--grd-gold)', title: 'Canadian City-Based Pricing', body: 'Material rates auto-adjust to regional pricing for your city — Quebec, Ottawa, Toronto, Montreal, Calgary, Vancouver, and more.', img: '/images/misc/project.png' },
+  { accent: 'var(--grd-acc)', title: 'Canadian City-Based Pricing', body: 'Material rates auto-adjust to regional pricing for your city — Quebec, Ottawa, Toronto, Montreal, Calgary, Vancouver, and more.', img: '/images/misc/project.png' },
   { accent: 'linear-gradient(90deg,#0891B2,#06B6D4)', title: 'Supplier RFQs', body: 'Send requests for quotation to your material distributors directly from the Bid Page. Compare supplier quotes side-by-side and apply the best price instantly.', img: '/images/home/benefits_3.png' },
   { accent: 'linear-gradient(90deg,#5B21B6,#7C3AED)', title: 'Quote Letter Generator', body: 'One click generates a professional branded PDF or Word quote letter from your bid — ready to submit to your client immediately.', img: '/images/features/quote_letter.png' },
   { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Estimate Graph & Analytics', body: 'Visual breakdown chart of your estimate showing material, labour, overhead, and markup proportions. Understand your bid at a glance.', img: '/images/home/benefits_2.png' },
   { accent: 'linear-gradient(90deg,var(--sap),var(--sap2))', title: 'Team & Role Management', body: 'Owner and estimator roles. Assign projects to team members, track progress, and manage subscriptions — all from one account dashboard.', img: '/images/home/benefits_1.png' },
-  { accent: 'var(--grd-gold)', title: 'Multi-Trade Support', body: 'One platform for all your trades — electrical, mechanical, plumbing, fire alarm, voice & data, security, AV, and heat tracing all supported.', img: '/images/trades/mechanical.jpg' },
+  { accent: 'var(--grd-acc)', title: 'Multi-Trade Support', body: 'One platform for all your trades — electrical, mechanical, plumbing, fire alarm, voice & data, security, AV, and heat tracing all supported.', img: '/images/trades/mechanical.jpg' },
 ];
 
 const chips = ['Digital Takeoff Canvas', 'Auto-Count', 'Bid Page', 'Canadian City Pricing', 'Supplier RFQs', 'Quote Letter Generator', 'Estimate Graph', 'Team Management'];
@@ -22,7 +22,8 @@ const Features = ({ onNavigate }) => {
       <section className="page-hero">
         <div className="page-hero-accent"></div>
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/features/our_features_white.png'})`, backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat' }}></div>
-        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.95) 0%,rgba(15,37,87,.90) 38%,rgba(15,37,87,.40) 60%,transparent 75%)' }} />
+        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
+        <div className="hero-glow" />
         <div className="cxl" style={{ textAlign:'left' }}>
           <motion.div
             style={{ maxWidth:'580px' }}
@@ -35,7 +36,7 @@ const Features = ({ onNavigate }) => {
             <p className="sec-sub" style={{ margin:'0 0 36px' }}>From PDF upload to branded quote letter — Real Cost handles your full estimation workflow in one digital platform.</p>
             <motion.div className="fh-chip-row" style={{ display: 'flex', gap: '7px', flexWrap: 'wrap', marginBottom: '20px' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.3 }}>
               {chips.map((c, i) => (
-                <span key={i} className={`ph-chip ${c.includes('Quote Letter Generator') ? 'ph-chip-gold' : ''}`}>{c}</span>
+                <span key={i} className={`ph-chip ${c.includes('Quote Letter Generator') ? 'ph-chip-accent' : ''}`}>{c}</span>
               ))}
             </motion.div>
             <motion.div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap' }} initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.4 }}>
@@ -116,7 +117,7 @@ const Features = ({ onNavigate }) => {
           <Reveal style={{ marginBottom: '48px' }}>
             <div style={{ fontSize: '38px', fontWeight: '800', color: 'var(--txt)', letterSpacing: '-1.2px', lineHeight: '1.15' }}>
               Why Choose<br />
-              <span style={{ background: 'var(--grd-gold)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Real Cost</span>
+              <span style={{ background: 'var(--grd-acc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Real Cost</span>
             </div>
           </Reveal>
           <RevealGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '40px 44px' }}>
@@ -129,8 +130,8 @@ const Features = ({ onNavigate }) => {
               { n: '06', title: 'Fast, Reliable Delivery', highlight: false, desc: 'A streamlined workflow means your team estimates and quotes faster, without compromising accuracy.' },
             ].map(({ n, title, highlight, desc }) => (
               <div key={n} style={{ borderTop: '1px solid rgba(17,38,70,.12)', paddingTop: '20px' }}>
-                <div style={{ fontSize: '13px', fontWeight: '800', color: highlight ? 'var(--gold)' : 'var(--sap)', letterSpacing: '.04em', marginBottom: '14px' }}>{n}</div>
-                <div style={{ fontSize: '15.5px', fontWeight: '700', color: highlight ? 'var(--gold)' : 'var(--txt)', marginBottom: '10px', letterSpacing: '-.2px' }}>{title}</div>
+                <div style={{ fontSize: '13px', fontWeight: '800', color: highlight ? 'var(--acc)' : 'var(--sap)', letterSpacing: '.04em', marginBottom: '14px' }}>{n}</div>
+                <div style={{ fontSize: '15.5px', fontWeight: '700', color: highlight ? 'var(--acc)' : 'var(--txt)', marginBottom: '10px', letterSpacing: '-.2px' }}>{title}</div>
                 <div style={{ fontSize: '13px', color: '#6B7489', lineHeight: '1.75', fontWeight: '300' }}>{desc}</div>
               </div>
             ))}

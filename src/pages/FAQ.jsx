@@ -73,9 +73,9 @@ const IconBolt = () => (
 );
 
 const stats = [
-  { val: '14 Days',  label: 'Free trial, full access', ico: <IconCalendar />, tone: 'gold' },
+  { val: '14 Days',  label: 'Free trial, full access', ico: <IconCalendar />, tone: 'accent' },
   { val: 'No Card',  label: 'Required to start',       ico: <IconCardOff />,  tone: 'navy' },
-  { val: '15+ Yrs',  label: 'Estimation expertise',    ico: <IconHardHat />,  tone: 'gold' },
+  { val: '15+ Yrs',  label: 'Estimation expertise',    ico: <IconHardHat />,  tone: 'accent' },
   { val: 'Same Day', label: 'Support response',        ico: <IconBolt />,     tone: 'navy' },
 ];
 
@@ -118,7 +118,8 @@ const FAQ = ({ onNavigate }) => {
       <section className="page-hero">
         <div className="page-hero-accent" />
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/our_bg.png'})` }} />
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0, background: 'linear-gradient(105deg,rgba(10,20,40,.97) 0%,rgba(15,37,87,.93) 45%,rgba(15,37,87,.55) 70%,transparent 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, background: 'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
+        <div className="hero-glow" />
         <div className="cxl" style={{ textAlign: 'left' }}>
           <motion.div
             style={{ maxWidth: '600px' }}
@@ -169,7 +170,7 @@ const FAQ = ({ onNavigate }) => {
 
           {/* Section heading */}
           <div style={{ textAlign: 'center', marginBottom: '36px' }}>
-            <div style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '.18em', color: '#C5A047', marginBottom: '12px' }}>
+            <div style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '.18em', color: '#2563EB', marginBottom: '12px' }}>
               Common Questions
             </div>
             <h2 style={{ fontSize: '36px', fontWeight: '800', color: '#112646', letterSpacing: '-1px', margin: '0 0 14px' }}>
@@ -269,7 +270,7 @@ const FAQ = ({ onNavigate }) => {
       <section style={{ background: '#0B1629', padding: '80px 0' }}>
         <div className="cxl" style={{ textAlign: 'center' }}>
           <div>
-            <div style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '.18em', color: '#C5A047', marginBottom: '16px' }}>
+            <div style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', letterSpacing: '.18em', color: '#2563EB', marginBottom: '16px' }}>
               Premium support included
             </div>
             <h2 style={{ fontSize: '36px', fontWeight: '800', color: '#fff', letterSpacing: '-1px', marginBottom: '14px' }}>

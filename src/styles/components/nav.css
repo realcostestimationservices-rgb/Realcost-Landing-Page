@@ -119,27 +119,12 @@
   white-space: nowrap;
   letter-spacing: -.01em;
 }
-.nl::after {
-  content: '';
-  position: absolute;
-  left: 16px;
-  right: 16px;
-  bottom: 4px;
-  height: 1.5px;
-  background: var(--gold, #C9A84C);
-  border-radius: 2px;
-  transform: scaleX(0);
-  transform-origin: center;
-  transition: transform .25s cubic-bezier(.22,1,.36,1);
-}
 .nl:hover { color: #fff; background: rgba(255,255,255,.10); transform: translateY(-1px); }
-.nl:hover::after { transform: scaleX(1); }
 .nl.active {
   color: #fff;
   background: rgba(255,255,255,.14);
   font-weight: 600;
 }
-.nl.active::after { transform: scaleX(1); }
 .nav-cta {
   background: var(--grd-prim);
   color: #fff;

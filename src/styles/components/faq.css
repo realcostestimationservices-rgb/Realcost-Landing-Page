@@ -274,17 +274,17 @@
   transition: background .22s, color .22s, transform .22s;
 }
 .faq-stat-ico svg { width: 20px; height: 20px; }
-.faq-stat.gold .faq-stat-ico {
-  background: rgba(197, 160, 71, .12);
-  color: var(--gold);
+.faq-stat.accent .faq-stat-ico {
+  background: rgba(96,165,250, .12);
+  color: var(--acc);
 }
 .faq-stat:hover .faq-stat-ico {
   background: var(--sap);
   color: #fff;
   transform: translateY(-2px);
 }
-.faq-stat.gold:hover .faq-stat-ico {
-  background: var(--gold);
+.faq-stat.accent:hover .faq-stat-ico {
+  background: var(--acc);
   color: #fff;
 }
 .faq-stat-txt { min-width: 0; }

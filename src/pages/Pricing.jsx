@@ -95,8 +95,8 @@ function writeCache(plans) {
 
 const Check = ({ light }) => (
   <svg width="18" height="18" viewBox="0 0 18 18" fill="none" style={{ flexShrink: 0 }}>
-    <circle cx="9" cy="9" r="9" fill={light ? 'rgba(165,166,246,.2)' : '#EEEFFE'} />
-    <path d="M5 9l2.8 2.8 5-5" stroke={light ? '#A5A6F6' : '#5A5BE6'} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
+    <circle cx="9" cy="9" r="9" fill={light ? 'rgba(147,186,251,.22)' : '#EFF5FF'} />
+    <path d="M5 9l2.8 2.8 5-5" stroke={light ? '#93BAFB' : '#1D5FD8'} strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round" />
   </svg>
 );
 
@@ -161,7 +161,8 @@ const Pricing = ({ onNavigate }) => {
       <section className="page-hero">
         <div className="page-hero-accent" />
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/pricing/pricing.png'})` }} />
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.96) 0%,rgba(15,37,87,.92) 40%,rgba(15,37,87,.45) 65%,transparent 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
+        <div className="hero-glow" />
         <div className="cxl" style={{ textAlign: 'left' }}>
           <motion.div
             style={{ maxWidth: '560px' }}

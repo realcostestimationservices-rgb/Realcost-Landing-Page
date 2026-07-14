@@ -2,7 +2,7 @@
 
 /* Used by .badge-dot (home hero) and .page-hero .pg-badge::before */
 @keyframes blink {
-  0%,100% { opacity:1; box-shadow:0 0 8px var(--gold); }
+  0%,100% { opacity:1; box-shadow:0 0 8px var(--acc); }
   50% { opacity:.3; box-shadow:none; }
 }
 

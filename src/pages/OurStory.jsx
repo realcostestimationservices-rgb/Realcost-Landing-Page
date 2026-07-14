@@ -163,7 +163,8 @@ const OurStory = ({ onNavigate }) => {
       <section className="page-hero os-hero">
         <div className="page-hero-accent" />
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/our_bg.png'})` }}></div>
-        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.88) 0%,rgba(15,37,87,.72) 42%,rgba(15,37,87,.28) 75%,transparent 100%)' }} />
+        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
+        <div className="hero-glow" />
         <div className="cxl" style={{ textAlign:'left' }}>
           <motion.div
             style={{ maxWidth:'580px' }}
@@ -173,7 +174,7 @@ const OurStory = ({ onNavigate }) => {
           >
             <div className="pg-badge">Your Estimating Partner</div>
             <div className="ph-title">15 Years of Winning Bids.<br />Now in Your Hands.</div>
-            <p style={{ fontSize:'15px', color:'rgba(240,217,138,.85)', fontWeight:'600', letterSpacing:'.01em', margin:'0 0 14px' }}>
+            <p style={{ fontSize:'15px', color:'rgba(191,219,254,.85)', fontWeight:'600', letterSpacing:'.01em', margin:'0 0 14px' }}>
               Trusted Name in the Electrical Estimating Industry
             </p>
             <p className="sec-sub" style={{ margin:'0 0 40px' }}>
@@ -194,9 +195,9 @@ const OurStory = ({ onNavigate }) => {
           <RevealGroup className="os-stats-grid">
             {[
               { v: 1000, s: '+', l: 'Projects Won',       ico: <IconTrophy />,   color: 'var(--gold)' },
-              { v: 8000, s: '+', l: 'Projects Estimated', ico: <IconCrane />,    color: 'var(--sap)' },
+              { v: 8000, s: '+', l: 'Projects Estimated', ico: <IconCrane />,    color: 'var(--gold3)' },
               { v: 500,  s: '+', l: 'Contractors Served', ico: <IconUsers />,    color: 'var(--gold)' },
-              { v: 10,   s: 'x', l: 'Client ROI',         ico: <IconTrending />, color: 'var(--sap)' },
+              { v: 10,   s: 'x', l: 'Client ROI',         ico: <IconTrending />, color: 'var(--gold3)' },
               { v: 15,   s: '+', l: 'Years Experience',   ico: <IconHardHat />,  color: 'var(--gold)' },
             ].map(({ v, s, l, ico, color }) => (
               <div key={l} className="os-stat">
@@ -280,7 +281,7 @@ const OurStory = ({ onNavigate }) => {
         <div className="cxl">
           <div className="os-2col">
             <Reveal>
-              <div className="sec-eyebrow gold">Built By Estimators</div>
+              <div className="sec-eyebrow accent">Built By Estimators</div>
               <h2 style={{ fontSize: '36px', fontWeight: '800', color: '#fff', letterSpacing: '-1.2px', lineHeight: '1.16', marginBottom: '20px' }}>
                 Finally, Software That<br />Works Like You Do
               </h2>
@@ -358,14 +359,14 @@ const OurStory = ({ onNavigate }) => {
         <div className="cxl">
           <div className="os-2col">
             <Reveal style={{ background: 'linear-gradient(135deg,#0E1E3A 0%,#1A3A72 100%)', borderRadius: '24px', padding: '52px 44px', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'var(--grd-gold)' }} />
-              <div style={{ position: 'absolute', bottom: '-40px', right: '-40px', width: '220px', height: '220px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(197,160,71,.12) 0%,transparent 70%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: '3px', background: 'var(--grd-acc)' }} />
+              <div style={{ position: 'absolute', bottom: '-40px', right: '-40px', width: '220px', height: '220px', borderRadius: '50%', background: 'radial-gradient(circle,rgba(96,165,250,.12) 0%,transparent 70%)', pointerEvents: 'none' }} />
               <div style={{ fontSize: '38px', marginBottom: '18px', lineHeight: 1 }}>"</div>
               <p style={{ fontSize: '17px', fontWeight: '400', color: 'rgba(220,230,255,.88)', lineHeight: '1.78', marginBottom: '28px', fontStyle: 'italic' }}>
                 We built Real Cost because we lived the problem ourselves. Estimating took too long, cost too much, and the tools available weren't made for Canadian contractors. We changed that.
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: 'var(--grd-gold)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', fontWeight: '800', color: '#0A1428', flexShrink: 0 }}>RC</div>
+                <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: 'var(--grd-acc)', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '18px', fontWeight: '800', color: '#fff', flexShrink: 0 }}>RC</div>
                 <div>
                   <div style={{ fontSize: '14px', fontWeight: '600', color: '#fff' }}>Founding Team</div>
                   <div style={{ fontSize: '12px', color: 'rgba(210,220,255,.55)', marginTop: '2px' }}>Real Cost Estimating Inc. — 1200 Bloor Street West, Toronto</div>
@@ -495,7 +496,7 @@ const OurStory = ({ onNavigate }) => {
       {/* ── CTA Band ── */}
       <div className="cta-band">
         <Reveal className="wrc-cta-pad" style={{ textAlign: 'center' }}>
-          <div style={{ fontSize: '11px', fontWeight: '700', color: 'rgba(228,199,120,.75)', textTransform: 'uppercase', letterSpacing: '.14em', marginBottom: '14px' }}>
+          <div style={{ fontSize: '11px', fontWeight: '700', color: 'rgba(147,197,253,.75)', textTransform: 'uppercase', letterSpacing: '.14em', marginBottom: '14px' }}>
             15 Years of Expertise. Now in Your Hands.
           </div>
           <h2 style={{ fontSize: '40px', fontWeight: '800', color: '#fff', letterSpacing: '-1.3px', marginBottom: '14px', lineHeight: '1.15' }}>

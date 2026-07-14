@@ -17,5 +17,5 @@
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,168,76,.10) 0%,transparent 65%);
+  background: radial-gradient(ellipse 70% 60% at 50% 50%,rgba(96,165,250,.10) 0%,transparent 65%);
 }

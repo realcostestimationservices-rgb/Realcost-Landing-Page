@@ -9,7 +9,6 @@ const APP_URL = 'https://d3jt1vpskh0hbe.cloudfront.net/';
 
 /* Slide + copy travel on the same easing so they read as one moving surface. */
 const SLIDE_EASE = { duration: 0.95, ease: [0.65, 0, 0.35, 1] };
-const pad = (n) => String(n).padStart(2, '0');
 
 /* Hero carousel slides. The copy (badge / headline / sub) swaps per slide; the
    15-year badge and the CTA buttons stay put across all three. */
@@ -210,26 +209,6 @@ const Home = ({ onNavigate }) => {
               <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-prim" href={APP_URL} target="_blank" rel="noopener noreferrer">Switch to Real Cost now</motion.a>
               <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-ghost" onClick={() => onNavigate('demo')}>Request Demo</motion.button>
             </motion.div>
-
-            {/* Carousel controls: ‹ 01 ──progress── 03 › */}
-            <div className="hero-ctrl">
-              <button className="hero-arrow" onClick={prevSlide} aria-label="Previous slide">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M15 18l-6-6 6-6" /></svg>
-              </button>
-              <div className="hero-counter">
-                <span className="hero-count is-current">{pad(slide + 1)}</span>
-                <div className="hero-line">
-                  {/* The bar's CSS animation IS the autoplay clock — when it ends,
-                      we advance. Remounting it per slide restarts the countdown,
-                      and pausing the animation pauses the carousel with it. */}
-                  <span key={slide} className="hero-progress" onAnimationEnd={nextSlide} />
-                </div>
-                <span className="hero-count">{pad(HERO_SLIDES.length)}</span>
-              </div>
-              <button className="hero-arrow" onClick={nextSlide} aria-label="Next slide">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round"><path d="M9 18l6-6-6-6" /></svg>
-              </button>
-            </div>
           </motion.div>
         </div>
       </section>
@@ -379,15 +358,15 @@ const Home = ({ onNavigate }) => {
               <p className="sec-sub" style={{ marginBottom: '36px' }}>Your whole estimation workflow — in one app.</p>
 
               <div style={{ position: 'relative' }}>
-                <div style={{ position: 'absolute', left: '14px', top: '30px', bottom: '30px', width: '1.5px', background: 'linear-gradient(to bottom, rgba(17,38,70,.15), rgba(201,168,76,.4), rgba(17,38,70,.08))', borderRadius: '2px' }} />
+                <div style={{ position: 'absolute', left: '14px', top: '30px', bottom: '30px', width: '1.5px', background: 'linear-gradient(to bottom, rgba(17,38,70,.15), rgba(96,165,250,.4), rgba(17,38,70,.08))', borderRadius: '2px' }} />
                 {[
-                  { n: '1', label: 'Upload Drawings',    desc: 'Upload your PDF plan set. Every page renders on a navigable digital takeoff canvas.', gold: false },
-                  { n: '2', label: 'Symbol Auto-Count',  desc: 'Draw a box around any symbol — the platform finds all matches across every page instantly.', gold: false },
-                  { n: '3', label: 'Build Your Bid',     desc: 'Material, labour, overhead, markup and duration auto-calculated on your bid page.', gold: false },
-                  { n: '4', label: 'Send Quote Letter',  desc: 'One click generates a branded PDF quote letter ready to submit to your client.', gold: true },
-                ].map(({ n, label, desc, gold }) => (
+                  { n: '1', label: 'Upload Drawings',    desc: 'Upload your PDF plan set. Every page renders on a navigable digital takeoff canvas.', accent: false },
+                  { n: '2', label: 'Symbol Auto-Count',  desc: 'Draw a box around any symbol — the platform finds all matches across every page instantly.', accent: false },
+                  { n: '3', label: 'Build Your Bid',     desc: 'Material, labour, overhead, markup and duration auto-calculated on your bid page.', accent: false },
+                  { n: '4', label: 'Send Quote Letter',  desc: 'One click generates a branded PDF quote letter ready to submit to your client.', accent: true },
+                ].map(({ n, label, desc, accent }) => (
                   <div key={n} style={{ display: 'flex', gap: '20px', marginBottom: '24px', position: 'relative', zIndex: 1 }}>
-                    <div style={{ width: '30px', height: '30px', borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: '700', background: gold ? 'var(--grd-gold)' : 'var(--grd-sap)', color: gold ? '#0A1428' : '#fff', border: gold ? '1.5px solid rgba(201,168,76,.5)' : '1.5px solid rgba(45,80,137,.25)', boxShadow: '0 3px 10px rgba(15,37,87,.20)' }}>
+                    <div style={{ width: '30px', height: '30px', borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: '700', background: accent ? 'var(--grd-acc)' : 'var(--grd-sap)', color: '#fff', border: accent ? '1.5px solid rgba(96,165,250,.5)' : '1.5px solid rgba(45,80,137,.25)', boxShadow: '0 3px 10px rgba(15,37,87,.20)' }}>
                       {n}
                     </div>
                     <div style={{ paddingTop: '3px' }}>
@@ -423,13 +402,13 @@ const Home = ({ onNavigate }) => {
                 img: '/images/features/autocount.png',
               },
               {
-                bg: 'rgba(197,160,71,.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
+                bg: 'rgba(96,165,250,.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
                 img: '/images/misc/project.png',
               },
 
             ].map(({ bg, title, desc, img }) => (
               <motion.div key={title} className="home-featp-card" style={{ background: '#fff', border: '1px solid #E8EEF8', borderRadius: '18px', position: 'relative', overflow: 'hidden', boxShadow: '0 1px 6px rgba(15,37,87,.05)', height: '100%' }}
-                whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(15,37,87,.10)', borderColor: 'rgba(201,168,76,.35)' }}
+                whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(15,37,87,.10)', borderColor: 'rgba(96,165,250,.35)' }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                 <div className="home-featp-card-img" style={{ background: bg }}>
                   <img src={process.env.PUBLIC_URL + img} alt={title} loading="lazy" />
@@ -502,7 +481,7 @@ const Home = ({ onNavigate }) => {
                   <text x="27" y="15.5" fontFamily="Arial,sans-serif" fontSize="13" fontWeight="700" fill="#FF9D28">Capterra</text>
                 </svg>
               </div>
-              <div style={{ fontSize: '12px', color: '#FF9D28', fontWeight: '700', marginBottom: '2px' }}>★★★★½</div>
+              <div style={{ fontSize: '12px', color: 'var(--gold)', fontWeight: '700', marginBottom: '2px' }}>★★★★½</div>
               <div style={{ fontSize: '14px', fontWeight: '800', color: 'var(--txt)' }}>4.6 / 5</div>
             </div>
 
@@ -517,7 +496,7 @@ const Home = ({ onNavigate }) => {
                   <text x="27" y="15.5" fontFamily="Arial,sans-serif" fontSize="13" fontWeight="700" fill="#00B388">GetApp</text>
                 </svg>
               </div>
-              <div style={{ fontSize: '12px', color: '#00B388', fontWeight: '700', marginBottom: '2px' }}>★★★★½</div>
+              <div style={{ fontSize: '12px', color: 'var(--gold)', fontWeight: '700', marginBottom: '2px' }}>★★★★½</div>
               <div style={{ fontSize: '14px', fontWeight: '800', color: 'var(--txt)' }}>4.6 / 5</div>
             </div>
 
@@ -532,7 +511,7 @@ const Home = ({ onNavigate }) => {
                   <text x="27" y="15.5" fontFamily="Arial,sans-serif" fontSize="11.5" fontWeight="700" fill="#0B3A5D">Software Advice</text>
                 </svg>
               </div>
-              <div style={{ fontSize: '12px', color: '#0B3A5D', fontWeight: '700', marginBottom: '2px' }}>★★★★½</div>
+              <div style={{ fontSize: '12px', color: 'var(--gold)', fontWeight: '700', marginBottom: '2px' }}>★★★★½</div>
               <div style={{ fontSize: '14px', fontWeight: '800', color: 'var(--txt)' }}>4.6 / 5</div>
             </div>
 
@@ -557,7 +536,7 @@ const Home = ({ onNavigate }) => {
       {/* CTA Band */}
       <div className="cta-band">
         <Reveal style={{ position: 'relative', zIndex: 1, padding: '0 80px' }}>
-          <div className="gold-divider"></div>
+          <div className="accent-divider"></div>
           <h2 style={{ fontSize: '42px', fontWeight: '800', color: '#fff', letterSpacing: '-1.3px', marginBottom: '14px' }}>Ready to do faster estimates?</h2>
           <p style={{ fontSize: '16px', color: 'rgba(220,228,248,.65)', maxWidth: '500px', margin: '0 auto 40px', lineHeight: '1.78', fontWeight: '300' }}>14-day free trial. No credit card required. Your whole team can be estimating digitally today.</p>
           <div style={{ display: 'flex', gap: '14px', justifyContent: 'center', flexWrap: 'wrap' }}>

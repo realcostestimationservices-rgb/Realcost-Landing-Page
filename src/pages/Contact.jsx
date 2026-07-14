@@ -51,6 +51,7 @@ const Contact = ({ onNavigate }) => {
       <section className="contact-hero">
         <div className="contact-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/contact/contact_hero.png'})` }} />
         <div className="contact-hero-overlay" />
+        <div className="hero-glow" />
         <div className="cxl contact-hero-inner">
 
           {/* Left — copy */}
@@ -148,7 +149,7 @@ const Contact = ({ onNavigate }) => {
                   <motion.input whileFocus={{ scale: 1.01 }} name="phone" value={form.phone} onChange={handleChange} placeholder="Enter Your Contact Number *" required style={{ ...inputStyle, marginTop: '4px' }} />
                   <motion.textarea whileFocus={{ scale: 1.01 }} name="message" value={form.message} onChange={handleChange} placeholder="Enter Your Message *" required rows={4} style={{ ...inputStyle, marginTop: '4px', resize: 'none', display: 'block' }} />
                   <div style={{ marginTop: '36px', display: 'flex', justifyContent: 'center' }}>
-                    <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} type="submit" style={{ background: '#C5A047', color: '#0A1428', border: 'none', borderRadius: '50px', padding: '14px 48px', fontSize: '15px', fontWeight: '700', cursor: 'pointer', boxShadow: '0 4px 16px rgba(0,0,0,.18)', transition: 'all .2s', letterSpacing: '.02em' }}>
+                    <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} type="submit" style={{ background: '#2563EB', color: '#fff', border: 'none', borderRadius: '50px', padding: '14px 48px', fontSize: '15px', fontWeight: '700', cursor: 'pointer', boxShadow: '0 4px 16px rgba(0,0,0,.18)', transition: 'all .2s', letterSpacing: '.02em' }}>
                       Send Message
                     </motion.button>
                   </div>
@@ -157,7 +158,7 @@ const Contact = ({ onNavigate }) => {
                 <div style={{ background: '#112646', borderRadius: '20px 20px 80px 20px', padding: '64px 40px', boxShadow: '0 16px 56px rgba(10,20,60,.28)', textAlign: 'center' }}>
                   <div style={{ fontSize: '22px', fontWeight: '700', color: '#fff', marginBottom: '10px' }}>Message Sent!</div>
                   <div style={{ fontSize: '14px', color: 'rgba(255,255,255,.70)', marginBottom: '28px', fontWeight: '300' }}>Thank you! Our team will get back to you within 24 hours.</div>
-                  <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={() => setSubmitted(false)} style={{ background: '#C5A047', color: '#0A1428', border: 'none', borderRadius: '50px', padding: '12px 36px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>
+                  <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={() => setSubmitted(false)} style={{ background: '#2563EB', color: '#fff', border: 'none', borderRadius: '50px', padding: '12px 36px', fontSize: '14px', fontWeight: '700', cursor: 'pointer' }}>
                     Send Another Message
                   </motion.button>
                 </div>

@@ -1,12 +1,12 @@
 /* ===== Footer ===== */
 .rc-footer {
   background: linear-gradient(160deg,#0A1428 0%,#0F2050 100%);
-  border-top: 1px solid rgba(201,168,76,.18);
+  border-top: 1px solid rgba(96,165,250,.18);
 }
 .f-lbl {
   font-size: 10px;
   font-weight: 700;
-  color: rgba(201,168,76,.65);
+  color: rgba(96,165,250,.65);
   text-transform: uppercase;
   letter-spacing: .14em;
   margin-bottom: 16px;
@@ -21,7 +21,7 @@
   text-decoration: none;
   font-weight: 300;
 }
-.f-lnk:hover { color: var(--gold2); }
+.f-lnk:hover { color: var(--acc2); }
 .f-contact {
   display: flex;
   align-items: center;

@@ -129,83 +129,27 @@
 .hero-copy.is-active { opacity: 1; transform: translateY(0); }
 .hero-copy[aria-hidden='true'] { pointer-events: none; }
 
-/* ===== Hero carousel controls: ‹ 01 ──────── 03 › ===== */
-.hero-ctrl {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.hero-arrow {
-  width: 38px;
-  height: 38px;
-  flex-shrink: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  cursor: pointer;
-  color: rgba(255,255,255,.85);
-  background: rgba(255,255,255,.08);
-  border: 1px solid rgba(255,255,255,.22);
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  transition: background .22s, border-color .22s, color .22s, transform .22s;
-}
-.hero-arrow:hover {
-  background: rgba(201,168,76,.22);
-  border-color: rgba(201,168,76,.55);
-  color: #F0D98A;
-  transform: translateY(-2px);
-}
-.hero-counter {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.hero-count {
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: .12em;
-  color: rgba(220,228,248,.5);
-  font-variant-numeric: tabular-nums;
-}
-.hero-count.is-current { color: #F0D98A; }
-.hero-line {
-  position: relative;
-  width: 150px;
-  height: 2px;
-  border-radius: 2px;
-  background: rgba(255,255,255,.24);
-  overflow: hidden;
-}
-.hero-progress {
-  display: block;
-  height: 100%;
-  width: 0;
-  border-radius: 2px;
-  background: linear-gradient(90deg,#C9A84C 0%,#F0D98A 100%);
-  animation: heroProgress 6s linear forwards;
-}
-/* Hovering the hero freezes the bar — and because the bar's animationend is what
-   advances the carousel, the slide freezes with it. */
-.hero.is-paused .hero-progress { animation-play-state: paused; }
-@keyframes heroProgress {
-  from { width: 0; }
-  to   { width: 100%; }
-}
 .hero-overlay {
   position: absolute;
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  background: linear-gradient(105deg,rgba(10,20,40,.86) 0%,rgba(15,37,87,.70) 42%,rgba(15,37,87,.28) 75%,rgba(10,20,40,.12) 100%),linear-gradient(to bottom,rgba(10,20,40,.20) 0%,transparent 50%,rgba(10,20,40,.40) 100%);
+  /* No full-frame dimming — just a soft scrim that fades out by the middle of
+     the frame, so the photo is clear and only the copy column is anchored. The
+     hero text carries the rest of its contrast in its own text-shadow. */
+  background: linear-gradient(105deg,rgba(10,20,40,.46) 0%,rgba(10,20,40,.28) 34%,transparent 62%),linear-gradient(to bottom,rgba(10,20,40,.08) 0%,transparent 42%,rgba(10,20,40,.18) 100%);
 }
 .hero-tint {
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
-  background: radial-gradient(ellipse 55% 80% at 0% 55%,rgba(201,168,76,.12) 0%,transparent 60%),radial-gradient(ellipse 40% 50% at 85% 15%,rgba(15,37,87,.08) 0%,transparent 55%);
+  /* A soft white light behind the copy column lifts the image out of the scrim;
+     the blue and navy washes keep the rest of the frame on-brand. */
+  background:
+    radial-gradient(ellipse 55% 75% at 14% 48%,rgba(255,255,255,.26) 0%,rgba(255,255,255,.11) 45%,transparent 75%),
+    radial-gradient(ellipse 55% 80% at 0% 55%,rgba(96,165,250,.12) 0%,transparent 60%),
+    radial-gradient(ellipse 40% 50% at 85% 15%,rgba(15,37,87,.08) 0%,transparent 55%);
 }
 .hero-inner {
   position: relative;
@@ -228,22 +172,26 @@
   display: inline-flex;
   align-items: center;
   gap: 9px;
-  background: rgba(201,168,76,.18);
-  border: 1px solid rgba(201,168,76,.38);
-  color: #F0D98A;
+  /* Its own dark chip, so the small uppercase type never has to rely on the
+     overlay behind it. */
+  background: rgba(10,20,40,.68);
+  border: 1px solid rgba(147,197,253,.50);
+  color: #E6F0FF;
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 7px 16px;
   border-radius: 24px;
   letter-spacing: .06em;
   text-transform: uppercase;
   margin-bottom: 30px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .badge-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: var(--gold2);
+  background: var(--acc2);
   animation: blink 2.4s ease-in-out infinite;
 }
 .hero-h1 {
@@ -253,23 +201,24 @@
   line-height: 1.03;
   letter-spacing: -2.5px;
   margin-bottom: 22px;
+  /* The overlay is kept light so the photo reads through; the copy carries its
+     own contrast instead, so it stays legible over any slide. */
+  text-shadow: 0 1px 3px rgba(5,10,22,.75), 0 4px 28px rgba(5,10,22,.65);
 }
 .hero-h1 em {
   font-style: normal;
-  background: linear-gradient(125deg,#C9A84C 0%,#F0D98A 55%,#DFC06A 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #fff;
 }
 .hero-sub {
   font-size: 15.5px;
-  color: rgba(220,228,248,.72);
+  color: rgba(240,244,255,.95);
   line-height: 1.85;
   max-width: 480px;
   margin-bottom: 40px;
-  font-weight: 300;
+  font-weight: 400;
+  text-shadow: 0 1px 3px rgba(5,10,22,.80), 0 2px 20px rgba(5,10,22,.65);
 }
-.hero-sub strong { color: rgba(240,217,138,.9); font-weight:500; }
+.hero-sub strong { color: #fff; font-weight:500; }
 .hero-btns {
   display: flex;
   gap: 14px;
@@ -279,8 +228,10 @@
 .hero-stats {
   display: flex;
   gap: 0;
-  background: rgba(255,255,255,.14);
-  border: 1px solid rgba(255,255,255,.28);
+  /* Dark glass rather than white glass: over an undimmed photo, a white panel
+     washes out and the numbers on it go with it. */
+  background: rgba(10,20,40,.52);
+  border: 1px solid rgba(255,255,255,.24);
   border-radius: 14px;
   overflow: hidden;
   backdrop-filter: blur(18px);
@@ -298,7 +249,7 @@
 .hs:last-child { border-right: none; }
 .hs:hover { background: rgba(255,255,255,.1); }
 .hs-n { font-size:24px; font-weight:800; color:#fff; letter-spacing:-1px; }
-.hs-l { font-size:10.5px; color:rgba(220,228,248,.55); margin-top:4px; font-weight:400; letter-spacing:.05em; text-transform:uppercase; }
+.hs-l { font-size:10.5px; color:rgba(228,235,252,.78); margin-top:4px; font-weight:500; letter-spacing:.05em; text-transform:uppercase; }
 .hs-accent {
   position: absolute;
   top: 0;
@@ -371,9 +322,9 @@
   transition: all .18s;
 }
 .mt.on {
-  color: #C9A84C;
-  border-bottom-color: var(--gold);
-  background: rgba(201,168,76,.08);
+  color: #2563EB;
+  border-bottom-color: var(--acc);
+  background: rgba(96,165,250,.08);
 }
 
 /* ===== Monitor 3D scroll reveal ===== */
@@ -401,7 +352,7 @@
   position: relative;
   overflow: hidden;
   color: #fff;
-  border: 1px solid rgba(201,168,76,.2);
+  border: 1px solid rgba(96,165,250,.2);
 }
 .map-card::before {
   content: '';
@@ -417,7 +368,7 @@
   bottom: 180px;
   right: 88px;
   z-index: 10;
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,.58)) drop-shadow(0 0 20px rgba(201,168,50,.24));
+  filter: drop-shadow(0 8px 24px rgba(0,0,0,.58)) drop-shadow(0 0 20px rgba(96,165,250,.24));
 }
 @media (max-width: 1024px) {
   .years-badge { right: 24px; bottom: 130px; }
@@ -591,10 +542,6 @@
   .hero-h1 { font-size: 28px; letter-spacing: -1px; }
   .hero-sub { font-size: 14px; margin-bottom: 26px; }
   .hero-btns { gap: 10px; margin-bottom: 0; }
-  /* .hero-btns loses its 48px bottom margin here, so the controls provide their
-     own spacing instead of pulling up into it. */
-  .hero-ctrl { margin-top: 26px; gap: 12px; }
-  .hero-arrow { width: 34px; height: 34px; }
   .hero-stats { display: none; }
   .years-badge { margin: 0 0 18px; }
   .years-badge svg { width: 76px; height: 76px; }
@@ -605,16 +552,12 @@
   .hero-sub { font-size: 13.5px; }
   .hero-btns { flex-direction: column; gap: 10px; }
   .hero-btns .btn-prim, .hero-btns .btn-ghost { width: 100%; justify-content: center; }
-  .hero-line { width: 96px; }
 }
 
-/* Reduced motion: no Ken Burns, and killing the progress-bar animation also
-   kills the animationend that advances the slide — the carousel becomes purely
-   manual, driven by the arrows and swipe. */
+/* Reduced motion: no Ken Burns, and the copy cross-fades instead of sliding. */
 @media (prefers-reduced-motion: reduce) {
   .hero-slide-img, .hero-slide-img.is-active { transform: none; transition: none; }
   .hero-copy { transition: opacity .2s linear; transform: none; }
-  .hero-progress { animation: none; width: 100%; }
 }
 @media (max-width: 380px) {
   .hero-h1 { font-size: 22px; }

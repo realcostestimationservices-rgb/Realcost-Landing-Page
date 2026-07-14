@@ -77,7 +77,8 @@ const Demo = () => {
       <section className="page-hero">
         <div className="page-hero-accent" />
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/misc/request_demo.png'})` }} />
-        <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.96) 0%,rgba(15,37,87,.92) 40%,rgba(15,37,87,.45) 65%,transparent 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
+        <div className="hero-glow" />
         <div className="cxl" style={{ textAlign: 'left' }}>
           <motion.div
             style={{ maxWidth: '560px' }}
@@ -222,9 +223,9 @@ const Demo = () => {
                     <div style={{ fontSize: '15px', color: '#6B7489', maxWidth: '360px', margin: '0 auto 22px', lineHeight: '1.8', fontWeight: '300' }}>Thanks {form.fname}! Your demo is confirmed for {confirmText}. We've sent the details to {form.email}.</div>
                     <div style={{ background: 'var(--blight)', border: '1px solid rgba(45,107,228,.18)', borderRadius: '12px', padding: '18px', maxWidth: '350px', margin: '0 auto 24px', textAlign: 'left' }}>
                       <div style={{ fontSize: '11px', fontWeight: '600', color: 'var(--blue)', marginBottom: '10px', textTransform: 'uppercase', letterSpacing: '.08em' }}>What happens next</div>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '9px', marginBottom: '9px' }}><span style={{ color: '#1A6B45', fontSize: '14px', flexShrink: '0' }}>✓</span><span style={{ fontSize: '13px', color: 'var(--txt)', fontWeight: '300' }}>Confirmation email sent to your inbox</span></div>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '9px', marginBottom: '9px' }}><span style={{ color: '#1A6B45', fontSize: '14px', flexShrink: '0' }}>✓</span><span style={{ fontSize: '13px', color: 'var(--txt)', fontWeight: '300' }}>Calendar invite with video call link</span></div>
-                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '9px' }}><span style={{ color: '#1A6B45', fontSize: '14px', flexShrink: '0' }}>✓</span><span style={{ fontSize: '13px', color: 'var(--txt)', fontWeight: '300' }}>14-day free trial activated immediately</span></div>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '9px', marginBottom: '9px' }}><span style={{ color: 'var(--blue-700)', fontSize: '14px', flexShrink: '0' }}>✓</span><span style={{ fontSize: '13px', color: 'var(--txt)', fontWeight: '300' }}>Confirmation email sent to your inbox</span></div>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '9px', marginBottom: '9px' }}><span style={{ color: 'var(--blue-700)', fontSize: '14px', flexShrink: '0' }}>✓</span><span style={{ fontSize: '13px', color: 'var(--txt)', fontWeight: '300' }}>Calendar invite with video call link</span></div>
+                      <div style={{ display: 'flex', alignItems: 'flex-start', gap: '9px' }}><span style={{ color: 'var(--blue-700)', fontSize: '14px', flexShrink: '0' }}>✓</span><span style={{ fontSize: '13px', color: 'var(--txt)', fontWeight: '300' }}>14-day free trial activated immediately</span></div>
                     </div>
                     <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} onClick={resetDemo} className="btn-ol-blue">Book another demo</motion.button>
                   </div>
@@ -252,8 +253,8 @@ const Demo = () => {
               <RevealGroup className="demo-stat-grid">
                 {[
                   { n: '500+', l: 'Contractors', c: 'var(--blue)' },
-                  { n: '30 min', l: 'Walkthrough', c: 'var(--gold)' },
-                  { n: 'Free', l: 'No card required', c: 'var(--gold)' },
+                  { n: '30 min', l: 'Walkthrough', c: 'var(--acc)' },
+                  { n: 'Free', l: 'No card required', c: 'var(--acc)' },
                 ].map((it, i) => (
                   <div key={i} className="demo-stat-card">
                     <div className="demo-stat-n" style={{ color: it.c }}>{it.n}</div>

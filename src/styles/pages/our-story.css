@@ -52,7 +52,7 @@
 .os-stat-label {
   font-size: clamp(11.5px, 1.05vw, 12.5px);
   font-weight: 600;
-  color: var(--gold);
+  color: var(--gold3);
   line-height: 1.35;
   margin-top: 2px;
 }
@@ -61,7 +61,7 @@
 .os-history-card {
   display: flex;
   align-items: stretch;
-  border-radius: 22px;
+  border-radius: var(--r-xl);
   box-shadow: 0 24px 60px rgba(15,37,87,.14);
 }
 .os-history-panel {
@@ -69,7 +69,7 @@
   background: linear-gradient(135deg,#0E1E3A 0%,#1A3A72 100%);
   color: #fff;
   padding: 52px 46px;
-  border-radius: 22px 0 0 22px;
+  border-radius: var(--r-xl) 0 0 var(--r-xl);
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -99,8 +99,8 @@
   bottom: -14px;
   width: 62%;
   height: 58%;
-  background: var(--grd-gold);
-  border-radius: 18px;
+  background: var(--grd-acc);
+  border-radius: var(--r-lg);
   z-index: 0;
 }
 .os-history-img {
@@ -110,7 +110,7 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  border-radius: 0 22px 22px 0;
+  border-radius: 0 var(--r-xl) var(--r-xl) 0;
 }
 /* Stack the History/Idea card across the whole tablet band. Side by side, the
    card (align-items:stretch) pulls the image column to the height of the text
@@ -124,10 +124,10 @@
    photo falls back to its natural 3:2 and renders 651px tall. */
 @media (max-width:1024px) {
   .os-history-card   { flex-direction: column; }
-  .os-history-panel  { border-radius: 22px 22px 0 0; padding: 44px 38px; }
+  .os-history-panel  { border-radius: var(--r-xl) var(--r-xl) 0 0; padding: 44px 38px; }
   .os-history-imgwrap{ flex: 0 0 auto; height: 340px; min-height: 0; }
-  .os-history-frame  { border-radius: 0 0 18px 18px; }
-  .os-history-img    { border-radius: 0 0 22px 22px; }
+  .os-history-frame  { border-radius: 0 0 var(--r-lg) var(--r-lg); }
+  .os-history-img    { border-radius: 0 0 var(--r-xl) var(--r-xl); }
 }
 @media (max-width:768px) {
   .os-history-imgwrap{ height: 290px; }
@@ -155,10 +155,10 @@
 }
 .os-milestone-left  { flex-direction: row; justify-content: flex-end; padding-right: calc(50% + 28px); text-align: right; }
 .os-milestone-right { flex-direction: row-reverse; justify-content: flex-end; padding-left: calc(50% + 28px); text-align: left; }
-.os-milestone-card  { background: #fff; border: 1px solid #E8EEF8; border-radius: 14px; padding: 20px 22px; box-shadow: 0 4px 18px rgba(15,37,87,.07); max-width: 320px; }
-.os-ms-year  { font-size: 11px; font-weight: 700; color: var(--gold); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
+.os-milestone-card  { background: #fff; border: 1px solid var(--n-200); border-radius: var(--r-md); padding: var(--r-xl) var(--r-xl); box-shadow: 0 4px var(--r-lg) rgba(15,37,87,.07); max-width: 320px; }
+.os-ms-year  { font-size: 11px; font-weight: 700; color: var(--acc); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 4px; }
 .os-ms-label { font-size: 15px; font-weight: 700; color: var(--txt); margin-bottom: 7px; }
-.os-ms-desc  { font-size: 13px; color: #6B7489; line-height: 1.75; font-weight: 300; }
+.os-ms-desc  { font-size: 13px; color: var(--n-500); line-height: 1.75; font-weight: 300; }
 .os-milestone-dot   {
   position: absolute;
   left: 50%;
@@ -199,8 +199,8 @@
     max-width: none;
     width: 100%;
     padding: 18px 20px 18px 18px;
-    border-left: 3px solid var(--gold);
-    border-radius: 12px;
+    border-left: 3px solid var(--acc);
+    border-radius: var(--r-md);
     box-shadow: 0 6px 20px rgba(15,37,87,.06);
   }
   .os-milestone-dot {
@@ -213,9 +213,9 @@
   /* Year reads as the marker on the rail, not a caption above the title */
   .os-ms-year {
     display: inline-block;
-    background: rgba(197,160,71,.12);
+    background: rgba(96,165,250,.12);
     padding: 3px 9px;
-    border-radius: 20px;
+    border-radius: var(--r-xl);
     font-size: 10.5px;
     letter-spacing: .12em;
     margin-bottom: 8px;
@@ -289,7 +289,7 @@
 }
 .os-sink-wrap {
   position: relative;
-  border-radius: 22px;
+  border-radius: var(--r-xl);
   overflow: hidden;
   border: 1px solid rgba(255,255,255,.12);
   box-shadow: 0 34px 80px rgba(0,0,0,.45), 0 0 0 1px rgba(255,255,255,.03) inset;
@@ -301,7 +301,7 @@
   left: 0;
   right: 0;
   height: 3px;
-  background: var(--grd-gold);
+  background: var(--grd-acc);
   z-index: 2;
 }
 .os-sink-glow {
@@ -311,7 +311,7 @@
   width: 220px;
   height: 220px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(197,160,71,.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(96,165,250,.22) 0%, transparent 70%);
   pointer-events: none;
   z-index: 1;
 }
@@ -370,7 +370,7 @@
   flex: 0 0 42%;
   aspect-ratio: 3 / 4;
   scroll-snap-align: center;
-  border-radius: 16px;
+  border-radius: var(--r-lg);
   background-size: cover;
   background-position: center top;
   transition: transform .45s cubic-bezier(.25,.46,.45,.94),
@@ -412,7 +412,7 @@
   bottom: 54px;
   width: 3px;
   height: 32px;
-  background: linear-gradient(to bottom, #E4C778, var(--sap));
+  background: linear-gradient(to bottom, #93C5FD, var(--sap));
   border-radius: 2px;
 }
 .os-cf-ico   { font-size: 24px; margin-bottom: 6px; }
@@ -475,7 +475,7 @@
 }
 .os-cf-bar-fill {
   height: 100%;
-  background: linear-gradient(90deg, #B8900A, #E4C778);
+  background: linear-gradient(90deg, #1D4ED8, #93C5FD);
   border-radius: 2px;
   transform-origin: left center;
   animation: cf-bar var(--slide-dur, 4s) linear forwards;
@@ -494,7 +494,7 @@
   .os-scroll-spacer{ flex: 0 0 calc(14% - 8px); }
 }
 @media (max-width: 480px) {
-  .os-cf-card      { flex: 0 0 76%; border-radius: 12px; }
+  .os-cf-card      { flex: 0 0 76%; border-radius: var(--r-md); }
   .os-scroll-spacer{ flex: 0 0 calc(9% - 8px); }
   .os-cf-label     { font-size: 13px; }
   .os-cf-sub       { display: none; }

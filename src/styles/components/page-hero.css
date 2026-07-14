@@ -9,6 +9,16 @@
   opacity: 1;
 }
 
+/* Soft white light behind the copy column — same treatment as the home hero's
+   .hero-tint. Sits above the image and the scrim, below the text. */
+.hero-glow {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(ellipse 60% 80% at 14% 48%,rgba(255,255,255,.36) 0%,rgba(255,255,255,.16) 45%,transparent 78%);
+}
+
 /* ===== Page Hero ===== */
 .page-hero {
   background: linear-gradient(145deg,#0E1E3A 0%,#142E56 30%,#1A3A72 62%,#1E4480 100%);
@@ -37,25 +47,35 @@
   z-index: 0;
   pointer-events: none;
   background:
-    radial-gradient(circle 400px at -140px -120px, rgba(201,168,76,.13) 0%,transparent 65%),
+    radial-gradient(circle 400px at -140px -120px, rgba(96,165,250,.13) 0%,transparent 65%),
     radial-gradient(circle 350px at calc(100% + 120px) calc(100% + 100px), rgba(79,70,229,.16) 0%,transparent 65%),
     radial-gradient(circle 280px at 92% 28%, rgba(45,107,228,.09) 0%,transparent 60%);
 }
 .page-hero > .cxl { position:relative; z-index:1; width:100%; }
-.page-hero .ph-title { color: #fff; }
-.page-hero .sec-sub  { color: rgba(210,220,248,.65); }
+/* The hero images are no longer dimmed, so the copy carries its own contrast:
+   white text with a tight dark shadow, and dark-glass chips for the small type. */
+.page-hero .ph-title {
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(5,10,22,.75), 0 4px 28px rgba(5,10,22,.65);
+}
+.page-hero .sec-sub  {
+  color: rgba(240,244,255,.95);
+  text-shadow: 0 1px 3px rgba(5,10,22,.80), 0 2px 20px rgba(5,10,22,.65);
+}
 .page-hero .pg-badge {
-  background: rgba(201,168,76,.13);
-  color: #E4C778;
-  border-color: rgba(201,168,76,.32);
+  background: rgba(10,20,40,.68);
+  color: #E6F0FF;
+  border-color: rgba(147,197,253,.50);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .page-hero .pg-badge::before {
   content: '';
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #E4C778;
-  box-shadow: 0 0 8px rgba(228,199,120,.7);
+  background: #93C5FD;
+  box-shadow: 0 0 8px rgba(147,197,253,.7);
   display: inline-block;
   flex-shrink: 0;
   animation: blink 2.4s ease-in-out infinite;
@@ -72,18 +92,24 @@
   border-color: rgba(255,255,255,.32)!important;
 }
 .page-hero .ph-stat-row {
-  background: rgba(255,255,255,.07);
-  border-color: rgba(255,255,255,.11);
-  box-shadow: 0 4px 24px rgba(0,0,0,.22);
+  /* Dark glass, not white glass — over an undimmed photo a white panel washes
+     out and takes the numbers on it with it. */
+  background: rgba(10,20,40,.52);
+  border-color: rgba(255,255,255,.18);
+  box-shadow: 0 4px 24px rgba(0,0,0,.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
-.page-hero .ph-stat       { border-right-color: rgba(255,255,255,.09); }
+.page-hero .ph-stat       { border-right-color: rgba(255,255,255,.12); }
 .page-hero .ph-stat-n     { color: #fff; }
-.page-hero .ph-stat-l     { color: rgba(210,220,248,.52); }
+.page-hero .ph-stat-l     { color: rgba(228,235,252,.80); }
 .page-hero .ph-chip {
-  background: rgba(255,255,255,.09);
-  border-color: rgba(255,255,255,.14);
-  color: rgba(220,230,255,.82);
+  background: rgba(10,20,40,.58);
+  border-color: rgba(255,255,255,.22);
+  color: #EBF2FF;
   box-shadow: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 .page-hero .ph-chip:hover {
   background: rgba(255,255,255,.15);
@@ -100,7 +126,7 @@
   left: 0;
   right: 0;
   height: 2.5px;
-  background: linear-gradient(90deg,transparent 0%,rgba(201,168,76,.45) 28%,rgba(201,168,76,.85) 50%,rgba(201,168,76,.45) 72%,transparent 100%);
+  background: linear-gradient(90deg,transparent 0%,rgba(96,165,250,.45) 28%,rgba(96,165,250,.85) 50%,rgba(96,165,250,.45) 72%,transparent 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -125,10 +151,9 @@
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(5, 10, 22, 0.93) 0%,
-    rgba(5, 10, 22, 0.86) 38%,
-    rgba(5, 10, 22, 0.55) 65%,
-    rgba(5, 10, 22, 0.18) 100%
+    rgba(5, 10, 22, 0.55) 0%,
+    rgba(5, 10, 22, 0.34) 34%,
+    transparent 62%
   );
 }
 .contact-hero > .cxl {
@@ -143,8 +168,9 @@
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: .18em;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 18px;
+  text-shadow: 0 1px 4px rgba(5,10,22,.8);
 }
 .contact-hero-title {
   font-size: 52px;
@@ -154,14 +180,16 @@
   line-height: 1.06;
   margin-bottom: 16px;
   max-width: 520px;
+  text-shadow: 0 1px 3px rgba(5,10,22,.75), 0 4px 28px rgba(5,10,22,.65);
 }
 .contact-hero-desc {
   font-size: 15px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.95);
   line-height: 1.78;
-  font-weight: 300;
+  font-weight: 400;
   max-width: 460px;
   margin-bottom: 32px;
+  text-shadow: 0 1px 3px rgba(5,10,22,.80), 0 2px 20px rgba(5,10,22,.65);
 }
 /* ── Split layout ── */
 .contact-hero-inner {
@@ -246,10 +274,11 @@
 }
 .contact-hero-trust span {
   font-size: 12.5px;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.80);
   display: flex;
   align-items: center;
   gap: 5px;
+  text-shadow: 0 1px 4px rgba(5,10,22,.8);
 }
 
 /* ── Floating info cards (right side) ── */
@@ -265,15 +294,18 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.14);
+  /* These sit on the bright, undimmed half of the photo, so they need a dark
+     glass fill of their own to stay readable. */
+  background: rgba(10, 20, 40, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 14px;
   padding: 18px 22px;
   backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   transition: background .2s;
 }
 .contact-float-card:hover {
-  background: rgba(255, 255, 255, 0.13);
+  background: rgba(10, 20, 40, 0.68);
 }
 .contact-float-icon {
   width: 44px;
@@ -291,7 +323,7 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: .1em;
-  color: rgba(255, 255, 255, 0.45);
+  color: rgba(255, 255, 255, 0.72);
   margin-bottom: 3px;
 }
 .contact-float-val {
