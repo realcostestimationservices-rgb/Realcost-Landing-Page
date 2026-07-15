@@ -311,19 +311,6 @@ const Pricing = ({ onNavigate }) => {
                       )}
                     </div>
                   </div>
-                  <div className="pr-card-bottom">
-                    <ul className="pr-features">
-                      {PLAN_FEATURES_PRO.map((f, i) => (
-                        <li key={i} className="pr-feature-item"><Check />{f}</li>
-                      ))}
-                    </ul>
-                    <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="pr-cta-primary" href={LOGIN_URL} target="_blank" rel="noopener noreferrer">
-                      {activePlan.button_text}
-                    </motion.a>
-                    <p className="pr-cta-note">{trialDays}-day free trial included · no card needed</p>
-                  </div>
-                </div>
-              )}
                 );
               })}
 
