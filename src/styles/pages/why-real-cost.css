@@ -20,6 +20,37 @@
 .wrc-collage-wrap   { position: relative; height: 500px; }
 .wrc-cta-pad        { position: relative; z-index: 1; padding: 0 80px; }
 
+/* ── Mission / Vision prominent badge ──
+   The plain .sec-eyebrow (tiny dash + 10.5px label) was too faint to register
+   as a section heading. This turns "Our Mission" / "Our Vision" into a solid,
+   high-contrast pill so it clearly leads the block and reads above the image. */
+.wrc-mv-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  background: var(--grd-prim);
+  color: #fff;
+  font-size: 12.5px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  padding: 9px 18px;
+  border-radius: 40px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 22px rgba(79,70,229,.28);
+}
+.wrc-mv-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 4px rgba(255,255,255,.28);
+  display: inline-block;
+  flex-shrink: 0;
+}
+.wrc-mv-badge.accent { background: var(--grd-acc); box-shadow: 0 8px 22px rgba(96,165,250,.30); }
+
 /* Below 1024px the nav collapses to a fixed floating bar (top 16px + 64px tall,
    top 12px + 56px tall under 600px). Let the hero grow with its content and give
    it enough top padding that the badge/heading clear that bar instead of sitting

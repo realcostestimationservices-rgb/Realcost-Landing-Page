@@ -51,32 +51,31 @@ const faqGroups = [
   },
 ];
 
-const IconCalendar = () => (
+const IconCalendarCheck = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="5" width="18" height="16" rx="2.5" /><path d="M3 10h18M8 3v4M16 3v4" />
+    <rect x="3" y="4.5" width="18" height="16.5" rx="2.5" /><path d="M3 9.5h18M8 2.5v4M16 2.5v4M8.5 15l2.4 2.4 4.6-4.8" />
   </svg>
 );
 const IconCardOff = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="2.5" y="5.5" width="19" height="13" rx="2.5" /><path d="M2.5 10h19M4 20.5 20 3.5" />
+    <rect x="2.5" y="5.5" width="19" height="13" rx="2.5" /><path d="M2.5 10h19M6 14.5h3" /><path d="M3.5 20.5 20.5 3.5" />
   </svg>
 );
-const IconHardHat = () => (
+const IconAward = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M3 17a9 9 0 0 1 18 0" /><path d="M9.5 8.2V4.5A1.5 1.5 0 0 1 11 3h2a1.5 1.5 0 0 1 1.5 1.5v3.7" /><path d="M2 17h20v2.5H2z" />
+    <circle cx="12" cy="9" r="6" /><path d="M8.2 14.2 6.5 22l5.5-3.3L17.5 22l-1.7-7.8" />
   </svg>
 );
-const IconBolt = () => (
+const IconHeadset = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M13 2 4 14h7l-1 8 9-12h-7l1-8z" />
+    <path d="M4 13a8 8 0 0 1 16 0" /><path d="M4 13v4a2 2 0 0 0 2 2h1v-6H6a2 2 0 0 0-2 2Z" /><path d="M20 13v4a2 2 0 0 1-2 2h-2v-6h2a2 2 0 0 1 2 2Z" /><path d="M18 19a4 4 0 0 1-4 3h-2" />
   </svg>
 );
 
 const stats = [
-  { val: '14 Days',  label: 'Free trial, full access', ico: <IconCalendar />, tone: 'accent' },
-  { val: 'No Card',  label: 'Required to start',       ico: <IconCardOff />,  tone: 'navy' },
-  { val: '15+ Yrs',  label: 'Estimation expertise',    ico: <IconHardHat />,  tone: 'accent' },
-  { val: 'Same Day', label: 'Support response',        ico: <IconBolt />,     tone: 'navy' },
+  { val: '14 Days',  label: 'Free trial, full access', ico: <IconCalendarCheck />, tone: 'accent' },
+  { val: 'No Card',  label: 'Required to start',       ico: <IconCardOff />,       tone: 'navy' },
+  { val: 'Same Day', label: 'Support response',        ico: <IconHeadset />,       tone: 'navy' },
 ];
 
 const IconSearch = () => (

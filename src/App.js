@@ -26,17 +26,17 @@ function SplashScreen({ onDone }) {
 
   return (
     <div className={`splash${fading ? ' fade-out' : ''}`}>
-      <div className="splash-card">
-        <img
-          src={process.env.PUBLIC_URL + '/images/brand/start-logo.png'}
-          alt="Real Cost Estimating"
-          className="splash-logo"
-        />
+      <div className="splash-loader">
+        <div className="splash-spinner" />
+        <div className="splash-inner">
+          <img
+            src={process.env.PUBLIC_URL + '/images/brand/start-logo.png'}
+            alt="Real Cost Estimating"
+            className="splash-logo"
+          />
+        </div>
       </div>
-      <div className="splash-tagline">Digital Estimation Platform</div>
-      <div className="splash-bar">
-        <div className="splash-bar-fill" />
-      </div>
+      {/* <div className="splash-tagline">Digital Estimation Platform</div> */}
     </div>
   );
 }

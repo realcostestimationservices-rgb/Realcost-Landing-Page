@@ -38,16 +38,48 @@ const Home = ({ onNavigate }) => {
   const monitorRef2 = useRef(null);
 
   /* ── Hero carousel ──
-     Auto-advance is driven by the progress bar's CSS animation ending (see
-     .hero-dot-fill), not a timer, so hovering the hero pauses the animation and
-     the slide advance together — they can never drift apart. */
-  const [slide, setSlide] = useState(0);
-  const [paused, setPaused] = useState(false);
+     Auto-advances every 6s, always sliding left. `pos` counts 0→1→2→3 where the
+     final position is a clone of the first slide appended to each track — the
+     track keeps moving left onto the clone, then snaps back to position 0 with
+     no transition, so slide 3 → slide 1 reads as one continuous leftward move
+     instead of springing back to the right. The timer pauses on hover. */
+  const N = HERO_SLIDES.length;
+  const [pos, setPos] = useState(0);
+  const [snapping, setSnapping] = useState(false);
+  const pausedRef = useRef(false); // hover pause — a ref so it can never wedge a re-render
   const touchX = useRef(null);
 
-  const goTo = (i) => setSlide((i + HERO_SLIDES.length) % HERO_SLIDES.length);
-  const nextSlide = () => goTo(slide + 1);
-  const prevSlide = () => goTo(slide - 1);
+  const nextSlide = () => setPos((p) => (p >= N ? 1 : p + 1));
+  const prevSlide = () => setPos((p) => (p - 1 + N) % N);
+
+  /* Auto-advance: a single self-scheduling loop that starts fresh on every
+     mount (so it keeps working after you navigate away from Home and back).
+     Pause-on-hover and tab-visibility are read *live* each tick from a ref and
+     document.hidden — there's no separate state to get stuck true, and no
+     reliance on framer's animation callback. */
+  useEffect(() => {
+    let timer;
+    const step = () => {
+      if (!pausedRef.current && !document.hidden) setPos((p) => p + 1);
+      timer = setTimeout(step, 6000);
+    };
+    timer = setTimeout(step, 6000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  /* When pos reaches the appended clone, let the slide animation play, then jump
+     back to the real first slide with no transition — so 3 → 1 reads as one
+     continuous leftward move. */
+  useEffect(() => {
+    if (pos < N) return;
+    const t = setTimeout(() => { setSnapping(true); setPos(0); }, 1000);
+    return () => clearTimeout(t);
+  }, [pos, N]);
+  useEffect(() => {
+    if (!snapping) return;
+    const r = requestAnimationFrame(() => setSnapping(false));
+    return () => cancelAnimationFrame(r);
+  }, [snapping]);
 
   const onTouchStart = (e) => { touchX.current = e.touches[0].clientX; };
   const onTouchEnd = (e) => {
@@ -72,11 +104,11 @@ const Home = ({ onNavigate }) => {
     <div className="page-enter">
       {/* ════════ HERO ════════ */}
       <section
-        className={`hero${paused ? ' is-paused' : ''}`}
+        className="hero"
         aria-roledescription="carousel"
         aria-label="Real Cost highlights"
-        onMouseEnter={() => setPaused(true)}
-        onMouseLeave={() => setPaused(false)}
+        onMouseEnter={() => { pausedRef.current = true; }}
+        onMouseLeave={() => { pausedRef.current = false; }}
         onTouchStart={onTouchStart}
         onTouchEnd={onTouchEnd}
       >
@@ -84,13 +116,13 @@ const Home = ({ onNavigate }) => {
             strip slides, so a slide change reads as a horizontal swipe. */}
         <motion.div
           className="hero-bg-track"
-          animate={{ x: `-${slide * 100}%` }}
-          transition={SLIDE_EASE}
+          animate={{ x: `-${pos * 100}%` }}
+          transition={snapping ? { duration: 0 } : SLIDE_EASE}
         >
-          {HERO_SLIDES.map((s, i) => (
-            <div className="hero-bg-slide" key={s.image}>
+          {[...HERO_SLIDES, HERO_SLIDES[0]].map((s, i) => (
+            <div className="hero-bg-slide" key={i}>
               <img
-                className={`hero-slide-img${i === slide ? ' is-active' : ''}`}
+                className={`hero-slide-img${i === pos ? ' is-active' : ''}`}
                 src={process.env.PUBLIC_URL + s.image}
                 alt=""
                 aria-hidden="true"
@@ -114,11 +146,11 @@ const Home = ({ onNavigate }) => {
             <div className="hero-copy-window">
               <motion.div
                 className="hero-copy-track"
-                animate={{ x: `-${slide * 100}%` }}
-                transition={SLIDE_EASE}
+                animate={{ x: `-${pos * 100}%` }}
+                transition={snapping ? { duration: 0 } : SLIDE_EASE}
               >
-                {HERO_SLIDES.map((s, i) => (
-                  <div className={`hero-copy${i === slide ? ' is-active' : ''}`} key={s.image} aria-hidden={i !== slide}>
+                {[...HERO_SLIDES, HERO_SLIDES[0]].map((s, i) => (
+                  <div className={`hero-copy${i === pos ? ' is-active' : ''}`} key={i} aria-hidden={i !== pos}>
                     <div className="hero-badge"><div className="badge-dot"></div>{s.badge}</div>
                     <h1 className="hero-h1">{s.title}</h1>
                     <p className="hero-sub">{s.sub}</p>

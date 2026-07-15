@@ -112,15 +112,15 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-height: 260px;
+  min-height: 360px;
 }
 .cf-row-rev {
   flex-direction: row-reverse;
 }
 .cf-frame {
-  flex: 0 1 40%;
-  max-width: 380px;
-  height: 260px;
+  flex: 0 1 44%;
+  max-width: 440px;
+  height: 360px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -174,7 +174,7 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
   flex: 0 0 600px;
   max-width: 600px;
   /* Height of the first (longest) feature card, so every card matches it. */
-  min-height: 290px;
+  min-height: 250px;
   background: rgba(255,255,255,.92);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -188,19 +188,6 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
   margin-left: -48px;
   transition: transform .32s cubic-bezier(.22,1,.36,1), box-shadow .32s ease;
 }
-.cf-card::after {
-  content: '';
-  position: absolute;
-  top: -60px;
-  right: -60px;
-  width: 180px;
-  height: 180px;
-  border-radius: 50%;
-  background: var(--card-accent, var(--acc));
-  opacity: .08;
-  filter: blur(6px);
-  pointer-events: none;
-}
 .cf-row:hover .cf-card {
   transform: translateY(-6px);
   box-shadow: 0 34px 76px rgba(15,37,87,.20);
@@ -208,18 +195,6 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 .cf-row-rev .cf-card {
   margin-left: 0;
   margin-right: -48px;
-}
-.cf-card-num {
-  position: absolute;
-  top: 10px;
-  right: 26px;
-  font-size: 76px;
-  font-weight: 800;
-  line-height: 1;
-  color: var(--txt);
-  opacity: .06;
-  letter-spacing: -3px;
-  pointer-events: none;
 }
 .cf-card-top {
   display: flex;
@@ -270,7 +245,7 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
      flex-basis from .cf-frame would resolve against the *height* axis and
      override the fixed height, letting the frame grow to the image's natural
      aspect (a 587px-tall square on tablets). */
-  .cf-frame { flex: 0 0 auto; height: 210px; max-width: 76%; margin: 0 auto; }
+  .cf-frame { flex: 0 0 auto; height: 280px; max-width: 82%; margin: 0 auto; }
   .cf-card {
     margin: -40px 20px 0;
     flex: 1 1 auto;
@@ -278,6 +253,30 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
     min-height: 0;
   }
   .cf-row-rev .cf-card { margin: -40px 20px 0; }
+}
+
+/* ── Why Choose Real Cost: alternating image / card rows ── */
+.wcr-rows        { display: flex; flex-direction: column; gap: 44px; }
+.wcr-row         { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+.wcr-row-rev     { direction: rtl; }
+.wcr-row-rev > * { direction: ltr; }
+.wcr-media {
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 24px 60px rgba(15,37,87,.16), 0 0 0 1px rgba(17,38,70,.06);
+  aspect-ratio: 16/10;
+  background: #fff;
+}
+.wcr-media img   { width: 100%; height: 100%; object-fit: cover; display: block; }
+.wcr-num         { font-size: 13px; font-weight: 800; letter-spacing: .06em; margin-bottom: 12px; }
+.wcr-ttl         { font-size: 26px; font-weight: 800; letter-spacing: -.5px; line-height: 1.18; }
+.wcr-divider     { width: 44px; height: 3px; border-radius: 2px; margin: 16px 0; }
+.wcr-desc        { font-size: 14.5px; color: #6B7489; line-height: 1.8; font-weight: 300; margin: 0; }
+
+@media (max-width: 768px) {
+  .wcr-rows      { gap: 30px; }
+  .wcr-row, .wcr-row-rev { grid-template-columns: 1fr; gap: 20px; direction: ltr; }
+  .wcr-ttl       { font-size: 22px; }
 }
 
 .accent-divider {

@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Reveal, RevealGroup } from '../ui/Reveal';
 import '../../styles/components/footer.css';
 
@@ -27,14 +26,10 @@ const Footer = ({ onNavigate }) => {
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
             <img src={process.env.PUBLIC_URL + '/images/brand/logo.png'} width="36" height="36" alt="Real Cost" style={{ borderRadius: '8px', objectFit: 'contain', flexShrink: '0', background: '#fff', padding: '5px', boxShadow: '0 2px 10px rgba(0,0,0,.22)' }} />
-            <div><div style={{ fontSize: '11px', fontWeight: '800', color: '#93C5FD', letterSpacing: '.12em', textTransform: 'uppercase' }}>Real Cost</div><div style={{ fontSize: '9px', fontWeight: '300', color: '#9AA0B0', letterSpacing: '.1em', textTransform: 'uppercase' }}>Estimation Platform</div></div>
+            <div><div style={{ fontSize: '11px', fontWeight: '800', color: '#fff', letterSpacing: '.12em', textTransform: 'uppercase' }}>Real Cost</div><div style={{ fontSize: '9px', fontWeight: '300', color: '#fff', letterSpacing: '.1em', textTransform: 'uppercase' }}>Estimation Platform</div></div>
           </div>
           <p style={{ fontSize: '13px', color: 'rgba(200,210,240,.38)', lineHeight: '1.82', maxWidth: '240px', fontWeight: '300' }}>Digital estimation platform for trade contractors across Canada. Upload drawings, count symbols, build your bid, send your quote.</p>
           <div style={{ display: 'flex', gap: '10px', marginTop: '18px', flexWrap: 'wrap' }}>
-            <motion.button whileHover={{ scale: 1.04, y: -1 }} whileTap={{ scale: 0.97 }} onClick={() => onNavigate('demo')} style={{ background: 'linear-gradient(135deg,#0F2557 0%,#1E3A7B 100%)', color: '#fff', fontSize: '12px', fontWeight: '500', borderRadius: '7px', padding: '8px 16px', border: 'none', cursor: 'pointer' }}>Request Demo</motion.button>
-<motion.a whileHover={{ scale: 1.04, y: -1 }} whileTap={{ scale: 0.97 }} href="tel:6476778399" style={{ background: 'rgba(255,255,255,.08)', color: 'rgba(255,255,255,.7)', fontSize: '12px', fontWeight: '400', borderRadius: '7px', padding: '8px 16px', border: '1px solid rgba(255,255,255,.12)', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '7px' }}><IconPhone />Call us</motion.a>
-          </div>
-          <div style={{ display: 'flex', gap: '10px', marginTop: '16px', flexWrap: 'wrap' }}>
             <a href="https://instagram.com" target="_blank" rel="noopener" title="Instagram" style={{ width: '34px', height: '34px', borderRadius: '8px', background: 'rgba(255,255,255,.07)', border: '1px solid rgba(255,255,255,.11)', display: 'flex', alignItems: 'center', justifyContent: 'center', transition: 'all .18s', textDecoration: 'none' }} onMouseOver={(e) => { e.currentTarget.style.background = 'rgba(225,48,108,.28)'; e.currentTarget.style.borderColor = 'rgba(225,48,108,.45)'; }} onMouseOut={(e) => { e.currentTarget.style.background = 'rgba(255,255,255,.07)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,.11)'; }}>
               <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.65)" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1" fill="rgba(255,255,255,.65)" stroke="none" /></svg>
             </a>
@@ -54,7 +49,7 @@ const Footer = ({ onNavigate }) => {
         <div>
           <div className="f-lbl">Contact</div>
           <a className="f-lnk f-contact" href="tel:6476778399"><IconPhone />(647) 677-8399</a>
-          <a className="f-lnk f-contact" href="mailto:info@realcostestimating.ca"><IconMail />info@realcostestimating.ca</a>
+          <a className="f-lnk f-contact" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@realcostestimating.ca" target="_blank" rel="noopener noreferrer"><IconMail />info@realcostestimating.ca</a>
           <div className="f-lnk f-contact" style={{ cursor: 'default' }}><IconPin />1200 Bloor Street West, Toronto</div>
         </div>
       </RevealGroup>

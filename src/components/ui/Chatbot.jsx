@@ -173,7 +173,7 @@ const Chatbot = () => {
         <a className="cistack-btn" href="tel:6476778399" aria-label="Call us">
           <PhoneIcon />
         </a>
-        <a className="cistack-btn" href="mailto:info@realcostestimating.ca" aria-label="Email us">
+        <a className="cistack-btn" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@realcostestimating.ca" target="_blank" rel="noopener noreferrer" aria-label="Email us">
           <MailIcon />
         </a>
         <a className="cistack-btn" href="https://wa.me/16476778399" target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp">

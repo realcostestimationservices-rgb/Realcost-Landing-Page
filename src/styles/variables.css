@@ -45,4 +45,13 @@
   --ind-light: #ECEBFD;
   --grd-prim: linear-gradient(135deg,#4F46E5 0%,#7C5CE6 100%);
   --grd-prim-soft: linear-gradient(135deg,#5B6BF0 0%,#9A6BF0 100%);
+
+  /* Radius + neutral scale. These were used across our-story.css and demo.css
+     but never defined, so every rule referencing them was invalid at computed
+     value time — square corners, no shadow, currentColor borders. */
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --n-200: #E2E7F2;
+  --n-500: #6E7790;
 }

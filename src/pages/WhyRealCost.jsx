@@ -60,7 +60,7 @@ const WhyRealCost = ({ onNavigate }) => {
           {/* heading */}
           <h1 className="wrc-hero-h1" style={{ fontWeight:'800', color:'#fff', lineHeight:'1.08', margin:'0 0 16px', textShadow:'0 1px 3px rgba(5,10,22,.75), 0 4px 28px rgba(5,10,22,.65)' }}>
             Take Your Electrical Contracting<br />Business to the{' '}
-            <em style={{ fontStyle:'normal', background:'linear-gradient(125deg,#60A5FA 0%,#BFDBFE 55%,#93C5FD 100%)', WebkitBackgroundClip:'text', WebkitTextFillColor:'transparent', backgroundClip:'text' }}>Next Level</em>
+            <em style={{ fontStyle:'normal', color:'#fff' }}>Next Level</em>
           </h1>
 
           {/* subtitle */}
@@ -244,7 +244,7 @@ const WhyRealCost = ({ onNavigate }) => {
           <div className="wrc-2col" style={{ alignItems: 'center', gap: '64px' }}>
             {/* Left: text */}
             <Reveal initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }}>
-              <div className="sec-eyebrow">Our Mission</div>
+              <div className="wrc-mv-badge">Our Mission</div>
               <div className="sec-h2" style={{ marginBottom: '20px' }}>
                 Supporting the Growth of<br />Electrical Contractors
               </div>
@@ -293,7 +293,7 @@ const WhyRealCost = ({ onNavigate }) => {
 
             {/* Right: text */}
             <Reveal initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }}>
-              <div className="sec-eyebrow">Our Vision</div>
+              <div className="wrc-mv-badge accent">Our Vision</div>
               <div className="sec-h2" style={{ marginBottom: '20px' }}>
                 Canada's Most Trusted<br />Software Solution
               </div>

@@ -11,7 +11,6 @@ const features = [
   { accent: 'linear-gradient(90deg,#5B21B6,#7C3AED)', title: 'Quote Letter Generator', body: 'One click generates a professional branded PDF or Word quote letter from your bid — ready to submit to your client immediately.', img: '/images/features/quote_letter.png' },
   { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Estimate Graph & Analytics', body: 'Visual breakdown chart of your estimate showing material, labour, overhead, and markup proportions. Understand your bid at a glance.', img: '/images/home/benefits_2.png' },
   { accent: 'linear-gradient(90deg,var(--sap),var(--sap2))', title: 'Team & Role Management', body: 'Owner and estimator roles. Assign projects to team members, track progress, and manage subscriptions — all from one account dashboard.', img: '/images/home/benefits_1.png' },
-  { accent: 'var(--grd-acc)', title: 'Multi-Trade Support', body: 'One platform for all your trades — electrical, mechanical, plumbing, fire alarm, voice & data, security, AV, and heat tracing all supported.', img: '/images/trades/mechanical.jpg' },
 ];
 
 const chips = ['Digital Takeoff Canvas', 'Auto-Count', 'Bid Page', 'Canadian City Pricing', 'Supplier RFQs', 'Quote Letter Generator', 'Estimate Graph', 'Team Management'];
@@ -62,7 +61,6 @@ const Features = ({ onNavigate }) => {
                   </div>
                 </div>
                 <div className="cf-card" style={{ '--card-accent': f.accent }}>
-                  <div className="cf-card-num">{String(i + 1).padStart(2, '0')}</div>
                   <div className="cf-card-top">
                     <div className="cf-card-eyebrow">Core feature</div>
                   </div>
@@ -120,22 +118,29 @@ const Features = ({ onNavigate }) => {
               <span style={{ background: 'var(--grd-acc)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>Real Cost</span>
             </div>
           </Reveal>
-          <RevealGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '40px 44px' }}>
+          <div className="wcr-rows">
             {[
-              { n: '01', title: 'Digital-First Workflow', highlight: false, desc: "We built our platform around how Canadian estimators actually work — drawings, counts, bids and quotes in one continuous flow." },
-              { n: '02', title: 'Expert-Built Formulas',  highlight: true,  desc: 'Every formula and assembly was designed by a panel of top electrical estimators — not engineers guessing at your workflow.' },
-              { n: '03', title: 'Contractor-First Support', highlight: false, desc: 'We prioritize contractor needs, so every feature and support interaction is built around helping you win your next bid.' },
-              { n: '04', title: 'City-Wide Pricing Network', highlight: false, desc: 'Real-time, regionally adjusted material pricing across every major Canadian market — no manual lookups.' },
-              { n: '05', title: 'Built for Every Trade', highlight: false, desc: 'Electrical, mechanical, plumbing, fire alarm and more — one platform covers every trade on your job.' },
-              { n: '06', title: 'Fast, Reliable Delivery', highlight: false, desc: 'A streamlined workflow means your team estimates and quotes faster, without compromising accuracy.' },
-            ].map(({ n, title, highlight, desc }) => (
-              <div key={n} style={{ borderTop: '1px solid rgba(17,38,70,.12)', paddingTop: '20px' }}>
-                <div style={{ fontSize: '13px', fontWeight: '800', color: highlight ? 'var(--acc)' : 'var(--sap)', letterSpacing: '.04em', marginBottom: '14px' }}>{n}</div>
-                <div style={{ fontSize: '15.5px', fontWeight: '700', color: highlight ? 'var(--acc)' : 'var(--txt)', marginBottom: '10px', letterSpacing: '-.2px' }}>{title}</div>
-                <div style={{ fontSize: '13px', color: '#6B7489', lineHeight: '1.75', fontWeight: '300' }}>{desc}</div>
-              </div>
+              { n: '01', title: 'Digital-First Workflow', highlight: false, img: '/images/features/take_off.png',        desc: "We built our platform around how Canadian estimators actually work — drawings, counts, bids and quotes in one continuous flow." },
+              { n: '02', title: 'Expert-Built Formulas',  highlight: true,  img: '/images/misc/built_by_estimators.png', desc: 'Every formula and assembly was designed by a panel of top electrical estimators — not engineers guessing at your workflow.' },
+              { n: '03', title: 'Contractor-First Support', highlight: false, img: '/images/misc/request_demo.png',       desc: 'We prioritize contractor needs, so every feature and support interaction is built around helping you win your next bid.' },
+              { n: '04', title: 'City-Wide Pricing Network', highlight: false, img: '/images/features/bid_page.png',       desc: 'Real-time, regionally adjusted material pricing across every major Canadian market — no manual lookups.' },
+              { n: '05', title: 'Built for Every Trade', highlight: false, img: '/images/trades/commercial.png',          desc: 'Electrical, mechanical, plumbing, fire alarm and more — one platform covers every trade on your job.' },
+              { n: '06', title: 'Fast, Reliable Delivery', highlight: false, img: '/images/features/quote_letter.png',     desc: 'A streamlined workflow means your team estimates and quotes faster, without compromising accuracy.' },
+            ].map(({ n, title, highlight, desc, img }, i) => (
+              <Reveal key={n} className={`wcr-row ${i % 2 === 1 ? 'wcr-row-rev' : ''}`}
+                initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}>
+                <div className="wcr-media">
+                  <img src={process.env.PUBLIC_URL + img} alt={title} loading="lazy" />
+                </div>
+                <div className="wcr-card">
+                  <div className="wcr-num" style={{ color: highlight ? 'var(--acc)' : 'var(--sap)' }}>{n}</div>
+                  <div className="wcr-ttl" style={{ color: highlight ? 'var(--acc)' : 'var(--txt)' }}>{title}</div>
+                  <div className="wcr-divider" style={{ background: highlight ? 'var(--grd-acc)' : 'var(--grd-prim)' }} />
+                  <p className="wcr-desc">{desc}</p>
+                </div>
+              </Reveal>
             ))}
-          </RevealGroup>
+          </div>
         </div>
       </section>
 

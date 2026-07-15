@@ -85,29 +85,6 @@ const Contact = ({ onNavigate }) => {
               <span>✓ Same-day response</span>
             </div>
           </motion.div>
-
-          {/* Right — floating info cards */}
-          <motion.div
-            className="contact-hero-right"
-            initial={{ opacity: 0, x: 36 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.05, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
-          >
-            <motion.div className="contact-float-card" whileHover={{ y: -4, boxShadow: '0 16px 32px rgba(15,37,87,.16)' }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-              <div className="contact-float-icon"><IconMail /></div>
-              <div>
-                <div className="contact-float-label">Email us</div>
-                <div className="contact-float-val">care@realcostestimating.ca</div>
-              </div>
-            </motion.div>
-            <motion.div className="contact-float-card" whileHover={{ y: -4, boxShadow: '0 16px 32px rgba(15,37,87,.16)' }} transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-              <div className="contact-float-icon"><IconPin /></div>
-              <div>
-                <div className="contact-float-label">Based in</div>
-                <div className="contact-float-val">1200 Bloor Street West, Toronto</div>
-              </div>
-            </motion.div>
-          </motion.div>
         </div>
       </section>
 

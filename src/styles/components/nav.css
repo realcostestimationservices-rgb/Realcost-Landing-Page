@@ -1,24 +1,28 @@
 /* ===== Nav (bare logo left + floating pill right) ===== */
 .rc-nav {
   position: fixed;
-  top: 16px;
-  left: 50%;
-  transform: translateX(-50%);
+  top: 0;
+  left: 0;
+  transform: none;
   z-index: 999;
-  width: calc(100% - 48px);
-  max-width: 1320px;
-  height: 64px;
+  width: 100%;
+  max-width: none;
+  height: 68px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  padding: 0;
-  background: none;
-  border: 1px solid transparent;
-  box-shadow: none;
+  padding: 0 80px;
+  border-radius: 0;
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(18px) saturate(1.5);
+  -webkit-backdrop-filter: blur(18px) saturate(1.5);
+  border: none;
+  border-bottom: 1px solid rgba(17,38,70,.10);
+  box-shadow: 0 8px 30px rgba(17,38,70,.12);
   transition: background .3s ease, border-color .3s ease, box-shadow .3s ease, padding .3s ease, backdrop-filter .3s ease, width .3s ease, max-width .3s ease, top .3s ease, height .3s ease, border-radius .3s ease;
 }
-/* Scrolled: full-width translucent navy bar (standard sticky nav) */
+/* Scrolled: full-width translucent white bar (standard sticky nav) */
 .rc-nav.scrolled {
   top: 0;
   width: 100%;
@@ -26,12 +30,21 @@
   height: 68px;
   padding: 0 80px;
   border-radius: 0;
-  background: rgba(15,30,58,.86);
+  background: rgba(255,255,255,.92);
   backdrop-filter: blur(18px) saturate(1.5);
   -webkit-backdrop-filter: blur(18px) saturate(1.5);
   border: none;
-  border-bottom: 1px solid rgba(255,255,255,.10);
-  box-shadow: 0 8px 30px rgba(11,18,40,.45);
+  border-bottom: 1px solid rgba(17,38,70,.10);
+  box-shadow: 0 8px 30px rgba(17,38,70,.12);
+}
+/* On the white bar the brand has to flip to navy, whatever the page behind it. */
+.rc-nav.scrolled .nav-brand-wordmark span:first-child {
+  color: var(--sap);
+  text-shadow: none;
+}
+.rc-nav.scrolled .nav-brand-wordmark span:last-child {
+  color: rgba(17,38,70,.55);
+  text-shadow: none;
 }
 /* links sit directly on the navy bar (pill goes transparent) */
 .rc-nav.scrolled .nav-pill {
@@ -59,21 +72,23 @@
   line-height: 1.12;
 }
 .nav-brand-wordmark span:first-child {
-  font-size: 22px;
+  font-family: 'Sora', 'Plus Jakarta Sans', sans-serif;
+  font-size: 21px;
   font-weight: 800;
-  color: #fff;
-  letter-spacing: -.01em;
+  color: var(--sap);
+  letter-spacing: -.02em;
   text-transform: none;
-  text-shadow: 0 2px 14px rgba(0,0,0,.45);
+  text-shadow: none;
   transition: color .3s ease, text-shadow .3s ease;
 }
 .nav-brand-wordmark span:last-child {
-  font-size: 8.5px;
-  font-weight: 500;
-  color: rgba(232,238,252,.7);
-  letter-spacing: .22em;
+  font-family: 'Sora', 'Plus Jakarta Sans', sans-serif;
+  font-size: 8px;
+  font-weight: 600;
+  color: rgba(17,38,70,.55);
+  letter-spacing: .26em;
   text-transform: uppercase;
-  text-shadow: 0 1px 8px rgba(0,0,0,.4);
+  text-shadow: none;
   transition: color .3s ease, text-shadow .3s ease;
 }
 
@@ -94,11 +109,9 @@
   gap: 4px;
   padding: 7px 7px 7px 12px;
   border-radius: 999px;
-  background: linear-gradient(180deg, rgba(20,36,66,.80) 0%, rgba(14,28,54,.84) 100%);
-  backdrop-filter: blur(22px) saturate(1.6);
-  -webkit-backdrop-filter: blur(22px) saturate(1.6);
-  border: 1px solid rgba(255,255,255,.13);
-  box-shadow: 0 20px 46px -14px rgba(11,18,40,.6), inset 0 1px 0 rgba(255,255,255,.09);
+  background: none;
+  border: 1px solid transparent;
+  box-shadow: none;
 }
 .nav-links {
   display: flex;
@@ -111,7 +124,7 @@
   border-radius: 999px;
   font-size: 13.5px;
   font-weight: 500;
-  color: rgba(230,236,252,.84);
+  color: rgba(17,38,70,.78);
   cursor: pointer;
   transition: color .2s ease, background .2s ease, transform .2s ease;
   border: none;
@@ -119,12 +132,29 @@
   white-space: nowrap;
   letter-spacing: -.01em;
 }
-.nl:hover { color: #fff; background: rgba(255,255,255,.10); transform: translateY(-1px); }
+/* Underline indicator that grows from the centre on hover / active */
+.nl::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 4px;
+  transform: translateX(-50%) scaleX(0);
+  transform-origin: center;
+  width: 55%;
+  height: 2.5px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #4F46E5, #2563EB, #3B82F6);
+  opacity: 0;
+  transition: transform .24s cubic-bezier(.22,1,.36,1), opacity .24s ease;
+}
+.nl:hover { color: var(--sap); background: rgba(17,38,70,.07); transform: translateY(-1px); }
+.nl:hover::after { transform: translateX(-50%) scaleX(1); opacity: 1; }
 .nl.active {
-  color: #fff;
-  background: rgba(255,255,255,.14);
+  color: var(--acc);
+  background: rgba(37,99,235,.10);
   font-weight: 600;
 }
+.nl.active::after { transform: translateX(-50%) scaleX(1); opacity: 1; }
 .nav-cta {
   background: var(--grd-prim);
   color: #fff;
@@ -181,7 +211,12 @@
   border-color: rgba(17,38,70,.22);
 }
 .rc-nav.light-hero .nav-hamburger span { background: var(--sap); }
-.rc-nav.scrolled .nav-hamburger span { background: #fff; }
+/* Scrolled bar is white now, so the bars go navy to stay visible. */
+.rc-nav.scrolled .nav-hamburger {
+  background: rgba(17,38,70,.06);
+  border-color: rgba(17,38,70,.18);
+}
+.rc-nav.scrolled .nav-hamburger span { background: var(--sap); }
 /* Animate to X when open */
 .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
@@ -213,7 +248,8 @@
   background: none;
   border-color: transparent;
 }
-.rc-nav.menu-open .nav-hamburger span { background: #fff; }
+/* The X sits over the drawer, which is white now. */
+.rc-nav.menu-open .nav-hamburger span { background: var(--sap); }
 
 /* ===== Mobile drawer ===== */
 .nav-drawer {
@@ -230,12 +266,12 @@
   right: 0;
   width: min(300px, 86vw);
   height: 100%;
-  background: #0D1E3E;
-  border-left: 1px solid rgba(255,255,255,.1);
+  background: #fff;
+  border-left: 1px solid rgba(17,38,70,.10);
   padding: 76px 20px 28px;
   display: flex;
   flex-direction: column;
-  box-shadow: -10px 0 48px rgba(0,0,0,.45);
+  box-shadow: -10px 0 48px rgba(11,18,40,.30);
   overflow-y: auto;
 }
 .nav-drawer-brand {
@@ -244,12 +280,12 @@
   gap: 10px;
   margin-bottom: 24px;
   padding-bottom: 18px;
-  border-bottom: 1px solid rgba(255,255,255,.1);
+  border-bottom: 1px solid rgba(17,38,70,.10);
 }
 .nav-drawer-brand span {
   font-size: 17px;
   font-weight: 800;
-  color: #fff;
+  color: var(--sap);
   letter-spacing: -.01em;
 }
 .nav-drawer-links {
@@ -264,15 +300,15 @@
   border-radius: 9px;
   font-size: 14.5px;
   font-weight: 500;
-  color: rgba(210,224,255,.72);
+  color: rgba(17,38,70,.75);
   background: none;
   border: none;
   cursor: pointer;
   text-align: left;
   transition: background .16s, color .16s;
 }
-.nav-drawer-link:hover { background: rgba(255,255,255,.08); color: #fff; }
-.nav-drawer-link.active { background: rgba(255,255,255,.13); color: #fff; font-weight: 600; }
+.nav-drawer-link:hover { background: rgba(17,38,70,.06); color: var(--sap); }
+.nav-drawer-link.active { background: rgba(37,99,235,.10); color: var(--acc); font-weight: 600; }
 
 /* ===== Nav responsive =====
    These live in nav.css (not responsive.css) on purpose: nav.css is bundled
@@ -309,7 +345,7 @@
 
 /* Small mobile ≤380px */
 @media (max-width:380px) {
-  .rc-nav { width: calc(100% - 16px); padding: 0 12px; }
+  .rc-nav { padding: 0 12px; }
   .nav-brand img { width: 32px; height: 32px; }
   .nav-brand-wordmark span:first-child { font-size: 17px; }
 }

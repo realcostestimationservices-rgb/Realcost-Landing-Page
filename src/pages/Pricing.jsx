@@ -136,14 +136,8 @@ const Pricing = ({ onNavigate }) => {
 
   const hasYearly = !!yearlyPlan;
   const hasMonthly = !!monthlyPlan;
-  const activePlan = cycle === 'yearly' ? yearlyPlan : monthlyPlan;
-
-  const activeDisplayPrice =
-    activePlan?.discount_enabled && activePlan.discount_price
-      ? activePlan.discount_price
-      : activePlan?.price;
-
-  const hasDiscount = activePlan?.discount_enabled && !!activePlan?.discount_price;
+  // Every plan for the selected billing cycle — each renders as its own card.
+  const cyclePlans = plans.filter((p) => p.type === cycle);
 
   // Compute yearly saving % vs monthly
   const mPrice = monthlyPlan
@@ -208,10 +202,10 @@ const Pricing = ({ onNavigate }) => {
 
       <section style={{ padding: '34px 0 28px' }}>
         <div className="cxl" style={{ textAlign: 'center' }}>
-          <div className="sec-h2" style={{ marginBottom: '10px' }}>Best Value for Price</div>
-          <p className="pr-tagline">
+          <div className="sec-eyebrow" style={{ justifyContent: 'center' }}>Best Value for Price</div>
+          <h2 className="pr-tagline-heading">
             <span className="pr-tagline-brand">Real Cost</span> — a name you can rely on.
-          </p>
+          </h2>
         </div>
       </section>
 
@@ -276,43 +270,50 @@ const Pricing = ({ onNavigate }) => {
                 </div>
               )}
 
-              {/* ── Pro / featured card ── */}
-              {activePlan && (
-                <div className="pr-card pr-card-featured">
-                  <div className="pr-card-top">
-                    {activePlan.make_recommended && (
-                      <div className="pr-most-popular">Most Popular</div>
-                    )}
-                    <div className="pr-plan-label">
-                      {cycle === 'yearly' ? 'Yearly Plan' : 'Monthly Plan'}
-                    </div>
-                    <div className="pr-plan-name">{activePlan.title}</div>
-                    <div className="pr-plan-desc">{activePlan.description}</div>
-                    <div className="pr-price-block">
-                      {hasDiscount && (
-                        <span className="pr-price-original">{fmt(activePlan.price)}</span>
+              {/* ── One card per plan in the selected cycle ── */}
+              {cyclePlans.map((plan) => {
+                const featured = !!plan.make_recommended;
+                const planDiscount = plan.discount_enabled && !!plan.discount_price;
+                const displayPrice = planDiscount ? plan.discount_price : plan.price;
+                return (
+                  <div key={plan.id ?? plan.title} className={`pr-card${featured ? ' pr-card-featured' : ''}`}>
+                    <div className="pr-card-top">
+                      {featured && (
+                        <div className="pr-most-popular">Most Popular</div>
                       )}
-                      <span className="pr-price">{fmt(activeDisplayPrice)}</span>
-                      <span className="pr-price-period">/{activePlan.duration_unit}</span>
+                      <div className="pr-plan-label">
+                        {cycle === 'yearly' ? 'Yearly Plan' : 'Monthly Plan'}
+                      </div>
+                      <div className="pr-plan-name">{plan.title}</div>
+                      <div className="pr-plan-desc">{plan.description}</div>
+                      <div className="pr-price-block">
+                        {planDiscount && (
+                          <span className="pr-price-original">{fmt(plan.price)}</span>
+                        )}
+                        <span className="pr-price">{fmt(displayPrice)}</span>
+                        <span className="pr-price-period">/{plan.duration_unit}</span>
+                      </div>
+                      <div className="pr-price-seat">per seat · billed {cycle}</div>
+                      {planDiscount && plan.discount_text && (
+                        <div className="pr-discount-tag">{plan.discount_text}</div>
+                      )}
                     </div>
-                    <div className="pr-price-seat">per seat · billed {cycle}</div>
-                    {hasDiscount && activePlan.discount_text && (
-                      <div className="pr-discount-tag">{activePlan.discount_text}</div>
-                    )}
+                    <div className="pr-card-bottom">
+                      <ul className="pr-features">
+                        {PLAN_FEATURES_PRO.map((f, i) => (
+                          <li key={i} className="pr-feature-item"><Check />{f}</li>
+                        ))}
+                      </ul>
+                      <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className={featured ? 'pr-cta-primary' : 'pr-cta-outline'} href={APP_URL} target="_blank" rel="noopener noreferrer">
+                        {plan.button_text}
+                      </motion.a>
+                      {featured && (
+                        <p className="pr-cta-note">{trialDays}-day free trial included · no card needed</p>
+                      )}
+                    </div>
                   </div>
-                  <div className="pr-card-bottom">
-                    <ul className="pr-features">
-                      {PLAN_FEATURES_PRO.map((f, i) => (
-                        <li key={i} className="pr-feature-item"><Check />{f}</li>
-                      ))}
-                    </ul>
-                    <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="pr-cta-primary" href={APP_URL} target="_blank" rel="noopener noreferrer">
-                      {activePlan.button_text}
-                    </motion.a>
-                    <p className="pr-cta-note">{trialDays}-day free trial included · no card needed</p>
-                  </div>
-                </div>
-              )}
+                );
+              })}
 
             </RevealGroup>
           )}

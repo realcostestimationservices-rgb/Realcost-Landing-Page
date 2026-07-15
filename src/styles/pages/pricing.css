@@ -116,6 +116,14 @@
   letter-spacing: -.2px;
   margin: 0;
 }
+.pr-tagline-heading {
+  font-size: 40px;
+  font-weight: 800;
+  color: var(--txt);
+  line-height: 1.15;
+  letter-spacing: -1.4px;
+  margin: 10px 0 0;
+}
 .pr-tagline-brand {
   font-weight: 800;
   letter-spacing: -.4px;
@@ -177,9 +185,9 @@
 /* ─── Cards grid ───────────────────────────────────────── */
 .pr-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 20px;
-  max-width: 860px;
+  max-width: 1200px;
   margin: 0 auto;
   align-items: start;
 }
@@ -481,6 +489,7 @@
 @media (max-width:600px) {
   .pr-price { font-size: 42px; letter-spacing: -1.5px; }
   .pr-tagline { font-size: 15px; }
+  .pr-tagline-heading { font-size: 28px; letter-spacing: -1px; }
 }
 @media (max-width:480px) {
   .pr-features-grid { grid-template-columns: 1fr; }
