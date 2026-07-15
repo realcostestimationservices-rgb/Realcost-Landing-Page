@@ -20,7 +20,7 @@
   border: none;
   border-bottom: 1px solid rgba(17,38,70,.10);
   box-shadow: 0 8px 30px rgba(17,38,70,.12);
-  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease, padding .3s ease, backdrop-filter .3s ease, width .3s ease, max-width .3s ease, top .3s ease, height .3s ease, border-radius .3s ease;
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease, padding .3s ease, backdrop-filter .3s ease, width .3s ease, max-width .3s ease, left .3s ease, right .3s ease, top .3s ease, height .3s ease, border-radius .3s ease;
 }
 /* Scrolled: full-width translucent white bar (standard sticky nav) */
 .rc-nav.scrolled {
@@ -315,10 +315,11 @@
    AFTER responsive.css, so equal-specificity overrides placed there would lose
    the source-order tie. Keeping them here guarantees they win. */
 
-/* Laptop/tablet ≤1024px — links + CTA no longer fit the pill; collapse to
-   hamburger only. The "Request Demo" CTA lives inside the drawer, so hide the
-   whole pill here rather than keeping the standalone button in the bar. */
-@media (max-width:1024px) {
+/* Laptop/tablet ≤1200px — the 7 links + CTA + brand need ~1200px to lay out in
+   the pill, so below this they cramp/overflow. Collapse to hamburger only. The
+   "Request Demo" CTA lives inside the drawer, so hide the whole pill here rather
+   than keeping the standalone button in the bar. */
+@media (max-width:1200px) {
   .rc-nav { padding: 0 24px; height: 64px; }
   .rc-nav.scrolled { padding: 0 24px; }
   .nav-brand-wordmark span:first-child { font-size: 18px; }
@@ -333,10 +334,20 @@
   .rc-nav.scrolled { padding: 0 20px; }
 }
 
-/* Large mobile ≤600px — hide the pill entirely, hamburger only */
+/* Large mobile ≤600px — hide the pill entirely, hamburger only. Float the bar
+   with equal 12px insets on both sides (left+right, not width) so it stays
+   centred, and round the corners so the inset reads as intentional. */
 @media (max-width:600px) {
-  .rc-nav { height: 56px; width: calc(100% - 24px); top: 12px; padding: 0 16px; }
-  .rc-nav.scrolled { padding: 0 16px; height: 60px; }
+  .rc-nav {
+    height: 56px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    top: 12px;
+    padding: 0 16px;
+    border-radius: 14px;
+  }
+  .rc-nav.scrolled { left: 0; right: 0; width: 100%; top: 0; padding: 0 16px; height: 60px; border-radius: 0; }
   .nav-pill { display: none; }
   .nav-hamburger { display: flex; }
   .nav-brand-wordmark span:first-child { font-size: 19px; }
