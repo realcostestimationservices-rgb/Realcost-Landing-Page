@@ -190,8 +190,11 @@
   width: 38px;
   height: 38px;
   padding: 7px;
-  background: rgba(255,255,255,.1);
-  border: 1px solid rgba(255,255,255,.18);
+  /* The nav bar is white in every state, so the button + bars default to navy
+     to stay visible. (A white default was invisible at the top of pages that
+     don't set .light-hero.) */
+  background: rgba(17,38,70,.06);
+  border: 1px solid rgba(17,38,70,.18);
   border-radius: 9px;
   cursor: pointer;
   flex-shrink: 0;
@@ -201,22 +204,11 @@
   display: block;
   height: 2px;
   width: 100%;
-  background: #fff;
+  background: var(--sap);
   border-radius: 2px;
   transition: transform .25s ease, opacity .2s ease;
   transform-origin: center;
 }
-.rc-nav.light-hero .nav-hamburger {
-  background: rgba(17,38,70,.08);
-  border-color: rgba(17,38,70,.22);
-}
-.rc-nav.light-hero .nav-hamburger span { background: var(--sap); }
-/* Scrolled bar is white now, so the bars go navy to stay visible. */
-.rc-nav.scrolled .nav-hamburger {
-  background: rgba(17,38,70,.06);
-  border-color: rgba(17,38,70,.18);
-}
-.rc-nav.scrolled .nav-hamburger span { background: var(--sap); }
 /* Animate to X when open */
 .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .nav-hamburger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
