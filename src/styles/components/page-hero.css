@@ -420,6 +420,7 @@
   .contact-hero-inner { gap: 48px; }
 }
 @media (max-width:768px) {
+  .contact-hero { min-height: 540px; }
   .contact-hero > .cxl { padding-top: 116px; padding-bottom: 60px; }
 }
 @media (max-width:900px) {
@@ -428,6 +429,7 @@
   .contact-hero-left { max-width: 100%; }
 }
 @media (max-width:600px) {
+  .contact-hero { min-height: 500px; }
   .contact-hero > .cxl { padding-top: 104px; padding-bottom: 52px; }
   .contact-hero-title { font-size: 30px; letter-spacing: -1px; }
   .contact-hero-desc { font-size: 14px; max-width: 100%; }
@@ -436,6 +438,7 @@
   .contact-float-card { padding: 14px 18px; }
 }
 @media (max-width:480px) {
+  .contact-hero { min-height: 460px; }
   .contact-hero > .cxl { padding-top: 96px; padding-bottom: 44px; }
   .contact-hero-title { font-size: 25px; }
   .contact-hero-trust { gap: 12px; }

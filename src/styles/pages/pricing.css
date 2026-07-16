@@ -480,6 +480,7 @@
   .pr-features-grid { grid-template-columns: repeat(2,1fr); }
 }
 @media (max-width:768px) {
+  .pr-hero { min-height: 540px; display: flex; flex-direction: column; justify-content: center; }
   .pr-cards { grid-template-columns: 1fr; gap: 20px; max-width: 460px; }
   .pr-streamline-grid { grid-template-columns: 1fr; gap: 32px; max-width: 420px; }
   .pr-trust-grid { grid-template-columns: 1fr; gap: 18px; }
@@ -487,11 +488,13 @@
   .pr-card-bottom { padding: 20px 24px 26px; }
 }
 @media (max-width:600px) {
+  .pr-hero { min-height: 500px; }
   .pr-price { font-size: 42px; letter-spacing: -1.5px; }
   .pr-tagline { font-size: 15px; }
   .pr-tagline-heading { font-size: 28px; letter-spacing: -1px; }
 }
 @media (max-width:480px) {
+  .pr-hero { min-height: 460px; }
   .pr-features-grid { grid-template-columns: 1fr; }
   .pr-toggle-btn { padding: 10px 18px; font-size: 13px; }
   .pr-bottom-cta-title { font-size: 26px; letter-spacing: -1px; }

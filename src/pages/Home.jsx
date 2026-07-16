@@ -13,35 +13,42 @@ const SLIDE_EASE = { duration: 0.95, ease: [0.65, 0, 0.35, 1] };
    15-year badge and the CTA buttons stay put across all three. */
 const HERO_SLIDES = [
   {
+    slug: 'intro',
     image: '/images/home/Home.png',
     badge: 'Professional Electrical Estimating Software',
     title: <>Tired of overpriced,<br />over-complicated software?<br /><em>Your wait is over.</em></>,
     sub: <>Switch to <strong>Real Cost</strong> for a premium estimating experience — upload your drawings, count symbols, build your bid, and generate a quote letter, all in one place.</>,
   },
   {
+    slug: 'takeoff',
     image: '/images/features/takeoff.png',
     badge: 'Digital takeoff & symbol auto-count',
     title: <>Stop counting symbols<br />by hand.<br /><em>Let the app do it.</em></>,
     sub: <>Box-select a single symbol and <strong>Real Cost</strong> finds every match across every page of your drawing set — in seconds, not evenings.</>,
   },
   {
-    image: '/images/features/our_features.png',
+    slug: 'bid',
+    image: '/images/home/home_3.png',
     badge: 'Bid page & one-click quote letter',
     title: <>From drawings to a<br />branded quote.<br /><em>In four steps.</em></>,
     sub: <>Material, labour, overhead and markup — calculated on your bid page, then sent out as a <strong>professional PDF quote letter</strong>.</>,
   },
 ];
 
+
+const MONITOR_TABS = [
+  { label: 'Take Off',       image: '/images/features/take_off.png',       alt: 'Digital takeoff canvas' },
+  { label: 'Estimating',     image: '/images/features/estimating.png',     alt: 'Estimating' },
+  { label: 'Get Materials',  image: '/images/features/gen_materials.png',  alt: 'Generated materials list' },
+  { label: 'Quote Letter',   image: '/images/features/quote_letter.png',   alt: 'Branded PDF quote letter' },
+  { label: 'Estimate Graph', image: '/images/features/estimate_graph.png', alt: 'Estimate graph' },
+];
+
 const Home = ({ onNavigate }) => {
   const [tab2, setTab2] = useState(0);
   const monitorRef2 = useRef(null);
 
-  /* ── Hero carousel ──
-     Auto-advances every 6s, always sliding left. `pos` counts 0→1→2→3 where the
-     final position is a clone of the first slide appended to each track — the
-     track keeps moving left onto the clone, then snaps back to position 0 with
-     no transition, so slide 3 → slide 1 reads as one continuous leftward move
-     instead of springing back to the right. The timer pauses on hover. */
+
   const N = HERO_SLIDES.length;
   const [pos, setPos] = useState(0);
   const [snapping, setSnapping] = useState(false);
@@ -51,11 +58,7 @@ const Home = ({ onNavigate }) => {
   const nextSlide = () => setPos((p) => (p >= N ? 1 : p + 1));
   const prevSlide = () => setPos((p) => (p - 1 + N) % N);
 
-  /* Auto-advance: a single self-scheduling loop that starts fresh on every
-     mount (so it keeps working after you navigate away from Home and back).
-     Pause-on-hover and tab-visibility are read *live* each tick from a ref and
-     document.hidden — there's no separate state to get stuck true, and no
-     reliance on framer's animation callback. */
+
   useEffect(() => {
     let timer;
     const step = () => {
@@ -121,7 +124,7 @@ const Home = ({ onNavigate }) => {
           {[...HERO_SLIDES, HERO_SLIDES[0]].map((s, i) => (
             <div className="hero-bg-slide" key={i}>
               <img
-                className={`hero-slide-img${i === pos ? ' is-active' : ''}`}
+                className={`hero-slide-img hero-slide-${s.slug}${i === pos ? ' is-active' : ''}`}
                 src={process.env.PUBLIC_URL + s.image}
                 alt=""
                 aria-hidden="true"
@@ -362,23 +365,15 @@ const Home = ({ onNavigate }) => {
             <Reveal className="monitor-3d-wrap" y={0} style={{ opacity: 0 }} initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }}>
               <div ref={monitorRef2} className="monitor monitor-3d">
                 <div className="mon-tabs">
-                  <button className={`mt ${tab2 === 0 ? 'on' : ''}`} onClick={() => setTab2(0)}>Takeoff Canvas</button>
-                  <button className={`mt ${tab2 === 1 ? 'on' : ''}`} onClick={() => setTab2(1)}>Estimating</button>
-                  <button className={`mt ${tab2 === 2 ? 'on' : ''}`} onClick={() => setTab2(2)}>Bid Page</button>
-                  <button className={`mt ${tab2 === 3 ? 'on' : ''}`} onClick={() => setTab2(3)}>Quote Letter</button>
+                  {MONITOR_TABS.map(({ label }, i) => (
+                    <button key={label} className={`mt ${tab2 === i ? 'on' : ''}`} onClick={() => setTab2(i)}>{label}</button>
+                  ))}
                 </div>
-                <div style={{ display: tab2 === 0 ? 'block' : 'none', background: '#F2F4FC' }}>
-                  <img src={process.env.PUBLIC_URL + '/images/features/take_off.png'} alt="Digital takeoff canvas" style={{ width: '100%', display: 'block' }} />
-                </div>
-                <div style={{ display: tab2 === 1 ? 'block' : 'none', background: '#F2F4FC' }}>
-                  <img src={process.env.PUBLIC_URL + '/images/features/estimating.png'} alt="Estimating" style={{ width: '100%', display: 'block' }} />
-                </div>
-                <div style={{ display: tab2 === 2 ? 'block' : 'none', background: '#F2F4FC' }}>
-                  <img src={process.env.PUBLIC_URL + '/images/features/bid_page.png'} alt="Bid page" style={{ width: '100%', display: 'block' }} />
-                </div>
-                <div style={{ display: tab2 === 3 ? 'block' : 'none', background: '#F2F4FC' }}>
-                  <img src={process.env.PUBLIC_URL + '/images/features/quote_letter.png'} alt="Quote letter" style={{ width: '100%', display: 'block' }} />
-                </div>
+                {MONITOR_TABS.map(({ label, image, alt }, i) => (
+                  <div key={label} className="mon-panel" style={{ display: tab2 === i ? 'block' : 'none' }}>
+                    <img src={process.env.PUBLIC_URL + image} alt={alt} />
+                  </div>
+                ))}
               </div>
             </Reveal>
 
@@ -433,15 +428,15 @@ const Home = ({ onNavigate }) => {
                 img: '/images/features/autocount.png',
               },
               {
-                bg: 'rgba(96,165,250,.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
-                img: '/images/misc/project.png',
+                bg: 'rgba(155, 194, 241, 0.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
+                img: '/images/features/canada-map.webp', fit: true,
               },
 
-            ].map(({ bg, title, desc, img }) => (
+            ].map(({ bg, title, desc, img, fit }) => (
               <motion.div key={title} className="home-featp-card" style={{ background: '#fff', border: '1px solid #E8EEF8', borderRadius: '18px', position: 'relative', overflow: 'hidden', boxShadow: '0 1px 6px rgba(15,37,87,.05)', height: '100%' }}
                 whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(15,37,87,.10)', borderColor: 'rgba(96,165,250,.35)' }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-                <div className="home-featp-card-img" style={{ background: bg }}>
+                <div className={`home-featp-card-img${fit ? ' is-fit' : ''}`} style={{ background: bg }}>
                   <img src={process.env.PUBLIC_URL + img} alt={title} loading="lazy" />
                 </div>
                 <div style={{ padding: '22px 26px 26px' }}>

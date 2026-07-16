@@ -326,18 +326,18 @@
   .rc-nav.scrolled { padding: 0 20px; }
 }
 
-/* Large mobile ≤600px — hide the pill entirely, hamburger only. Float the bar
-   with equal 12px insets on both sides (left+right, not width) so it stays
-   centred, and round the corners so the inset reads as intentional. */
+/* Large mobile ≤600px — hide the pill entirely, hamburger only. Keep the bar
+   full-width and flush to the top in every state (matching the scrolled look),
+   so it reads as a standard sticky nav rather than a floating pill. */
 @media (max-width:600px) {
   .rc-nav {
-    height: 56px;
-    left: 12px;
-    right: 12px;
-    width: auto;
-    top: 12px;
+    height: 60px;
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: 0;
     padding: 0 16px;
-    border-radius: 14px;
+    border-radius: 0;
   }
   .rc-nav.scrolled { left: 0; right: 0; width: 100%; top: 0; padding: 0 16px; height: 60px; border-radius: 0; }
   .nav-pill { display: none; }

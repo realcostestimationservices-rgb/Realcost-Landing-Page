@@ -47,7 +47,6 @@ const Chatbot = () => {
     autocount: ["Auto-Count: draw a rectangle around any symbol on your drawing — Real Cost finds and counts all matching assemblies across every page of your drawing set, instantly. No manual clicking."],
     bidpage: ["The Bid Page auto-calculates material costs, labour hours, overhead, markup, and project duration from your takeoff counts. Everything updates live as you make changes."],
     quote: ["Once your bid is done, one click generates a professional branded PDF or Word quote letter — ready to send to your client immediately."],
-    trades: ["Real Cost supports: Electrical, Mechanical/HVAC, Plumbing, Fire Alarm, Voice & Data, Security, Audio/Visual, Heat Tracing, and Mechanical Control."],
     pricing_can: ["Material rates auto-adjust to your city's regional pricing tier (L1/L2/L3) — covering Toronto, Ottawa, Montreal, Calgary, Vancouver, Quebec and more."],
     contact: ["(647) 677-8399 · info@realcostestimating.ca · 1200 Bloor Street West, Toronto · Mon–Fri 9AM–6PM ET"],
     default: ["Hi! I can help with anything about Real Cost — features, pricing, workflows, or how to get started. What would you like to know?"]
@@ -57,7 +56,6 @@ const Chatbot = () => {
     ['Free trial', 'trial'],
     ['Pricing', 'pricing'],
     ['Auto-count', 'autocount'],
-    ['Trades', 'trades'],
     ['Contact', 'contact']
   ];
 

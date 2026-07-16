@@ -8,13 +8,13 @@
   .os-hero { min-height: 0; align-items: flex-start; padding: 124px 0 70px; }
 }
 @media (max-width:768px) {
-  .os-hero { padding: 116px 0 60px; }
+  .os-hero { padding: 116px 0 60px; min-height: 540px; }
 }
 @media (max-width:600px) {
-  .os-hero { padding: 104px 0 52px; }
+  .os-hero { padding: 104px 0 52px; min-height: 500px; }
 }
 @media (max-width:480px) {
-  .os-hero { padding: 96px 0 44px; }
+  .os-hero { padding: 96px 0 44px; min-height: 460px; }
 }
 
 /* ===== Stats strip ===== */

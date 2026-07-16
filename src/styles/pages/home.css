@@ -326,6 +326,22 @@
   border-bottom-color: var(--acc);
   background: rgba(96,165,250,.08);
 }
+/* Every panel holds the same box, so the monitor keeps its height as you switch
+   tabs instead of jolting. The ratio is gen_materials' — the tallest of the five
+   — so every screenshot still renders at its natural size and none is scaled to
+   fit. The shorter ones just leave white below: ~15px for quote_letter (the odd
+   one at ~2.11:1 against the others' ~2.04), a couple of px for the rest.
+   height:auto and top-alignment are what put that gap at the bottom rather than
+   splitting it above and below. */
+.mon-panel {
+  aspect-ratio: 1913 / 945;
+  background: #fff;
+}
+.mon-panel img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
 /* ===== Monitor 3D scroll reveal ===== */
 .monitor-3d-wrap {
@@ -390,10 +406,6 @@
   .years-badge svg { width: 96px; height: 96px; }
 }
 
-/* ===== Platform features preview (heading + "View all features" + card grid) =====
-   Named areas rather than a wrapping flex row: on desktop the CTA sits on the
-   heading's baseline at the right, on mobile it drops below the cards instead of
-   wedging itself between the heading and the grid. */
 .home-featp {
   display: grid;
   grid-template-columns: 1fr auto;
@@ -424,6 +436,13 @@
   transition: transform .5s cubic-bezier(.22,1,.36,1);
 }
 .home-featp-card:hover .home-featp-card-img img { transform: scale(1.05); }
+/* The map is taller than the 16/10 banner, so a top-anchored cover crop cuts off
+   the southern cities the card names. Fit it whole against the card's tint. */
+.home-featp-card-img.is-fit {
+  box-sizing: border-box;
+  padding: 12px;
+}
+.home-featp-card-img.is-fit img { object-fit: contain; object-position: center; }
 @media (max-width: 768px) {
   .home-featp {
     grid-template-columns: 1fr;
@@ -534,10 +553,12 @@
   .monitor { border-radius: 12px; }
 }
 @media (max-width: 768px) {
+  .hero { min-height: 540px; }
   .hero-h1 { font-size: 34px; }
 }
 @media (max-width: 600px) {
-  .hero-inner { padding: 96px 16px 48px; gap: 18px; }
+  .hero { min-height: 500px; }
+  .hero-inner { padding: 132px 16px 48px; gap: 18px; }
   .hero-badge { margin-bottom: 18px; }
   .hero-h1 { font-size: 28px; letter-spacing: -1px; }
   .hero-sub { font-size: 14px; margin-bottom: 26px; }
@@ -548,10 +569,56 @@
   .mon-url { font-size: 11px; padding: 6px; }
 }
 @media (max-width: 480px) {
+  .hero { min-height: 460px; }
   .hero-h1 { font-size: 26px; letter-spacing: -.8px; }
   .hero-sub { font-size: 13.5px; }
   .hero-btns { flex-direction: column; gap: 10px; }
   .hero-btns .btn-prim, .hero-btns .btn-ghost { width: 100%; justify-content: center; }
+}
+
+/* ===== Slide 3 (home_3.png) =====
+   The hero starts at y=0, but .rc-nav is fixed over it at 92% white — opaque in
+   practice. So the top of every hero photo is painted over. Slides 1 and 2 carry
+   ceiling up there and never miss it; home_3.png is a tight 2.25:1 desk shot
+   whose monitor bezel clears the top edge by only ~25px, so the bar swallows the
+   bezel and half the toolbar row beneath it.
+
+   Fixing this with object-position can't work — the photo is wider than the hero
+   at every width, so `cover` already fits the height exactly and there is no
+   vertical slack to shift into. Inset the image below the bar instead: padding
+   shrinks the content box (box-sizing is global border-box in index.css), and
+   `top` spends the resulting overflow on the desk at the bottom rather than the
+   bezel at the top. The strip behind the padding never shows — the nav covers
+   it — but it is filled anyway so no seam appears if the nav ever goes clear.
+
+   --nav-h mirrors the .rc-nav heights in nav.css. Keep the two in sync. */
+:root { --nav-h: 68px; }
+@media (max-width: 1200px) { :root { --nav-h: 64px; } }
+@media (max-width: 600px)  { :root { --nav-h: 60px; } }
+
+.hero-slide-bid {
+  padding-top: var(--nav-h);
+  object-position: center top;
+  background: #0B1B33;
+}
+/* Matches .hero-slide-img.is-active's specificity, so it must stay a compound
+   selector and stay below it. The Ken Burns zoom would re-crop all four sides
+   and undo the inset, so this slide alone sits still. */
+.hero-slide-bid,
+.hero-slide-bid.is-active {
+  transform: none;
+}
+
+/* Below 1024px the width crop deepens — a centre crop lands on the lamp and the
+   monitor's left edge, cutting the dashboard off. Bias it toward the screen.
+   Single-class selectors, so they override the base object-position above; the
+   vertical keyword is dropped because the full height already fits at these
+   widths and only the horizontal offset does anything. */
+@media (max-width: 1024px) {
+  .hero-slide-bid { object-position: 64% center; }
+}
+@media (max-width: 480px) {
+  .hero-slide-bid { object-position: 68% center; }
 }
 
 /* Reduced motion: no Ken Burns, and the copy cross-fades instead of sliding. */
