@@ -21,7 +21,7 @@ const HERO_SLIDES = [
   },
   {
     slug: 'takeoff',
-    image: '/images/features/takeoff.png',
+    image: '/images/home/home_2.png',
     badge: 'Digital takeoff & symbol auto-count',
     title: <>Stop counting symbols<br />by hand.<br /><em>Let the app do it.</em></>,
     sub: <>Box-select a single symbol and <strong>Real Cost</strong> finds every match across every page of your drawing set — in seconds, not evenings.</>,
@@ -47,6 +47,7 @@ const MONITOR_TABS = [
 const Home = ({ onNavigate }) => {
   const [tab2, setTab2] = useState(0);
   const monitorRef2 = useRef(null);
+  const monitorPausedRef = useRef(false); // hover pause — a ref so it can never wedge a re-render
 
 
   const N = HERO_SLIDES.length;
@@ -101,6 +102,24 @@ const Home = ({ onNavigate }) => {
     obs.observe(el);
     return () => obs.disconnect();
   }, []);
+
+  /* Monitor autoplay: step through the tabs every 4s and wrap back to the first.
+     Keyed on tab2 so the dwell restarts whenever the panel changes — clicking a
+     tab therefore gets a full 4s rather than being cut short by a tick already in
+     flight. While paused it reschedules without advancing, so autoplay resumes on
+     mouse-out instead of dying on the first skipped tick. */
+  useEffect(() => {
+    let timer;
+    const step = () => {
+      if (monitorPausedRef.current || document.hidden) {
+        timer = setTimeout(step, 4000);
+        return;
+      }
+      setTab2((i) => (i + 1) % MONITOR_TABS.length);
+    };
+    timer = setTimeout(step, 4000);
+    return () => clearTimeout(timer);
+  }, [tab2]);
 
   return (
     <div className="page-enter">
@@ -363,17 +382,24 @@ const Home = ({ onNavigate }) => {
           <div style={{ display: 'grid', gridTemplateColumns: '4fr 2fr', gap: '52px', alignItems: 'center' }}>
             {/* Left: monitor canvas */}
             <Reveal className="monitor-3d-wrap" y={0} style={{ opacity: 0 }} initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }}>
-              <div ref={monitorRef2} className="monitor monitor-3d">
+              <div
+                ref={monitorRef2}
+                className="monitor monitor-3d"
+                onMouseEnter={() => { monitorPausedRef.current = true; }}
+                onMouseLeave={() => { monitorPausedRef.current = false; }}
+              >
                 <div className="mon-tabs">
                   {MONITOR_TABS.map(({ label }, i) => (
                     <button key={label} className={`mt ${tab2 === i ? 'on' : ''}`} onClick={() => setTab2(i)}>{label}</button>
                   ))}
                 </div>
-                {MONITOR_TABS.map(({ label, image, alt }, i) => (
-                  <div key={label} className="mon-panel" style={{ display: tab2 === i ? 'block' : 'none' }}>
-                    <img src={process.env.PUBLIC_URL + image} alt={alt} />
-                  </div>
-                ))}
+                <div className="mon-stage">
+                  {MONITOR_TABS.map(({ label, image, alt }, i) => (
+                    <div key={label} className={`mon-panel${tab2 === i ? ' on' : ''}`} aria-hidden={tab2 !== i}>
+                      <img src={process.env.PUBLIC_URL + image} alt={alt} />
+                    </div>
+                  ))}
+                </div>
               </div>
             </Reveal>
 

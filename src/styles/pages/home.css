@@ -326,21 +326,40 @@
   border-bottom-color: var(--acc);
   background: rgba(96,165,250,.08);
 }
-/* Every panel holds the same box, so the monitor keeps its height as you switch
-   tabs instead of jolting. The ratio is gen_materials' — the tallest of the five
-   — so every screenshot still renders at its natural size and none is scaled to
-   fit. The shorter ones just leave white below: ~15px for quote_letter (the odd
-   one at ~2.11:1 against the others' ~2.04), a couple of px for the rest.
-   height:auto and top-alignment are what put that gap at the bottom rather than
-   splitting it above and below. */
-.mon-panel {
+/* The stage holds the box, so the monitor keeps its height as you switch tabs
+   instead of jolting. The ratio is gen_materials' — the tallest of the five — so
+   every screenshot still renders at its natural size and none is scaled to fit.
+   The shorter ones just leave white below: ~15px for quote_letter (the odd one at
+   ~2.11:1 against the others' ~2.04), a couple of px for the rest. height:auto
+   and top-alignment are what put that gap at the bottom rather than splitting it
+   above and below. */
+.mon-stage {
+  position: relative;
   aspect-ratio: 1913 / 945;
   background: #fff;
+}
+/* Panels stack instead of swapping by display, so the outgoing screenshot is
+   still painted underneath while the incoming one fades in over it. Toggling
+   display would drop the old image on the same frame the new one starts at zero,
+   flashing the stage's white through the gap — which is what makes an autoplay
+   step read as a glitch rather than a transition. */
+.mon-panel {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .55s ease;
+}
+.mon-panel.on {
+  opacity: 1;
+  z-index: 1; /* incoming sits on top, so it dissolves over the outgoing one */
 }
 .mon-panel img {
   width: 100%;
   height: auto;
   display: block;
+}
+@media (prefers-reduced-motion: reduce) {
+  .mon-panel { transition: none; }
 }
 
 /* ===== Monitor 3D scroll reveal ===== */

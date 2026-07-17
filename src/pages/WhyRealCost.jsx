@@ -36,12 +36,12 @@ const WhyRealCost = ({ onNavigate }) => {
         overflow: 'hidden',
       }}>
         {/* hero bg image */}
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/hero_whyrealcost.png'})` }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/misc/whyrealcost.png'})`, zIndex: -1, position: 'absolute', inset: 0 }}></div>
         {/* directional overlay */}
-        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
-        <div className="hero-glow" />
+        <div style={{ position:'absolute', inset:0, zIndex:-1, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
+        <div className="hero-glow" style={{ zIndex: -1 }} />
         {/* dot grid */}
-        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', backgroundImage:'radial-gradient(rgba(255,255,255,.026) 1px,transparent 1px)', backgroundSize:'32px 32px' }} />
+        <div style={{ position:'absolute', inset:0, zIndex:-1, pointerEvents:'none', backgroundImage:'radial-gradient(rgba(255,255,255,.026) 1px,transparent 1px)', backgroundSize:'32px 32px' }} />
         {/* blue top accent line */}
         <div style={{ position:'absolute', top:0, left:0, right:0, height:'2.5px', background:'linear-gradient(90deg,transparent 0%,rgba(96,165,250,.5) 25%,rgba(147,197,253,.92) 50%,rgba(96,165,250,.5) 75%,transparent 100%)', zIndex:2, pointerEvents:'none' }} />
 
