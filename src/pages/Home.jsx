@@ -468,7 +468,7 @@ const Home = ({ onNavigate }) => {
                 img: '/images/features/autocount.png',
               },
               {
-                bg: 'rgba(155, 194, 241, 0.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
+                bg: 'rgba(155, 194, 241, 0.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Ontario ,Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
                 img: '/images/features/canada-map.webp', fit: true,
               },
 

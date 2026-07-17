@@ -5,6 +5,7 @@ import Footer from './components/layout/Footer';
 import Chatbot from './components/ui/Chatbot';
 import ScrollTop from './components/ui/ScrollTop';
 import useScrollRestoration from './hooks/useScrollRestoration';
+import { APP_VERSION } from './config/version';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Demo = React.lazy(() => import('./pages/Demo'));
@@ -47,6 +48,29 @@ function App() {
   const location = useLocation();
 
   useScrollRestoration();
+
+  /* ── App Version Check: Clear cache on new deployment ── */
+  useEffect(() => {
+    const storedVersion = localStorage.getItem('app_version');
+
+    if (storedVersion !== APP_VERSION) {
+      // Clear all storage
+      localStorage.clear();
+      sessionStorage.clear();
+
+      // Remove all cookies
+      document.cookie.split(';').forEach(cookie => {
+        const name = cookie.split('=')[0].trim();
+        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
+      });
+
+      // Store new version
+      localStorage.setItem('app_version', APP_VERSION);
+
+      // Force refresh to load new assets
+      window.location.reload();
+    }
+  }, []);
 
   const handleNavigate = (page, hash = '') => {
     navigate('/' + page + hash);
