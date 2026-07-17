@@ -283,7 +283,6 @@
 }
 .monitor {
   background: #0A0E1A;
-  border: 1px solid rgba(255,255,255,.09);
   border-radius: 16px 16px 4px 4px;
   overflow: hidden;
   position: relative;
@@ -314,7 +313,7 @@
   margin: 0 12px;
 }
 .mon-tabs {
-  display: flex;
+  display: none;
   background: #080C18;
   border-bottom: 1px solid rgba(255,255,255,.05);
 }

@@ -49,6 +49,7 @@ const MONITOR_TABS = [
 
 const Home = ({ onNavigate }) => {
   const [tab2, setTab2] = useState(0);
+  const [currentStep, setCurrentStep] = useState(0);
   const monitorRef2 = useRef(null);
   const monitorPausedRef = useRef(false); // hover pause — a ref so it can never wedge a re-render
 
@@ -131,6 +132,16 @@ const Home = ({ onNavigate }) => {
     timer = setTimeout(step, 4000);
     return () => clearTimeout(timer);
   }, [tab2]);
+
+  /* Steps autoplay: cycle through the 4 steps every 3s */
+  useEffect(() => {
+    let timer;
+    const step = () => {
+      setCurrentStep((i) => (i + 1) % 4);
+    };
+    timer = setTimeout(step, 3000);
+    return () => clearTimeout(timer);
+  }, [currentStep]);
 
   return (
     <div className="page-enter">
