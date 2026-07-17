@@ -445,6 +445,7 @@
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-bottom: 1px solid #E8EEF8;
+  background: transparent !important;
 }
 .home-featp-card-img img {
   width: 100%;
