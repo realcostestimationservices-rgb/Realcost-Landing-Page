@@ -26,6 +26,14 @@ const checkItems = [
 ];
 
 const WhyRealCost = ({ onNavigate }) => {
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="page-enter">
 
@@ -36,7 +44,7 @@ const WhyRealCost = ({ onNavigate }) => {
         overflow: 'hidden',
       }}>
         {/* hero bg image */}
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/misc/whyrealcost.png'})`, position: 'absolute', inset: 0 }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + (isMobile ? '/images/misc/whyrealcost_mobile.png' : '/images/misc/whyrealcost.png')})`, position: 'absolute', inset: 0 }}></div>
         {/* directional overlay */}
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
         <div className="hero-glow" />

@@ -105,7 +105,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
+  object-position: center top;
   display: block;
   /* Ken Burns. The zoom-out on the way back to rest takes just as long, so an
      off-screen slide has quietly reset by the time it comes round again. */
@@ -159,6 +159,15 @@
   display: flex;
   align-items: center;
   gap: 72px;
+}
+.hero-inner-right {
+  flex-direction: row;
+  justify-content: space-between;
+}
+.hero-inner-right .hero-left {
+  text-align: left;
+  flex: 0 0 60%;
+  padding-left: 0;
 }
 .hero-left {
   flex: 1;
@@ -445,24 +454,22 @@
   aspect-ratio: 16 / 10;
   overflow: hidden;
   border-bottom: 1px solid #E8EEF8;
-  background: transparent !important;
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  transition: transform .5s cubic-bezier(.22,1,.36,1), background-size .5s cubic-bezier(.22,1,.36,1);
 }
-.home-featp-card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center top;
-  display: block;
-  transition: transform .5s cubic-bezier(.22,1,.36,1);
+.home-featp-card:hover .home-featp-card-img {
+  transform: scale(1.05);
 }
-.home-featp-card:hover .home-featp-card-img img { transform: scale(1.05); }
 /* The map is taller than the 16/10 banner, so a top-anchored cover crop cuts off
    the southern cities the card names. Fit it whole against the card's tint. */
 .home-featp-card-img.is-fit {
   box-sizing: border-box;
   padding: 12px;
+  background-size: contain;
+  background-position: center;
 }
-.home-featp-card-img.is-fit img { object-fit: contain; object-position: center; }
 @media (max-width: 768px) {
   .home-featp {
     grid-template-columns: 1fr;
