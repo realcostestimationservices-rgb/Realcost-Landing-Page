@@ -5,9 +5,9 @@ import { LOGIN_URL } from '../config';
 
 const features = [
   { accent: 'var(--grd-blue)', title: 'Digital Takeoff Canvas', body: 'Upload PDF drawing sets and navigate every page on a digital canvas. Place symbols manually or let the platform detect matching symbols. Multi-page projects supported with full page navigation.', img: '/images/features/take_off.png' },
-  { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Symbol Auto-Count', body: 'Draw a rectangle around any reference symbol — a light fixture, outlet, or device. The platform instantly finds and counts all matching assemblies across every drawing page.', img: '/images/features/blueprint.png' },
+  { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Symbol Auto-Count', body: 'Draw a rectangle around any reference symbol — a light fixture, outlet, or device. The platform instantly finds and counts all matching assemblies across every drawing page.', img: '/images/features/autocount.png' },
   { accent: 'linear-gradient(90deg,var(--red),var(--red2))', title: 'Bid Page', body: 'Your bid auto-calculates from takeoff counts. Material cost, labour hours, overhead percentage, markup, and a project duration calculator — all in one view.', img: '/images/features/bid_page.png' },
-  { accent: 'var(--grd-acc)', title: 'Canadian City-Based Pricing', body: 'Material rates auto-adjust to regional pricing for your city — Quebec, Ottawa, Toronto, Montreal, Calgary, Vancouver, and more.', img: '/images/misc/project.png' },
+  { accent: 'var(--grd-acc)', title: 'Canadian City-Based Pricing', body: 'Material rates auto-adjust to regional pricing for your city — Quebec, Ottawa, Toronto, Montreal, Calgary, Vancouver, and more.', img: '/images/features/canada-map.webp' },
   { accent: 'linear-gradient(90deg,#0891B2,#06B6D4)', title: 'Supplier RFQs', body: 'Send requests for quotation to your material distributors directly from the Bid Page. Compare supplier quotes side-by-side and apply the best price instantly.', img: '/images/home/benefits_3.png' },
   { accent: 'linear-gradient(90deg,#5B21B6,#7C3AED)', title: 'Quote Letter Generator', body: 'One click generates a professional branded PDF or Word quote letter from your bid — ready to submit to your client immediately.', img: '/images/features/quote_letter.png' },
   { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Estimate Graph & Analytics', body: 'Visual breakdown chart of your estimate showing material, labour, overhead, and markup proportions. Understand your bid at a glance.', img: '/images/home/benefits_2.png' },
@@ -125,8 +125,7 @@ const Features = ({ onNavigate }) => {
               { n: '02', title: 'Expert-Built Formulas',  highlight: true,  img: '/images/misc/built_by_estimators.png', desc: 'Every formula and assembly was designed by a panel of top electrical estimators — not engineers guessing at your workflow.' },
               { n: '03', title: 'Contractor-First Support', highlight: false, img: '/images/misc/request_demo.png',       desc: 'We prioritize contractor needs, so every feature and support interaction is built around helping you win your next bid.' },
               { n: '04', title: 'City-Wide Pricing Network', highlight: false, img: '/images/features/bid_page.png',       desc: 'Real-time, regionally adjusted material pricing across every major Canadian market — no manual lookups.' },
-              { n: '05', title: 'Built for Every Trade', highlight: false, img: '/images/trades/commercial.png',          desc: 'Electrical, mechanical, plumbing, fire alarm and more — one platform covers every trade on your job.' },
-              { n: '06', title: 'Fast, Reliable Delivery', highlight: false, img: '/images/features/quote_letter.png',     desc: 'A streamlined workflow means your team estimates and quotes faster, without compromising accuracy.' },
+              { n: '05', title: 'Fast, Reliable Delivery', highlight: false, img: '/images/features/quote_letter.png',     desc: 'A streamlined workflow means your team estimates and quotes faster, without compromising accuracy.' },
             ].map(({ n, title, highlight, desc, img }, i) => (
               <Reveal key={n} className={`wcr-row ${i % 2 === 1 ? 'wcr-row-rev' : ''}`}
                 initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}>

@@ -36,12 +36,12 @@ const WhyRealCost = ({ onNavigate }) => {
         overflow: 'hidden',
       }}>
         {/* hero bg image */}
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/misc/whyrealcost.png'})`, zIndex: -1, position: 'absolute', inset: 0 }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/misc/whyrealcost.png'})`, position: 'absolute', inset: 0 }}></div>
         {/* directional overlay */}
-        <div style={{ position:'absolute', inset:0, zIndex:-1, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
-        <div className="hero-glow" style={{ zIndex: -1 }} />
+        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
+        <div className="hero-glow" />
         {/* dot grid */}
-        <div style={{ position:'absolute', inset:0, zIndex:-1, pointerEvents:'none', backgroundImage:'radial-gradient(rgba(255,255,255,.026) 1px,transparent 1px)', backgroundSize:'32px 32px' }} />
+        <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', backgroundImage:'radial-gradient(rgba(255,255,255,.026) 1px,transparent 1px)', backgroundSize:'32px 32px' }} />
         {/* blue top accent line */}
         <div style={{ position:'absolute', top:0, left:0, right:0, height:'2.5px', background:'linear-gradient(90deg,transparent 0%,rgba(96,165,250,.5) 25%,rgba(147,197,253,.92) 50%,rgba(96,165,250,.5) 75%,transparent 100%)', zIndex:2, pointerEvents:'none' }} />
 
@@ -268,7 +268,7 @@ const WhyRealCost = ({ onNavigate }) => {
             </Reveal>
 
             {/* Right: image */}
-            <Reveal initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(15,37,87,.13)', width: '100%', aspectRatio: '4/3' }}>
+            <Reveal initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(15,37,87,.13)', width: '100%', aspectRatio: '3/2' }}>
               <img
                 src={process.env.PUBLIC_URL + '/images/misc/mission.png'}
                 alt="Our Mission"
@@ -282,9 +282,9 @@ const WhyRealCost = ({ onNavigate }) => {
       {/* ── Vision ── */}
       <section className="sec-grey">
         <div className="cxl">
-          <div className="wrc-2col" style={{ alignItems: 'center', gap: '64px' }}>
-            {/* Left on desktop, below the text on mobile (see .wrc-vision-media) */}
-            <Reveal className="wrc-vision-media" initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(15,37,87,.13)', width: '100%', aspectRatio: '4/3' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'flex-start', marginBottom: '48px' }}>
+            {/* Left: image */}
+            <Reveal className="wrc-vision-media" initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(15,37,87,.13)', width: '100%', aspectRatio: '3/2' }}>
               <img
                 src={process.env.PUBLIC_URL + '/images/misc/vision.png'}
                 alt="Our Vision"
@@ -301,25 +301,27 @@ const WhyRealCost = ({ onNavigate }) => {
               <p className="sec-sub" style={{ marginBottom: '18px', fontSize: '15px', lineHeight: '1.88' }}>
                 To become Canada's most trusted and reliable software solution for electrical contractors — setting the benchmark for excellence and reliability in the industry.
               </p>
-              <p className="sec-sub" style={{ marginBottom: '28px', fontSize: '15px', lineHeight: '1.88' }}>
+              <p className="sec-sub" style={{ marginBottom: '0px', fontSize: '15px', lineHeight: '1.88' }}>
                 We aim to elevate industry standards by offering reliable products, transparent service, and a customer-first experience across the country.
               </p>
-              <RevealGroup style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '14px' }}>
-                {[
-                  { label: 'Reliable Products',      desc: 'Tested and proven solutions trusted by 500+ contractors.' },
-                  { label: 'Transparent Service',    desc: 'No surprises — clear pricing and honest communication.' },
-                  { label: 'Customer-First',          desc: 'Every decision starts with what is best for our clients.' },
-                  { label: 'Industry Benchmark',      desc: 'Setting the standard for excellence in Canada.' },
-                ].map(({ label, desc }) => (
-                  <div key={label} style={{ background: '#fff', border: '1px solid rgba(220,226,240,.9)', borderRadius: '14px', padding: '18px 16px' }}>
-                    <div style={{ width: '28px', height: '3px', background: 'var(--grd-acc)', borderRadius: '2px', marginBottom: '12px' }} />
-                    <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--txt)', marginBottom: '5px' }}>{label}</div>
-                    <div style={{ fontSize: '12px', color: '#8A92A6', lineHeight: '1.6', fontWeight: '300' }}>{desc}</div>
-                  </div>
-                ))}
-              </RevealGroup>
             </Reveal>
           </div>
+
+          {/* 4 cards in a single row below image */}
+          <RevealGroup style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '14px' }}>
+            {[
+              { label: 'Reliable Products',      desc: 'Tested and proven solutions trusted by 500+ contractors.' },
+              { label: 'Transparent Service',    desc: 'No surprises — clear pricing and honest communication.' },
+              { label: 'Customer-First',          desc: 'Every decision starts with what is best for our clients.' },
+              { label: 'Industry Benchmark',      desc: 'Setting the standard for excellence in Canada.' },
+            ].map(({ label, desc }) => (
+              <div key={label} style={{ background: '#fff', border: '1px solid rgba(220,226,240,.9)', borderRadius: '14px', padding: '18px 16px' }}>
+                <div style={{ width: '28px', height: '3px', background: 'var(--grd-acc)', borderRadius: '2px', marginBottom: '12px' }} />
+                <div style={{ fontSize: '13px', fontWeight: '700', color: 'var(--txt)', marginBottom: '5px' }}>{label}</div>
+                <div style={{ fontSize: '12px', color: '#8A92A6', lineHeight: '1.6', fontWeight: '300' }}>{desc}</div>
+              </div>
+            ))}
+          </RevealGroup>
         </div>
       </section>
 
