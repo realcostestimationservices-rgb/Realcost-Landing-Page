@@ -7,7 +7,7 @@ const features = [
   { accent: 'var(--grd-blue)', title: 'Digital Takeoff Canvas', body: 'Upload PDF drawing sets and navigate every page on a digital canvas. Place symbols manually or let the platform detect matching symbols. Multi-page projects supported with full page navigation.', img: '/images/features/take_off.png' },
   { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Symbol Auto-Count', body: 'Draw a rectangle around any reference symbol — a light fixture, outlet, or device. The platform instantly finds and counts all matching assemblies across every drawing page.', img: '/images/features/autocount.png' },
   { accent: 'linear-gradient(90deg,var(--red),var(--red2))', title: 'Bid Page', body: 'Your bid auto-calculates from takeoff counts. Material cost, labour hours, overhead percentage, markup, and a project duration calculator — all in one view.', img: '/images/features/bid_page.png' },
-  { accent: 'var(--grd-acc)', title: 'Canadian City-Based Pricing', body: 'Material rates auto-adjust to regional pricing for your city — Quebec, Ottawa, Toronto, Montreal, Calgary, Vancouver, and more.', img: '/images/features/canada-map.webp' },
+  { accent: 'var(--grd-acc)', title: 'Canadian City-Based Pricing', body: 'Material rates auto-adjust to regional pricing for your city — Toronto, Ottawa, Ontario, Quebec, Montreal, Calgary, Vancouver, and more.', img: '/images/features/canada-map.webp' },
   { accent: 'linear-gradient(90deg,#0891B2,#06B6D4)', title: 'Supplier RFQs', body: 'Send requests for quotation to your material distributors directly from the Bid Page. Compare supplier quotes side-by-side and apply the best price instantly.', img: '/images/home/benefits_3.png' },
   { accent: 'linear-gradient(90deg,#5B21B6,#7C3AED)', title: 'Quote Letter Generator', body: 'One click generates a professional branded PDF or Word quote letter from your bid — ready to submit to your client immediately.', img: '/images/features/quote_letter.png' },
   { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Estimate Graph & Analytics', body: 'Visual breakdown chart of your estimate showing material, labour, overhead, and markup proportions. Understand your bid at a glance.', img: '/images/home/benefits_2.png' },
@@ -101,7 +101,7 @@ const Features = ({ onNavigate }) => {
                   {[
                     'Run a digital takeoff on PDF drawings and keep every count linked to your bid.',
                     'Auto-calculate material, labour, overhead, markup and project duration as you estimate.',
-                    'Switch between L1/L2/L3 city rates instantly so your proposal matches the local market.',
+                    'Switch between Labour difficulty levels (L1 easy, L2 medium, L3 difficult) instantly to match project conditions.',
                     'Review your bid and send a branded quote letter to clients with one click.',
                   ].map((item) => (
                     <div key={item} className="bp-bid-point">
