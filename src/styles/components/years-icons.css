@@ -1,0 +1,124 @@
+/* ===== 15 Years Anniversary Icon Set ===== */
+
+/* Color Variables */
+:root {
+  --years-dark-bg: #050300;
+  --years-light-bg: #FFFBE0;
+  --years-dark-accent: #DAB228;
+  --years-light-accent: #EEC630;
+  --years-gradient-start: #F8E860;
+  --years-gradient-mid: #D09C18;
+  --years-gradient-end: #8A6000;
+}
+
+/* Icon Container */
+.years-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.years-icon:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(218, 178, 40, 0.15);
+}
+
+/* Variant Modifiers */
+.years-icon.dark {
+  background-color: var(--years-dark-bg);
+}
+
+.years-icon.light {
+  background-color: var(--years-light-bg);
+}
+
+/* Size Variants */
+.years-icon.sm { width: 32px; height: 32px; }
+.years-icon.md { width: 48px; height: 48px; }
+.years-icon.lg { width: 64px; height: 64px; }
+.years-icon.xl { width: 80px; height: 80px; }
+
+/* Icon Grid Display */
+.years-icon-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 20px;
+}
+
+.years-icon-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.years-icon-item-name {
+  font-size: 12px;
+  font-weight: 500;
+  color: #1F2937;
+  text-align: center;
+}
+
+/* Gradient Utility */
+.years-gradient {
+  background: linear-gradient(
+    135deg,
+    var(--years-gradient-start) 0%,
+    var(--years-gradient-mid) 50%,
+    var(--years-gradient-end) 100%
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Animation - Pulse */
+@keyframes years-pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.years-icon.pulse {
+  animation: years-pulse 2s ease-in-out infinite;
+}
+
+/* Animation - Glow */
+@keyframes years-glow {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(218, 178, 40, 0.4); }
+  50% { box-shadow: 0 0 0 8px rgba(218, 178, 40, 0); }
+}
+
+.years-icon.glow {
+  animation: years-glow 2s ease-in-out infinite;
+}
+
+/* Animation - Bounce */
+@keyframes years-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+}
+
+.years-icon.bounce {
+  animation: years-bounce 1.5s ease-in-out infinite;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .years-icon-grid {
+    grid-template-columns: repeat(auto-fit, minmax(70px, 1fr));
+    gap: 16px;
+  }
+
+  .years-icon.lg { width: 56px; height: 56px; }
+}
+
+@media (max-width: 480px) {
+  .years-icon-grid {
+    grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    gap: 12px;
+  }
+
+  .years-icon.md { width: 40px; height: 40px; }
+}

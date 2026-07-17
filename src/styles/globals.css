@@ -156,20 +156,13 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
   justify-content: center;
   overflow: hidden;
   transition: transform .4s cubic-bezier(.22,1,.36,1), box-shadow .4s ease;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 .cf-row:hover .cf-frame-inner {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.045);
   box-shadow: 0 40px 90px rgba(15,37,87,.22), inset 0 1px 0 rgba(255,255,255,.9);
-}
-.cf-frame-img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  border-radius: 18px;
-  transition: transform .5s cubic-bezier(.22,1,.36,1);
-}
-.cf-row:hover .cf-frame-img {
-  transform: scale(1.045);
 }
 .cf-card {
   flex: 0 0 480px;

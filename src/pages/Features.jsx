@@ -17,11 +17,19 @@ const features = [
 const chips = ['Digital Takeoff Canvas', 'Auto-Count', 'Bid Page', 'Canadian City Pricing', 'Supplier RFQs', 'Quote Letter Generator', 'Estimate Graph', 'Team Management'];
 
 const Features = ({ onNavigate }) => {
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   return (
     <div className="page-enter">
       <section className="page-hero">
         <div className="page-hero-accent"></div>
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/features/our_features_white.png'})`, backgroundSize: 'cover', backgroundPosition: 'right center', backgroundRepeat: 'no-repeat' }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + (isMobile ? '/images/features/features_hero_mobile.png' : '/images/features/features_hero.png')})`, backgroundSize: 'cover', backgroundPosition: 'right top', backgroundRepeat: 'no-repeat' }}></div>
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign:'left' }}>
@@ -57,8 +65,12 @@ const Features = ({ onNavigate }) => {
               <Reveal key={i} className={`cf-row ${i % 2 === 1 ? 'cf-row-rev' : ''}`}>
                 <div className="cf-frame">
                   <div className="cf-frame-glow" style={{ background: f.accent }} />
-                  <div className="cf-frame-inner">
-                    <img className="cf-frame-img" src={process.env.PUBLIC_URL + f.img} alt={f.title} loading="lazy" />
+                  <div className="cf-frame-inner" style={{
+                    backgroundImage: `url(${process.env.PUBLIC_URL}${f.img})`,
+                    backgroundSize: 'contain',
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat'
+                  }}>
                   </div>
                 </div>
                 <div className="cf-card" style={{ '--card-accent': f.accent }}>
