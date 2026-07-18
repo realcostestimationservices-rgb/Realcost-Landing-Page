@@ -1,1 +1,1 @@
-export const APP_NAME = "Real Cost App";
+export const APP_NAME = "Real Cost® App";
