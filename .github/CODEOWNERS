@@ -1,0 +1,4 @@
+# Production deploys require approval from a designated production approver.
+# Enforced only where branch protection on the `production` branch has
+# "Require review from Code Owners" enabled.
+* @Varghen05 @sivapriya8113
