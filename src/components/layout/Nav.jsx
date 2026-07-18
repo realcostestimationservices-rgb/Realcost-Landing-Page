@@ -51,7 +51,7 @@ const Nav = ({ currentPage, onNavigate, lightHero }) => {
             style={{ borderRadius: '8px', objectFit: 'contain', flexShrink: '0', background: '#fff', padding: '5px', boxShadow: '0 2px 10px rgba(0,0,0,.22)' }}
           />
           <div className="nav-brand-wordmark">
-            <span>REAL COST</span>
+            <span>REAL COST <sup style={{ fontSize: '0.78em', fontWeight: '700', color: '#000' }}>®</sup></span>
             <span>Estimation Platform</span>
           </div>
         </div>
