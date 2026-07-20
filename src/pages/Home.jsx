@@ -43,6 +43,7 @@ const MONITOR_TABS = [
   { label: 'Take Off',       image: '/images/home/take_off_how_it_works.png',            alt: 'Digital takeoff canvas' },
   { label: 'Estimating',     image: '/images/home/estimating_take_off_how_it_works.png', alt: 'Estimating' },
   { label: 'Get Materials',  image: '/images/home/mat_list_take_off_how_it_works.png',   alt: 'Generated materials list' },
+  { label: 'Bid Page',       image: '/images/home/bid_take_off_how_it_works.png',        alt: 'Bid page' },
   { label: 'Quote Letter',   image: '/images/home/quote_how_it_works.png',               alt: 'Branded PDF quote letter' },
   { label: 'Estimate Graph', image: '/images/home/graph_take_off_how_it_works.png',      alt: 'Estimate graph' },
 ];
@@ -115,21 +116,21 @@ const Home = ({ onNavigate }) => {
     return () => obs.disconnect();
   }, []);
 
-  /* Monitor autoplay: step through the tabs every 4s and wrap back to the first.
+  /* Monitor autoplay: step through the tabs every 2s and wrap back to the first.
      Keyed on tab2 so the dwell restarts whenever the panel changes — clicking a
-     tab therefore gets a full 4s rather than being cut short by a tick already in
+     tab therefore gets a full 2s rather than being cut short by a tick already in
      flight. While paused it reschedules without advancing, so autoplay resumes on
      mouse-out instead of dying on the first skipped tick. */
   useEffect(() => {
     let timer;
     const step = () => {
       if (monitorPausedRef.current || document.hidden) {
-        timer = setTimeout(step, 4000);
+        timer = setTimeout(step, 2000);
         return;
       }
       setTab2((i) => (i + 1) % MONITOR_TABS.length);
     };
-    timer = setTimeout(step, 4000);
+    timer = setTimeout(step, 2000);
     return () => clearTimeout(timer);
   }, [tab2]);
 
