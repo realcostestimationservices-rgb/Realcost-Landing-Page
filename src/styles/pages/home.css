@@ -627,12 +627,13 @@
   object-position: center top;
   background: #0B1B33;
 }
-/* Matches .hero-slide-img.is-active's specificity, so it must stay a compound
-   selector and stay below it. The Ken Burns zoom would re-crop all four sides
-   and undo the inset, so this slide alone sits still. */
-.hero-slide-bid,
-.hero-slide-bid.is-active {
+/* The base state disables zoom to preserve the nav inset, but enable it when
+   the slide becomes active so it zooms in like slides 1 and 2. */
+.hero-slide-bid {
   transform: none;
+}
+.hero-slide-bid.is-active {
+  transform: scale(1.1);
 }
 
 /* Below 1024px the width crop deepens — a centre crop lands on the lamp and the

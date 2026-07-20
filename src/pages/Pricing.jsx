@@ -203,7 +203,7 @@ const Pricing = ({ onNavigate }) => {
         <div className="cxl" style={{ textAlign: 'center' }}>
           <div className="sec-eyebrow" style={{ justifyContent: 'center' }}>Best Value for Price</div>
           <h2 className="pr-tagline-heading">
-            <span className="pr-tagline-brand">Real Cost</span> — a name you can rely on.
+            <span className="pr-tagline-brand">Real Cost</span> — A name you can rely on.
           </h2>
         </div>
       </section>

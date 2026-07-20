@@ -48,6 +48,7 @@ const Chatbot = () => {
     bidpage: ["The Bid Page auto-calculates material costs, labour hours, overhead, markup, and project duration from your takeoff counts. Everything updates live as you make changes."],
     quote: ["Once your bid is done, one click generates a professional branded PDF or Word quote letter — ready to send to your client immediately."],
     pricing_can: ["Material rates auto-adjust to your city's regional pricing tier (L1/L2/L3) — covering Toronto, Ottawa, Montreal, Calgary, Vancouver, Quebec and more."],
+    trades: ["Real Cost is built specifically for electrical contractors in Canada — every formula, assembly and workflow is purpose-built for electrical estimating."],
     contact: ["(647) 677-8399 · info@realcostestimating.ca · 1200 Bloor Street West, Toronto · Mon–Fri 9AM–6PM ET"],
     default: ["Hi! I can help with anything about Real Cost — features, pricing, workflows, or how to get started. What would you like to know?"]
   };
@@ -86,7 +87,7 @@ const Chatbot = () => {
       else if (lower.includes('auto') || lower.includes('count') || lower.includes('ai') || lower.includes('symbol')) key = 'autocount';
       else if (lower.includes('bid') || lower.includes('calculat')) key = 'bidpage';
       else if (lower.includes('quote') || lower.includes('letter')) key = 'quote';
-      else if (lower.includes('trade') || lower.includes('electrical') || lower.includes('mechanical') || lower.includes('plumb') || lower.includes('fire')) key = 'trades';
+      else if (lower.includes('trade') || lower.includes('electrical') || lower.includes('contractor')) key = 'trades';
       else if (lower.includes('city') || lower.includes('toronto') || lower.includes('montreal') || lower.includes('canada') || lower.includes('pricing')) key = 'pricing_can';
       else if (lower.includes('feature') || lower.includes('platform') || lower.includes('takeoff')) key = 'features';
       else if (lower.includes('contact') || lower.includes('phone') || lower.includes('email') || lower.includes('support')) key = 'contact';

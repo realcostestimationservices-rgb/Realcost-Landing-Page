@@ -25,7 +25,7 @@ const HERO_SLIDES = [
     image: '/images/home/home_2.png',
     mobileImage: '/images/home/home_2_mobile.png',
     badge: 'Digital takeoff & symbol auto-count',
-    title: <>Stop counting symbols<br />by hand.<br /><em>Let the app do it.</em></>,
+    title: <>Stop counting symbols<br />by hand.<br /><em>Let the Software do it.</em></>,
     sub: <>Box-select a single symbol and <strong>Real Cost</strong> finds every match across every page of your drawing set — in seconds, not evenings.</>,
   },
   {
@@ -40,11 +40,11 @@ const HERO_SLIDES = [
 
 
 const MONITOR_TABS = [
-  { label: 'Take Off',       image: '/images/features/take_off.png',       alt: 'Digital takeoff canvas' },
-  { label: 'Estimating',     image: '/images/features/estimating.png',     alt: 'Estimating' },
-  { label: 'Get Materials',  image: '/images/features/gen_materials.png',  alt: 'Generated materials list' },
-  { label: 'Quote Letter',   image: '/images/features/quote_letter.png',   alt: 'Branded PDF quote letter' },
-  { label: 'Estimate Graph', image: '/images/features/estimate_graph.png', alt: 'Estimate graph' },
+  { label: 'Take Off',       image: '/images/home/take_off_how_it_works.png',            alt: 'Digital takeoff canvas' },
+  { label: 'Estimating',     image: '/images/home/estimating_take_off_how_it_works.png', alt: 'Estimating' },
+  { label: 'Get Materials',  image: '/images/home/mat_list_take_off_how_it_works.png',   alt: 'Generated materials list' },
+  { label: 'Quote Letter',   image: '/images/home/quote_how_it_works.png',               alt: 'Branded PDF quote letter' },
+  { label: 'Estimate Graph', image: '/images/home/graph_take_off_how_it_works.png',      alt: 'Estimate graph' },
 ];
 
 const Home = ({ onNavigate }) => {
@@ -209,78 +209,85 @@ const Home = ({ onNavigate }) => {
                 .years-badge in home.css) */}
             <motion.div
               className="years-badge"
-              initial={{ opacity: 0, scale: 0.8, rotate: -8 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0, y: [0, -8, 0] }}
-              transition={{ scale: { duration: 0.95, delay: 0.55, ease: [0.22, 1, 0.36, 1] }, opacity: { duration: 0.95, delay: 0.55 }, rotate: { duration: 0.95, delay: 0.55 }, y: { duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.1 } }}
+              initial={{ opacity: 0, y: -110, scale: 0.85 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 1.0, delay: 0.5, ease: [0.22, 1, 0.36, 1] }}
             >
+              {/* inner wrapper keeps a gentle idle float once the badge has
+                  dropped in from the top */}
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1.5 }}
+              >
               <svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
                 <defs>
                   <linearGradient id="gR" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%"   stopColor="#F8E860"/>
-                    <stop offset="50%"  stopColor="#D09C18"/>
-                    <stop offset="100%" stopColor="#8A6000"/>
+                    <stop offset="0%"   stopColor="#FFF3B0"/>
+                    <stop offset="50%"  stopColor="#E6B422"/>
+                    <stop offset="100%" stopColor="#9A6E12"/>
                   </linearGradient>
                   <radialGradient id="gF" cx="38%" cy="30%" r="68%">
-                    <stop offset="0%"   stopColor="#1E1400"/>
-                    <stop offset="100%" stopColor="#050300"/>
+                    <stop offset="0%"   stopColor="#241800"/>
+                    <stop offset="100%" stopColor="#0A0600"/>
                   </radialGradient>
                   <linearGradient id="gN" x1="0%" y1="0%" x2="0%" y2="100%">
-                    <stop offset="0%"   stopColor="#FFFBE0"/>
-                    <stop offset="45%"  stopColor="#F2CA28"/>
-                    <stop offset="100%" stopColor="#A87010"/>
+                    <stop offset="0%"   stopColor="#FFF9DE"/>
+                    <stop offset="45%"  stopColor="#F5CE4A"/>
+                    <stop offset="100%" stopColor="#B07D14"/>
                   </linearGradient>
                   <path id="tp" d="M 24,80 A 56,56 0 0,1 136,80"/>
                   <path id="bp" d="M 24,80 A 56,56 0 0,0 136,80"/>
                 </defs>
 
                 {/* ── Ring 1: outer glow ── */}
-                <circle cx="80" cy="80" r="78" fill="none" stroke="rgba(218,178,40,0.13)" strokeWidth="1.5"/>
+                <circle cx="80" cy="80" r="78" fill="none" stroke="rgba(212,175,55,0.14)" strokeWidth="1.5"/>
                 {/* ── Ring 2: dashed accent ── */}
-                <circle cx="80" cy="80" r="74" fill="none" stroke="rgba(218,178,40,0.55)" strokeWidth="1.1" strokeDasharray="2.5 4"/>
-                {/* ── Ring 3: solid gold border ── */}
+                <circle cx="80" cy="80" r="74" fill="none" stroke="rgba(212,175,55,0.55)" strokeWidth="1.1" strokeDasharray="2.5 4"/>
+                {/* ── Ring 3: solid champagne-gold border ── */}
                 <circle cx="80" cy="80" r="70" fill="none" stroke="url(#gR)" strokeWidth="2.8"/>
                 {/* ── Fill ── */}
                 <circle cx="80" cy="80" r="67" fill="url(#gF)"/>
                 {/* ── Ring 4: inner hairline ── */}
-                <circle cx="80" cy="80" r="61" fill="none" stroke="rgba(218,178,40,0.28)" strokeWidth="0.7"/>
+                <circle cx="80" cy="80" r="61" fill="none" stroke="rgba(245,206,74,0.30)" strokeWidth="0.7"/>
 
                 {/* ── Clock markers ── */}
-                <line x1="80" y1="5"   x2="80" y2="14"  stroke="rgba(218,178,40,0.75)" strokeWidth="2"   strokeLinecap="round"/>
-                <line x1="80" y1="146" x2="80" y2="155" stroke="rgba(218,178,40,0.75)" strokeWidth="2"   strokeLinecap="round"/>
-                <line x1="5"  y1="80"  x2="14" y2="80"  stroke="rgba(218,178,40,0.42)" strokeWidth="1.4" strokeLinecap="round"/>
-                <line x1="146" y1="80" x2="155" y2="80" stroke="rgba(218,178,40,0.42)" strokeWidth="1.4" strokeLinecap="round"/>
+                <line x1="80" y1="5"   x2="80" y2="14"  stroke="rgba(212,175,55,0.78)" strokeWidth="2"   strokeLinecap="round"/>
+                <line x1="80" y1="146" x2="80" y2="155" stroke="rgba(212,175,55,0.78)" strokeWidth="2"   strokeLinecap="round"/>
+                <line x1="5"  y1="80"  x2="14" y2="80"  stroke="rgba(212,175,55,0.45)" strokeWidth="1.4" strokeLinecap="round"/>
+                <line x1="146" y1="80" x2="155" y2="80" stroke="rgba(212,175,55,0.45)" strokeWidth="1.4" strokeLinecap="round"/>
 
                 {/* ── Corner dots at 45° ── */}
                 <circle cx="80" cy="80" r="70" fill="none"
-                  stroke="rgba(218,178,40,0.0)" strokeWidth="0"/>
-                <circle cx="130" cy="30" r="2"  fill="rgba(218,178,40,0.45)"/>
-                <circle cx="30"  cy="30" r="2"  fill="rgba(218,178,40,0.45)"/>
-                <circle cx="130" cy="130" r="2" fill="rgba(218,178,40,0.45)"/>
-                <circle cx="30"  cy="130" r="2" fill="rgba(218,178,40,0.45)"/>
+                  stroke="rgba(212,175,55,0.0)" strokeWidth="0"/>
+                <circle cx="130" cy="30" r="2"  fill="rgba(212,175,55,0.48)"/>
+                <circle cx="30"  cy="30" r="2"  fill="rgba(212,175,55,0.48)"/>
+                <circle cx="130" cy="130" r="2" fill="rgba(212,175,55,0.48)"/>
+                <circle cx="30"  cy="130" r="2" fill="rgba(212,175,55,0.48)"/>
 
                 {/* ── Top arc: REAL COST ── */}
-                <text fontSize="8" fontWeight="700" letterSpacing="5" fill="rgba(238,198,48,0.92)" fontFamily="Plus Jakarta Sans,sans-serif">
+                <text fontSize="8" fontWeight="700" letterSpacing="5" fill="rgba(245,206,74,0.94)" fontFamily="Plus Jakarta Sans,sans-serif">
                   <textPath href="#tp" startOffset="50%" textAnchor="middle" dy="13">REAL COST</textPath>
                 </text>
 
                 {/* ── Bottom arc: SINCE 2010 ── */}
-                <text fontSize="8" fontWeight="700" letterSpacing="4" fill="rgba(218,178,40,0.85)" fontFamily="Plus Jakarta Sans,sans-serif">
+                <text fontSize="8" fontWeight="700" letterSpacing="4" fill="rgba(212,175,55,0.88)" fontFamily="Plus Jakarta Sans,sans-serif">
                   <textPath href="#bp" startOffset="50%" textAnchor="middle" dy="-5">SINCE  2010</textPath>
                 </text>
 
                 {/* ── Divider rules ── */}
-                <line x1="42" y1="50" x2="118" y2="50" stroke="rgba(218,178,40,0.38)" strokeWidth="0.8"/>
-                <line x1="42" y1="108" x2="118" y2="108" stroke="rgba(218,178,40,0.38)" strokeWidth="0.8"/>
+                <line x1="42" y1="50" x2="118" y2="50" stroke="rgba(212,175,55,0.40)" strokeWidth="0.8"/>
+                <line x1="42" y1="108" x2="118" y2="108" stroke="rgba(212,175,55,0.40)" strokeWidth="0.8"/>
 
                 {/* ── "15" ── */}
                 <text x="80" y="93" textAnchor="middle" fontSize="52" fontWeight="900" fill="url(#gN)" letterSpacing="-2" fontFamily="Plus Jakarta Sans,sans-serif">15</text>
 
                 {/* ── "YEARS" ── */}
-                <text x="80" y="106" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="rgba(238,198,48,0.80)" letterSpacing="5.5" fontFamily="Plus Jakarta Sans,sans-serif">YEARS</text>
+                <text x="80" y="106" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="rgba(245,206,74,0.82)" letterSpacing="5.5" fontFamily="Plus Jakarta Sans,sans-serif">YEARS</text>
 
                 {/* ── Three stars ── */}
-                <text x="80" y="121" textAnchor="middle" fontSize="9" fill="rgba(218,178,40,0.55)" letterSpacing="7" fontFamily="Plus Jakarta Sans,sans-serif">★ ★ ★</text>
+                <text x="80" y="121" textAnchor="middle" fontSize="9" fill="rgba(212,175,55,0.58)" letterSpacing="7" fontFamily="Plus Jakarta Sans,sans-serif">★ ★ ★</text>
               </svg>
+              </motion.div>
             </motion.div>
 
             <motion.div className="hero-btns" initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.85, delay: 0.4 }}>
@@ -334,12 +341,12 @@ const Home = ({ onNavigate }) => {
             <Reveal>
               <div className="sec-eyebrow">What is Real Cost?</div>
               <div className="sec-h2">Built for Electrical<br />Contractors in Canada</div>
-              <p className="sec-sub" style={{ marginBottom: '20px' }}>Real Cost is a <strong style={{ color: 'var(--txt)', fontWeight: '600' }}>digital estimation platform</strong> built for trade contractors. Upload your PDF drawings, automatically count symbols, build out a full bid page, and generate a branded quote letter — all without leaving the app.</p>
-              <p className="sec-sub" style={{ marginBottom: '32px' }}>Whether you do electrical, mechanical, plumbing, fire alarm, or data — Real Cost gives your team the tools to produce accurate estimates faster than any spreadsheet or manual process.</p>
+              <p className="sec-sub" style={{ marginBottom: '20px' }}>Real Cost is a <strong style={{ color: 'var(--txt)', fontWeight: '600' }}>digital estimation platform</strong> built for electrical contractors. Upload your PDF drawings, automatically count symbols, build out a full bid page, and generate a branded quote letter — all without leaving the software.</p>
+              <p className="sec-sub" style={{ marginBottom: '32px' }}>Built specifically for electrical contractors, Real Cost gives your team the tools to produce accurate estimates faster than any spreadsheet or manual process.</p>
             </Reveal>
             <RevealGroup style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }} delay={0.1}>
               {[
-                { image: '/images/home/upload_pdf.png', title: 'Upload PDF Drawings', desc: 'Multi-page blueprint sets. Navigate every page on a digital canvas inside the app.' },
+                { image: '/images/home/upload_pdf.png', title: 'Upload PDF Drawings', desc: 'Multi-page blueprint sets. Navigate every page on a digital canvas inside the software.' },
                 { image: '/images/home/auto_count.png', title: 'Symbol Auto-Count', desc: 'Draw a box around a symbol — the platform finds all matches across every page instantly.' },
                 { image: '/images/home/bid.png', title: 'Build Your Bid', desc: 'Material, labour, overhead, markup, duration — all calculated on your bid page.' },
                 { image: '/images/home/quote.png', title: 'One-Click Quote Letter', desc: 'Generate a professional branded PDF quote letter ready to send to your client.' },
@@ -432,15 +439,15 @@ const Home = ({ onNavigate }) => {
             <Reveal initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }}>
               <div className="sec-eyebrow">How it works</div>
               <div className="sec-h2" style={{ fontSize: '34px', marginBottom: '10px' }}>From drawings<br />to quote in 4 steps</div>
-              <p className="sec-sub" style={{ marginBottom: '36px' }}>Your whole estimation workflow — in one app.</p>
+              <p className="sec-sub" style={{ marginBottom: '36px' }}>Your whole estimation workflow — in one software.</p>
 
               <div style={{ position: 'relative' }}>
                 <div style={{ position: 'absolute', left: '14px', top: '30px', bottom: '30px', width: '1.5px', background: 'linear-gradient(to bottom, rgba(17,38,70,.15), rgba(96,165,250,.4), rgba(17,38,70,.08))', borderRadius: '2px' }} />
                 {[
-                  { n: '1', label: 'Upload Drawings',    desc: 'Upload your PDF plan set. Every page renders on a navigable digital takeoff canvas.', accent: false },
-                  { n: '2', label: 'Symbol Auto-Count',  desc: 'Draw a box around any symbol — the platform finds all matches across every page instantly.', accent: false },
-                  { n: '3', label: 'Build Your Bid',     desc: 'Material, labour, overhead, markup and duration auto-calculated on your bid page.', accent: false },
-                  { n: '4', label: 'Send Quote Letter',  desc: 'One click generates a branded PDF quote letter ready to submit to your client.', accent: true },
+                  { n: '1', label: 'Upload Drawings',      desc: 'Upload your PDF plan set. Every page renders on a navigable digital takeoff canvas.', accent: false },
+                  { n: '2', label: 'Takeoff & Estimating', desc: 'Box-select any symbol to auto-count every match, then material, labour, overhead and markup are calculated as you go.', accent: false },
+                  { n: '3', label: 'Build Your Bid',       desc: 'Assemble your bid page with pricing, totals and project duration ready to review.', accent: false },
+                  { n: '4', label: 'Send Quote Letter',    desc: 'One click generates a branded PDF quote letter ready to submit to your client.', accent: true },
                 ].map(({ n, label, desc, accent }) => (
                   <div key={n} style={{ display: 'flex', gap: '20px', marginBottom: '24px', position: 'relative', zIndex: 1 }}>
                     <div style={{ width: '30px', height: '30px', borderRadius: '50%', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '12px', fontWeight: '700', background: accent ? 'var(--grd-acc)' : 'var(--grd-sap)', color: '#fff', border: accent ? '1.5px solid rgba(96,165,250,.5)' : '1.5px solid rgba(45,80,137,.25)', boxShadow: '0 3px 10px rgba(15,37,87,.20)' }}>
@@ -471,7 +478,7 @@ const Home = ({ onNavigate }) => {
           <RevealGroup className="home-feat-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3,1fr)', gap: '18px' }}>
             {[
               {
-                bg: 'rgba(79,70,229,.15)', title: 'Digital Takeoff Canvas',  desc: 'Navigate multi-page PDF drawings on screen. Place symbols manually or let the app do it.',
+                bg: 'rgba(79,70,229,.15)', title: 'Digital Takeoff Canvas',  desc: 'Navigate multi-page PDF drawings on screen. Place symbols manually or let the software do it.',
                 img: '/images/features/take_off.png',
               },
               {
