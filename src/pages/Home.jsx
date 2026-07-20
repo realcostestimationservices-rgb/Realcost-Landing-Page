@@ -180,10 +180,16 @@ const Home = ({ onNavigate }) => {
         <div className="hero-overlay"></div>
         <div className="hero-tint"></div>
         <div className={`hero-inner ${pos === 1 ? 'hero-inner-right' : ''}`}>
+          {/* Fade-only entrance (no transform): a transform here would make
+              .hero-left the containing block for the absolutely-positioned
+              .years-badge, so the badge would sit inside this column mid-
+              animation and then snap to the right when the transform drops.
+              Keeping it transform-free anchors the badge to .hero-inner
+              throughout, so it simply drops in from the top. */}
           <motion.div
             className="hero-left"
-            initial={{ opacity: 0, y: 34 }}
-            animate={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
             transition={{ duration: 1.05, ease: [0.22, 1, 0.36, 1] }}
           >
             {/* Copy track: slides in lockstep with the background, so the words
