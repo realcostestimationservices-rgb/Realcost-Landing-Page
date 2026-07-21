@@ -3,12 +3,20 @@ import { clientsClaim } from 'workbox-core';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { precacheAndRoute, createHandlerBoundToURL } from 'workbox-precaching';
 import { registerRoute } from 'workbox-routing';
-import { StaleWhileRevalidate, CacheFirst, NetworkFirst } from 'workbox-strategies';
+import { StaleWhileRevalidate, CacheFirst, NetworkFirst, NetworkOnly } from 'workbox-strategies';
 
 clientsClaim();
 
 // Precache all build assets (CRA injects the manifest here at build time)
 precacheAndRoute(self.__WB_MANIFEST);
+
+// version.json is how the app learns a new build exists — it must never be
+// answered from a cache, or the check would compare the old build to itself.
+// Registered before the routes below so it wins the match.
+registerRoute(
+  ({ url }) => url.origin === self.location.origin && url.pathname.endsWith('/version.json'),
+  new NetworkOnly()
+);
 
 // Skip waiting when signalled (allows immediate activation on update)
 self.addEventListener('message', (event) => {

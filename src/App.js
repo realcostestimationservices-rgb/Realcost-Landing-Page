@@ -6,7 +6,7 @@ import Chatbot from './components/ui/Chatbot';
 import ScrollTop from './components/ui/ScrollTop';
 import useScrollRestoration from './hooks/useScrollRestoration';
 import usePreloadImages from './hooks/usePreloadImages';
-import { APP_VERSION } from './config/version';
+import useAppUpdate from './hooks/useAppUpdate';
 
 const Home = React.lazy(() => import('./pages/Home'));
 const Demo = React.lazy(() => import('./pages/Demo'));
@@ -51,28 +51,8 @@ function App() {
   useScrollRestoration();
   usePreloadImages();
 
-  /* ── App Version Check: Clear cache on new deployment ── */
-  useEffect(() => {
-    const storedVersion = localStorage.getItem('app_version');
-
-    if (storedVersion !== APP_VERSION) {
-      // Clear all storage
-      localStorage.clear();
-      sessionStorage.clear();
-
-      // Remove all cookies
-      document.cookie.split(';').forEach(cookie => {
-        const name = cookie.split('=')[0].trim();
-        document.cookie = `${name}=;expires=Thu, 01 Jan 1970 00:00:00 UTC;path=/`;
-      });
-
-      // Store new version
-      localStorage.setItem('app_version', APP_VERSION);
-
-      // Force refresh to load new assets
-      window.location.reload();
-    }
-  }, []);
+  /* Reloads onto a new build when one is deployed — see useAppUpdate. */
+  useAppUpdate();
 
   const handleNavigate = (page, hash = '') => {
     navigate('/' + page + hash);

@@ -9,6 +9,16 @@ export function register(config) {
     const publicUrl = new URL(process.env.PUBLIC_URL, window.location.href);
     if (publicUrl.origin !== window.location.origin) return;
 
+    // The new worker calls skipWaiting() below, which swaps the controller out
+    // from under a page still running the old bundle's assets. Reload once so
+    // the whole tab comes up on the new deployment rather than a mix of both.
+    let reloading = false;
+    navigator.serviceWorker.addEventListener('controllerchange', () => {
+      if (reloading) return;
+      reloading = true;
+      window.location.reload();
+    });
+
     window.addEventListener('load', () => {
       const swUrl = `${process.env.PUBLIC_URL}/service-worker.js`;
       if (isLocalhost) {
@@ -39,6 +49,14 @@ function registerValidSW(swUrl, config) {
           }
         };
       };
+
+      // The browser only re-fetches service-worker.js on navigation, so a tab
+      // left open never sees a deployment. Ask explicitly, and again whenever
+      // the tab is brought back to the foreground.
+      setInterval(() => registration.update(), 5 * 60 * 1000);
+      document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) registration.update();
+      });
     })
     .catch((err) => console.error('SW registration failed:', err));
 }

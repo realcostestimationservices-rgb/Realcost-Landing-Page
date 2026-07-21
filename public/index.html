@@ -4,15 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script>
-    /* Chrome's "Desktop site" toggle ignores the viewport meta above: it lays the
-       page out at a fixed ~980px and zooms out to fit the phone, shrinking all the
-       text. Re-assert the meta here — some browsers honour a scripted update even
-       in desktop mode. Chrome Android often does not, which is fine: home.css has
-       an aspect-ratio fallback that keeps the hero laid out sanely either way.
 
-       The screen.width comparison is the tell. A touch device whose layout box is
-       far wider than its physical screen is being scaled down; a real tablet
-       reports the two as equal and is left alone. */
     (function () {
       var doc = document.documentElement;
       var layoutWidth = doc.clientWidth || window.innerWidth || 0;

@@ -1,13 +1,4 @@
-/* Auto-stamps the app version on every build so each new deployment always
-   busts the client cache. App.js compares APP_VERSION against the value in
-   localStorage and, when it differs, clears storage and reloads.
 
-   Runs automatically via the "prebuild" npm script (npm runs prebuild before
-   build). Writes to BOTH places that hold the version:
-     - src/config/version.js  (imported by App.js — the value that matters)
-     - public/version.json     (static, fetchable copy)
-
-   Both files are regenerated here, so there is no need to edit them by hand. */
 const fs = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
