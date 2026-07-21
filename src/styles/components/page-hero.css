@@ -24,7 +24,9 @@
   background: linear-gradient(145deg,#0E1E3A 0%,#142E56 30%,#1A3A72 62%,#1E4480 100%);
   display: flex;
   align-items: center;
-  border-bottom: 1px solid rgba(255,255,255,.07);
+  /* No border-bottom: .page-hero-bg is inset:0 so it fills the padding box only,
+     leaving the border painted over the dark navy gradient — that showed as a
+     black hairline under the (bright) hero image. */
   text-align: center;
   position: relative;
   overflow: hidden;

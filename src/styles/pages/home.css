@@ -129,16 +129,8 @@
 .hero-copy.is-active { opacity: 1; transform: translateY(0); }
 .hero-copy[aria-hidden='true'] { pointer-events: none; }
 
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  /* No full-frame dimming — just a soft scrim that fades out by the middle of
-     the frame, so the photo is clear and only the copy column is anchored. The
-     hero text carries the rest of its contrast in its own text-shadow. */
-  background: linear-gradient(105deg,rgba(10,20,40,.46) 0%,rgba(10,20,40,.28) 34%,transparent 62%),linear-gradient(to bottom,rgba(10,20,40,.08) 0%,transparent 42%,rgba(10,20,40,.18) 100%);
-}
+/* No full-frame dimming — the right two thirds of every photo run clean. Only
+   the copy column is anchored, by .hero-copy-scrim below. */
 .hero-tint {
   position: absolute;
   inset: 0;
@@ -150,6 +142,18 @@
     radial-gradient(ellipse 55% 75% at 14% 48%,rgba(255,255,255,.26) 0%,rgba(255,255,255,.11) 45%,transparent 75%),
     radial-gradient(ellipse 55% 80% at 0% 55%,rgba(96,165,250,.12) 0%,transparent 60%),
     radial-gradient(ellipse 40% 50% at 85% 15%,rgba(15,37,87,.08) 0%,transparent 55%);
+}
+/* Sits above .hero-tint so the white glow can't wash it out, and below
+   .hero-inner (z-index 4) so it never dims the copy itself. It is gone by ~62%
+   across, leaving the right two thirds of the photo untouched. Because it holds
+   still while the image strip slides beneath it, every slide gets the same
+   anchoring without anything to fade in or out. */
+.hero-copy-scrim {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background: linear-gradient(100deg,rgba(6,12,26,.60) 0%,rgba(6,12,26,.42) 28%,rgba(6,12,26,.15) 46%,transparent 62%);
 }
 .hero-inner {
   position: relative;
@@ -423,13 +427,16 @@
 @media (max-width: 600px) {
   .years-badge {
     position: static;
-    margin: 2px 0 24px;
+    /* Extra top margin drops the badge below the icons on the right of the hero
+       photo, so they stay visible instead of being covered by it. */
+    margin: 64px 0 24px;
     right: auto;
     bottom: auto;
-    /* Align left under the copy so the badge stays clear of the busy right side
-       of the hero photo (the app UI / icons) instead of overlapping it. */
+    /* sits toward the right of the copy column, opposite the left-aligned text,
+       nudged in from the edge so it doesn't hug the screen border */
     display: flex;
-    justify-content: flex-start;
+    justify-content: flex-end;
+    padding-right: 28px;
   }
   .years-badge svg { width: 96px; height: 96px; }
 }
@@ -577,6 +584,13 @@
   .hero-h1 { font-size: 40px; }
   .hero-sub { max-width: 100%; }
   .hero-right { max-width: 100%; }
+  /* Stacked layout: the copy runs the full width from the top, so the scrim has
+     to fall top-to-bottom rather than left-to-right. Kept lighter than desktop —
+     a phone screen is mostly hero, so a heavy wash reads as a dark photo rather
+     than as a backdrop for the copy. */
+  .hero-copy-scrim {
+    background: linear-gradient(to bottom,rgba(6,12,26,.40) 0%,rgba(6,12,26,.26) 42%,rgba(6,12,26,.08) 72%,transparent 90%);
+  }
   .monitor { border-radius: 12px; }
 }
 @media (max-width: 768px) {
@@ -591,7 +605,7 @@
   .hero-sub { font-size: 14px; margin-bottom: 26px; }
   .hero-btns { gap: 10px; margin-bottom: 0; }
   .hero-stats { display: none; }
-  .years-badge { margin: 0 0 18px; }
+  .years-badge { margin: 48px 0 18px; }
   .years-badge svg { width: 76px; height: 76px; }
   .mon-url { font-size: 11px; padding: 6px; }
 }
@@ -642,11 +656,22 @@
    Single-class selectors, so they override the base object-position above; the
    vertical keyword is dropped because the full height already fits at these
    widths and only the horizontal offset does anything. */
-@media (max-width: 1024px) {
+@media (min-width: 769px) and (max-width: 1024px) {
   .hero-slide-bid { object-position: 64% center; }
 }
-@media (max-width: 480px) {
-  .hero-slide-bid { object-position: 68% center; }
+
+/* ≤768px the carousel swaps in home_3_mobile.png (see isMobile in Home.jsx), a
+   different crop from the desktop plate — so none of the tuning above applies:
+   - the nav inset was for home_3.png's tight top bezel; the mobile plate has
+     headroom, and padding here only squeezes it further,
+   - the 64%/68% horizontal bias was chasing the desktop monitor's position and
+     on the mobile plate it pushes the frame off to the right.
+   Reset both so the mobile art is centred and uses the full box. */
+@media (max-width: 768px) {
+  .hero-slide-bid {
+    padding-top: 0;
+    object-position: center center;
+  }
 }
 
 /* Reduced motion: no Ken Burns, and the copy cross-fades instead of sliding. */

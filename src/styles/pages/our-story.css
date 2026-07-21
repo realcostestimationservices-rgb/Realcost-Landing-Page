@@ -2,19 +2,24 @@
 .os-2col        { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
 
 /* ===== Hero =====
+   Taller than the shared .page-hero floor so the story copy has more room.
    Content height below 1024px — no viewport or fixed floor. The top pad clears
    the fixed floating nav. */
+.os-hero { padding: 120px 0; min-height: 720px; }
 @media (max-width:1024px) {
-  .os-hero { min-height: 0; align-items: flex-start; padding: 124px 0 70px; }
+  .os-hero { min-height: 0; align-items: flex-start; padding: 140px 0 90px; }
 }
 @media (max-width:768px) {
-  .os-hero { padding: 116px 0 60px; min-height: 540px; }
+  .os-hero { padding: 130px 0 78px; min-height: 600px; }
 }
 @media (max-width:600px) {
-  .os-hero { padding: 104px 0 52px; min-height: 500px; }
+  .os-hero { padding: 118px 0 68px; min-height: 560px; }
 }
 @media (max-width:480px) {
-  .os-hero { padding: 96px 0 44px; min-height: 460px; }
+  .os-hero { padding: 110px 0 60px; min-height: 520px; }
+}
+@media (max-width:380px) {
+  .os-hero { padding: 106px 0 56px; min-height: 500px; }
 }
 
 /* ===== Stats strip ===== */

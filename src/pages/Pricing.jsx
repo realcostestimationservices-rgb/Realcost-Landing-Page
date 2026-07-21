@@ -138,7 +138,8 @@ const Pricing = ({ onNavigate }) => {
       {/* ── Hero ── */}
       <section className="page-hero">
         <div className="page-hero-accent" />
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/pricing/pricing.png'})` }} />
+        {/* Anchored bottom: the podium/floor stays in frame and the empty ceiling is what gets cropped. */}
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/pricing/pricing.png'})`, backgroundPosition: 'center 45%' }} />
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign: 'left' }}>
