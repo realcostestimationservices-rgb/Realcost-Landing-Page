@@ -163,7 +163,6 @@ html { scrollbar-width: none; -ms-overflow-style: none; }
 }
 .cf-row:hover .cf-frame-inner {
   transform: translateY(-8px) scale(1.045);
-  transform: translateY(-8px) scale(1.045);
   box-shadow: 0 40px 90px rgba(15,37,87,.22), inset 0 1px 0 rgba(255,255,255,.9);
 }
 .cf-card {

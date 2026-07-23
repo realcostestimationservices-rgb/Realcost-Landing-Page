@@ -6,7 +6,6 @@ import { LOGIN_URL } from '../config';
 const features = [
   { accent: 'var(--grd-blue)', title: 'Digital Takeoff Canvas', body: 'Upload PDF drawing sets and navigate every page on a digital canvas. Place symbols manually or let the platform detect matching symbols. Multi-page projects supported with full page navigation.', img: '/images/features/take_off.png' },
   { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Symbol Auto-Count', body: 'Draw a rectangle around any reference symbol — a light fixture, outlet, or device. The platform instantly finds and counts all matching assemblies across every drawing page.', img: '/images/features/autocount.png' },
-  { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Symbol Auto-Count', body: 'Draw a rectangle around any reference symbol — a light fixture, outlet, or device. The platform instantly finds and counts all matching assemblies across every drawing page.', img: '/images/features/autocount.png' },
   { accent: 'linear-gradient(90deg,var(--red),var(--red2))', title: 'Bid Page', body: 'Your bid auto-calculates from takeoff counts. Material cost, labour hours, overhead percentage, markup, and a project duration calculator — all in one view.', img: '/images/features/bid_page.png' },
   { accent: 'var(--grd-acc)', title: 'Canadian City-Based Pricing', body: 'Material rates auto-adjust to regional pricing for your city — Toronto, Ottawa, Ontario, Quebec, Montreal, Calgary, Vancouver, and more.', img: '/images/features/canada-map.webp' },
   { accent: 'linear-gradient(90deg,#5B21B6,#7C3AED)', title: 'Quote Letter Generator', body: 'One click generates a professional branded PDF or Word quote letter from your bid — ready to submit to your client immediately.', img: '/images/features/quote_letter.png' },
@@ -26,19 +25,10 @@ const Features = ({ onNavigate }) => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
-
-  React.useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
   return (
     <div className="page-enter">
       <section className="page-hero">
         <div className="page-hero-accent"></div>
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + (isMobile ? '/images/features/features_hero_mobile.png' : '/images/features/features_hero.png')})`, backgroundSize: 'cover', backgroundPosition: 'right top', backgroundRepeat: 'no-repeat' }}></div>
         <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + (isMobile ? '/images/features/features_hero_mobile.png' : '/images/features/features_hero.png')})`, backgroundSize: 'cover', backgroundPosition: 'right top', backgroundRepeat: 'no-repeat' }}></div>
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
@@ -104,7 +94,6 @@ const Features = ({ onNavigate }) => {
                   {[
                     'Run a digital takeoff on PDF drawings and keep every count linked to your bid.',
                     'Auto-calculate material, labour, overhead, markup and project duration as you estimate.',
-                    'Switch between Labour difficulty levels (L1 easy, L2 medium, L3 difficult) instantly to match project conditions.',
                     'Switch between Labour difficulty levels (L1 easy, L2 medium, L3 difficult) instantly to match project conditions.',
                     'Review your bid and send a branded quote letter to clients with one click.',
                   ].map((item) => (

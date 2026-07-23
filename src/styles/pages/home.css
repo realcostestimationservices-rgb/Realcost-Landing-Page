@@ -106,7 +106,6 @@
   height: 100%;
   object-fit: cover;
   object-position: center top;
-  object-position: center top;
   display: block;
   /* Ken Burns. The zoom-out on the way back to rest takes just as long, so an
      off-screen slide has quietly reset by the time it comes round again. */
