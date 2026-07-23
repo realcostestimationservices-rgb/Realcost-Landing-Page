@@ -356,15 +356,7 @@
    ~2.11:1 against the others' ~2.04), a couple of px for the rest. height:auto
    and top-alignment are what put that gap at the bottom rather than splitting it
    above and below. */
-.mon-stage {
-  position: relative;
-/* The stage holds the box, so the monitor keeps its height as you switch tabs
-   instead of jolting. The ratio is gen_materials' — the tallest of the five — so
-   every screenshot still renders at its natural size and none is scaled to fit.
-   The shorter ones just leave white below: ~15px for quote_letter (the odd one at
-   ~2.11:1 against the others' ~2.04), a couple of px for the rest. height:auto
-   and top-alignment are what put that gap at the bottom rather than splitting it
-   above and below. */
+
 .mon-stage {
   position: relative;
   aspect-ratio: 1913 / 945;

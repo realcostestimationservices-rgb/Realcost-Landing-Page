@@ -483,12 +483,7 @@ const Home = ({ onNavigate }) => {
           <div style={{ display: 'grid', gridTemplateColumns: '4fr 2fr', gap: '52px', alignItems: 'center' }}>
             {/* Left: monitor canvas */}
             <Reveal className="monitor-3d-wrap" y={0} style={{ opacity: 0 }} initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }}>
-              <div
-                ref={monitorRef2}
-                className="monitor monitor-3d"
-                onMouseEnter={() => { monitorPausedRef.current = true; }}
-                onMouseLeave={() => { monitorPausedRef.current = false; }}
-              >
+              
               <div
                 ref={monitorRef2}
                 className="monitor monitor-3d"
@@ -611,13 +606,6 @@ const Home = ({ onNavigate }) => {
               <motion.div key={title} className="home-featp-card" style={{ background: '#fff', border: '1px solid #E8EEF8', borderRadius: '18px', position: 'relative', overflow: 'hidden', boxShadow: '0 1px 6px rgba(15,37,87,.05)', height: '100%' }}
                 whileHover={{ y: -6, boxShadow: '0 20px 40px rgba(15,37,87,.10)', borderColor: 'rgba(96,165,250,.35)' }}
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
-                <div className={`home-featp-card-img${fit ? ' is-fit' : ''}`} style={{
-                  background: bg,
-                  backgroundImage: `url(${process.env.PUBLIC_URL}${img})`,
-                  backgroundSize: fit ? 'contain' : 'cover',
-                  backgroundPosition: fit ? 'center' : 'center top',
-                  backgroundRepeat: 'no-repeat'
-                }}>
                 <div className={`home-featp-card-img${fit ? ' is-fit' : ''}`} style={{
                   background: bg,
                   backgroundImage: `url(${process.env.PUBLIC_URL}${img})`,
