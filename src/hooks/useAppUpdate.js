@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { APP_VERSION } from '../config/version';
 
 const VERSION_URL = `${process.env.PUBLIC_URL}/version.json`;
-const POLL_INTERVAL = 5 * 60 * 1000;
+const POLL_INTERVAL = 30 * 1000;
 
 const ATTEMPT_KEY = 'rc_update_attempts';
 const MAX_ATTEMPTS = 2;

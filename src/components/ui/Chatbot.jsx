@@ -49,7 +49,7 @@ const Chatbot = () => {
     quote: ["Once your bid is done, one click generates a professional branded PDF or Word quote letter — ready to send to your client immediately."],
     pricing_can: ["Material rates auto-adjust to your city's regional pricing tier (L1/L2/L3) — covering Toronto, Ottawa, Montreal, Calgary, Vancouver, Quebec and more."],
     trades: ["Real Cost is built specifically for electrical contractors in Canada — every formula, assembly and workflow is purpose-built for electrical estimating."],
-    contact: ["(647) 677-8399 · info@realcostestimating.ca · 1200 Bloor Street West, Toronto · Mon–Fri 9AM–6PM ET"],
+    contact: ["+1 (647) 677-8399 · info@realcostestimating.ca · 1200 Bloor Street West, Toronto · Mon–Fri 9AM–6PM ET"],
     default: ["Hi! I can help with anything about Real Cost — features, pricing, workflows, or how to get started. What would you like to know?"]
   };
 

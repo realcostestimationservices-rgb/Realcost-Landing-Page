@@ -424,8 +424,75 @@
   text-align: center;
   font-size: 12.5px;
   font-weight: 600;
-  letter-spacing: -0.1px;
+  letter-spacing: .6px;
+  text-transform: uppercase;
   color: var(--txt, #112646);
+}
+
+/* Header sitting above the monitor canvas. */
+.mon-title {
+  margin-bottom: 18px;
+  text-align: center;
+}
+.mon-title b {
+  display: block;
+  font-size: 19px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  color: var(--txt, #112646);
+}
+.mon-title span {
+  display: block;
+  margin-top: 5px;
+  font-size: 12.5px;
+  font-weight: 300;
+  color: #6B7489;
+}
+/* Thin accent rule under the header, so it reads as a titled panel. */
+.mon-title::after {
+  content: '';
+  display: block;
+  width: 44px;
+  height: 2px;
+  margin: 12px auto 0;
+  border-radius: 2px;
+  background: var(--grd-acc, linear-gradient(90deg, #2D5089, #60A5FA));
+}
+
+/* Caption row below the monitor: current screenshot name + jump dots.
+   The .mon-tabs strip is hidden, so these dots are the only way to move
+   between screenshots by hand. */
+.mon-legend {
+  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.mon-legend .mon-caption { margin-top: 0; }
+.mon-dots {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.mon-dot {
+  width: 7px;
+  height: 7px;
+  padding: 0;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  background: rgba(17,38,70,.20);
+  transition: width .25s ease, background .25s ease;
+}
+.mon-dot:hover { background: rgba(17,38,70,.38); }
+.mon-dot.on {
+  width: 22px;
+  background: var(--grd-acc, linear-gradient(90deg, #2D5089, #60A5FA));
+}
+.mon-dot:focus-visible { outline: 2px solid rgba(96,165,250,.8); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) {
+  .mon-dot { transition: none; }
 }
 
 /* ===== How-it-works image preview (lightbox) ===== */
