@@ -28,7 +28,7 @@ const faqGroups = [
       { q: 'If we suggest a useful modification or improvement, can it be considered?', a: 'Yes. We welcome practical ideas and feature suggestions from our users. If a suggestion could improve the platform for your team, we are happy to review it and discuss whether it can be implemented.' },
       { q: 'How do I know Real Cost is the right choice for me?', a: 'Our pricing page shows exactly which features are included in each plan so you can match it to your business needs. Our product experts can also help you choose the right plan based on your team size and growth stage. Book a demo call to get the conversation started — no pressure, just answers.' },
       { q: 'Can Real Cost help my team work faster?', a: 'Yes. By simplifying takeoffs, pricing, and quoting in one platform, Real Cost helps estimators reduce manual work and move from drawings to quotes more efficiently.' },
-      { q: "I'm already using another estimating software. Can I switch?", a: "Absolutely — and we have a plan specifically for contractors switching from other software. We'll help you get set up and running quickly so there's no disruption to your estimating workflow. Call us today at (647) 677-8399 and we'll walk you through it." },
+      { q: "I'm already using another estimating software. Can I switch?", a: "Absolutely — and we have a plan specifically for contractors switching from other software. We'll help you get set up and running quickly so there's no disruption to your estimating workflow. Call us today at +1 (647) 677-8399 and we'll walk you through it." },
     ],
   },
   {
@@ -47,7 +47,7 @@ const faqGroups = [
       { q: 'Is there any commitment?', a: "RealCost allows you to pay-as-you-go and you're free to end your subscription whenever you like. We don't subject you to any lock-in contracts or hidden fees." },
       { q: 'What payment methods are accepted?', a: 'Visa, Mastercard, and major debit cards via Stripe. All transactions are encrypted and processed securely.' },
       { q: 'Can I cancel anytime?', a: 'Yes. You can cancel your subscription at any time, and we will make sure you understand what happens to your account and project data before your plan changes.' },
-      { q: 'How do I get support?', a: 'Call us at (647) 677-8399, email care@realcost.ca, or use the live chat on this site. Subscribers receive priority support with same-day response for urgent issues, plus access to video tutorials and onboarding guides.' },
+      { q: 'How do I get support?', a: 'Call us at +1 (647) 677-8399, email care@realcost.ca, or use the live chat on this site. Subscribers receive priority support with same-day response for urgent issues, plus access to video tutorials and onboarding guides.' },
     ],
   },
 ];

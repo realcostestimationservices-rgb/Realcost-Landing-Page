@@ -456,7 +456,12 @@ const Home = ({ onNavigate }) => {
           <div style={{ display: 'grid', gridTemplateColumns: '4fr 2fr', gap: '52px', alignItems: 'center' }}>
             {/* Left: monitor canvas */}
             <Reveal className="monitor-3d-wrap" y={0} style={{ opacity: 0 }} initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }}>
-              
+              {/* Header above the monitor canvas */}
+              <div className="mon-title">
+                <b>RealCost in a glance</b>
+                <span>Every screen of the estimation workflow — click any shot to enlarge.</span>
+              </div>
+
               <div
                 ref={monitorRef2}
                 className="monitor monitor-3d"
@@ -485,8 +490,29 @@ const Home = ({ onNavigate }) => {
                   ))}
                 </div>
               </div>
-              {/* Name of the screenshot currently on the monitor */}
-              <div className="mon-caption">{MONITOR_TABS[tab2].label}</div>
+              {/* Name of the screenshot currently on the monitor, plus dots to
+                  jump between them — the .mon-tabs strip is hidden, so without
+                  these the only way through the set is waiting on autoplay. */}
+              <div
+                className="mon-legend"
+                onMouseEnter={() => { monitorPausedRef.current = true; }}
+                onMouseLeave={() => { monitorPausedRef.current = false; }}
+              >
+                <div className="mon-caption">{MONITOR_TABS[tab2].label}</div>
+                <div className="mon-dots" role="tablist" aria-label="Screenshots">
+                  {MONITOR_TABS.map(({ label }, i) => (
+                    <button
+                      key={label}
+                      type="button"
+                      role="tab"
+                      className={`mon-dot${tab2 === i ? ' on' : ''}`}
+                      aria-selected={tab2 === i}
+                      aria-label={label}
+                      onClick={() => setTab2(i)}
+                    />
+                  ))}
+                </div>
+              </div>
             </Reveal>
 
             {/* Right: heading + timeline steps */}
@@ -570,7 +596,7 @@ const Home = ({ onNavigate }) => {
                 img: '/images/features/autocount.png',
               },
               {
-                bg: 'rgba(155, 194, 241, 0.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Ontario ,Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
+                bg: 'rgba(155, 194, 241, 0.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
                 img: '/images/features/canada-map.webp', fit: true,
               },
 

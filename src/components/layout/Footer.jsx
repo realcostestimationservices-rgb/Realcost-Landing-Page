@@ -49,7 +49,7 @@ const Footer = ({ onNavigate }) => {
         <div><div className="f-lbl">Company</div><button className="f-lnk" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0', textAlign: 'left' }} onClick={() => onNavigate('our-story')}>Our Story</button><button className="f-lnk" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0', textAlign: 'left' }} onClick={() => onNavigate('faq')}>FAQ</button><button className="f-lnk" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0', textAlign: 'left' }} onClick={() => onNavigate('our-story', '#careers')}>Careers</button><button className="f-lnk" style={{ background: 'none', border: 'none', cursor: 'pointer', padding: '0', textAlign: 'left' }} onClick={() => onNavigate('contact')}>Contact Us</button></div>
         <div>
           <div className="f-lbl">Contact</div>
-          <a className="f-lnk f-contact" href="tel:+16476778399"><IconPhone />(647) 677-8399</a>
+          <a className="f-lnk f-contact" href="tel:+16476778399"><IconPhone />+1 (647) 677-8399</a>
           <a className="f-lnk f-contact" href="https://mail.google.com/mail/?view=cm&fs=1&to=info@realcostestimating.ca" target="_blank" rel="noopener noreferrer"><IconMail />info@realcostestimating.ca</a>
           <div className="f-lnk f-contact" style={{ cursor: 'default' }}><IconPin />1200 Bloor Street West, Toronto</div>
         </div>
