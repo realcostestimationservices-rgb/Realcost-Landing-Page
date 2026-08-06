@@ -6,7 +6,9 @@ import { LOGIN_URL } from '../config';
 const features = [
   { accent: 'var(--grd-blue)', title: 'Digital Takeoff Canvas', body: 'Upload PDF drawing sets and navigate every page on a digital canvas. Place symbols manually or let the platform detect matching symbols. Multi-page projects supported with full page navigation.', img: '/images/features/take_off.png' },
   { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Symbol Auto-Count', body: 'Draw a rectangle around any reference symbol — a light fixture, outlet, or device. The platform instantly finds and counts all matching assemblies across every drawing page.', img: '/images/features/autocount.png' },
-  { accent: 'linear-gradient(90deg,var(--red),var(--red2))', title: 'Bid Page', body: 'Your bid auto-calculates from takeoff counts. Material cost, labour hours, overhead percentage, markup, and a project duration calculator — all in one view.', img: '/images/features/bid_page.png' },
+  { accent: 'linear-gradient(90deg,#B45309,#F59E0B)', title: 'Estimating', body: 'An editable line-item grid that turns takeoff measurements into priced quantities automatically. Adjust quantities inline and see material vs. labour costs recalculate instantly, by item or by category.', img: '/images/features/estimating.png' },
+  { accent: 'linear-gradient(90deg,#0E7490,#22B8CF)', title: 'General Materials', body: 'Every material pulled into the job from your parts database, grouped by category. Edit price or labour rate inline, watch running totals feed the Final Bid, and export to Excel in one click.', img: '/images/features/gen_materials.png' },
+  { accent: 'linear-gradient(90deg,var(--red),var(--red2))', title: 'Bid Page', body: 'Material, labour crews, general expenses, and supplier quotes come together in one final bid summary — each line editable inline and saved as you type. Apply overhead & markup, get reminders , and export the finished bid as PDF or Excel.', img: '/images/features/bid_page.png' },
   { accent: 'var(--grd-acc)', title: 'Canadian City-Based Pricing', body: 'Material rates auto-adjust to regional pricing for your city — Toronto, Ottawa, Montreal, Calgary, Vancouver, and more.', img: '/images/features/canada-map.webp' },
   { accent: 'linear-gradient(90deg,#5B21B6,#7C3AED)', title: 'Quote Letter Generator', body: 'One click generates a professional branded PDF or Word quote letter from your bid — ready to submit to your client immediately.', img: '/images/features/quote_letter.png' },
   { accent: 'linear-gradient(90deg,#BE185D,#EC4899)', title: 'One-Click Quote Send', body: 'Email your branded quote letter straight to your client in a single click — no downloads, no attachments to manage. The finished quote is delivered instantly from the platform.', img: '/images/features/quote_send.png' },
@@ -14,7 +16,7 @@ const features = [
   { accent: 'linear-gradient(90deg,var(--sap),var(--sap2))', title: 'Team & Role Management', body: 'Owner and estimator roles. Assign projects to team members, track progress, and manage subscriptions — all from one account dashboard.', img: '/images/home/benefits_1.png' },
 ];
 
-const chips = ['Digital Takeoff Canvas', 'Auto-Count', 'Bid Page', 'Canadian City Pricing', 'Quote Letter Generator', 'One-Click Send', 'Estimate Graph', 'Team Management'];
+const chips = ['Digital Takeoff Canvas', 'Auto-Count', 'General Materials', 'Estimating', 'Bid Page', 'Canadian City Pricing', 'Quote Letter Generator', 'One-Click Send', 'Estimate Graph', 'Team Management'];
 
 const Features = ({ onNavigate }) => {
   const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
