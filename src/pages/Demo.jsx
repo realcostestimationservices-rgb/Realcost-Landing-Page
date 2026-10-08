@@ -77,7 +77,7 @@ const Demo = () => {
     <div className="page-enter">
       <section className="page-hero">
         <div className="page-hero-accent" />
-        <div className="page-hero-bg demo-hero-bg" style={{ backgroundImage: `url(${asset('/images/demo/hero/hero.png')})` }} />
+        <div className="page-hero-bg demo-hero-bg" style={{ backgroundImage: `url(${asset('/images/demo/hero/hero.webp')})` }} />
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign: 'left' }}>

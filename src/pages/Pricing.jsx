@@ -146,7 +146,7 @@ const Pricing = ({ onNavigate }) => {
       <section className="page-hero">
         <div className="page-hero-accent" />
         {/* Anchored bottom: the podium/floor stays in frame and the empty ceiling is what gets cropped. */}
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset(isMobile ? '/images/pricing/hero/hero-mobile.png' : '/images/pricing/hero/hero.png')})`, backgroundPosition: isMobile ? 'center 35%' : 'center 65%' }} />
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset(isMobile ? '/images/pricing/hero/hero-mobile.webp' : '/images/pricing/hero/hero.webp')})`, backgroundPosition: isMobile ? 'center 35%' : 'center 65%' }} />
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign: 'left' }}>

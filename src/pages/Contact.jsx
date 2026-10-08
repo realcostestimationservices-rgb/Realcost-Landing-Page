@@ -50,7 +50,7 @@ const Contact = ({ onNavigate }) => {
 
       {/* ── Top Hero ── */}
       <section className="contact-hero">
-        <div className="contact-hero-bg" style={{ backgroundImage: `url(${asset('/images/contact/hero/hero.png')})` }} />
+        <div className="contact-hero-bg" style={{ backgroundImage: `url(${asset('/images/contact/hero/hero.webp')})` }} />
         <div className="contact-hero-overlay" />
         <div className="hero-glow" />
         <div className="cxl contact-hero-inner">
@@ -149,7 +149,7 @@ const Contact = ({ onNavigate }) => {
 
       {/* ── Bottom CTA Hero ── */}
       <section className="contact-hero" style={{ minHeight: 'unset' }}>
-        <div className="contact-hero-bg" style={{ backgroundImage: `url(${asset('/images/contact/cta/cta-bg.png')})` }} />
+        <div className="contact-hero-bg" style={{ backgroundImage: `url(${asset('/images/contact/cta/cta-bg.webp')})` }} />
         <div className="contact-hero-overlay" />
         <Reveal className="cxl" style={{ paddingTop: '56px', paddingBottom: '56px' }}>
           <div className="contact-hero-eyebrow">Global Quality Without Any Compromise</div>

@@ -32,10 +32,10 @@ const milestones = [
 
 
 const sectors = [
-  { img: '/images/our-story/who-we-are/commercial.png' },
-  { img: '/images/our-story/who-we-are/residential.png' },
-  { img: '/images/our-story/who-we-are/institutional.png' },
-  { img: '/images/our-story/who-we-are/industrial.png' },
+  { img: '/images/our-story/who-we-are/commercial.webp' },
+  { img: '/images/our-story/who-we-are/residential.webp' },
+  { img: '/images/our-story/who-we-are/institutional.webp' },
+  { img: '/images/our-story/who-we-are/industrial.webp' },
 ];
 
 const IconUsers = () => (
@@ -163,7 +163,7 @@ const OurStory = ({ onNavigate }) => {
       {/* ── Hero ── */}
       <section className="page-hero os-hero">
         <div className="page-hero-accent" />
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset('/images/our-story/hero/hero.png')})` }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset('/images/our-story/hero/hero.webp')})` }}></div>
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign:'left' }}>
@@ -306,7 +306,7 @@ const OurStory = ({ onNavigate }) => {
             </Reveal>
             <Reveal delay={0.1} className="os-sink-wrap" initial={{ opacity: 0, x: 32 }} whileInView={{ opacity: 1, x: 0 }}>
               <div className="os-sink-glow" />
-              <img className="os-sink-img" src={asset('/images/our-story/built-by-estimators/built-by-estimators.png')} alt="Built by estimators, for estimators" />
+              <img className="os-sink-img" src={asset('/images/our-story/built-by-estimators/built-by-estimators.webp')} alt="Built by estimators, for estimators" />
               <div className="os-sink-shade" />
             </Reveal>
           </div>
@@ -424,7 +424,7 @@ const OurStory = ({ onNavigate }) => {
             </div>
             <div className="os-history-imgwrap">
               <div className="os-history-frame" />
-              <img className="os-history-img" src={asset('/images/why-real-cost/collage/team-2.png')} alt="Real Cost estimating workspace" />
+              <img className="os-history-img" src={asset('/images/why-real-cost/collage/team-2.webp')} alt="Real Cost estimating workspace" />
             </div>
           </Reveal>
         </div>

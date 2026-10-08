@@ -14,24 +14,24 @@ const SLIDE_EASE = { duration: 0.95, ease: [0.65, 0, 0.35, 1] };
 const HERO_SLIDES = [
   {
     slug: 'intro',
-    image: '/images/home/hero/intro.png',
-    mobileImage: '/images/home/hero/intro-mobile.png',
+    image: '/images/home/hero/intro.webp',
+    mobileImage: '/images/home/hero/intro-mobile.webp',
     badge: 'Professional Electrical Estimating Software',
     title: <>Tired of overpriced,<br />over-complicated software?<br /><em>Your wait is over.</em></>,
     sub: <>Switch to <strong>Real Cost</strong> for a premium estimating experience — upload your drawings, count symbols, build your bid, and generate a quote letter, all in one place.</>,
   },
   {
     slug: 'takeoff',
-    image: '/images/home/hero/takeoff.png',
-    mobileImage: '/images/home/hero/takeoff-mobile.png',
+    image: '/images/home/hero/takeoff.webp',
+    mobileImage: '/images/home/hero/takeoff-mobile.webp',
     badge: 'Digital takeoff & symbol auto-count',
     title: <>Stop counting symbols<br />by hand.<br /><em>Let the Software do it.</em></>,
     sub: <>Box-select a single symbol and <strong>Real Cost</strong> finds every match across every page of your drawing set — in seconds, not evenings.</>,
   },
   {
     slug: 'bid',
-    image: '/images/home/hero/bid.png',
-    mobileImage: '/images/home/hero/bid-mobile.png',
+    image: '/images/home/hero/bid.webp',
+    mobileImage: '/images/home/hero/bid-mobile.webp',
     badge: 'Bid page & one-click quote letter',
     title: <>From drawings to a<br />branded quote.<br /><em>In four steps.</em></>,
     sub: <>Material, labour, overhead and markup — calculated on your bid page, then sent out as a <strong>professional PDF quote letter</strong>.</>,
@@ -40,12 +40,12 @@ const HERO_SLIDES = [
 
 
 const MONITOR_TABS = [
-  { label: 'Take Off',       image: '/images/home/how-it-works/takeoff.png',            alt: 'Digital takeoff canvas' },
-  { label: 'Estimating',     image: '/images/home/how-it-works/estimating.png', alt: 'Estimating' },
-  { label: 'Gen Materials',  image: '/images/home/how-it-works/materials.png',   alt: 'Generated materials list' },
-  { label: 'Bid Page',       image: '/images/home/how-it-works/bid-page.png',        alt: 'Bid page' },
-  { label: 'Quote Letter',   image: '/images/home/how-it-works/quote-letter.png',               alt: 'Branded PDF quote letter' },
-  { label: 'Estimate Graph', image: '/images/home/how-it-works/estimate-graph.png',      alt: 'Estimate graph' },
+  { label: 'Take Off',       image: '/images/home/how-it-works/takeoff.webp',            alt: 'Digital takeoff canvas' },
+  { label: 'Estimating',     image: '/images/home/how-it-works/estimating.webp', alt: 'Estimating' },
+  { label: 'Gen Materials',  image: '/images/home/how-it-works/materials.webp',   alt: 'Generated materials list' },
+  { label: 'Bid Page',       image: '/images/home/how-it-works/bid-page.webp',        alt: 'Bid page' },
+  { label: 'Quote Letter',   image: '/images/home/how-it-works/quote-letter.webp',               alt: 'Branded PDF quote letter' },
+  { label: 'Estimate Graph', image: '/images/home/how-it-works/estimate-graph.webp',      alt: 'Estimate graph' },
 ];
 
 const Home = ({ onNavigate }) => {
@@ -368,7 +368,7 @@ const Home = ({ onNavigate }) => {
               <div className="hb-image-col">
                 <div className="hb-accent" aria-hidden="true" />
                 <div className="hb-image-card">
-                  <img src={asset('/images/home/smart-software/brochure.png')} alt="Real Cost brochure" />
+                  <img src={asset('/images/home/smart-software/brochure.webp')} alt="Real Cost brochure" />
                 </div>
               </div>
             </Reveal>
@@ -388,10 +388,10 @@ const Home = ({ onNavigate }) => {
             </Reveal>
             <RevealGroup style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }} delay={0.1}>
               {[
-                { image: '/images/home/what-is-realcost/upload-pdf.png', title: 'Upload PDF Drawings', desc: 'Multi-page blueprint sets. Navigate every page on a digital canvas inside the software.' },
-                { image: '/images/home/what-is-realcost/symbol-auto-count.png', title: 'Symbol Auto-Count', desc: 'Draw a box around a symbol — the platform finds all matches across every page instantly.' },
-                { image: '/images/home/what-is-realcost/build-bid.png', title: 'Build Your Bid', desc: 'Material, labour, overhead, markup, duration — all calculated on your bid page.' },
-                { image: '/images/home/what-is-realcost/quote-letter.png', title: 'One-Click Quote Letter', desc: 'Generate a professional branded PDF quote letter ready to send to your client.' },
+                { image: '/images/home/what-is-realcost/upload-pdf.webp', title: 'Upload PDF Drawings', desc: 'Multi-page blueprint sets. Navigate every page on a digital canvas inside the software.' },
+                { image: '/images/home/what-is-realcost/symbol-auto-count.webp', title: 'Symbol Auto-Count', desc: 'Draw a box around a symbol — the platform finds all matches across every page instantly.' },
+                { image: '/images/home/what-is-realcost/build-bid.webp', title: 'Build Your Bid', desc: 'Material, labour, overhead, markup, duration — all calculated on your bid page.' },
+                { image: '/images/home/what-is-realcost/quote-letter.webp', title: 'One-Click Quote Letter', desc: 'Generate a professional branded PDF quote letter ready to send to your client.' },
               ].map(({ image, title, desc }) => (
                 <div className="why-card" key={title}>
                   <div className="why-ico">
@@ -433,10 +433,10 @@ const Home = ({ onNavigate }) => {
           </Reveal>
           <RevealGroup className="home-benefit-grid" style={{ gap: '18px' }}>
             {[
-              { img: '/images/home/benefits/bring-teams-together.png', title: 'Bring your teams together', copy: 'Centralised communication and task tracking keeps everyone connected and aligned.' },
-              { img: '/images/home/benefits/forecast-projects.png', title: 'Forecast projects accurately', copy: 'Create precise estimates to anticipate costs, timelines, and resources.' },
-              { img: '/images/home/benefits/save-time.png', title: 'Save time and resources', copy: 'Reduce manual work and ensure the right people and materials are on every job.' },
-              { img: '/images/home/benefits/customer-experience.png', title: 'Improve customer experience', copy: 'Deliver quotes faster and keep customers informed, building trust and meeting expectations.' },
+              { img: '/images/home/benefits/bring-teams-together.webp', title: 'Bring your teams together', copy: 'Centralised communication and task tracking keeps everyone connected and aligned.' },
+              { img: '/images/home/benefits/forecast-projects.webp', title: 'Forecast projects accurately', copy: 'Create precise estimates to anticipate costs, timelines, and resources.' },
+              { img: '/images/home/benefits/save-time.webp', title: 'Save time and resources', copy: 'Reduce manual work and ensure the right people and materials are on every job.' },
+              { img: '/images/home/benefits/customer-experience.webp', title: 'Improve customer experience', copy: 'Deliver quotes faster and keep customers informed, building trust and meeting expectations.' },
             ].map((item) => (
               <div key={item.title} className="home-benefit-card">
                 <img className="home-benefit-image" src={asset(item.img)} alt={item.title} loading="lazy" />
@@ -589,11 +589,11 @@ const Home = ({ onNavigate }) => {
             {[
               {
                 bg: 'rgba(79,70,229,.15)', title: 'Digital Takeoff Canvas',  desc: 'Navigate multi-page PDF drawings on screen. Place symbols manually or let the software do it.',
-                img: '/images/features/core-features/digital-takeoff.png',
+                img: '/images/features/core-features/digital-takeoff.webp',
               },
               {
                 bg: 'rgba(14,165,233,.14)',  title: 'Symbol Auto-Count',       desc: 'Box-select a reference symbol and the platform matches it across every drawing page in seconds.',
-                img: '/images/features/core-features/symbol-auto-count.png',
+                img: '/images/features/core-features/symbol-auto-count.webp',
               },
               {
                 bg: 'rgba(155, 194, 241, 0.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
@@ -653,7 +653,7 @@ const Home = ({ onNavigate }) => {
 
             {/* Illustration */}
             <Reveal initial={{ opacity: 0, x: 32 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }} style={{ display: 'flex', justifyContent: 'center' }}>
-              <img src={asset('/images/home/project-coverage/project.png')} alt="Electrical project estimating" style={{ width: '100%', maxWidth: '340px', height: 'auto', display: 'block' }} />
+              <img src={asset('/images/home/project-coverage/project.webp')} alt="Electrical project estimating" style={{ width: '100%', maxWidth: '340px', height: 'auto', display: 'block' }} />
             </Reveal>
           </div>
         </div>

@@ -4,16 +4,16 @@ import { Reveal, RevealGroup } from '../components/ui/Reveal';
 import { LOGIN_URL, asset } from '../config';
 
 const features = [
-  { accent: 'var(--grd-blue)', title: 'Digital Takeoff Canvas', body: 'Upload PDF drawing sets and navigate every page on a digital canvas. Place symbols manually or let the platform detect matching symbols. Multi-page projects supported with full page navigation.', img: '/images/features/core-features/digital-takeoff.png' },
-  { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Symbol Auto-Count', body: 'Draw a rectangle around any reference symbol — a light fixture, outlet, or device. The platform instantly finds and counts all matching assemblies across every drawing page.', img: '/images/features/core-features/symbol-auto-count.png' },
-  { accent: 'linear-gradient(90deg,#B45309,#F59E0B)', title: 'Estimating', body: 'An editable line-item grid that turns takeoff measurements into priced quantities automatically. Adjust quantities inline and see material vs. labour costs recalculate instantly, by item or by category.', img: '/images/features/core-features/estimating.png' },
-  { accent: 'linear-gradient(90deg,#0E7490,#22B8CF)', title: 'General Materials', body: 'Every material pulled into the job from your parts database, grouped by category. Edit price or labour rate inline, watch running totals feed the Final Bid, and export to Excel in one click.', img: '/images/features/core-features/general-materials.png' },
-  { accent: 'linear-gradient(90deg,var(--red),var(--red2))', title: 'Bid Page', body: 'Material, labour crews, general expenses, and supplier quotes come together in one final bid summary — each line editable inline and saved as you type. Apply overhead & markup, get reminders , and export the finished bid as PDF or Excel.', img: '/images/features/core-features/bid-page.png' },
+  { accent: 'var(--grd-blue)', title: 'Digital Takeoff Canvas', body: 'Upload PDF drawing sets and navigate every page on a digital canvas. Place symbols manually or let the platform detect matching symbols. Multi-page projects supported with full page navigation.', img: '/images/features/core-features/digital-takeoff.webp' },
+  { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Symbol Auto-Count', body: 'Draw a rectangle around any reference symbol — a light fixture, outlet, or device. The platform instantly finds and counts all matching assemblies across every drawing page.', img: '/images/features/core-features/symbol-auto-count.webp' },
+  { accent: 'linear-gradient(90deg,#B45309,#F59E0B)', title: 'Estimating', body: 'An editable line-item grid that turns takeoff measurements into priced quantities automatically. Adjust quantities inline and see material vs. labour costs recalculate instantly, by item or by category.', img: '/images/features/core-features/estimating.webp' },
+  { accent: 'linear-gradient(90deg,#0E7490,#22B8CF)', title: 'General Materials', body: 'Every material pulled into the job from your parts database, grouped by category. Edit price or labour rate inline, watch running totals feed the Final Bid, and export to Excel in one click.', img: '/images/features/core-features/general-materials.webp' },
+  { accent: 'linear-gradient(90deg,var(--red),var(--red2))', title: 'Bid Page', body: 'Material, labour crews, general expenses, and supplier quotes come together in one final bid summary — each line editable inline and saved as you type. Apply overhead & markup, get reminders , and export the finished bid as PDF or Excel.', img: '/images/features/core-features/bid-page.webp' },
   { accent: 'var(--grd-acc)', title: 'Canadian City-Based Pricing', body: 'Material rates auto-adjust to regional pricing for your city — Toronto, Ottawa, Montreal, Calgary, Vancouver, and more.', img: '/images/features/core-features/canadian-pricing.webp' },
-  { accent: 'linear-gradient(90deg,#5B21B6,#7C3AED)', title: 'Quote Letter Generator', body: 'One click generates a professional branded PDF or Word quote letter from your bid — ready to submit to your client immediately.', img: '/images/features/core-features/quote-letter.png' },
-  { accent: 'linear-gradient(90deg,#BE185D,#EC4899)', title: 'One-Click Quote Send', body: 'Email your branded quote letter straight to your client in a single click — no downloads, no attachments to manage. The finished quote is delivered instantly from the platform.', img: '/images/features/core-features/quote-send.png' },
-  { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Estimate Graph & Analytics', body: 'Visual breakdown chart of your estimate showing material, labour, overhead, and markup proportions. Understand your bid at a glance.', img: '/images/features/core-features/estimate-graph.png' },
-  { accent: 'linear-gradient(90deg,var(--sap),var(--sap2))', title: 'Team & Role Management', body: 'Owner and estimator roles. Assign projects to team members, track progress, and manage subscriptions — all from one account dashboard.', img: '/images/home/benefits/bring-teams-together.png' },
+  { accent: 'linear-gradient(90deg,#5B21B6,#7C3AED)', title: 'Quote Letter Generator', body: 'One click generates a professional branded PDF or Word quote letter from your bid — ready to submit to your client immediately.', img: '/images/features/core-features/quote-letter.webp' },
+  { accent: 'linear-gradient(90deg,#BE185D,#EC4899)', title: 'One-Click Quote Send', body: 'Email your branded quote letter straight to your client in a single click — no downloads, no attachments to manage. The finished quote is delivered instantly from the platform.', img: '/images/features/core-features/quote-send.webp' },
+  { accent: 'linear-gradient(90deg,#1A6B45,#2E8A5A)', title: 'Estimate Graph & Analytics', body: 'Visual breakdown chart of your estimate showing material, labour, overhead, and markup proportions. Understand your bid at a glance.', img: '/images/features/core-features/estimate-graph.webp' },
+  { accent: 'linear-gradient(90deg,var(--sap),var(--sap2))', title: 'Team & Role Management', body: 'Owner and estimator roles. Assign projects to team members, track progress, and manage subscriptions — all from one account dashboard.', img: '/images/home/benefits/bring-teams-together.webp' },
 ];
 
 const chips = ['Digital Takeoff Canvas', 'Auto-Count', 'General Materials', 'Estimating', 'Bid Page', 'Canadian City Pricing', 'Quote Letter Generator', 'One-Click Send', 'Estimate Graph', 'Team Management'];
@@ -31,7 +31,7 @@ const Features = ({ onNavigate }) => {
     <div className="page-enter">
       <section className="page-hero">
         <div className="page-hero-accent"></div>
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset(isMobile ? '/images/features/hero/hero-mobile.png' : '/images/features/hero/hero.png')})`, backgroundSize: 'cover', backgroundPosition: 'right top', backgroundRepeat: 'no-repeat' }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset(isMobile ? '/images/features/hero/hero-mobile.webp' : '/images/features/hero/hero.webp')})`, backgroundSize: 'cover', backgroundPosition: 'right top', backgroundRepeat: 'no-repeat' }}></div>
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign:'left' }}>
@@ -110,7 +110,7 @@ const Features = ({ onNavigate }) => {
                 </motion.button>
               </div>
               <div className="bp-bid-image">
-                <img src={asset('/images/features/blueprint-to-bid/blueprint.png')} alt="Real Cost estimate workflow from blueprint to bid" />
+                <img src={asset('/images/features/blueprint-to-bid/blueprint.webp')} alt="Real Cost estimate workflow from blueprint to bid" />
               </div>
             </div>
           </Reveal>
@@ -128,11 +128,11 @@ const Features = ({ onNavigate }) => {
           </Reveal>
           <div className="wcr-rows">
             {[
-              { n: '01', title: 'Digital-First Workflow', highlight: false, img: '/images/features/why-choose/digital-first-workflow.png',        desc: "We built our platform around how Canadian estimators actually work — drawings, counts, bids and quotes in one continuous flow." },
-              { n: '02', title: 'Expert-Built Formulas',  highlight: true,  img: '/images/features/why-choose/expert-built-formulas.png', desc: 'Every formula and assembly was designed by a panel of top electrical estimators — not engineers guessing at your workflow.' },
-              { n: '03', title: 'Contractor-First Support', highlight: false, img: '/images/features/why-choose/contractor-first-support.png',       desc: 'We prioritize contractor needs, so every feature and support interaction is built around helping you win your next bid.' },
-              { n: '04', title: 'City-Wide Pricing Network', highlight: false, img: '/images/features/why-choose/city-wide-pricing-network.png',       desc: 'Real-time, regionally adjusted material pricing across every major Canadian market — no manual lookups.' },
-              { n: '05', title: 'Fast, Reliable Delivery', highlight: false, img: '/images/features/why-choose/fast-reliable-delivery.png',     desc: 'A streamlined workflow means your team estimates and quotes faster, without compromising accuracy.' },
+              { n: '01', title: 'Digital-First Workflow', highlight: false, img: '/images/features/why-choose/digital-first-workflow.webp',        desc: "We built our platform around how Canadian estimators actually work — drawings, counts, bids and quotes in one continuous flow." },
+              { n: '02', title: 'Expert-Built Formulas',  highlight: true,  img: '/images/features/why-choose/expert-built-formulas.webp', desc: 'Every formula and assembly was designed by a panel of top electrical estimators — not engineers guessing at your workflow.' },
+              { n: '03', title: 'Contractor-First Support', highlight: false, img: '/images/features/why-choose/contractor-first-support.webp',       desc: 'We prioritize contractor needs, so every feature and support interaction is built around helping you win your next bid.' },
+              { n: '04', title: 'City-Wide Pricing Network', highlight: false, img: '/images/features/why-choose/city-wide-pricing-network.webp',       desc: 'Real-time, regionally adjusted material pricing across every major Canadian market — no manual lookups.' },
+              { n: '05', title: 'Fast, Reliable Delivery', highlight: false, img: '/images/features/why-choose/fast-reliable-delivery.webp',     desc: 'A streamlined workflow means your team estimates and quotes faster, without compromising accuracy.' },
             ].map(({ n, title, highlight, desc, img }, i) => (
               <Reveal key={n} className={`wcr-row ${i % 2 === 1 ? 'wcr-row-rev' : ''}`}
                 initial={{ opacity: 0, y: 32 }} whileInView={{ opacity: 1, y: 0 }}>

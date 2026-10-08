@@ -24,6 +24,6 @@ export const ASSET_BASE_URL = (
   ''
 ).replace(/\/+$/, '');
 
-/** Resolve a public asset path (e.g. '/images/home/hero/intro.png') to its full URL. */
+/** Resolve a public asset path (e.g. '/images/home/hero/intro.webp') to its full URL. */
 export const asset = (path = '') =>
   `${ASSET_BASE_URL}${path.startsWith('/') ? path : `/${path}`}`;
