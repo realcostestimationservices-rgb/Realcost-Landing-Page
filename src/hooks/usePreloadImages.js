@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import IMAGE_MANIFEST from '../config/imageManifest';
+import { asset } from '../config';
 
 /**
  * Preloads every image in the manifest on first mount by warming the browser
@@ -8,10 +9,9 @@ import IMAGE_MANIFEST from '../config/imageManifest';
  */
 export default function usePreloadImages() {
   useEffect(() => {
-    const base = process.env.PUBLIC_URL || '';
     const images = IMAGE_MANIFEST.map((path) => {
       const img = new Image();
-      img.src = base + path;
+      img.src = asset(path);
       return img;
     });
 

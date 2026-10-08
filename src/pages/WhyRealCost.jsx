@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { Reveal, RevealGroup } from '../components/ui/Reveal';
 import CountUp from '../components/ui/CountUp';
 import '../styles/pages/why-real-cost.css';
-import { LOGIN_URL } from '../config';
+import { LOGIN_URL, asset } from '../config';
 
 
 const perks = [
@@ -44,7 +44,7 @@ const WhyRealCost = ({ onNavigate }) => {
         overflow: 'hidden',
       }}>
         {/* hero bg image */}
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + (isMobile ? '/images/misc/whyrealcost_mobile.png' : '/images/misc/whyrealcost.png')})`, position: 'absolute', inset: 0 }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset(isMobile ? '/images/why-real-cost/hero/hero-mobile.png' : '/images/why-real-cost/hero/hero.png')})`, position: 'absolute', inset: 0 }}></div>
         {/* directional overlay */}
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
@@ -123,7 +123,7 @@ const WhyRealCost = ({ onNavigate }) => {
               </div>
             </Reveal>
             <Reveal initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '20px', overflow: 'hidden', boxShadow: '0 28px 72px rgba(17,38,70,.16), 0 0 0 1px rgba(17,38,70,.07)' }}>
-              <img src={process.env.PUBLIC_URL + '/images/about/why_realcost.png'} alt="Why Real Cost" style={{ width: '100%', display: 'block' }} />
+              <img src={asset('/images/why-real-cost/expertise/expertise.png')} alt="Why Real Cost" style={{ width: '100%', display: 'block' }} />
             </Reveal>
           </div>
         </div>
@@ -169,13 +169,13 @@ const WhyRealCost = ({ onNavigate }) => {
               <div style={{ position: 'absolute', left: '-14px', top: '32px', width: '56%', height: '56%', borderRadius: '20px', background: 'linear-gradient(135deg,rgba(79,70,229,.13),rgba(96,165,250,.10))', zIndex: 0 }} />
               <div style={{ position: 'absolute', right: '-14px', bottom: '28px', width: '44%', height: '38%', borderRadius: '16px', background: 'linear-gradient(135deg,rgba(96,165,250,.10),rgba(79,70,229,.07))', zIndex: 0 }} />
               <div style={{ position: 'absolute', right: 0, top: 0, width: '68%', height: '62%', borderRadius: '16px', overflow: 'hidden', zIndex: 1, boxShadow: '0 20px 56px rgba(17,38,70,.18), 0 0 0 1px rgba(17,38,70,.06)' }}>
-                <img src={process.env.PUBLIC_URL + '/images/about/2nd.png'} alt="Team working" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <img src={asset('/images/why-real-cost/collage/team-1.png')} alt="Team working" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
               <div style={{ position: 'absolute', left: 0, top: '60px', width: '52%', height: '52%', borderRadius: '16px', overflow: 'hidden', zIndex: 2, boxShadow: '0 24px 60px rgba(17,38,70,.24), 0 0 0 1px rgba(17,38,70,.06)' }}>
-                <img src={process.env.PUBLIC_URL + '/images/about/1st_colash.png'} alt="Electrical team" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <img src={asset('/images/why-real-cost/collage/team-2.png')} alt="Electrical team" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
               <div style={{ position: 'absolute', right: '4%', bottom: 0, width: '60%', height: '42%', borderRadius: '16px', overflow: 'hidden', zIndex: 3, boxShadow: '0 24px 60px rgba(17,38,70,.24), 0 0 0 1px rgba(17,38,70,.06)' }}>
-                <img src={process.env.PUBLIC_URL + '/images/about/2nd_colash.png'} alt="Contractors" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                <img src={asset('/images/why-real-cost/collage/team-3.png')} alt="Contractors" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
               </div>
               <div style={{ position: 'absolute', left: '2%', bottom: '12px', zIndex: 4, background: '#fff', borderRadius: '14px', padding: '12px 18px', boxShadow: '0 8px 28px rgba(17,38,70,.18)', display: 'flex', alignItems: 'center', gap: '12px', border: '1px solid rgba(17,38,70,.07)' }}>
                 <div>
@@ -278,7 +278,7 @@ const WhyRealCost = ({ onNavigate }) => {
             {/* Right: image */}
             <Reveal initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(15,37,87,.13)', width: '100%', aspectRatio: '3/2' }}>
               <img
-                src={process.env.PUBLIC_URL + '/images/misc/mission.png'}
+                src={asset('/images/why-real-cost/mission/mission.png')}
                 alt="Our Mission"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />
@@ -294,7 +294,7 @@ const WhyRealCost = ({ onNavigate }) => {
             {/* Left: image */}
             <Reveal className="wrc-vision-media" initial={{ opacity: 0, x: -36 }} whileInView={{ opacity: 1, x: 0 }} style={{ borderRadius: '24px', overflow: 'hidden', boxShadow: '0 20px 60px rgba(15,37,87,.13)', width: '100%', aspectRatio: '3/2' }}>
               <img
-                src={process.env.PUBLIC_URL + '/images/misc/vision.png'}
+                src={asset('/images/why-real-cost/vision/vision.png')}
                 alt="Our Vision"
                 style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
               />

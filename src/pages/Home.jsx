@@ -4,7 +4,7 @@ import Testimonials from '../components/ui/Testimonials';
 import { Reveal, RevealGroup } from '../components/ui/Reveal';
 import CountUp from '../components/ui/CountUp';
 import '../styles/pages/home.css';
-import { LOGIN_URL } from '../config';
+import { LOGIN_URL, asset } from '../config';
 
 /* Slide + copy travel on the same easing so they read as one moving surface. */
 const SLIDE_EASE = { duration: 0.95, ease: [0.65, 0, 0.35, 1] };
@@ -14,24 +14,24 @@ const SLIDE_EASE = { duration: 0.95, ease: [0.65, 0, 0.35, 1] };
 const HERO_SLIDES = [
   {
     slug: 'intro',
-    image: '/images/home/Home.png',
-    mobileImage: '/images/home/home_1_mobile.png',
+    image: '/images/home/hero/intro.png',
+    mobileImage: '/images/home/hero/intro-mobile.png',
     badge: 'Professional Electrical Estimating Software',
     title: <>Tired of overpriced,<br />over-complicated software?<br /><em>Your wait is over.</em></>,
     sub: <>Switch to <strong>Real Cost</strong> for a premium estimating experience — upload your drawings, count symbols, build your bid, and generate a quote letter, all in one place.</>,
   },
   {
     slug: 'takeoff',
-    image: '/images/home/home_2.png',
-    mobileImage: '/images/home/home_2_mobile.png',
+    image: '/images/home/hero/takeoff.png',
+    mobileImage: '/images/home/hero/takeoff-mobile.png',
     badge: 'Digital takeoff & symbol auto-count',
     title: <>Stop counting symbols<br />by hand.<br /><em>Let the Software do it.</em></>,
     sub: <>Box-select a single symbol and <strong>Real Cost</strong> finds every match across every page of your drawing set — in seconds, not evenings.</>,
   },
   {
     slug: 'bid',
-    image: '/images/home/home_3.png',
-    mobileImage: '/images/home/home_3_mobile.png',
+    image: '/images/home/hero/bid.png',
+    mobileImage: '/images/home/hero/bid-mobile.png',
     badge: 'Bid page & one-click quote letter',
     title: <>From drawings to a<br />branded quote.<br /><em>In four steps.</em></>,
     sub: <>Material, labour, overhead and markup — calculated on your bid page, then sent out as a <strong>professional PDF quote letter</strong>.</>,
@@ -40,12 +40,12 @@ const HERO_SLIDES = [
 
 
 const MONITOR_TABS = [
-  { label: 'Take Off',       image: '/images/home/take_off_how_it_works.png',            alt: 'Digital takeoff canvas' },
-  { label: 'Estimating',     image: '/images/home/estimating_take_off_how_it_works.png', alt: 'Estimating' },
-  { label: 'Gen Materials',  image: '/images/home/mat_list_take_off_how_it_works.png',   alt: 'Generated materials list' },
-  { label: 'Bid Page',       image: '/images/home/bid_take_off_how_it_works.png',        alt: 'Bid page' },
-  { label: 'Quote Letter',   image: '/images/home/quote_how_it_works.png',               alt: 'Branded PDF quote letter' },
-  { label: 'Estimate Graph', image: '/images/home/graph_take_off_how_it_works.png',      alt: 'Estimate graph' },
+  { label: 'Take Off',       image: '/images/home/how-it-works/takeoff.png',            alt: 'Digital takeoff canvas' },
+  { label: 'Estimating',     image: '/images/home/how-it-works/estimating.png', alt: 'Estimating' },
+  { label: 'Gen Materials',  image: '/images/home/how-it-works/materials.png',   alt: 'Generated materials list' },
+  { label: 'Bid Page',       image: '/images/home/how-it-works/bid-page.png',        alt: 'Bid page' },
+  { label: 'Quote Letter',   image: '/images/home/how-it-works/quote-letter.png',               alt: 'Branded PDF quote letter' },
+  { label: 'Estimate Graph', image: '/images/home/how-it-works/estimate-graph.png',      alt: 'Estimate graph' },
 ];
 
 const Home = ({ onNavigate }) => {
@@ -201,7 +201,7 @@ const Home = ({ onNavigate }) => {
               <div className="hero-bg-slide" key={i}>
                 <img
                   className={`hero-slide-img hero-slide-${s.slug}${i === pos ? ' is-active' : ''}`}
-                  src={process.env.PUBLIC_URL + imageUrl}
+                  src={asset(imageUrl)}
                   alt=""
                   aria-hidden="true"
                   loading={i === 0 ? 'eager' : 'lazy'}
@@ -356,7 +356,7 @@ const Home = ({ onNavigate }) => {
                 <div className="ph-stat"><div className="ph-stat-n"><CountUp end={9} /></div><div className="ph-stat-l">Trades Supported</div></div>
               </div>
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginTop: '32px' }}>
-                <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-prim" href={process.env.PUBLIC_URL + '/downloads/RealCost_brochure.pdf'} download>
+                <motion.a whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-prim" href={asset('/downloads/RealCost_brochure.pdf')} download>
                   Download Brochure
                 </motion.a>
                 <motion.button whileHover={{ scale: 1.04 }} whileTap={{ scale: 0.97 }} className="btn-ol-blue" onClick={() => onNavigate('demo')}>
@@ -368,7 +368,7 @@ const Home = ({ onNavigate }) => {
               <div className="hb-image-col">
                 <div className="hb-accent" aria-hidden="true" />
                 <div className="hb-image-card">
-                  <img src={process.env.PUBLIC_URL + '/images/misc/brochure.png'} alt="Real Cost brochure" />
+                  <img src={asset('/images/home/smart-software/brochure.png')} alt="Real Cost brochure" />
                 </div>
               </div>
             </Reveal>
@@ -388,14 +388,14 @@ const Home = ({ onNavigate }) => {
             </Reveal>
             <RevealGroup style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }} delay={0.1}>
               {[
-                { image: '/images/home/upload_pdf.png', title: 'Upload PDF Drawings', desc: 'Multi-page blueprint sets. Navigate every page on a digital canvas inside the software.' },
-                { image: '/images/home/auto_count.png', title: 'Symbol Auto-Count', desc: 'Draw a box around a symbol — the platform finds all matches across every page instantly.' },
-                { image: '/images/home/bid.png', title: 'Build Your Bid', desc: 'Material, labour, overhead, markup, duration — all calculated on your bid page.' },
-                { image: '/images/home/quote.png', title: 'One-Click Quote Letter', desc: 'Generate a professional branded PDF quote letter ready to send to your client.' },
+                { image: '/images/home/what-is-realcost/upload-pdf.png', title: 'Upload PDF Drawings', desc: 'Multi-page blueprint sets. Navigate every page on a digital canvas inside the software.' },
+                { image: '/images/home/what-is-realcost/symbol-auto-count.png', title: 'Symbol Auto-Count', desc: 'Draw a box around a symbol — the platform finds all matches across every page instantly.' },
+                { image: '/images/home/what-is-realcost/build-bid.png', title: 'Build Your Bid', desc: 'Material, labour, overhead, markup, duration — all calculated on your bid page.' },
+                { image: '/images/home/what-is-realcost/quote-letter.png', title: 'One-Click Quote Letter', desc: 'Generate a professional branded PDF quote letter ready to send to your client.' },
               ].map(({ image, title, desc }) => (
                 <div className="why-card" key={title}>
                   <div className="why-ico">
-                    <img src={process.env.PUBLIC_URL + image} alt="" aria-hidden="true" />
+                    <img src={asset(image)} alt="" aria-hidden="true" />
                   </div>
                   <div style={{ fontSize: '14px', fontWeight: '600', color: 'var(--txt)', marginBottom: '7px' }}>{title}</div>
                   <div style={{ fontSize: '13px', color: '#6B7489', lineHeight: '1.7', fontWeight: '300' }}>{desc}</div>
@@ -433,13 +433,13 @@ const Home = ({ onNavigate }) => {
           </Reveal>
           <RevealGroup className="home-benefit-grid" style={{ gap: '18px' }}>
             {[
-              { img: '/images/home/benefits_1.png', title: 'Bring your teams together', copy: 'Centralised communication and task tracking keeps everyone connected and aligned.' },
-              { img: '/images/home/benefits_2.png', title: 'Forecast projects accurately', copy: 'Create precise estimates to anticipate costs, timelines, and resources.' },
-              { img: '/images/home/benefits_3.png', title: 'Save time and resources', copy: 'Reduce manual work and ensure the right people and materials are on every job.' },
-              { img: '/images/home/benefits_4.png', title: 'Improve customer experience', copy: 'Deliver quotes faster and keep customers informed, building trust and meeting expectations.' },
+              { img: '/images/home/benefits/bring-teams-together.png', title: 'Bring your teams together', copy: 'Centralised communication and task tracking keeps everyone connected and aligned.' },
+              { img: '/images/home/benefits/forecast-projects.png', title: 'Forecast projects accurately', copy: 'Create precise estimates to anticipate costs, timelines, and resources.' },
+              { img: '/images/home/benefits/save-time.png', title: 'Save time and resources', copy: 'Reduce manual work and ensure the right people and materials are on every job.' },
+              { img: '/images/home/benefits/customer-experience.png', title: 'Improve customer experience', copy: 'Deliver quotes faster and keep customers informed, building trust and meeting expectations.' },
             ].map((item) => (
               <div key={item.title} className="home-benefit-card">
-                <img className="home-benefit-image" src={process.env.PUBLIC_URL + item.img} alt={item.title} loading="lazy" />
+                <img className="home-benefit-image" src={asset(item.img)} alt={item.title} loading="lazy" />
                 <div className="home-benefit-content">
                   <div className="home-benefit-title">{item.title}</div>
                   <div className="home-benefit-desc">{item.copy}</div>
@@ -483,7 +483,7 @@ const Home = ({ onNavigate }) => {
                         tabIndex={tab2 === i ? 0 : -1}
                         aria-label={`View ${label} full size`}
                       >
-                        <img src={process.env.PUBLIC_URL + image} alt={alt} />
+                        <img src={asset(image)} alt={alt} />
                         <span className="mon-zoom">Click to enlarge</span>
                       </button>
                     </div>
@@ -518,7 +518,7 @@ const Home = ({ onNavigate }) => {
             {/* Right: heading + timeline steps */}
             <Reveal initial={{ opacity: 0, x: 36 }} whileInView={{ opacity: 1, x: 0 }}>
               <div className="sec-eyebrow">How it works</div>
-              <div className="sec-h2" style={{ fontSize: '34px', marginBottom: '10px' }}>From drawings<br />to quote in 4 steps</div>
+              <div className="sec-h2 hiw-h2" style={{ marginBottom: '10px' }}>From drawings<br />to quote in 4 steps</div>
               <p className="sec-sub" style={{ marginBottom: '36px' }}>Your whole estimation workflow — in one software.</p>
 
               <div style={{ position: 'relative' }}>
@@ -557,7 +557,7 @@ const Home = ({ onNavigate }) => {
             </div>
             <img
               className="mon-lb-img"
-              src={process.env.PUBLIC_URL + MONITOR_TABS[lightbox].image}
+              src={asset(MONITOR_TABS[lightbox].image)}
               alt={MONITOR_TABS[lightbox].alt}
             />
             <button
@@ -589,15 +589,15 @@ const Home = ({ onNavigate }) => {
             {[
               {
                 bg: 'rgba(79,70,229,.15)', title: 'Digital Takeoff Canvas',  desc: 'Navigate multi-page PDF drawings on screen. Place symbols manually or let the software do it.',
-                img: '/images/features/take_off.png',
+                img: '/images/features/core-features/digital-takeoff.png',
               },
               {
                 bg: 'rgba(14,165,233,.14)',  title: 'Symbol Auto-Count',       desc: 'Box-select a reference symbol and the platform matches it across every drawing page in seconds.',
-                img: '/images/features/autocount.png',
+                img: '/images/features/core-features/symbol-auto-count.png',
               },
               {
                 bg: 'rgba(155, 194, 241, 0.15)',  title: 'Canadian City Pricing',   desc: 'Regional pricing for Toronto, Ottawa, Montreal, Calgary, Vancouver and more.',
-                img: '/images/features/canada-map.webp', fit: true,
+                img: '/images/features/core-features/canadian-pricing.webp', fit: true,
               },
 
             ].map(({ bg, title, desc, img, fit }) => (
@@ -606,7 +606,7 @@ const Home = ({ onNavigate }) => {
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}>
                 <div className={`home-featp-card-img${fit ? ' is-fit' : ''}`} style={{
                   background: bg,
-                  backgroundImage: `url(${process.env.PUBLIC_URL}${img})`,
+                  backgroundImage: `url(${asset(img)})`,
                   backgroundSize: fit ? 'contain' : 'cover',
                   backgroundPosition: fit ? 'center' : 'center top',
                   backgroundRepeat: 'no-repeat'
@@ -653,7 +653,7 @@ const Home = ({ onNavigate }) => {
 
             {/* Illustration */}
             <Reveal initial={{ opacity: 0, x: 32 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }} style={{ display: 'flex', justifyContent: 'center' }}>
-              <img src={process.env.PUBLIC_URL + '/images/misc/project.png'} alt="Electrical project estimating" style={{ width: '100%', maxWidth: '340px', height: 'auto', display: 'block' }} />
+              <img src={asset('/images/home/project-coverage/project.png')} alt="Electrical project estimating" style={{ width: '100%', maxWidth: '340px', height: 'auto', display: 'block' }} />
             </Reveal>
           </div>
         </div>

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { Reveal, RevealGroup } from '../components/ui/Reveal';
 import '../styles/pages/pricing.css';
-import { LOGIN_URL, API_BASE_URL } from '../config';
+import { LOGIN_URL, API_BASE_URL, asset } from '../config';
 
 const FEATURE_CARDS = [
   { title: 'Unlimited Projects', desc: 'Create and manage as many estimation projects as you need.' },
@@ -146,7 +146,7 @@ const Pricing = ({ onNavigate }) => {
       <section className="page-hero">
         <div className="page-hero-accent" />
         {/* Anchored bottom: the podium/floor stays in frame and the empty ceiling is what gets cropped. */}
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + (isMobile ? '/images/pricing/pricing_mobile.png' : '/images/pricing/pricing.png')})`, backgroundPosition: isMobile ? 'center 35%' : 'center 65%' }} />
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset(isMobile ? '/images/pricing/hero/hero-mobile.png' : '/images/pricing/hero/hero.png')})`, backgroundPosition: isMobile ? 'center 35%' : 'center 65%' }} />
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign: 'left' }}>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import FAQItem from '../components/ui/FAQItem';
-import { LOGIN_URL } from '../config';
+import { LOGIN_URL, asset } from '../config';
 
 const faqGroups = [
   {
@@ -117,7 +117,7 @@ const FAQ = ({ onNavigate }) => {
       {/* ── Hero ── */}
       <section className="page-hero">
         <div className="page-hero-accent" />
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/faq/faq.png'})` }} />
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset('/images/faq/hero/hero.png')})` }} />
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, background: 'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign: 'left' }}>

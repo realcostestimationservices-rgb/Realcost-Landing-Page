@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { motion, animate, useInView } from 'framer-motion';
 import { Reveal, RevealGroup } from '../components/ui/Reveal';
 import '../styles/pages/our-story.css';
-import { LOGIN_URL } from '../config';
+import { LOGIN_URL, asset } from '../config';
 
 function CountUp({ value, suffix = '', duration = 1.6 }) {
   const ref = useRef(null);
@@ -32,10 +32,10 @@ const milestones = [
 
 
 const sectors = [
-  { img: '/images/trades/commercial.png' },
-  { img: '/images/trades/residential.png' },
-  { img: '/images/trades/institutional.png' },
-  { img: '/images/trades/industrial.png' },
+  { img: '/images/our-story/who-we-are/commercial.png' },
+  { img: '/images/our-story/who-we-are/residential.png' },
+  { img: '/images/our-story/who-we-are/institutional.png' },
+  { img: '/images/our-story/who-we-are/industrial.png' },
 ];
 
 const IconUsers = () => (
@@ -163,7 +163,7 @@ const OurStory = ({ onNavigate }) => {
       {/* ── Hero ── */}
       <section className="page-hero os-hero">
         <div className="page-hero-accent" />
-        <div className="page-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/about/our_bg.png'})` }}></div>
+        <div className="page-hero-bg" style={{ backgroundImage: `url(${asset('/images/our-story/hero/hero.png')})` }}></div>
         <div style={{ position:'absolute', inset:0, zIndex:0, pointerEvents:'none', background:'linear-gradient(105deg,rgba(10,20,40,.48) 0%,rgba(10,20,40,.30) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign:'left' }}>
@@ -257,7 +257,7 @@ const OurStory = ({ onNavigate }) => {
                   <div
                     key={s.label}
                     className={`os-cf-card ${activeSlide === i ? 'active' : ''}`}
-                    style={{ backgroundImage: `url(${process.env.PUBLIC_URL + s.img})` }}
+                    style={{ backgroundImage: `url(${asset(s.img)})` }}
                     onClick={() => activeSlide !== i && goTo(i)}
                   >
                     {activeSlide === i && (
@@ -306,7 +306,7 @@ const OurStory = ({ onNavigate }) => {
             </Reveal>
             <Reveal delay={0.1} className="os-sink-wrap" initial={{ opacity: 0, x: 32 }} whileInView={{ opacity: 1, x: 0 }}>
               <div className="os-sink-glow" />
-              <img className="os-sink-img" src={process.env.PUBLIC_URL + '/images/misc/built_by_estimators.png'} alt="Built by estimators, for estimators" />
+              <img className="os-sink-img" src={asset('/images/our-story/built-by-estimators/built-by-estimators.png')} alt="Built by estimators, for estimators" />
               <div className="os-sink-shade" />
             </Reveal>
           </div>
@@ -368,7 +368,7 @@ const OurStory = ({ onNavigate }) => {
               </p>
               <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
                 <div style={{ width: '46px', height: '46px', borderRadius: '50%', background: '#fff', display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, overflow: 'hidden', boxShadow: '0 2px 10px rgba(0,0,0,.22)' }}>
-                  <img src={process.env.PUBLIC_URL + '/images/brand/logo.png'} alt="Real Cost" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
+                  <img src={asset('/images/brand/logo.png')} alt="Real Cost" style={{ width: '32px', height: '32px', objectFit: 'contain' }} />
                 </div>
                 <div>
                   <div style={{ fontSize: '14px', fontWeight: '600', color: '#fff' }}>Founding Team</div>
@@ -424,7 +424,7 @@ const OurStory = ({ onNavigate }) => {
             </div>
             <div className="os-history-imgwrap">
               <div className="os-history-frame" />
-              <img className="os-history-img" src={process.env.PUBLIC_URL + '/images/about/1st_colash.png'} alt="Real Cost estimating workspace" />
+              <img className="os-history-img" src={asset('/images/why-real-cost/collage/team-2.png')} alt="Real Cost estimating workspace" />
             </div>
           </Reveal>
         </div>

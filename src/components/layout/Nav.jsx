@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import '../../styles/components/nav.css';
+import { asset } from '../../config';
 
 const Nav = ({ currentPage, onNavigate, lightHero }) => {
   const [scrolled, setScrolled] = useState(false);
@@ -44,7 +45,7 @@ const Nav = ({ currentPage, onNavigate, lightHero }) => {
       <nav className={`rc-nav ${scrolled ? 'scrolled' : ''} ${lightHero && !scrolled ? 'light-hero' : ''} ${menuOpen ? 'menu-open' : ''}`}>
         <div className="nav-brand" onClick={() => handleNav('home')}>
           <img
-            src={process.env.PUBLIC_URL + '/images/brand/logo.png'}
+            src={asset('/images/brand/logo.png')}
             width="36"
             height="36"
             alt="Real Cost"
@@ -106,7 +107,7 @@ const Nav = ({ currentPage, onNavigate, lightHero }) => {
               transition={{ type: 'spring', stiffness: 320, damping: 34 }}
             >
               <div className="nav-drawer-brand">
-                <img src={process.env.PUBLIC_URL + '/images/brand/logo.png'} width="28" height="28" alt="Real Cost"
+                <img src={asset('/images/brand/logo.png')} width="28" height="28" alt="Real Cost"
                   style={{ borderRadius: '6px', objectFit: 'contain', flexShrink: 0, background: '#fff', padding: '4px', boxShadow: '0 2px 8px rgba(0,0,0,.18)' }} />
                 <span>Real Cost</span>
               </div>
