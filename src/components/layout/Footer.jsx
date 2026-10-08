@@ -1,7 +1,7 @@
 import React from 'react';
 import { Reveal, RevealGroup } from '../ui/Reveal';
 import '../../styles/components/footer.css';
-import { APP_URL } from '../../config';
+import { APP_URL, asset } from '../../config';
 
 const IconPhone = () => (
   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -26,7 +26,7 @@ const Footer = ({ onNavigate }) => {
       <RevealGroup className="footer-grid" style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '32px', padding: '52px 80px', maxWidth: '1440px', margin: '0 auto' }}>
         <div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-            <img src={process.env.PUBLIC_URL + '/images/brand/logo.png'} width="36" height="36" alt="Real Cost" style={{ borderRadius: '8px', objectFit: 'contain', flexShrink: '0', background: '#fff', padding: '5px', boxShadow: '0 2px 10px rgba(0,0,0,.22)' }} />
+            <img src={asset('/images/brand/logo.png')} width="36" height="36" alt="Real Cost" style={{ borderRadius: '8px', objectFit: 'contain', flexShrink: '0', background: '#fff', padding: '5px', boxShadow: '0 2px 10px rgba(0,0,0,.22)' }} />
             <div><div style={{ fontSize: '11px', fontWeight: '800', color: '#fff', letterSpacing: '.12em', textTransform: 'uppercase' }}>Real Cost <sup style={{ fontSize: '0.90em', fontWeight: '500', color: '#fff' }}>®</sup></div><div style={{ fontSize: '9px', fontWeight: '300', color: '#fff', letterSpacing: '.1em', textTransform: 'uppercase' }}>Estimation Platform</div></div>
           </div>
           <p style={{ fontSize: '13px', color: 'rgba(200,210,240,.38)', lineHeight: '1.82', maxWidth: '240px', fontWeight: '300' }}>Digital estimation platform for trade contractors across Canada. Upload drawings, count symbols, build your bid, send your quote.</p>

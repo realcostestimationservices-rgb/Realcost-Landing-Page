@@ -44,3 +44,6 @@ logs
 # OS
 .DS_Store
 Thumbs.db
+
+# temp artifact from scripts/optimize-images conversion
+.webp-map.txt

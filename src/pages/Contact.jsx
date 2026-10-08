@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Reveal, RevealGroup } from '../components/ui/Reveal';
-import { LOGIN_URL } from '../config';
+import { LOGIN_URL, asset } from '../config';
 
 const IconPin = () => (
   <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
@@ -50,7 +50,7 @@ const Contact = ({ onNavigate }) => {
 
       {/* ── Top Hero ── */}
       <section className="contact-hero">
-        <div className="contact-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/contact/contact_hero.png'})` }} />
+        <div className="contact-hero-bg" style={{ backgroundImage: `url(${asset('/images/contact/hero/hero.webp')})` }} />
         <div className="contact-hero-overlay" />
         <div className="hero-glow" />
         <div className="cxl contact-hero-inner">
@@ -149,7 +149,7 @@ const Contact = ({ onNavigate }) => {
 
       {/* ── Bottom CTA Hero ── */}
       <section className="contact-hero" style={{ minHeight: 'unset' }}>
-        <div className="contact-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/misc/bg_our.png'})` }} />
+        <div className="contact-hero-bg" style={{ backgroundImage: `url(${asset('/images/contact/cta/cta-bg.webp')})` }} />
         <div className="contact-hero-overlay" />
         <Reveal className="cxl" style={{ paddingTop: '56px', paddingBottom: '56px' }}>
           <div className="contact-hero-eyebrow">Global Quality Without Any Compromise</div>

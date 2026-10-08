@@ -2,6 +2,7 @@ import React, { useState, useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { Reveal, RevealGroup } from '../components/ui/Reveal';
 import '../styles/pages/demo.css';
+import { asset } from '../config';
 
 const TIME_SLOTS = ['9:00 am', '9:30 am', '10:00 am', '10:30 am', '11:00 am', '11:30 am', '1:00 pm', '1:30 pm', '2:00 pm', '2:30 pm', '3:00 pm', '3:30 pm', '4:00 pm'];
 const MONTH_NAMES = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
@@ -76,7 +77,7 @@ const Demo = () => {
     <div className="page-enter">
       <section className="page-hero">
         <div className="page-hero-accent" />
-        <div className="page-hero-bg demo-hero-bg" style={{ backgroundImage: `url(${process.env.PUBLIC_URL + '/images/misc/request_demo.png'})` }} />
+        <div className="page-hero-bg demo-hero-bg" style={{ backgroundImage: `url(${asset('/images/demo/hero/hero.webp')})` }} />
         <div style={{ position: 'absolute', inset: 0, zIndex: 0, pointerEvents: 'none', background: 'linear-gradient(105deg,rgba(10,20,40,.52) 0%,rgba(10,20,40,.32) 34%,transparent 62%)' }} />
         <div className="hero-glow" />
         <div className="cxl" style={{ textAlign: 'left' }}>
@@ -131,7 +132,7 @@ const Demo = () => {
                   <div className="rc-schedule">
                     <div className="rc-schedule-cal">
                       <div className="rc-schedule-brand">
-                        <img src={process.env.PUBLIC_URL + '/images/brand/logo.png'} alt="Real Cost" />
+                        <img src={asset('/images/brand/logo.png')} alt="Real Cost" />
                         <div className="rc-schedule-brand-word">
                           <span>Real Cost</span>
                           <span>Estimation Platform</span>

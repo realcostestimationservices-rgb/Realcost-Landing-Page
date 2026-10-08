@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import '../../styles/components/chatbot.css';
+import { asset } from '../../config';
 
 const ChatIcon = () => (
   <svg width="23" height="23" viewBox="0 0 24 24" fill="none">
@@ -132,7 +133,7 @@ const Chatbot = () => {
         <div className="chdr">
           <div style={{ display: 'flex', alignItems: 'center', gap: '11px' }}>
             <img
-              src={process.env.PUBLIC_URL + '/images/brand/logo.png'}
+              src={asset('/images/brand/logo.png')}
               alt="RC"
               className="chdr-logo"
             />

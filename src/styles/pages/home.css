@@ -833,10 +833,18 @@
 }
 @media (max-width: 480px) {
   .hero { min-height: 460px; }
-  .hero-h1 { font-size: 26px; letter-spacing: -.8px; }
+  .hero-h1 { font-size: 28px; letter-spacing: -.8px; }
   .hero-sub { font-size: 13.5px; }
   .hero-btns { flex-direction: column; gap: 10px; }
   .hero-btns .btn-prim, .hero-btns .btn-ghost { width: 100%; justify-content: center; }
+}
+
+/* "How it works" heading: 34px in its narrow 2fr column on desktop only.
+   Below 1024px the section stacks full-width and the shared .sec-h2 responsive
+   sizes (responsive.css: 32 → 28 → 22 → 20px) take over — without this min-width
+   guard an inline/plain 34px would stay oversized on phones. */
+@media (min-width: 1025px) {
+  .hiw-h2 { font-size: 34px; }
 }
 
 /* ===== Slide 3 (home_3.png) =====
@@ -902,7 +910,7 @@
   .hero-copy { transition: opacity .2s linear; transform: none; }
 }
 @media (max-width: 380px) {
-  .hero-h1 { font-size: 22px; }
+  .hero-h1 { font-size: 24px; }
 }
 
 /* ===== Short desktop viewports =====

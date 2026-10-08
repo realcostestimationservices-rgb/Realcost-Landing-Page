@@ -12,10 +12,12 @@
     "start": "react-scripts start",
     "prebuild": "node scripts/set-version.js",
     "build": "react-scripts build",
-    "version:stamp": "node scripts/set-version.js"
+    "version:stamp": "node scripts/set-version.js",
+    "optimize:images": "node scripts/optimize-images.js"
   },
   "devDependencies": {
-    "react-scripts": "5.0.1"
+    "react-scripts": "5.0.1",
+    "sharp": "^0.35.5"
   },
   "browserslist": {
     "production": [

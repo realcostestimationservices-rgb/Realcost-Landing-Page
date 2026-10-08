@@ -36,11 +36,13 @@ registerRoute(
   createHandlerBoundToURL(process.env.PUBLIC_URL + '/index.html')
 );
 
-// Images: cache-first, 30-day expiry (CRA content-hashes filenames)
+// Images: cache-first, 30-day expiry. Matches both local same-origin /images
+// assets and the S3/CloudFront media origin (served cross-origin in production),
+// so moving static media to the CDN doesn't lose offline/instant caching.
 registerRoute(
-  ({ url }) =>
-    url.origin === self.location.origin &&
-    url.pathname.startsWith('/images/'),
+  ({ url, request }) =>
+    (url.origin === self.location.origin && url.pathname.startsWith('/images/')) ||
+    request.destination === 'image',
   new CacheFirst({
     cacheName: 'rc-images',
     plugins: [

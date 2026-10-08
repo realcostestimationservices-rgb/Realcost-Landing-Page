@@ -6,6 +6,7 @@ import Chatbot from './components/ui/Chatbot';
 import ScrollTop from './components/ui/ScrollTop';
 import useScrollRestoration from './hooks/useScrollRestoration';
 import usePreloadImages from './hooks/usePreloadImages';
+import { asset } from './config';
 import useAppUpdate from './hooks/useAppUpdate';
 
 const Home = React.lazy(() => import('./pages/Home'));
@@ -32,7 +33,7 @@ function SplashScreen({ onDone }) {
         <div className="splash-spinner" />
         <div className="splash-inner">
           <img
-            src={process.env.PUBLIC_URL + '/images/brand/start-logo.png'}
+            src={asset('/images/brand/start-logo.png')}
             alt="Real Cost Estimating"
             className="splash-logo"
           />
