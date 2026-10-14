@@ -31,7 +31,11 @@ const FAQItem = ({ question, answer, index, isOpen, onToggle }) => {
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.34, ease: [0.22, 1, 0.36, 1] }}
           >
-            <div className="faq-a">{answer}</div>
+            <div className="faq-a">
+              {answer.split('\n\n').map((paragraph, i) => (
+                <p key={i}>{paragraph}</p>
+              ))}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

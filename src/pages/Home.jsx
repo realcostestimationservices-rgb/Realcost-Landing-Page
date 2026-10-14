@@ -346,9 +346,9 @@ const Home = ({ onNavigate }) => {
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
             <Reveal>
               <div className="sec-eyebrow">Smart estimating software</div>
-              <div className="sec-h2" style={{ marginBottom: '16px' }}>Smart Software for<br />Accurate Estimating</div>
+              <div className="sec-h2" style={{ marginBottom: '16px' }}>We Don’t Just Sell Software.<br />We Deliver Experience.</div>
               <p className="sec-sub" style={{ marginBottom: '28px', maxWidth: '440px' }}>
-                We build user-focused estimating software that aligns with your business goals — upload drawings, auto-count symbols, build your bid, and send a branded quote letter, all in one place.
+                Every estimator brings practical knowledge. Realcost brings that experience into a platform designed around the real challenges of construction estimating.
               </p>
               <div className="ph-stat-row hb-stat-row">
                 <div className="ph-stat"><div className="ph-stat-n"><CountUp end={15} suffix="+" /></div><div className="ph-stat-l">Years Experience</div></div>
@@ -662,6 +662,12 @@ const Home = ({ onNavigate }) => {
       {/* Testimonials */}
       <section className="sec-tint">
         <div className="cxl">
+          <Reveal style={{ textAlign: 'center', maxWidth: '760px', margin: '0 auto 44px' }}>
+            <div className="sec-h2" style={{ fontSize: 'clamp(24px, 3vw, 32px)', marginBottom: '12px' }}>100+ Estimators’ Expertise. One Powerful Platform</div>
+            <p className="sec-sub" style={{ margin: '0 auto', maxWidth: '680px' }}>
+              Real-world estimating expertise, transformed into smarter software for construction professionals.
+            </p>
+          </Reveal>
           <Reveal><Testimonials /></Reveal>
         </div>
       </section>

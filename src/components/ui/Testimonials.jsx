@@ -198,7 +198,7 @@ const Testimonials = () => {
     <div className="testimonials-section">
       <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '44px', flexWrap: 'wrap', gap: '20px' }}>
         <div>
-          <div className="sec-h2">Contractors Love Realcost</div>
+          <div className="sec-h2" style={{ fontSize: 'clamp(24px, 3vw, 32px)' }}>Contractors Love Realcost</div>
           <p className="sec-sub" style={{ maxWidth: '380px', marginTop: '8px' }}>Don't take our word for it — hear from real users.</p>
         </div>
         <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
