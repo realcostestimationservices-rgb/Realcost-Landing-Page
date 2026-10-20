@@ -675,6 +675,7 @@
   z-index: 10;
   filter: drop-shadow(0 8px 24px rgba(0,0,0,.58)) drop-shadow(0 0 20px rgba(96,165,250,.24));
 }
+.years-badge svg { width: 186px; height: 186px; }
 @media (max-width: 1024px) {
   .years-badge { right: 24px; bottom: 130px; }
   .years-badge svg { width: 130px; height: 130px; }

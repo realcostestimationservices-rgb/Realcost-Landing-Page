@@ -277,57 +277,38 @@ const Home = ({ onNavigate }) => {
                     <stop offset="45%"  stopColor="#F3C3AE"/>
                     <stop offset="100%" stopColor="#C8836B"/>
                   </linearGradient>
-                  <path id="tp" d="M 24,80 A 56,56 0 0,1 136,80"/>
-                  <path id="bp" d="M 24,80 A 56,56 0 0,0 136,80"/>
+                  <path id="tp" d="M 33,80 A 47,47 0 0,1 127,80"/>
+                  <path id="bp" d="M 27,80 A 53,53 0 0,0 133,80"/>
                 </defs>
 
-                {/* ── Ring 1: outer glow ── */}
-                <circle cx="80" cy="80" r="78" fill="none" stroke="rgba(224,160,140,0.14)" strokeWidth="1.5"/>
-                {/* ── Ring 2: dashed accent ── */}
-                <circle cx="80" cy="80" r="74" fill="none" stroke="rgba(224,160,140,0.55)" strokeWidth="1.1" strokeDasharray="2.5 4"/>
-                {/* ── Ring 3: solid rose-gold border ── */}
-                <circle cx="80" cy="80" r="70" fill="none" stroke="url(#gR)" strokeWidth="2.8"/>
+                {/* ── Dashed accent ring ── */}
+                <circle cx="80" cy="80" r="73" fill="none" stroke="rgba(224,160,140,0.38)" strokeWidth="1" strokeDasharray="1.5 5"/>
+                {/* ── Solid rose-gold bezel ── */}
+                <circle cx="80" cy="80" r="70" fill="none" stroke="url(#gR)" strokeWidth="2.4"/>
                 {/* ── Fill ── */}
-                <circle cx="80" cy="80" r="67" fill="url(#gF)"/>
-                {/* ── Ring 4: inner hairline ── */}
-                <circle cx="80" cy="80" r="61" fill="none" stroke="rgba(243,195,174,0.30)" strokeWidth="0.7"/>
-
-                {/* ── Clock markers ── */}
-                <line x1="80" y1="5"   x2="80" y2="14"  stroke="rgba(224,160,140,0.78)" strokeWidth="2"   strokeLinecap="round"/>
-                <line x1="80" y1="146" x2="80" y2="155" stroke="rgba(224,160,140,0.78)" strokeWidth="2"   strokeLinecap="round"/>
-                <line x1="5"  y1="80"  x2="14" y2="80"  stroke="rgba(224,160,140,0.45)" strokeWidth="1.4" strokeLinecap="round"/>
-                <line x1="146" y1="80" x2="155" y2="80" stroke="rgba(224,160,140,0.45)" strokeWidth="1.4" strokeLinecap="round"/>
-
-                {/* ── Corner dots at 45° ── */}
-                <circle cx="80" cy="80" r="70" fill="none"
-                  stroke="rgba(224,160,140,0.0)" strokeWidth="0"/>
-                <circle cx="130" cy="30" r="2"  fill="rgba(224,160,140,0.48)"/>
-                <circle cx="30"  cy="30" r="2"  fill="rgba(224,160,140,0.48)"/>
-                <circle cx="130" cy="130" r="2" fill="rgba(224,160,140,0.48)"/>
-                <circle cx="30"  cy="130" r="2" fill="rgba(224,160,140,0.48)"/>
+                <circle cx="80" cy="80" r="66.5" fill="url(#gF)"/>
+                {/* ── Inner hairline ── */}
+                <circle cx="80" cy="80" r="59" fill="none" stroke="rgba(243,195,174,0.24)" strokeWidth="0.7"/>
 
                 {/* ── Top arc: REAL COST ── */}
-                <text fontSize="8" fontWeight="700" letterSpacing="5" fill="rgba(243,195,174,0.94)" fontFamily="Plus Jakarta Sans,sans-serif">
-                  <textPath href="#tp" startOffset="50%" textAnchor="middle" dy="13">REAL COST</textPath>
+                <text fontSize="8" fontWeight="700" letterSpacing="4" fill="rgba(243,195,174,0.92)" fontFamily="Plus Jakarta Sans,sans-serif">
+                  <textPath href="#tp" startOffset="50%" textAnchor="middle" dy="11">REAL COST</textPath>
                 </text>
 
-                {/* ── Bottom arc: SINCE 2010 ── */}
-                <text fontSize="8" fontWeight="700" letterSpacing="4" fill="rgba(224,160,140,0.88)" fontFamily="Plus Jakarta Sans,sans-serif">
-                  <textPath href="#bp" startOffset="50%" textAnchor="middle" dy="-5">SINCE  2010</textPath>
+                {/* ── Bottom arc: YEARS OF EXCELLENCE (curved along the ring) ── */}
+                <text fontSize="7" fontWeight="700" letterSpacing="1.8" fill="rgba(243,195,174,0.88)" fontFamily="Plus Jakarta Sans,sans-serif">
+                  <textPath href="#bp" startOffset="50%" textAnchor="middle" dy="-5">YEARS OF EXCELLENCE</textPath>
                 </text>
 
-                {/* ── Divider rules ── */}
-                <line x1="42" y1="50" x2="118" y2="50" stroke="rgba(224,160,140,0.40)" strokeWidth="0.8"/>
-                <line x1="42" y1="108" x2="118" y2="108" stroke="rgba(224,160,140,0.40)" strokeWidth="0.8"/>
+                {/* ── Side diamond accents (3 & 9 o'clock) ── */}
+                <path d="M 34,80 l 2.4,-2.7 l 2.4,2.7 l -2.4,2.7 z" fill="rgba(224,160,140,0.72)"/>
+                <path d="M 120.8,80 l 2.4,-2.7 l 2.4,2.7 l -2.4,2.7 z" fill="rgba(224,160,140,0.72)"/>
 
-                {/* ── "15" ── */}
-                <text x="80" y="93" textAnchor="middle" fontSize="52" fontWeight="900" fill="url(#gN)" letterSpacing="-2" fontFamily="Plus Jakarta Sans,sans-serif">15</text>
+                {/* ── "15" — hero ── */}
+                <text x="80" y="86" textAnchor="middle" fontSize="46" fontWeight="900" fill="url(#gN)" letterSpacing="-2" fontFamily="Plus Jakarta Sans,sans-serif">15</text>
 
-                {/* ── "YEARS" ── */}
-                <text x="80" y="106" textAnchor="middle" fontSize="9.5" fontWeight="700" fill="rgba(243,195,174,0.82)" letterSpacing="5.5" fontFamily="Plus Jakarta Sans,sans-serif">YEARS</text>
-
-                {/* ── Three stars ── */}
-                <text x="80" y="121" textAnchor="middle" fontSize="9" fill="rgba(224,160,140,0.58)" letterSpacing="7" fontFamily="Plus Jakarta Sans,sans-serif">★ ★ ★</text>
+                {/* ── "SINCE 2010" ── */}
+                <text x="80" y="100" textAnchor="middle" fontSize="5.5" fontWeight="600" letterSpacing="2.5" fill="rgba(224,160,140,0.78)" fontFamily="Plus Jakarta Sans,sans-serif">SINCE 2010</text>
               </svg>
               </motion.div>
             </motion.div>
